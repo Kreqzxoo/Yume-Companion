@@ -128,7 +128,7 @@ object AssistOverlay {
     }
 
     @Composable
-    private fun Panel() {
+    internal fun Panel() {
         val call by CallEngine.ui.collectAsState()
         var seenActive by remember { mutableStateOf(false) }
         var heard by remember { mutableStateOf("") }

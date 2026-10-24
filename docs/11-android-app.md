@@ -55,7 +55,27 @@ Die App erkennt selbst, ob sie im Heimnetz (lokale Adresse) oder unterwegs (exte
 * Ein Cloudflare-Fehler **523** heißt: Cloudflare erreicht deinen PC nicht (Tunnel/Port/Dienst prüfen), nicht dass das Modell fehlt.
 * Schütze den externen Zugang. Den Web-Token nie öffentlich teilen.
 
-## 11.5 Die Hauptbildschirme
+## 11.5 Ersatz für den Google Assistant
+
+Yume kann auf dem Handy den **Google Assistant ersetzen**. Die App meldet sich bei Android als *digitaler Assistent* an (`VoiceInteractionService`). Damit gilt:
+
+* **Home-Taste gedrückt halten** oder **von der Ecke wischen** öffnet Yume statt Google.
+* **Wake Word auf dem Startbildschirm:** Sagst du dein Wake Word („Yume …“), während der Startbildschirm oder irgendeine andere App vorne ist, schiebt sich von unten ein **halbtransparentes Assistenten-Fenster** über den Bildschirm. Es zeigt, dass sie zuhört, was sie verstanden hat und was sie antwortet, und sie spricht die Antwort laut.
+* Das Fenster bleibt, bis **du** es schließt (*Schließen*, Zurück, Home, Tipp daneben). Es hört nicht dauernd mit: eine Frage, eine Antwort, dann wartet es wieder auf das Wake Word. *App öffnen* springt in die volle App.
+
+![Assistenten-Fenster über dem Startbildschirm](images/android/13_assistent_startbildschirm.png)
+
+*Darstellung nachgestellt: Der Startbildschirm im Hintergrund ist ein Platzhalter, das untere Fenster ist das echte Assistenten-Fenster der App, am PC gerendert.*
+
+**Einrichten:**
+
+1. *Einstellungen → Berechtigungen:* **Über anderen Apps einblenden** erlauben (nötig für das Fenster) und Mikrofon sowie Benachrichtigungen gewähren. Batterie-Optimierung für Yume ausnehmen, damit das Wake Word im Hintergrund hört.
+2. *Einstellungen → Berechtigungen → Als Assistent einrichten → Standard-Assistent wählen …* öffnet die Android-Seite „Standard-Apps“. Dort **Digitaler Assistent** auf **Yume Companion** stellen.
+3. *Einstellungen → Sprache & Wake Word:* Wake Word einschalten und **Assistenten-Fenster beim Erkennen** aktiv lassen. Mit **Nur auf meine Stimme reagieren** (wie „Voice Match“ beim Google Assistant) reagiert das Wake Word nur auf dich; das läuft komplett auf dem Handy.
+
+Der Name der Android-Einstellung unterscheidet sich je nach Hersteller (Samsung, Xiaomi, Pixel …), meist unter *Einstellungen → Apps → Standard-Apps*.
+
+## 11.6 Die Hauptbildschirme
 
 Unten die Menüleiste: **Yume · Anruf · Offline · Einstellungen**. Beim Start wählst du (oder die App nimmt den Standard) den **Charakter**.
 
@@ -81,7 +101,7 @@ Unten die Menüleiste: **Yume · Anruf · Offline · Einstellungen**. Beim Start
 ![Im Gespräch](images/android/09_im_gespraech.png)
 
 * **Videoanruf:** Die Handykamera erscheint klein im Anruf; mit jedem Satz geht das neueste Kamerabild an den PC, dessen Vision-Modell es beschreibt. Sie sieht also einen Moment pro Satz, keinen Dauer-Videostrom.
-* **Auto-Modus** (Knopf unten): freihändig, große Bedienelemente, Benachrichtigungen werden vorgelesen (siehe 11.9).
+* **Auto-Modus** (Knopf unten): freihändig, große Bedienelemente, Benachrichtigungen werden vorgelesen (siehe 11.10).
 
 ### Offline (Notfallmodus)
 
@@ -89,7 +109,7 @@ Unten die Menüleiste: **Yume · Anruf · Offline · Einstellungen**. Beim Start
 
 Wenn der PC fehlt, antwortet ein **kleines Sprachmodell direkt auf dem Handy** (viel einfacher als die PC-KI). Du lädst einmalig **Modell** (z. B. *Qwen 2.5 – 0,5 B*, ca. 560 MB, WLAN empfohlen) und **Spracherkennung** (ca. 50 MB). Schalter: **Automatisch umschalten** (PC weg → Handy antwortet selbst), **Offline-Gespräche dem PC erzählen** (Kurzfassung nach der Rückkehr), **Beim Verbinden synchronisieren** (Charakter und letzte Nachrichten holen). Stürzt ein Modell auf deinem Handy ab, markiert die App es als „abgestürzt“ und nutzt es nicht mehr. Einen Absturzbericht zeigt dieser Bildschirm ebenfalls.
 
-## 11.6 Einstellungen am Handy
+## 11.7 Einstellungen am Handy
 
 Die Seite *Einstellungen* ist in Abschnitte gegliedert.
 
@@ -122,7 +142,7 @@ Das Wake Word („Hey Yume“) lauscht im Hintergrund **offline** (Vosk) ohne Ko
 
 ![Gespräch](images/android/einstellungen_gespraech.png)
 
-**Stopp-Wörter** (unterbrechen sie), **Auflege-Wörter** (beenden den Anruf), **Lautstärke testen**, **Mikrofon testen …** (zeigt live, was die Spracherkennung sieht; der Balken ist deine Stimme, die Linie die Schwelle der Empfindlichkeit), **Echo-Unterdrückung**, **Lautsprecher**, **Bildschirm anlassen im Gespräch**.
+**Stopp-Wörter** (unterbrechen sie), **Auflege-Wörter** (beenden den Anruf), **Lautstärke testen**, **Mikrofon testen …** (zeigt live, was die Spracherkennung sieht; der Balken ist deine Stimme, die Linie die Schwelle der Empfindlichkeit), **Unterbrechen** (*Durch Sprechen*, *Nur mit Stopp-Wort* oder *Aus*), **Echo-Unterdrückung** (Vollduplex: Telefon-Audiopfad plus der Echo-Unterdrücker des Handys, sodass du ins Wort fallen kannst; Erklärung der Verfahren in [Kapitel 05](05-stimme-und-avatare.md#echo-schutz-anti-echo-im-detail)), **Lautsprecher**, **Bildschirm anlassen im Gespräch**.
 
 ![Mikrofontest](images/android/12_mikrofontest.png)
 
@@ -202,25 +222,25 @@ Die Liste zeigt jede nötige Berechtigung mit Knopf zum Gewähren. Die App nutzt
 
 **App zurücksetzen …** stellt den Zustand einer Neuinstallation her (Kopplung, Einstellungen, Wecker, Spotify-Login, Chat-Zwischenspeicher). Große Downloads (3D-Modelle, Sprachmodelle, Offline-KI) bleiben, außer du wählst *auch löschen*. **Nur Kopplung lösen** ist die kleinere Variante.
 
-## 11.7 Dolmetscher-Modus
+## 11.8 Dolmetscher-Modus
 
 „Dolmetscher Englisch“ startet ihn, „Dolmetscher aus“ beendet ihn. Alles, was du sagst oder tippst, übersetzt das **Sprachmodell des PC**, und das Handy **spricht** die Übersetzung in der anderen Sprache (eine Richtung: deine Sprache → Zielsprache).
 
-## 11.8 Schnellbefehle ohne PC
+## 11.9 Schnellbefehle ohne PC
 
 Kurze Befehle klappen auch **ohne PC und ohne Sprachmodell**: Musik, Taschenlampe, Apps öffnen, Timer, Wecker, Lautstärke, Navigation, Benachrichtigungen vorlesen, Uhrzeit, Akku, Anrufe.
 
-## 11.9 Auto-Modus beim Fahren
+## 11.10 Auto-Modus beim Fahren
 
 Siehe oben. Sobald die Bluetooth-Verbindung zum Auto steht, wechselt die App in den Auto-Modus (freihändiger Anruf). Android erlaubt den Start des Mikrofons nur aus einer sichtbaren App; deshalb fragt eine Benachrichtigung mit einem Tipp nach, wenn die App nicht vorne ist.
 
-## 11.10 Datenschutz am Handy
+## 11.11 Datenschutz am Handy
 
 * Alle Handy-Aktionen laufen **nur**, wenn du sie freigibst, und lassen sich je einzeln abschalten.
 * Wake Word, Sprecher-Erkennung und Offline-KI laufen **auf dem Handy**, ohne Konto.
 * Das Handy-Protokoll bleibt auf dem Handy.
 * Der Gerätetoken ist am PC einzeln widerrufbar.
 
-## 11.11 Eigene APK bauen
+## 11.12 Eigene APK bauen
 
 Siehe [Kapitel 16](16-entwicklung.md). Die App ist Open Source (`android/`, GPL-3.0 empfohlen). Abhängigkeiten: Jetpack Compose, AndroidX, CameraX, OkHttp, Vosk, MediaPipe GenAI, ML Kit Barcode (Apache-2.0; ML Kit hat eigene Nutzungsbedingungen). Details: [LIZENZEN_UND_UPLOAD.md](LIZENZEN_UND_UPLOAD.md).

@@ -83,6 +83,20 @@ In der Engine-Seite **RVC aktivieren** und einen Ordner mit einer `.pth`-Stimme 
 
 Die meisten Audio-Werte gelten erst nach Neustart des Sprachmodus. Ob AEC3 gut klingt, hängt von Lautsprechern, Mikrofon und Raum ab; teste es.
 
+### Echo-Schutz (Anti-Echo) im Detail
+
+Damit sich die KI nicht selbst hört, gibt es drei Verfahren. Die Namen entsprechen den Einträgen in der App (*Einstellungen → Gespräch & Audio → Echo-Schutz-Modus*):
+
+| Eintrag in der App | Fachbegriff | Wirkung |
+| --- | --- | --- |
+| **Aus** | kein Echo-Schutz | Mikrofon bleibt immer offen. Nur mit Kopfhörer sinnvoll, sonst hört sich die KI selbst |
+| **Halbduplex: während Wiedergabe nicht zuhören** | *Half-Duplex* (Anti-Echo mit Stummschaltung) | Das Mikrofon wird stummgeschaltet, solange der Charakter spricht, plus **Echo-Nachlauf** (700 ms). Zuverlässig und ohne Zusatzpaket, aber du kannst nicht dazwischenreden |
+| **WebRTC AEC3 (Vollduplex-Echoentfernung)** | *Full-Duplex* mit *Acoustic Echo Cancellation* (WebRTC **AEC3**, Bibliothek `pywebrtc-audio`) | Das tatsächlich abgespielte Audio dient als Referenz und wird aus dem Mikrofonsignal herausgerechnet. Das Mikrofon bleibt offen, du kannst der KI **ins Wort fallen**. Feineinstellung mit **AEC-Referenzverzögerung** (60 ms) |
+
+Beim Start prüft die App, ob AEC3 funktioniert (*„WebRTC AEC3 ist bereit. Vollduplex-Echoentfernung ist verfügbar.“*). Fehlt das Paket oder besteht der Test nicht, fällt sie automatisch auf **Halbduplex** zurück; **WebRTC AEC3 prüfen / installieren** repariert das in der Python-Umgebung der App.
+
+**Auf dem Handy** heißt der Schalter **Echo-Unterdrückung** (*Einstellungen → Gespräch*): Die App schaltet im Anruf auf den Telefon-Audiopfad von Android (`USAGE_VOICE_COMMUNICATION`) und aktiviert den Echo-Unterdrücker des Handys (`AcousticEchoCanceler`, falls das Gerät ihn hat). Das ist ebenfalls eine Vollduplex-Lösung. Über **Unterbrechen** (*Durch Sprechen*, *Nur mit Stopp-Wort*, *Aus*) legst du fest, wie du die KI mitten im Satz stoppst. Am besten funktioniert alles mit Kopfhörern. Siehe [Android-App](11-android-app.md#117-einstellungen-am-handy).
+
 * **Hey Yume am PC** (immer lauschend, auch bei geschlossenem Chat) steht im [Organizer](10-organizer.md#1017-hey-yume-am-pc).
 * **Stimmungs-Gespür** aus der Stimme (experimentell, es werden nur Zahlen ausgewertet, keine Aufnahmen): [Organizer](10-organizer.md#108-gespräche-und-stimmung).
 
