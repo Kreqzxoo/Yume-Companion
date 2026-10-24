@@ -89,7 +89,7 @@ Apache-2.0-Software darf in GPL-3.0-Projekten verwendet werden.
 | `RVC Zero Two/Mp4` (Serienfolgen) | Urheberrechtlich geschützt. Niemals hochladen. |
 | `Zero Two.json` (Lorebook, Charakterkarte) und die Zero-Two-Charakterdaten | Figur und Inhalte stammen aus einer geschützten Serie. Dein eigener Text darin gehört dir, die Figur nicht. Besser nicht im öffentlichen Repo. |
 | `assets/ambient/*` (78 MB), `assets/backgrounds/*` (16 MB) | Herkunft nicht bekannt, im Original-Repo nur `.gitkeep`. Nur mit eigener Quelle / freier Lizenz (z. B. CC0). |
-| `app/utils/emotions/vrm/expressions/*.fbx` (28 Animationen) | Vermutlich **Mixamo**-Animationen: für eigene Projekte nutzbar, aber **nicht als Dateien weitergeben**. Im Original-Repo nicht enthalten. Vor dem Upload Herkunft klären oder ausschließen. |
+| `app/utils/emotions/vrm/expressions/*.fbx` (28 Animationen) | Vermutlich **Mixamo**-Animationen: für eigene Projekte nutzbar, aber **nicht als Dateien weitergeben**. Im Original-Repo nicht enthalten, daher auch hier **nicht im Quelltext** (`.gitignore`). Im fertigen Setup sind sie als Teil der Anwendung enthalten (nötig für die Körperbewegungen); Herkunft und Bedingungen vor einer Veröffentlichung klären oder die Dateien beim Setup-Bau ausschließen. |
 | `app/voices/*.wav` | Herkunft unklar, im Original nur `.gitkeep` |
 | `assets/vision_models` (2,6 GB), `assets/local_llm`, `app/models/hf_cache` | Sehr groß (GitHub-Limit 100 MB pro Datei) und eigene Modell-Lizenzen (z. B. Qwen2.5-VL 3B unter "Qwen Research License"). Nutzer laden sie selbst. |
 | `app/data/` (Python-Umgebung, ~11 GB) | Wird vom Installer erzeugt |

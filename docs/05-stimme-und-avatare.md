@@ -142,7 +142,7 @@ Dieses Repository enthält nur frei weitergebbare Avatare: selbst gezeichnete Au
 
 ![Chat mit VRM-Avatar](images/pc/chat_vrm_mika.png)
 
-Die 28 Körperanimationen zu den Gefühlen (`app/utils/emotions/vrm/expressions/*.fbx`) sind **nicht** im Repository (vermutlich Mixamo-Material, das man nicht weitergeben darf). Ohne sie steht das Modell in der T-Pose; eigene Animationen mit den Gefühlsnamen als Dateinamen (`neutral.fbx`, `joy.fbx` …) legst du in diesen Ordner. Live2D-Modelle liegen hier nicht bei. Wenn du Modelle von anderen nutzt, beachte deren Lizenz (Angabe von Quelle, kommerzielle Nutzung, Veränderung). Die Cubism-Komponenten von Live2D stehen unter einer eigenen Lizenz.
+Die 28 Körperanimationen zu den Gefühlen (`app/utils/emotions/vrm/expressions/*.fbx`) liegen **nicht im Quelltext-Repository** (vermutlich Mixamo-Material, das man nicht als einzelne Dateien weitergeben soll), sondern nur im fertigen Setup. Wer aus dem Quelltext arbeitet, hat sie nicht: Dann steht das Modell in der T-Pose; eigene Animationen mit den Gefühlsnamen als Dateinamen (`neutral.fbx`, `joy.fbx` …) legst du in diesen Ordner. Live2D-Modelle liegen hier nicht bei. Wenn du Modelle von anderen nutzt, beachte deren Lizenz (Angabe von Quelle, kommerzielle Nutzung, Veränderung). Die Cubism-Komponenten von Live2D stehen unter einer eigenen Lizenz.
 
 ## 5.6 Umgebungsgeräusche und Hintergründe
 
