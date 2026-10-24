@@ -31,7 +31,7 @@ class LinkService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val open = PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
         val n: Notification = NotificationCompat.Builder(this, "link").setSmallIcon(android.R.drawable.ic_menu_share)
-            .setContentTitle("Yume ist verbunden").setContentText("Bereit für Anfragen vom PC")
+            .setContentTitle(tr("Yume ist verbunden", "Yume is connected")).setContentText(tr("Bereit für Anfragen vom PC", "Ready for requests from the PC"))
             .setContentIntent(open).setOngoing(true).setPriority(NotificationCompat.PRIORITY_MIN).build()
         startForeground(2, n)
         HostLink.start()
@@ -59,7 +59,7 @@ class BootReceiver : BroadcastReceiver() {
         if (Prefs.wakeEnabled) {
             val open = PendingIntent.getActivity(ctx, 1, Intent(ctx, MainActivity::class.java).putExtra("start_wake", true), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
             val n = NotificationCompat.Builder(ctx, "info").setSmallIcon(android.R.drawable.ic_btn_speak_now)
-                .setContentTitle("Yume zuhören aktivieren").setContentText("Tippen, um das Wake Word wieder einzuschalten")
+                .setContentTitle(tr("Yume zuhören aktivieren", "Enable Yume listening")).setContentText(tr("Tippen, um das Wake Word wieder einzuschalten", "Tap to turn the wake word back on"))
                 .setContentIntent(open).setAutoCancel(true).build()
             ctx.getSystemService(android.app.NotificationManager::class.java).notify(7, n)
         }
@@ -90,10 +90,10 @@ object WakeOnLan {
         if (Prefs.wolWebhook.isNotEmpty()) {
             hook = try {
                 Host.http.newCall(okhttp3.Request.Builder().url(Prefs.wolWebhook).build()).execute().use { " Webhook: ${it.code}" }
-            } catch (e: Exception) { " Webhook fehlgeschlagen" }
+            } catch (e: Exception) { tr(" Webhook fehlgeschlagen", " Webhook failed") }
         }
         AgentLog.add("Wake-on-LAN gesendet ($sent Pakete).$hook")
-        if (macs.isEmpty() && hook.isEmpty()) "Keine MAC-Adresse bekannt – bitte erneut koppeln." else "Aufwecksignal gesendet.$hook"
+        if (macs.isEmpty() && hook.isEmpty()) tr("Keine MAC-Adresse bekannt – bitte erneut koppeln.", "No MAC address known – please pair again.") else tr("Aufwecksignal gesendet.$hook", "Wake signal sent.$hook")
     }
 
     private fun broadcastTargets(): List<String> {
@@ -156,7 +156,7 @@ object OfflineHandover {
         if (!Prefs.offlineHandoverBack || !file.exists()) return
         val arr = try { org.json.JSONArray(file.readText()) } catch (_: Exception) { return }
         if (arr.length() == 0) { file.delete(); return }
-        val sb = StringBuilder("(Notiz: Während der PC nicht erreichbar war, haben wir auf dem Handy offline gesprochen. Kurzfassung – gib keine lange Antwort darauf.)\n")
+        val sb = StringBuilder(tr("(Notiz: Während der PC nicht erreichbar war, haben wir auf dem Handy offline gesprochen. Kurzfassung – gib keine lange Antwort darauf.)\n", "(Note: While the PC was not reachable we talked offline on the phone. Summary – do not give a long answer to it.)\n"))
         for (i in 0 until arr.length()) {
             val o = arr.getJSONObject(i)
             sb.append("Ich: ").append(o.optString("u")).append("\nDu: ").append(o.optString("a")).append('\n')

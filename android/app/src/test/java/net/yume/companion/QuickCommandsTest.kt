@@ -4,10 +4,21 @@ import net.yume.companion.device.QuickCommands
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.ExternalResource
+import java.util.Locale
+
+/** the app speaks German on a German phone and English otherwise: the tests pin the phone language */
+class PhoneLocale(private val locale: Locale) : ExternalResource() {
+    private lateinit var before: Locale
+    override fun before() { before = Locale.getDefault(); Locale.setDefault(locale) }
+    override fun after() { Locale.setDefault(before) }
+}
 
 /** Which sentences are quick commands (carried out without the PC) and which ones are left to the language model. Spotify is not connected here. */
 class QuickCommandsTest {
+    @get:Rule val phone = PhoneLocale(Locale.GERMAN)
     private fun label(s: String) = QuickCommands.detect(s)?.label
 
     @Test fun phoneCommandsAreRecognised() {
@@ -41,6 +52,7 @@ class QuickCommandsTest {
 
 /** Interpreter mode phrases (the translation itself needs the PC and is tested there). */
 class InterpreterCommandsTest {
+    @get:Rule val phone = PhoneLocale(Locale.GERMAN)
     private fun label(s: String) = QuickCommands.detectInterpreter(s)?.label
 
     @Test fun startPhrases() {
@@ -59,10 +71,47 @@ class InterpreterCommandsTest {
 }
 
 class ReplyCommandTest {
+    @get:Rule val phone = PhoneLocale(Locale.GERMAN)
     @Test fun repliesAreRecognised() {
         assertEquals("Antworte auf die Nachricht …", QuickCommands.detect("antworte ich bin gleich da")?.label)
         assertEquals("Antworte auf die Nachricht …", QuickCommands.detect("schreib ihm zurück ich komme später")?.label)
         assertEquals("Antworte auf die Nachricht …", QuickCommands.detect("sag ihr ich rufe heute Abend an")?.label)
         assertNull(QuickCommands.detect("antworte"))
+    }
+}
+
+/** the same commands, spoken in English on an English phone */
+class EnglishCommandsTest {
+    @get:Rule val phone = PhoneLocale(Locale.ENGLISH)
+    private fun label(s: String) = QuickCommands.detect(s)?.label
+
+    @Test fun phoneCommandsAreRecognised() {
+        assertEquals("Switching the flashlight …", label("turn the flashlight on"))
+        assertEquals("Opening whatsapp …", label("open WhatsApp"))
+        assertEquals("Opening spotify …", label("can you please open Spotify"))
+        assertEquals("Setting the timer …", label("set a timer for 10 minutes"))
+        assertEquals("Setting the alarm …", label("wake me tomorrow at 6:30"))
+        assertEquals("Setting the alarm …", label("set an alarm for 7 am"))
+        assertEquals("Starting navigation …", label("navigate to Hamburg central station"))
+        assertEquals("Reading your messages …", label("read my messages"))
+        assertEquals("Looking at the clock …", label("what time is it"))
+        assertEquals("Checking the battery …", label("how is the battery"))
+        assertEquals("Calling mom …", label("call mom"))
+        assertEquals("Setting the volume to 30 % …", label("volume 30"))
+        assertEquals("Louder …", label("louder"))
+        assertEquals("Replying to the message …", label("reply I'll be right there"))
+    }
+
+    @Test fun interpreter() {
+        assertEquals("Starting the interpreter …", QuickCommands.detectInterpreter("interpreter French")?.label)
+        assertEquals("Starting the interpreter …", QuickCommands.detectInterpreter("translate to Spanish")?.label)
+        assertNull(QuickCommands.detectInterpreter("what time is it"))
+    }
+
+    @Test fun everythingElseGoesToTheModel() {
+        assertNull(label("tell me a joke"))
+        assertNull(label("how was your day"))
+        assertNull(label("open the downloads folder on the PC"))
+        assertNull(label("I listened to Queen yesterday"))
     }
 }

@@ -120,6 +120,9 @@ Die Seite *Einstellungen* ist in Abschnitte gegliedert.
 
 ![Verbindung: Wake-on-LAN](images/android/einstellungen_verbindung.png)
 
+### App-Sprache
+Die App gibt es auf **Deutsch und Englisch**. Standard ist **Automatisch**: ein deutsches Handy zeigt Deutsch, jedes andere Englisch. Unter *Einstellungen → App-Sprache* stellst du sie fest ein. Die Sprache gilt für alle Menüs, die Meldungen, die Handy-Befehle (z. B. „turn the flashlight on“, „set a timer for 10 minutes“, „interpreter French“) und die Standard-Sätze des Wake Words.
+
 ### Sprache & Wake Word
 Das Wake Word („Hey Yume“) lauscht im Hintergrund **offline** (Vosk) ohne Konto.
 

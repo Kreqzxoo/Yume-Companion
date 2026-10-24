@@ -17,8 +17,22 @@ android {
         ndk { abiFilters += listOf("arm64-v8a") }
     }
 
+    // Own signing key for releases: the GitHub Action passes it via environment variables, nothing secret is in the repo.
+    // Without them the release build is signed with the debug key (fine for your own phone).
+    val releaseKeystore = System.getenv("YUME_KEYSTORE")
+    signingConfigs {
+        if (!releaseKeystore.isNullOrEmpty()) create("release") {
+            storeFile = file(releaseKeystore)
+            storePassword = System.getenv("YUME_KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("YUME_KEY_ALIAS") ?: "yume"
+            keyPassword = System.getenv("YUME_KEY_PASSWORD") ?: System.getenv("YUME_KEYSTORE_PASSWORD")
+        }
+    }
     buildTypes {
-        release { isMinifyEnabled = false }
+        release {
+            isMinifyEnabled = false
+            signingConfig = if (!releaseKeystore.isNullOrEmpty()) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

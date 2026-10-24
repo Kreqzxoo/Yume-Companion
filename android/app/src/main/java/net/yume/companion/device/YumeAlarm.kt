@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -131,7 +133,7 @@ object YumeAlarms {
     }
 
     fun describe(a: Alarm): String =
-        java.text.SimpleDateFormat("EEEE, dd.MM. 'um' HH:mm", Locale.GERMAN).format(java.util.Date(a.at)) + (if (a.label.isNotBlank()) " – ${a.label}" else "") + (if (a.daily) " (täglich)" else "") + "  [id ${a.id}]"
+        java.text.SimpleDateFormat(tr("EEEE, dd.MM. 'um' HH:mm", "EEEE, MM/dd 'at' HH:mm"), if (net.yume.companion.core.Lang.isEn) Locale.ENGLISH else Locale.GERMAN).format(java.util.Date(a.at)) + (if (a.label.isNotBlank()) " – ${a.label}" else "") + (if (a.daily) tr(" (täglich)", " (daily)") else "") + "  [id ${a.id}]"
 }
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -140,11 +142,11 @@ class AlarmReceiver : BroadcastReceiver() {
         val a = YumeAlarms.fired(intent.getStringExtra("id") ?: return) ?: return
         LinkService.ensure(c)                         // the connection to the PC should be there when she has to speak
         val nm = c.getSystemService(NotificationManager::class.java)
-        if (nm.getNotificationChannel("alarm") == null) nm.createNotificationChannel(NotificationChannel("alarm", "Wecker", NotificationManager.IMPORTANCE_HIGH))
+        if (nm.getNotificationChannel("alarm") == null) nm.createNotificationChannel(NotificationChannel("alarm", tr("Wecker", "Alarm clock"), NotificationManager.IMPORTANCE_HIGH))
         val open = PendingIntent.getActivity(c, 3, Intent(c, AlarmActivity::class.java).putExtra("label", a.label).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val n = NotificationCompat.Builder(c, "alarm").setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-            .setContentTitle("Yume weckt dich").setContentText(a.label.ifBlank { "Aufstehen!" })
+            .setContentTitle(tr("Yume weckt dich", "Yume wakes you")).setContentText(a.label.ifBlank { tr("Aufstehen!", "Time to get up!") })
             .setCategory(NotificationCompat.CATEGORY_ALARM).setPriority(NotificationCompat.PRIORITY_MAX)
             .setFullScreenIntent(open, true).setContentIntent(open).setAutoCancel(true).build()
         nm.notify(21, n)
@@ -205,11 +207,11 @@ class AlarmActivity : ComponentActivity() {
                         Text(now, fontSize = 64.sp, fontWeight = FontWeight.Bold)
                         if (label.isNotBlank()) Text(label, fontSize = 18.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(Modifier.height(20.dp))
-                        Text(reply.ifBlank { "Yume ist gleich bei dir …" }, textAlign = TextAlign.Center, fontSize = 18.sp)
+                        Text(reply.ifBlank { tr("Yume ist gleich bei dir …", "Yume will be with you in a moment …") }, textAlign = TextAlign.Center, fontSize = 18.sp)
                         Spacer(Modifier.height(32.dp))
-                        Button(onClick = { stopAll(); startActivity(Intent(this@AlarmActivity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); finish() }, modifier = Modifier.fillMaxWidth()) { Text("Mit Yume reden") }
-                        OutlinedButton(onClick = { stopAll(); YumeAlarms.add(System.currentTimeMillis() + 10 * 60_000L, label.ifBlank { "Schlummern" }); finish() }, modifier = Modifier.fillMaxWidth()) { Text("10 Minuten schlummern") }
-                        TextButton(onClick = { stopAll(); finish() }) { Text("Ich bin wach") }
+                        Button(onClick = { stopAll(); startActivity(Intent(this@AlarmActivity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); finish() }, modifier = Modifier.fillMaxWidth()) { Text(tr("Mit Yume reden", "Talk to Yume")) }
+                        OutlinedButton(onClick = { stopAll(); YumeAlarms.add(System.currentTimeMillis() + 10 * 60_000L, label.ifBlank { tr("Schlummern", "Snooze") }); finish() }, modifier = Modifier.fillMaxWidth()) { Text(tr("10 Minuten schlummern", "Snooze for 10 minutes")) }
+                        TextButton(onClick = { stopAll(); finish() }) { Text(tr("Ich bin wach", "I'm awake")) }
                     }
                 }
             }
@@ -221,10 +223,15 @@ class AlarmActivity : ComponentActivity() {
     override fun onDestroy() { ring(false); super.onDestroy() }
 
     private fun wakePrompt(time: String, label: String) =
+        if (net.yume.companion.core.Lang.isEn)
+            "[Automatic message from the alarm clock – the user asked you to wake them. It is now $time." +
+                (if (label.isNotBlank()) " Reason: $label." else "") +
+                " Wake them now in your own style with a few personal, freshly worded words (not too long, spoken), wish them a good start to the day and ask whether they slept well. Answer in the language you usually talk in.]"
+        else
         "[Automatische Nachricht vom Wecker – der Nutzer hat dich gebeten, ihn zu wecken. Es ist jetzt $time Uhr." +
             (if (label.isNotBlank()) " Anlass: $label." else "") +
             " Weck ihn jetzt in deinem eigenen Stil mit ein paar persönlichen, frisch formulierten Worten (nicht zu lang, gesprochen), wünsch einen guten Start in den Tag und frag, ob er gut geschlafen hat. Antworte in der Sprache, in der ihr sonst redet.]"
 
     private fun fallbackText(time: String, label: String) =
-        "Guten Morgen! Es ist $time Uhr." + (if (label.isNotBlank()) " $label." else "") + " Hast du gut geschlafen?"
+        tr("Guten Morgen! Es ist $time Uhr.", "Good morning! It is $time.") + (if (label.isNotBlank()) " $label." else "") + tr(" Hast du gut geschlafen?", " Did you sleep well?")
 }

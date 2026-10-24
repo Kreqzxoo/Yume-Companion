@@ -1,5 +1,7 @@
 package net.yume.companion
 
+import net.yume.companion.core.tr
+
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -40,26 +42,26 @@ class ShareActivity : Activity() {
         }
         val text = i?.getStringExtra(Intent.EXTRA_TEXT).orEmpty()
         val subject = i?.getStringExtra(Intent.EXTRA_SUBJECT).orEmpty()
-        if (uris.isEmpty() && text.isBlank()) { Toast.makeText(this, "Nichts zum Senden gefunden.", Toast.LENGTH_SHORT).show(); finish(); return }
-        Toast.makeText(this, "Wird an Yume gesendet …", Toast.LENGTH_SHORT).show()
+        if (uris.isEmpty() && text.isBlank()) { Toast.makeText(this, tr("Nichts zum Senden gefunden.", "Nothing to send found."), Toast.LENGTH_SHORT).show(); finish(); return }
+        Toast.makeText(this, tr("Wird an Yume gesendet …", "Sending to Yume …"), Toast.LENGTH_SHORT).show()
         val app = applicationContext
         scope.launch {
             val kinds = ArrayList<String>()
             var failed = ""
             if (Host.baseUrl.isEmpty()) { Host.resolve(app) }
-            if (Host.baseUrl.isEmpty()) failed = "Der PC ist gerade nicht erreichbar."
+            if (Host.baseUrl.isEmpty()) failed = tr("Der PC ist gerade nicht erreichbar.", "The PC is not reachable right now.")
             if (failed.isEmpty() && text.isNotBlank() && uris.isEmpty()) {
                 val r = Host.postJson("/api/inbox/text", JSONObject().put("text", text).put("title", subject))
-                if (r?.optBoolean("ok") == true) kinds.add("text") else failed = "Senden fehlgeschlagen."
+                if (r?.optBoolean("ok") == true) kinds.add("text") else failed = tr("Senden fehlgeschlagen.", "Sending failed.")
             }
             for (u in uris) {
                 if (failed.isNotEmpty()) break
                 val kind = upload(app, u)
-                if (kind != null) kinds.add(kind) else failed = "Senden fehlgeschlagen (Datei zu groß oder PC nicht erreichbar)."
+                if (kind != null) kinds.add(kind) else failed = tr("Senden fehlgeschlagen (Datei zu groß oder PC nicht erreichbar).", "Sending failed (file too large or PC not reachable).")
             }
             CoroutineScope(Dispatchers.Main).let {
                 it.launch {
-                    Toast.makeText(app, if (failed.isEmpty()) "An Yume gesendet." else failed, Toast.LENGTH_LONG).show()
+                    Toast.makeText(app, if (failed.isEmpty()) tr("An Yume gesendet.", "Sent to Yume.") else failed, Toast.LENGTH_LONG).show()
                 }
             }
             if (failed.isEmpty() && Prefs.shareAutoAsk && kinds.isNotEmpty()) {
@@ -73,11 +75,11 @@ class ShareActivity : Activity() {
 
     /** the sentence sent to Yume after sharing: she reads the item with her inbox tool */
     private fun question(kind: String): String = when (kind) {
-        "audio" -> "Ich habe dir gerade eine Sprachnachricht geteilt. Fass sie bitte kurz zusammen."
-        "image" -> "Ich habe dir gerade ein Bild geteilt. Schau es dir an und sag mir, was drauf ist."
-        "pdf", "word" -> "Ich habe dir gerade ein Dokument geteilt. Fass es bitte kurz zusammen."
-        "text" -> "Ich habe dir gerade einen Text geteilt. Lies ihn bitte und sag mir kurz, worum es geht."
-        else -> "Ich habe dir gerade eine Datei geteilt. Schau in deinen Eingang und sag mir, was es ist."
+        "audio" -> tr("Ich habe dir gerade eine Sprachnachricht geteilt. Fass sie bitte kurz zusammen.", "I just shared a voice message with you. Please summarize it briefly.")
+        "image" -> tr("Ich habe dir gerade ein Bild geteilt. Schau es dir an und sag mir, was drauf ist.", "I just shared a picture with you. Take a look and tell me what is on it.")
+        "pdf", "word" -> tr("Ich habe dir gerade ein Dokument geteilt. Fass es bitte kurz zusammen.", "I just shared a document with you. Please summarize it briefly.")
+        "text" -> tr("Ich habe dir gerade einen Text geteilt. Lies ihn bitte und sag mir kurz, worum es geht.", "I just shared a text with you. Please read it and briefly tell me what it is about.")
+        else -> tr("Ich habe dir gerade eine Datei geteilt. Schau in deinen Eingang und sag mir, was es ist.", "I just shared a file with you. Look in your inbox and tell me what it is.")
     }
 
     private fun upload(ctx: android.content.Context, uri: Uri): String? = try {

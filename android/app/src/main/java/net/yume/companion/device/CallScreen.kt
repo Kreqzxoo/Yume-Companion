@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
@@ -51,9 +53,9 @@ class YumeCallScreen : CallScreeningService() {
         val decision = CallRules.decide(number, name != null, CallRules.prefixes(Prefs.callBlockPrefixes), Prefs.callSilenceNight, Quiet.active())
         val resp = CallResponse.Builder()
         when (decision) {
-            CallDecision.REJECT -> { resp.setDisallowCall(true).setRejectCall(true).setSkipNotification(true); note("Anruf blockiert", number) }
-            CallDecision.SILENCE -> { resp.setSilenceCall(true); note("Unbekannter Anruf (lautlos, Ruhemodus)", number) }
-            CallDecision.ALLOW -> if (Prefs.callAnnounce) PhoneTts.speak(if (name != null) "Anruf von $name" else "Unbekannter Anruf von " + CallRules.speakable(number).ifEmpty { "unbekannter Nummer" })
+            CallDecision.REJECT -> { resp.setDisallowCall(true).setRejectCall(true).setSkipNotification(true); note(tr("Anruf blockiert", "Call blocked"), number) }
+            CallDecision.SILENCE -> { resp.setSilenceCall(true); note(tr("Unbekannter Anruf (lautlos, Ruhemodus)", "Unknown call (silenced, quiet mode)"), number) }
+            CallDecision.ALLOW -> if (Prefs.callAnnounce) PhoneTts.speak(if (name != null) tr("Anruf von $name", "Call from $name") else tr("Unbekannter Anruf von ", "Unknown call from ") + CallRules.speakable(number).ifEmpty { tr("unbekannter Nummer", "an unknown number") })
         }
         respondToCall(details, resp.build())
     }

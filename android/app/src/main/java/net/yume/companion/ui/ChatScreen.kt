@@ -1,5 +1,7 @@
 package net.yume.companion.ui
 
+import net.yume.companion.core.tr
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -118,9 +120,9 @@ fun ChatScreen(onCall: () -> Unit, onPickCharacter: () -> Unit, onOffline: () ->
                     LinkChip()
                 }
                 IconButton(onClick = { avatarOpen = !avatarOpen }) { Icon(if (avatarOpen) Icons.Filled.ExpandLess else Icons.Filled.Face, "Avatar", tint = Violet) }
-                IconButton(onClick = onPickCharacter) { Icon(Icons.Filled.SwitchAccount, "Charakter wechseln", tint = Violet) }
-                IconButton(onClick = onCall, enabled = connected || OfflineModels.installed()) { Icon(Icons.Filled.Call, "Anrufen", tint = Pink) }
-                IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, "Einstellungen", tint = Violet) }
+                IconButton(onClick = onPickCharacter) { Icon(Icons.Filled.SwitchAccount, tr("Charakter wechseln", "Switch character"), tint = Violet) }
+                IconButton(onClick = onCall, enabled = connected || OfflineModels.installed()) { Icon(Icons.Filled.Call, tr("Anrufen", "Call"), tint = Pink) }
+                IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, tr("Einstellungen", "Settings"), tint = Violet) }
             }
 
             // ---- avatar (3D / Live2D with animations)
@@ -139,12 +141,12 @@ fun ChatScreen(onCall: () -> Unit, onPickCharacter: () -> Unit, onOffline: () ->
                     if (localVrm) LocalAvatar(chosen, Modifier.fillMaxSize().alpha(if (avatarLive) 1f else 0f), zoom = zoom, onReady = { avatarLive = it }, onLog = { avatarLog = it })
                     else if (base.isNotEmpty() && liveHost) AvatarWebView(Modifier.fillMaxSize().alpha(if (avatarLive) 1f else 0f), onReady = { avatarLive = it })
                     if (localVrm) Row(Modifier.align(Alignment.BottomStart).padding(start = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-                        FilledTonalIconButton(onClick = { zoom = (zoom - 8).coerceAtLeast(40); Prefs.avatarZoom = zoom }, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.Remove, "Kleiner") }
+                        FilledTonalIconButton(onClick = { zoom = (zoom - 8).coerceAtLeast(40); Prefs.avatarZoom = zoom }, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.Remove, tr("Kleiner", "Smaller")) }
                         Spacer(Modifier.width(6.dp))
-                        FilledTonalIconButton(onClick = { zoom = (zoom + 8).coerceAtMost(140); Prefs.avatarZoom = zoom }, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.Add, "Größer") }
+                        FilledTonalIconButton(onClick = { zoom = (zoom + 8).coerceAtMost(140); Prefs.avatarZoom = zoom }, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.Add, tr("Größer", "Larger")) }
                     }
                     TextButton(onClick = { showPicker = true }, modifier = Modifier.align(Alignment.BottomEnd)) {
-                        Text(if (localVrm) "3D-Modell ändern" else "3D-Modell wählen …", fontSize = 12.sp, color = Violet)
+                        Text(if (localVrm) tr("3D-Modell ändern", "Change 3D model") else tr("3D-Modell wählen …", "Choose 3D model …"), fontSize = 12.sp, color = Violet)
                     }
                     if (localVrm && !avatarLive && avatarLog.isNotEmpty()) Text("Avatar: " + avatarLog.take(120), fontSize = 10.sp, color = Color(0xFFFF8A8A), modifier = Modifier.align(Alignment.BottomStart).padding(8.dp))
                 }
@@ -154,13 +156,13 @@ fun ChatScreen(onCall: () -> Unit, onPickCharacter: () -> Unit, onOffline: () ->
             Box(Modifier.fillMaxWidth().weight(if (Prefs.showAvatar && avatarOpen && !imeVisible) (100 - Prefs.avatarPercent.coerceIn(20, 70)) / 100f else 1f)) {
                 if (!connected && ChatRepo.msgs.isEmpty()) {
                     Column(Modifier.fillMaxSize().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-                        Text(if (link == Link.CONNECTING) "Suche deinen PC …" else "Dein PC ist gerade nicht erreichbar", fontWeight = FontWeight.Bold)
+                        Text(if (link == Link.CONNECTING) tr("Suche deinen PC …", "Looking for your PC …") else tr("Dein PC ist gerade nicht erreichbar", "Your PC is not reachable right now"), fontWeight = FontWeight.Bold)
                         if (detail.isNotEmpty()) Text(detail, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(12.dp))
-                        if (Prefs.wolEnabled) BigButton("PC aufwecken (Wake-on-LAN)", onClick = { scope.launch { wolMsg = WakeOnLan.wake() } })
+                        if (Prefs.wolEnabled) BigButton(tr("PC aufwecken (Wake-on-LAN)", "Wake PC (Wake-on-LAN)"), onClick = { scope.launch { wolMsg = WakeOnLan.wake() } })
                         if (wolMsg.isNotEmpty()) Text(wolMsg, color = Violet)
-                        OutlinedButton(onClick = onOffline, modifier = Modifier.fillMaxWidth()) { Text("Offline-Notfallmodus") }
-                        TextButton(onClick = { HostLink.restart() }) { Text("Erneut versuchen") }
+                        OutlinedButton(onClick = onOffline, modifier = Modifier.fillMaxWidth()) { Text(tr("Offline-Notfallmodus", "Offline emergency mode")) }
+                        TextButton(onClick = { HostLink.restart() }) { Text(tr("Erneut versuchen", "Try again")) }
                     }
                 } else {
                     // reversed: the list is anchored at the bottom, so the keyboard opening / closing needs no scrolling code and cannot make it jump
@@ -193,7 +195,7 @@ fun ChatScreen(onCall: () -> Unit, onPickCharacter: () -> Unit, onOffline: () ->
             Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
                 OutlinedTextField(
                     value = input, onValueChange = { input = it },
-                    placeholder = { Text("Nachricht an ${character.ifEmpty { "Yume" }} …") },
+                    placeholder = { Text(tr("Nachricht an ${character.ifEmpty { "Yume" }} …", "Message to ${character.ifEmpty { "Yume" }} …")) },
                     modifier = Modifier.weight(1f), maxLines = 4,
                     shape = RoundedCornerShape(24.dp),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
@@ -201,10 +203,10 @@ fun ChatScreen(onCall: () -> Unit, onPickCharacter: () -> Unit, onOffline: () ->
                 )
                 Spacer(Modifier.width(6.dp))
                 if (ChatRepo.generating) {
-                    FilledIconButton(onClick = { ChatRepo.stop() }, colors = IconButtonDefaults.filledIconButtonColors(containerColor = Color(0xFFE5484D))) { Icon(Icons.Filled.Stop, "Stopp") }
+                    FilledIconButton(onClick = { ChatRepo.stop() }, colors = IconButtonDefaults.filledIconButtonColors(containerColor = Color(0xFFE5484D))) { Icon(Icons.Filled.Stop, tr("Stopp", "Stop")) }
                 } else {
                     FilledIconButton(onClick = { ChatRepo.send(input); input = "" }, enabled = input.isNotBlank(),
-                        colors = IconButtonDefaults.filledIconButtonColors(containerColor = Pink, contentColor = Color(0xFF2A0A1A))) { Icon(Icons.Filled.Send, "Senden") }
+                        colors = IconButtonDefaults.filledIconButtonColors(containerColor = Pink, contentColor = Color(0xFF2A0A1A))) { Icon(Icons.Filled.Send, tr("Senden", "Send")) }
                 }
             }
         }
@@ -238,16 +240,16 @@ fun CharacterPicker(onChosen: () -> Unit, onSettings: () -> Unit = {}) {
         YumeBackground()
         Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(onClick = onSettings) { Icon(Icons.Filled.Settings, null); Spacer(Modifier.width(6.dp)); Text("Einstellungen") }
+                TextButton(onClick = onSettings) { Icon(Icons.Filled.Settings, null); Spacer(Modifier.width(6.dp)); Text(tr("Einstellungen", "Settings")) }
             }
-            Text("Mit wem möchtest du sprechen?", style = MaterialTheme.typography.headlineSmall, color = Color.White, textAlign = TextAlign.Center)
+            Text(tr("Mit wem möchtest du sprechen?", "Who do you want to talk to?"), style = MaterialTheme.typography.headlineSmall, color = Color.White, textAlign = TextAlign.Center)
             Spacer(Modifier.height(6.dp))
             Row(verticalAlignment = Alignment.CenterVertically) { LinkChip() }
-            Text("Tippe einen Charakter an. Mit dem Stern legst du den Standard fest.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, textAlign = TextAlign.Center)
+            Text(tr("Tippe einen Charakter an. Mit dem Stern legst du den Standard fest.", "Tap a character. Use the star to set the default."), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, textAlign = TextAlign.Center)
             Spacer(Modifier.height(12.dp))
             if (chars.isEmpty()) {
-                Text(if (link == Link.CONNECTING) "Lade Charaktere …" else "Keine Charaktere – der PC ist nicht erreichbar.", color = Color.White)
-                if (Prefs.character.isNotEmpty()) BigButton("Weiter mit ${Prefs.character}", onClick = onChosen)
+                Text(if (link == Link.CONNECTING) tr("Lade Charaktere …", "Loading characters …") else tr("Keine Charaktere – der PC ist nicht erreichbar.", "No characters – the PC is not reachable."), color = Color.White)
+                if (Prefs.character.isNotEmpty()) BigButton(tr("Weiter mit ${Prefs.character}", "Continue with ${Prefs.character}"), onClick = onChosen)
             }
             LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 items(chars) { name ->
@@ -256,19 +258,19 @@ fun CharacterPicker(onChosen: () -> Unit, onSettings: () -> Unit = {}) {
                             AvatarImage(name, Modifier.size(110.dp))
                             Spacer(Modifier.height(8.dp))
                             Text(name, fontWeight = FontWeight.Bold, maxLines = 1)
-                            if (name == Prefs.character) Text("aktuell", color = Violet, fontSize = 12.sp)
+                            if (name == Prefs.character) Text(tr("aktuell", "current"), color = Violet, fontSize = 12.sp)
                         }
                         IconButton(onClick = { def = if (def == name) "" else name; Prefs.defaultCharacter = def }, modifier = Modifier.align(Alignment.TopEnd).size(36.dp)) {
-                            Icon(if (def == name) Icons.Filled.Star else Icons.Filled.StarBorder, "Als Standard festlegen", tint = if (def == name) Color(0xFFFFD166) else Color.White.copy(alpha = 0.7f))
+                            Icon(if (def == name) Icons.Filled.Star else Icons.Filled.StarBorder, tr("Als Standard festlegen", "Set as default"), tint = if (def == name) Color(0xFFFFD166) else Color.White.copy(alpha = 0.7f))
                         }
                     }
                 }
             }
             Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Beim Start immer fragen", Modifier.weight(1f), color = Color.White)
+                Text(tr("Beim Start immer fragen", "Always ask at start"), Modifier.weight(1f), color = Color.White)
                 Switch(checked = ask, onCheckedChange = { ask = it; Prefs.askCharacterOnStart = it })
             }
-            if (!ask) Text(if (def.isEmpty()) "Ohne Standard-Charakter wird weiterhin gefragt." else "Beim nächsten Start öffnet direkt $def.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+            if (!ask) Text(if (def.isEmpty()) tr("Ohne Standard-Charakter wird weiterhin gefragt.", "Without a default character you are still asked.") else tr("Beim nächsten Start öffnet direkt $def.", "At the next start $def opens directly."), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
         }
     }
 }

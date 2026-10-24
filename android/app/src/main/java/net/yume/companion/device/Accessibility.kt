@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.GestureDescription
 import android.graphics.Bitmap
@@ -43,12 +45,12 @@ class YumeAccessibilityService : AccessibilityService() {
     }
 
     fun readScreen(): String {
-        val root = rootInActiveWindow ?: return "(Kein Bildschirminhalt lesbar – eventuell gesperrt oder geschützt)"
+        val root = rootInActiveWindow ?: return tr("(Kein Bildschirminhalt lesbar – eventuell gesperrt oder geschützt)", "(No screen content readable – possibly locked or protected)")
         val items = ArrayList<Item>()
         collect(root, items)
         val sb = StringBuilder("App: ${root.packageName}\n")
         items.forEachIndexed { i, it ->
-            sb.append(i + 1).append(". ").append(if (it.editable) "[Eingabe] " else if (it.clickable) "[Button] " else "").append(it.text)
+            sb.append(i + 1).append(". ").append(if (it.editable) tr("[Eingabe] ", "[input] ") else if (it.clickable) tr("[Button] ", "[button] ") else "").append(it.text)
                 .append("  @(").append(it.bounds.centerX()).append(',').append(it.bounds.centerY()).append(")\n")
         }
         return sb.toString().take(12000)
@@ -165,7 +167,7 @@ class YumeNotificationListener : NotificationListenerService() {
             while (recent.size > 40) recent.removeAt(recent.size - 1)
         }
         if (CarMode.active && Prefs.carReadNotifications && Prefs.allowNotifications)
-            PhoneTts.speak(("$app: $title. $text").take(240) + if (replyAction != null) " Zum Antworten sag: antworte, und deinen Text." else "")
+            PhoneTts.speak(("$app: $title. $text").take(240) + if (replyAction != null) tr(" Zum Antworten sag: antworte, und deinen Text.", " To reply say: reply, and your text.") else "")
     }
 
     class Note(val app: String, val title: String, val text: String, val time: Long, val replyAction: android.app.Notification.Action? = null)
@@ -178,9 +180,9 @@ class YumeNotificationListener : NotificationListenerService() {
         /** Answers the latest message (last 10 minutes) through the messenger's own reply action. Asks on the phone first (PIN if set). */
         suspend fun reply(text: String): String {
             val note = synchronized(recent) { recent.firstOrNull { it.replyAction != null && System.currentTimeMillis() - it.time < 10 * 60_000 } }
-                ?: return "Es gibt gerade keine Nachricht, auf die ich antworten könnte."
+                ?: return tr("Es gibt gerade keine Nachricht, auf die ich antworten könnte.", "There is currently no message I could reply to.")
             val to = note.title.ifEmpty { note.app }
-            if (Prefs.confirmRisky && !Confirm.ask("Yume möchte antworten", "An $to: \"${text.take(160)}\"")) return "Vom Nutzer auf dem Handy abgelehnt."
+            if (Prefs.confirmRisky && !Confirm.ask(tr("Yume möchte antworten", "Yume wants to reply"), tr("An $to: \"${text.take(160)}\"", "To $to: \"${text.take(160)}\""))) return tr("Vom Nutzer auf dem Handy abgelehnt.", "Declined by the user on the phone.")
             val action = note.replyAction!!
             return try {
                 val ri = action.remoteInputs[0]
@@ -188,12 +190,12 @@ class YumeNotificationListener : NotificationListenerService() {
                 val bundle = android.os.Bundle().apply { putCharSequence(ri.resultKey, text) }
                 android.app.RemoteInput.addResultsToIntent(action.remoteInputs, intent, bundle)
                 action.actionIntent.send(App.instance, 0, intent)
-                "Geantwortet an $to: $text"
-            } catch (e: Exception) { "Antworten fehlgeschlagen: ${e.message}" }
+                tr("Geantwortet an $to: $text", "Replied to $to: $text")
+            } catch (e: Exception) { tr("Antworten fehlgeschlagen: ${e.message}", "Reply failed: ${e.message}") }
         }
 
         fun summary(max: Int = 10): String = synchronized(recent) {
-            if (recent.isEmpty()) "Keine neuen Benachrichtigungen."
+            if (recent.isEmpty()) tr("Keine neuen Benachrichtigungen.", "No new notifications.")
             else recent.take(max).joinToString("\n") { "- ${it.app}: ${it.title} ${it.text}".trim() }
         }
     }

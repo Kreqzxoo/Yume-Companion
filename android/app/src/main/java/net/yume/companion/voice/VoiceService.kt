@@ -1,5 +1,7 @@
 package net.yume.companion.voice
 
+import net.yume.companion.core.tr
+
 import android.app.PendingIntent
 import android.app.Service
 import android.content.BroadcastReceiver
@@ -53,7 +55,7 @@ class VoiceService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        startForeground(1, notification("Yume ist bereit"), android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
+        startForeground(1, notification(tr("Yume ist bereit", "Yume is ready")), android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
         when (intent?.action) {
             ACTION_CALL -> CallEngine.request(intent.getBooleanExtra("oneshot", false), intent.getBooleanExtra("car", false), intent.getBooleanExtra("single", false))
             ACTION_HANGUP -> CallEngine.hangup()
@@ -79,12 +81,12 @@ class VoiceService : Service() {
         loop = scope.launch {
             while (isActive) {
                 if (CallEngine.wantCall) {
-                    setNote(if (CarMode.active) "Auto-Modus – Gespräch läuft" else "Gespräch läuft")
+                    setNote(if (CarMode.active) tr("Auto-Modus – Gespräch läuft", "Car mode – conversation running") else tr("Gespräch läuft", "Conversation running"))
                     CallEngine.run(this@VoiceService)
-                    setNote("Yume ist bereit")
+                    setNote(tr("Yume ist bereit", "Yume is ready"))
                 } else if (Prefs.wakeEnabled) {
                     if (WakeState.micBusy) { delay(300); continue }
-                    if (!allowedNow()) { WakeState.set("Pausiert (nur beim Laden aktiv)"); delay(5000); continue }
+                    if (!allowedNow()) { WakeState.set(tr("Pausiert (nur beim Laden aktiv)", "Paused (only active while charging)")); delay(5000); continue }
                     wakeLoop()
                 } else break
             }
@@ -103,19 +105,19 @@ class VoiceService : Service() {
         val rate = 16000
         val rec = SpeakerLock.newRecognizer(Prefs.wakeLanguage())
         if (rec == null) {
-            WakeState.set("Sprachmodell (${Prefs.wakeLanguage()}) fehlt – in den Einstellungen laden")
+            WakeState.set(tr("Sprachmodell (${Prefs.wakeLanguage()}) fehlt – in den Einstellungen laden", "Speech model (${Prefs.wakeLanguage()}) missing – download it in the settings"))
             Prefs.wakeEnabled = false
             return
         }
         val minBuf = AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT)
         val ar = try {
             AudioRecord(MediaRecorder.AudioSource.VOICE_RECOGNITION, rate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, maxOf(minBuf, 16384))
-        } catch (e: SecurityException) { WakeState.set("Mikrofon-Berechtigung fehlt"); Prefs.wakeEnabled = false; rec.close(); return }
-        if (ar.state != AudioRecord.STATE_INITIALIZED) { WakeState.set("Mikrofon belegt"); ar.release(); rec.close(); delay(3000); return }
+        } catch (e: SecurityException) { WakeState.set(tr("Mikrofon-Berechtigung fehlt", "Microphone permission missing")); Prefs.wakeEnabled = false; rec.close(); return }
+        if (ar.state != AudioRecord.STATE_INITIALIZED) { WakeState.set(tr("Mikrofon belegt", "Microphone in use")); ar.release(); rec.close(); delay(3000); return }
         val pm = getSystemService(PowerManager::class.java)
         wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "yume:wake").also { it.acquire(12 * 3600 * 1000L) }
-        WakeState.set("Lausche auf „${Prefs.wakeWordList().firstOrNull() ?: "Yume"}“")
-        setNote("Wake Word aktiv")
+        WakeState.set(tr("Lausche auf „${Prefs.wakeWordList().firstOrNull() ?: "Yume"}“", "Listening for “${Prefs.wakeWordList().firstOrNull() ?: "Yume"}”"))
+        setNote(tr("Wake Word aktiv", "Wake word active"))
         val buf = ShortArray(1600)
         val words = Prefs.wakeWordList()
         var lastPartial = ""
@@ -150,7 +152,7 @@ class VoiceService : Service() {
                             if (print != null && dist <= SpeakerLock.threshold() * 0.8) SpeakerLock.learn(print)     // clearly me: the profile gets a bit better
                             rec.reset(); lastPartial = ""; onWake(); break
                         }
-                        WakeState.set("Wake Word von einer anderen Stimme ignoriert")
+                        WakeState.set(tr("Wake Word von einer anderen Stimme ignoriert", "Wake word from another voice ignored"))
                     }
                     lastPartial = ""
                 }
@@ -210,7 +212,7 @@ class WakeTileService : TileService() {
         refresh()
     }
     private fun refresh() {
-        qsTile?.apply { state = if (Prefs.wakeEnabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE; label = "Yume zuhören"; updateTile() }
+        qsTile?.apply { state = if (Prefs.wakeEnabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE; label = tr("Yume zuhören", "Listen to Yume"); updateTile() }
     }
 }
 
@@ -227,8 +229,8 @@ class CarReceiver : BroadcastReceiver() {
         try { VoiceService.startCall(ctx, car = true) } catch (_: Exception) {
             val open = PendingIntent.getActivity(ctx, 5, Intent(ctx, MainActivity::class.java).putExtra("start_car", true), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
             ctx.getSystemService(android.app.NotificationManager::class.java).notify(8,
-                NotificationCompat.Builder(ctx, "confirm").setSmallIcon(android.R.drawable.ic_menu_directions).setContentTitle("Auto verbunden")
-                    .setContentText("Tippen, um den Yume Auto-Modus zu starten").setContentIntent(open).setFullScreenIntent(open, true).setAutoCancel(true).build())
+                NotificationCompat.Builder(ctx, "confirm").setSmallIcon(android.R.drawable.ic_menu_directions).setContentTitle(tr("Auto verbunden", "Car connected"))
+                    .setContentText(tr("Tippen, um den Yume Auto-Modus zu starten", "Tap to start Yume car mode")).setContentIntent(open).setFullScreenIntent(open, true).setAutoCancel(true).build())
         }
     }
 }

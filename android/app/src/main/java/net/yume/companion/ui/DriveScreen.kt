@@ -1,5 +1,7 @@
 package net.yume.companion.ui
 
+import net.yume.companion.core.tr
+
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
@@ -53,8 +55,8 @@ fun DriveScreen(call: CallUi) {
         (0 until (ev?.length() ?: 0)).mapNotNull { ev?.optJSONObject(it) }.let { list -> list.firstOrNull { it.optString("place").isNotBlank() } ?: list.firstOrNull() }
     }
     val status = when (call.phase) {
-        Phase.LISTENING -> "Ich höre zu …"; Phase.HEARING -> "…"
-        Phase.THINKING -> (ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: "denkt nach …"); Phase.SPEAKING -> "spricht"; Phase.IDLE -> ""
+        Phase.LISTENING -> tr("Ich höre zu …", "I'm listening …"); Phase.HEARING -> "…"
+        Phase.THINKING -> (ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: tr("denkt nach …", "thinking …")); Phase.SPEAKING -> tr("spricht", "speaking"); Phase.IDLE -> ""
     }
 
     Column(Modifier.fillMaxSize().background(Color(0xFF0B0714)).statusBarsPadding().navigationBarsPadding().padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -65,14 +67,14 @@ fun DriveScreen(call: CallUi) {
         }
         Column(Modifier.fillMaxWidth().background(Color(0xFF1A1226), RoundedCornerShape(20.dp)).padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (next != null) {
-                Text("Nächster Termin", color = Color.White.copy(alpha = 0.6f), fontSize = 14.sp)
+                Text(tr("Nächster Termin", "Next appointment"), color = Color.White.copy(alpha = 0.6f), fontSize = 14.sp)
                 Text("${next.optString("day")} ${next.optString("time")}  ${next.optString("title")}", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Medium)
                 val place = next.optString("place")
                 if (place.isNotBlank()) {
                     Text(place, color = Violet, fontSize = 16.sp)
-                    Button(onClick = { navigate(ctx, place) }, Modifier.fillMaxWidth().height(64.dp)) { Text("Navigation starten", fontSize = 20.sp) }
+                    Button(onClick = { navigate(ctx, place) }, Modifier.fillMaxWidth().height(64.dp)) { Text(tr("Navigation starten", "Start navigation"), fontSize = 20.sp) }
                 }
-            } else Text("Keine Termine in nächster Zeit.", color = Color.White.copy(alpha = 0.8f), fontSize = 20.sp)
+            } else Text(tr("Keine Termine in nächster Zeit.", "No appointments in the near future."), color = Color.White.copy(alpha = 0.8f), fontSize = 20.sp)
         }
         val music = data.optJSONObject("music")
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -88,7 +90,7 @@ fun DriveScreen(call: CallUi) {
             if (call.reply.isNotEmpty()) Text(call.reply.takeLast(200), color = Color.White, fontSize = 18.sp, maxLines = 4)
             ToolStatusLine()
         }
-        OutlinedButton(onClick = { CallEngine.hangup() }, Modifier.fillMaxWidth().height(56.dp)) { Text("Auto-Modus beenden", fontSize = 16.sp) }
+        OutlinedButton(onClick = { CallEngine.hangup() }, Modifier.fillMaxWidth().height(56.dp)) { Text(tr("Auto-Modus beenden", "End car mode"), fontSize = 16.sp) }
     }
 }
 

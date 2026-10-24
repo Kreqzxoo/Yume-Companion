@@ -1,5 +1,7 @@
 package net.yume.companion.offline
 
+import net.yume.companion.core.tr
+
 import android.content.Context
 import com.google.mediapipe.tasks.genai.llminference.LlmInference
 import kotlinx.coroutines.CoroutineScope
@@ -23,9 +25,9 @@ data class OfflineModel(val id: String, val title: String, val file: String, val
 object OfflineModels {
     private const val HF = "https://huggingface.co/litert-community"
     val all = listOf(
-        OfflineModel("qwen05", "Qwen 2.5 – 0,5 B (schnell, ~0,55 GB)", "qwen25_05b.task",
+        OfflineModel("qwen05", tr("Qwen 2.5 – 0,5 B (schnell, ~0,55 GB)", "Qwen 2.5 – 0.5 B (fast, ~0.55 GB)"), "qwen25_05b.task",
             "$HF/Qwen2.5-0.5B-Instruct/resolve/main/Qwen2.5-0.5B-Instruct_multi-prefill-seq_q8_ekv1280.task", 560),
-        OfflineModel("qwen15", "Qwen 2.5 – 1,5 B (klüger, ~1,6 GB)", "qwen25_15b.task",
+        OfflineModel("qwen15", tr("Qwen 2.5 – 1,5 B (klüger, ~1,6 GB)", "Qwen 2.5 – 1.5 B (smarter, ~1.6 GB)"), "qwen25_15b.task",
             "$HF/Qwen2.5-1.5B-Instruct/resolve/main/Qwen2.5-1.5B-Instruct_multi-prefill-seq_q8_ekv1280.task", 1600),
     )
     fun current() = all.firstOrNull { it.id == Prefs.offlineModel } ?: all.first()
@@ -49,7 +51,7 @@ object OfflineModels {
         if (activeId.value.isNotEmpty()) return
         activeId.value = m.id; progress.value = 0f; error.value = ""
         scope.launch {
-            download(m) { progress.value = it }.onFailure { error.value = "Download fehlgeschlagen: ${it.message} (beim nächsten Versuch geht es dort weiter, wo es aufgehört hat)" }
+            download(m) { progress.value = it }.onFailure { error.value = tr("Download fehlgeschlagen: ${it.message} (beim nächsten Versuch geht es dort weiter, wo es aufgehört hat)", "Download failed: ${it.message} (the next attempt continues where it stopped)") }
             clearBroken(m.id)
             progress.value = -1f; activeId.value = ""; version.value++
         }
@@ -73,7 +75,7 @@ object OfflineModels {
             if (code == 416 && have > 0) {                      // the part file is already complete
                 target.delete(); part.renameTo(target); return@withContext Result.success(Unit)
             }
-            if (code !in 200..299) throw IOException("Server antwortet mit $code")
+            if (code !in 200..299) throw IOException(tr("Server antwortet mit $code", "Server answers with $code"))
             val resumed = code == 206
             val total = ((if (resumed) have else 0L) + conn.contentLengthLong).coerceAtLeast(1)
             var read = if (resumed) have else 0L
@@ -86,7 +88,7 @@ object OfflineModels {
                     }
                 }
             }
-            if (read < total * 0.99) throw IOException("Datei unvollständig (${read / 1_000_000} von ${total / 1_000_000} MB)")
+            if (read < total * 0.99) throw IOException(tr("Datei unvollständig (${read / 1_000_000} von ${total / 1_000_000} MB)", "File incomplete (${read / 1_000_000} of ${total / 1_000_000} MB)"))
             target.delete(); part.renameTo(target)
             Result.success(Unit)
         } catch (e: Exception) { Result.failure(e) }
@@ -135,15 +137,15 @@ object OfflineChat {
         val d = Sync.load(Prefs.character)
         val sb = StringBuilder()
         if (d == null) {
-            sb.append("Du bist ${Prefs.character.ifEmpty { "Yume" }}, eine freundliche KI-Begleiterin. Antworte kurz, warm und natürlich.")
+            sb.append(tr("Du bist ${Prefs.character.ifEmpty { "Yume" }}, eine freundliche KI-Begleiterin. Antworte kurz, warm und natürlich.", "You are ${Prefs.character.ifEmpty { "Yume" }}, a friendly AI companion. Answer briefly, warmly and naturally."))
         } else {
             val name = d.optString("name", Prefs.character)
             val user = d.optString("user_name", "User")
-            sb.append("Du bist $name. Sprich als $name mit $user. Antworte kurz (1-3 Sätze), natürlich und in der Rolle.\n")
-            listOf("description" to "Beschreibung", "personality" to "Persönlichkeit", "scenario" to "Szenario", "character_information" to "Info")
+            sb.append(tr("Du bist $name. Sprich als $name mit $user. Antworte kurz (1-3 Sätze), natürlich und in der Rolle.\n", "You are $name. Speak as $name with $user. Answer briefly (1-3 sentences), naturally and in character.\n"))
+            listOf("description" to tr("Beschreibung", "Description"), "personality" to tr("Persönlichkeit", "Personality"), "scenario" to tr("Szenario", "Scenario"), "character_information" to "Info")
                 .forEach { (k, label) -> d.optString(k).takeIf { it.isNotBlank() }?.let { sb.append(label).append(": ").append(it.take(900)).append('\n') } }
         }
-        sb.append("Hinweis: Du läufst gerade im Offline-Notfallmodus auf dem Handy, der große Rechner ist nicht erreichbar. Du hast keine Werkzeuge und keinen Internetzugriff. Sag das nur, wenn danach gefragt wird.")
+        sb.append(tr("Hinweis: Du läufst gerade im Offline-Notfallmodus auf dem Handy, der große Rechner ist nicht erreichbar. Du hast keine Werkzeuge und keinen Internetzugriff. Sag das nur, wenn danach gefragt wird.", "Note: You are currently running in offline emergency mode on the phone, the big computer is not reachable. You have no tools and no internet access. Only say this if asked."))
         return sb.toString()
     }
 
@@ -166,15 +168,15 @@ object OfflineChat {
             if (e == null) {
                 val m = OfflineModels.current()
                 return@withContext when {
-                    OfflineModels.broken(m) -> "Das Offline-Modell „${m.title.substringBefore(" (")}“ ließ sich auf diesem Handy nicht laden (vermutlich zu wenig Arbeitsspeicher). Wähle unter Offline das kleinere Modell."
-                    !OfflineModels.installed(m) -> "Das Offline-Modell ist noch nicht geladen."
-                    else -> "Das Offline-Modell konnte nicht gestartet werden" + (if (lastError.isNotEmpty()) " ($lastError)." else ".")
+                    OfflineModels.broken(m) -> tr("Das Offline-Modell „${m.title.substringBefore(" (")}“ ließ sich auf diesem Handy nicht laden (vermutlich zu wenig Arbeitsspeicher). Wähle unter Offline das kleinere Modell.", "The offline model “${m.title.substringBefore(" (")}” could not be loaded on this phone (probably not enough memory). Choose the smaller model under Offline.")
+                    !OfflineModels.installed(m) -> tr("Das Offline-Modell ist noch nicht geladen.", "The offline model has not been downloaded yet.")
+                    else -> tr("Das Offline-Modell konnte nicht gestartet werden", "The offline model could not be started") + (if (lastError.isNotEmpty()) " ($lastError)." else ".")
                 }
             }
             val out = e.generateResponse(prompt(user)).replace("<|im_end|>", "").trim()
             localHistory += user to out
             if (localHistory.size > 20) localHistory.removeAt(0)
-            out.ifEmpty { "Hmm, dazu fällt mir gerade nichts ein." }
-        } catch (ex: Throwable) { "Offline-Antwort fehlgeschlagen: ${ex.message ?: ex.javaClass.simpleName}" }
+            out.ifEmpty { tr("Hmm, dazu fällt mir gerade nichts ein.", "Hmm, nothing comes to mind about that right now.") }
+        } catch (ex: Throwable) { tr("Offline-Antwort fehlgeschlagen: ${ex.message ?: ex.javaClass.simpleName}", "Offline answer failed: ${ex.message ?: ex.javaClass.simpleName}") }
     }
 }

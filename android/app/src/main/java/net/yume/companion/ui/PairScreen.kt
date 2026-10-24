@@ -1,5 +1,7 @@
 package net.yume.companion.ui
 
+import net.yume.companion.core.tr
+
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -54,22 +56,22 @@ fun PairScreen(pendingLink: String?, consumeLink: () -> Unit, onPaired: () -> Un
             val deviceId = Prefs.deviceId.ifEmpty { UUID.randomUUID().toString().replace("-", "").take(16) }
             val r = Host.pair(info, Host.deviceName(), deviceId)
             busy = false
-            r.onSuccess { onPaired() }.onFailure { error = it.message ?: "Koppeln fehlgeschlagen" }
+            r.onSuccess { onPaired() }.onFailure { error = it.message ?: tr("Koppeln fehlgeschlagen", "Pairing failed") }
         }
     }
 
     LaunchedEffect(pendingLink) {
         val l = pendingLink ?: return@LaunchedEffect
         consumeLink()
-        Host.parsePairUrl(l)?.let { doPair(it) } ?: run { error = "Ungültiger Kopplungs-Link" }
+        Host.parsePairUrl(l)?.let { doPair(it) } ?: run { error = tr("Ungültiger Kopplungs-Link", "Invalid pairing link") }
     }
 
     val camPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { scanning = it }
 
     if (scanning) {
         Box(Modifier.fillMaxSize()) {
-            QrScanner { text -> Host.parsePairUrl(text)?.let { doPair(it) } ?: run { error = "Das ist kein Yume-QR-Code"; scanning = false } }
-            OutlinedButton(onClick = { scanning = false }, modifier = Modifier.align(Alignment.TopStart).padding(16.dp)) { Text("Abbrechen") }
+            QrScanner { text -> Host.parsePairUrl(text)?.let { doPair(it) } ?: run { error = tr("Das ist kein Yume-QR-Code", "This is not a Yume QR code"); scanning = false } }
+            OutlinedButton(onClick = { scanning = false }, modifier = Modifier.align(Alignment.TopStart).padding(16.dp)) { Text(tr("Abbrechen", "Cancel")) }
         }
         return
     }
@@ -79,21 +81,21 @@ fun PairScreen(pendingLink: String?, consumeLink: () -> Unit, onPaired: () -> Un
         Image(painterResource(R.drawable.logo), null, Modifier.size(112.dp))
         Text("Yume Companion", style = MaterialTheme.typography.headlineMedium, color = Pink)
         Text(
-            "Die App ist nur der Client – die Rechenleistung bleibt auf deinem PC. Öffne am PC „Android Connector“ in den Einstellungen und scanne den QR-Code.",
+            tr("Die App ist nur der Client – die Rechenleistung bleibt auf deinem PC. Öffne am PC „Android Connector“ in den Einstellungen und scanne den QR-Code.", "The app is only the client – the computing power stays on your PC. On the PC open \"Android Connector\" in the settings and scan the QR code."),
             textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        BigButton(if (busy) "Verbinde …" else "Mit QR-Code koppeln", onClick = {
+        BigButton(if (busy) tr("Verbinde …", "Connecting …") else tr("Mit QR-Code koppeln", "Pair with QR code"), onClick = {
             if (ContextCompat.checkSelfPermission(ctx, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) scanning = true
             else camPermission.launch(Manifest.permission.CAMERA)
         })
-        TextButton(onClick = { manual = !manual }) { Text(if (manual) "Eingabe ausblenden" else "Link oder Adresse von Hand eingeben") }
+        TextButton(onClick = { manual = !manual }) { Text(if (manual) tr("Eingabe ausblenden", "Hide input") else tr("Link oder Adresse von Hand eingeben", "Enter link or address manually")) }
         if (manual) {
-            OutlinedTextField(link, { link = it }, label = { Text("Kopplungs-Link (yume://pair?…)") }, modifier = Modifier.fillMaxWidth())
-            BigButton("Mit Link koppeln", onClick = { Host.parsePairUrl(link)?.let { doPair(it) } ?: run { error = "Ungültiger Link" } })
-            Text("oder", color = MaterialTheme.colorScheme.onSurfaceVariant)
-            OutlinedTextField(url, { url = it }, label = { Text("Adresse des PCs (z. B. 192.168.0.20:8000)") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(code, { code = it }, label = { Text("Kopplungs-Code") }, modifier = Modifier.fillMaxWidth())
-            BigButton("Koppeln", onClick = { doPair(PairInfo("", "Yume PC", code.trim(), url.trim(), "", "")) })
+            OutlinedTextField(link, { link = it }, label = { Text(tr("Kopplungs-Link (yume://pair?…)", "Pairing link (yume://pair?…)")) }, modifier = Modifier.fillMaxWidth())
+            BigButton(tr("Mit Link koppeln", "Pair with link"), onClick = { Host.parsePairUrl(link)?.let { doPair(it) } ?: run { error = tr("Ungültiger Link", "Invalid link") } })
+            Text(tr("oder", "or"), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            OutlinedTextField(url, { url = it }, label = { Text(tr("Adresse des PCs (z. B. 192.168.0.20:8000)", "Address of the PC (e.g. 192.168.0.20:8000)")) }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(code, { code = it }, label = { Text(tr("Kopplungs-Code", "Pairing code")) }, modifier = Modifier.fillMaxWidth())
+            BigButton(tr("Koppeln", "Pair"), onClick = { doPair(PairInfo("", "Yume PC", code.trim(), url.trim(), "", "")) })
         }
         if (busy) CircularProgressIndicator(color = Pink)
         if (error.isNotEmpty()) Text(error, color = MaterialTheme.colorScheme.error, textAlign = TextAlign.Center)

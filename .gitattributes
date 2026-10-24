@@ -1,0 +1,29 @@
+# Line endings: git normalises text files, Windows scripts stay CRLF
+* text=auto
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.sln text eol=crlf
+
+# Binary files are never touched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.vrm binary
+*.glb binary
+*.onnx binary
+*.zip binary
+*.apk binary
+*.exe binary
+*.dll binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Keep the language statistics of the repo honest
+docs/** linguist-documentation
+tools/demo/** linguist-generated=false

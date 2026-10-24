@@ -1,5 +1,9 @@
 package net.yume.companion.ui
 
+import net.yume.companion.core.Lang
+import net.yume.companion.core.tr
+
+
 import android.app.Activity
 import android.view.WindowManager
 import androidx.activity.compose.BackHandler
@@ -81,11 +85,11 @@ fun KioskScreen(withMic: (() -> Unit) -> Unit) {
     val night = Prefs.kioskNightDim && Quiet.inWindow()
     val phaseText = when {
         call.active -> when (call.phase) {
-            Phase.LISTENING -> "Ich höre zu …"; Phase.HEARING -> "…"
-            Phase.THINKING -> (ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: "denkt nach …"); Phase.SPEAKING -> "spricht"; Phase.IDLE -> ""
+            Phase.LISTENING -> tr("Ich höre zu …", "I'm listening …"); Phase.HEARING -> "…"
+            Phase.THINKING -> (ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: tr("denkt nach …", "thinking …")); Phase.SPEAKING -> tr("spricht", "speaking"); Phase.IDLE -> ""
         }
-        wake.isNotEmpty() -> "Sag das Wake Word oder tippe auf mich"
-        else -> "Tippe auf mich zum Sprechen"
+        wake.isNotEmpty() -> tr("Sag das Wake Word oder tippe auf mich", "Say the wake word or tap me")
+        else -> tr("Tippe auf mich zum Sprechen", "Tap me to speak")
     }
     fun listen() { if (!CallEngine.wantCall) withMic { VoiceService.startCall(ctx, oneShot = true) } }
 
@@ -93,7 +97,7 @@ fun KioskScreen(withMic: (() -> Unit) -> Unit) {
         val landscape = maxWidth > maxHeight
         YumeBackground()
         Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = if (night) 0.55f else 0f)))
-        IconButton(onClick = { KioskState.active = false }, Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(8.dp)) { Icon(Icons.Filled.Close, "Beenden", tint = Color.White.copy(alpha = 0.4f)) }
+        IconButton(onClick = { KioskState.active = false }, Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(8.dp)) { Icon(Icons.Filled.Close, tr("Beenden", "Exit"), tint = Color.White.copy(alpha = 0.4f)) }
 
         @Composable fun avatar(mod: Modifier) {
             Column(mod, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
@@ -111,24 +115,24 @@ fun KioskScreen(withMic: (() -> Unit) -> Unit) {
 
         @Composable fun info(mod: Modifier) {
             Column(mod.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text(SimpleDateFormat("HH:mm", Locale.GERMAN).format(Date(now)), color = Color.White, fontSize = if (landscape) 96.sp else 72.sp, fontWeight = FontWeight.Light)
-                Text(SimpleDateFormat("EEEE, d. MMMM", Locale.GERMAN).format(Date(now)), color = Color.White.copy(alpha = 0.75f), fontSize = 18.sp)
+                Text(SimpleDateFormat("HH:mm", if (Lang.isEn) Locale.ENGLISH else Locale.GERMAN).format(Date(now)), color = Color.White, fontSize = if (landscape) 96.sp else 72.sp, fontWeight = FontWeight.Light)
+                Text(SimpleDateFormat(tr("EEEE, d. MMMM", "EEEE, MMMM d"), if (Lang.isEn) Locale.ENGLISH else Locale.GERMAN).format(Date(now)), color = Color.White.copy(alpha = 0.75f), fontSize = 18.sp)
                 val w = data.optJSONObject("weather")
                 if (w != null && w.has("temp")) KioskCard {
                     Text("${w.optInt("temp")} °C  ${w.optString("text")}", color = Color.White, fontSize = 22.sp)
-                    Text("${w.optString("place")}  ·  heute ${w.optInt("tmin")}–${w.optInt("tmax")} °C" + (if (w.has("rain") && !w.isNull("rain")) "  ·  Regen ${w.optInt("rain")} %" else ""), color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
-                    w.optString("tip").takeIf { it.isNotBlank() }?.let { Text("Heute: $it", color = Pink, fontSize = 13.sp) }
+                    Text("${w.optString("place")}  ·  ${tr("heute", "today")} ${w.optInt("tmin")}–${w.optInt("tmax")} °C" + (if (w.has("rain") && !w.isNull("rain")) "  ·  ${tr("Regen", "rain")} ${w.optInt("rain")} %" else ""), color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
+                    w.optString("tip").takeIf { it.isNotBlank() }?.let { Text(tr("Heute: $it", "Today: $it"), color = Pink, fontSize = 13.sp) }
                 }
                 val ev = data.optJSONArray("events")
                 if (ev != null && ev.length() > 0) KioskCard {
-                    Text("Termine", color = Color.White.copy(alpha = 0.6f), fontSize = 12.sp)
+                    Text(tr("Termine", "Appointments"), color = Color.White.copy(alpha = 0.6f), fontSize = 12.sp)
                     for (i in 0 until ev.length()) ev.optJSONObject(i)?.let { e ->
                         Text("${e.optString("day")} ${e.optString("time")}  ${e.optString("title")}" + (e.optString("place").takeIf { it.isNotBlank() }?.let { " @ $it" } ?: ""), color = Color.White, fontSize = 15.sp)
                     }
                 }
                 val rem = data.optJSONArray("reminders")
                 if (rem != null && rem.length() > 0) KioskCard {
-                    Text("Erinnerungen", color = Color.White.copy(alpha = 0.6f), fontSize = 12.sp)
+                    Text(tr("Erinnerungen", "Reminders"), color = Color.White.copy(alpha = 0.6f), fontSize = 12.sp)
                     for (i in 0 until rem.length()) rem.optJSONObject(i)?.let { r -> Text("${r.optString("when")}  ${r.optString("text")}", color = Color.White, fontSize = 15.sp) }
                 }
                 val lists = data.optJSONObject("lists")
@@ -143,12 +147,12 @@ fun KioskScreen(withMic: (() -> Unit) -> Unit) {
                 if (bd != null && bd.length() > 0) KioskCard {
                     for (i in 0 until bd.length()) bd.optJSONObject(i)?.let { b ->
                         val d = b.optInt("in_days")
-                        Text("🎂 ${b.optString("name")}  " + (if (d == 0) "heute" else if (d == 1) "morgen" else "in $d Tagen"), color = Color.White, fontSize = 15.sp)
+                        Text("🎂 ${b.optString("name")}  " + (if (d == 0) tr("heute", "today") else if (d == 1) tr("morgen", "tomorrow") else tr("in $d Tagen", "in $d days")), color = Color.White, fontSize = 15.sp)
                     }
                 }
                 val music = data.optJSONObject("music")
                 if (music != null) KioskCard { Text((if (music.optBoolean("playing")) "▶ " else "⏸ ") + music.optString("title") + " – " + music.optString("artist"), color = Color.White, fontSize = 14.sp) }
-                if (data.has("unread_mails") && !data.isNull("unread_mails")) Text("✉ ${data.optInt("unread_mails")} ungelesene Mail(s)", color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
+                if (data.has("unread_mails") && !data.isNull("unread_mails")) Text("✉ " + tr("${data.optInt("unread_mails")} ungelesene Mail(s)", "${data.optInt("unread_mails")} unread mail(s)"), color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
             }
         }
 

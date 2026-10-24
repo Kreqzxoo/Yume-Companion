@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.Manifest
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -62,18 +64,18 @@ object CommandExecutor {
     suspend fun execute(action: String, p: JSONObject): JSONObject {
         AgentLog.add("PC → $action ${p.toString().take(120)}")
         val res = try { run(action, p) } catch (e: SecurityException) {
-            fail("Berechtigung fehlt: ${e.message}")
+            fail(tr("Berechtigung fehlt: ${e.message}", "Permission missing: ${e.message}"))
         } catch (e: Exception) { fail(e.message ?: e.javaClass.simpleName) }
         AgentLog.add(if (res.optBoolean("ok")) "✓ $action" else "✗ $action: ${res.optString("error")}")
         return res
     }
 
     private suspend fun run(action: String, p: JSONObject): JSONObject {
-        if (!Prefs.allowControl) return fail("Die Handy-Steuerung ist in der App ausgeschaltet.")
+        if (!Prefs.allowControl) return fail(tr("Die Handy-Steuerung ist in der App ausgeschaltet.", "Phone control is switched off in the app."))
         return when (action) {
-            "open_app" -> { need(Prefs.allowApps, "Apps öffnen"); openApp(p.optString("app")) }
+            "open_app" -> { need(Prefs.allowApps, tr("Apps öffnen", "Open apps")); openApp(p.optString("app")) }
             "list_apps" -> { need(Prefs.allowApps, "Apps"); ok(listApps(p.optString("query")).joinToString(", ")) }
-            "call" -> { need(Prefs.allowCalls, "Anrufe"); call(p.optString("number")) }
+            "call" -> { need(Prefs.allowCalls, tr("Anrufe", "Calls")); call(p.optString("number")) }
             "sms" -> { need(Prefs.allowSms, "SMS"); sms(p.optString("number"), p.optString("message")) }
             "open_url" -> { openUrl(p.optString("url")) }
             "web_search" -> { openUrl("https://www.google.com/search?q=" + Uri.encode(p.optString("query"))) }
@@ -82,48 +84,48 @@ object CommandExecutor {
             "alarm_set" -> {
                 val at = YumeAlarms.nextTime(p.optInt("hour", 7), p.optInt("minute", 0), p.optString("day"))
                 val a = YumeAlarms.add(at, p.optString("label"), p.optBoolean("daily"))
-                ok("Yume-Wecker gestellt: " + YumeAlarms.describe(a))
+                ok(tr("Yume-Wecker gestellt: ", "Yume alarm set: ") + YumeAlarms.describe(a))
             }
             "spotify_play" -> ok(Spotify.play(p.optString("query"), p.optString("kind", "track")))
             "spotify_control" -> ok(Spotify.control(p.optString("control")))
             "spotify_now" -> ok(Spotify.now())
             "spotify_volume" -> ok(Spotify.volume(p.optInt("level", 50)))
-            "alarm_list" -> ok(YumeAlarms.all().joinToString(", ") { YumeAlarms.describe(it) }.ifEmpty { "Keine Wecker gestellt." })
+            "alarm_list" -> ok(YumeAlarms.all().joinToString(", ") { YumeAlarms.describe(it) }.ifEmpty { tr("Keine Wecker gestellt.", "No alarms set.") })
             "alarm_cancel" -> {
                 val id = p.optString("id")
-                if (id.isEmpty()) ok("${YumeAlarms.cancelAll()} Wecker gelöscht")
-                else if (YumeAlarms.cancel(id)) ok("Wecker gelöscht") else fail("Diesen Wecker gibt es nicht.")
+                if (id.isEmpty()) ok(tr("${YumeAlarms.cancelAll()} Wecker gelöscht", "${YumeAlarms.cancelAll()} alarms deleted"))
+                else if (YumeAlarms.cancel(id)) ok(tr("Wecker gelöscht", "Alarm deleted")) else fail(tr("Diesen Wecker gibt es nicht.", "That alarm does not exist."))
             }
             "flashlight" -> flashlight(p.optBoolean("on", true))
             "volume" -> volume(p.optInt("level", 50))
             "media" -> media(p.optString("control"))
             "battery" -> battery()
-            "location" -> { need(Prefs.allowLocation, "Standort"); location() }
-            "notifications" -> { need(Prefs.allowNotifications, "Benachrichtigungen"); if (!YumeNotificationListener.active) fail("Benachrichtigungszugriff ist nicht aktiviert.") else ok(YumeNotificationListener.summary()) }
-            "find_contact" -> { need(Prefs.allowContacts, "Kontakte"); findContact(p.optString("query")) }
-            "birthdays" -> { need(Prefs.allowContacts, "Kontakte"); birthdays() }
+            "location" -> { need(Prefs.allowLocation, tr("Standort", "Location")); location() }
+            "notifications" -> { need(Prefs.allowNotifications, tr("Benachrichtigungen", "Notifications")); if (!YumeNotificationListener.active) fail(tr("Benachrichtigungszugriff ist nicht aktiviert.", "Notification access is not enabled.")) else ok(YumeNotificationListener.summary()) }
+            "find_contact" -> { need(Prefs.allowContacts, tr("Kontakte", "Contacts")); findContact(p.optString("query")) }
+            "birthdays" -> { need(Prefs.allowContacts, tr("Kontakte", "Contacts")); birthdays() }
             "calendar_today" -> calendarToday(p.optInt("days", 1).coerceIn(1, 60))
             "notify" -> notifyUser(p.optString("title", "Yume"), p.optString("text"))
             "reply_message" -> {
-                need(Prefs.allowNotifications, "Nachrichten beantworten")
-                if (!YumeNotificationListener.active) fail("Benachrichtigungszugriff ist nicht aktiviert.")
-                else YumeNotificationListener.reply(p.optString("text")).let { if (it.startsWith("Geantwortet")) ok(it) else fail(it) }
+                need(Prefs.allowNotifications, tr("Nachrichten beantworten", "Replying to messages"))
+                if (!YumeNotificationListener.active) fail(tr("Benachrichtigungszugriff ist nicht aktiviert.", "Notification access is not enabled."))
+                else YumeNotificationListener.reply(p.optString("text")).let { if (it.startsWith("Geantwortet") || it.startsWith("Replied")) ok(it) else fail(it) }
             }
-            "screen_read" -> { need(Prefs.allowScreen, "Bildschirm lesen"); screenRead() }
-            "screen_look" -> { need(Prefs.allowScreen, "Bildschirm ansehen"); screenLook() }
-            "tap" -> { need(Prefs.allowScreen, "Apps bedienen"); tap(p) }
-            "type" -> { need(Prefs.allowScreen, "Apps bedienen"); typeText(p.optString("text")) }
-            "scroll" -> { need(Prefs.allowScreen, "Apps bedienen"); a11y { it.scroll(p.optString("direction", "down")) }.also { delay(500) }.let { followUp("gescrollt") } }
-            "back" -> { need(Prefs.allowScreen, "Apps bedienen"); global(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK, "zurück") }
-            "home" -> { need(Prefs.allowScreen, "Apps bedienen"); global(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME, "Startbildschirm") }
-            "camera_look" -> { need(Prefs.allowCamera, "Kamera"); cameraLook(p.optString("facing", "back")) }
+            "screen_read" -> { need(Prefs.allowScreen, tr("Bildschirm lesen", "Reading the screen")); screenRead() }
+            "screen_look" -> { need(Prefs.allowScreen, tr("Bildschirm ansehen", "Looking at the screen")); screenLook() }
+            "tap" -> { need(Prefs.allowScreen, tr("Apps bedienen", "Operating apps")); tap(p) }
+            "type" -> { need(Prefs.allowScreen, tr("Apps bedienen", "Operating apps")); typeText(p.optString("text")) }
+            "scroll" -> { need(Prefs.allowScreen, tr("Apps bedienen", "Operating apps")); a11y { it.scroll(p.optString("direction", "down")) }.also { delay(500) }.let { followUp(tr("gescrollt", "scrolled")) } }
+            "back" -> { need(Prefs.allowScreen, tr("Apps bedienen", "Operating apps")); global(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK, tr("zurück", "back")) }
+            "home" -> { need(Prefs.allowScreen, tr("Apps bedienen", "Operating apps")); global(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME, tr("Startbildschirm", "home screen")) }
+            "camera_look" -> { need(Prefs.allowCamera, tr("Kamera", "Camera")); cameraLook(p.optString("facing", "back")) }
             "speak" -> { PhoneTts.speak(p.optString("text")); ok() }
-            else -> fail("Unbekannte Aktion: $action")
+            else -> fail(tr("Unbekannte Aktion: $action", "Unknown action: $action"))
         }
     }
 
     private class Denied(msg: String) : Exception(msg)
-    private fun need(allowed: Boolean, what: String) { if (!allowed) throw Denied("'$what' ist in den App-Einstellungen ausgeschaltet.") }
+    private fun need(allowed: Boolean, what: String) { if (!allowed) throw Denied(tr("'$what' ist in den App-Einstellungen ausgeschaltet.", "'$what' is switched off in the app settings.")) }
 
     // ------------------------------------------------------------------ apps
     private data class AppEntry(val label: String, val pkg: String)
@@ -141,16 +143,16 @@ object CommandExecutor {
     private fun norm(s: String) = s.lowercase().replace(Regex("[^a-z0-9äöüß]"), "")
 
     private fun openApp(name: String): JSONObject {
-        if (name.isBlank()) return fail("Kein App-Name angegeben.")
+        if (name.isBlank()) return fail(tr("Kein App-Name angegeben.", "No app name given."))
         val all = apps()
         val n = norm(name)
         val hit = all.firstOrNull { norm(it.label) == n } ?: all.firstOrNull { norm(it.label).startsWith(n) }
             ?: all.firstOrNull { norm(it.label).contains(n) } ?: all.firstOrNull { n.contains(norm(it.label)) && norm(it.label).length > 3 }
             ?: all.minByOrNull { editDistance(norm(it.label), n) }?.takeIf { editDistance(norm(it.label), n) <= maxOf(2, n.length / 4) }
-            ?: return fail("Keine App namens '$name' gefunden.")
-        val launch = ctx.packageManager.getLaunchIntentForPackage(hit.pkg) ?: return fail("'${hit.label}' lässt sich nicht starten.")
+            ?: return fail(tr("Keine App namens '$name' gefunden.", "No app named '$name' found."))
+        val launch = ctx.packageManager.getLaunchIntentForPackage(hit.pkg) ?: return fail(tr("'${hit.label}' lässt sich nicht starten.", "'${hit.label}' cannot be started."))
         startActivity(launch)
-        return ok("${hit.label} geöffnet")
+        return ok(tr("${hit.label} geöffnet", "${hit.label} opened"))
     }
 
     private fun editDistance(a: String, b: String): Int {
@@ -187,90 +189,90 @@ object CommandExecutor {
     }
 
     private fun findContact(q: String): JSONObject {
-        if (!has(Manifest.permission.READ_CONTACTS)) return fail("Kontakte-Berechtigung fehlt.")
+        if (!has(Manifest.permission.READ_CONTACTS)) return fail(tr("Kontakte-Berechtigung fehlt.", "Contacts permission missing."))
         val hits = contacts(q)
-        return if (hits.isEmpty()) fail("Kein Kontakt '$q' gefunden.") else ok(hits.joinToString("\n") { "${it.first}: ${it.second}" })
+        return if (hits.isEmpty()) fail(tr("Kein Kontakt '$q' gefunden.", "No contact '$q' found.")) else ok(hits.joinToString("\n") { "${it.first}: ${it.second}" })
     }
 
     private suspend fun call(target: String): JSONObject {
-        val (number, label) = resolveNumber(target) ?: return fail("Keine Nummer/kein Kontakt für '$target' gefunden.")
-        if (Prefs.confirmRisky && !Confirm.ask("Yume möchte anrufen", "Anruf an $label ($number)?")) return fail("Vom Nutzer auf dem Handy abgelehnt.")
+        val (number, label) = resolveNumber(target) ?: return fail(tr("Keine Nummer/kein Kontakt für '$target' gefunden.", "No number/contact found for '$target'."))
+        if (Prefs.confirmRisky && !Confirm.ask(tr("Yume möchte anrufen", "Yume wants to call"), tr("Anruf an $label ($number)?", "Call $label ($number)?"))) return fail(tr("Vom Nutzer auf dem Handy abgelehnt.", "Declined by the user on the phone."))
         val uri = Uri.parse("tel:" + Uri.encode(number))
-        return if (has(Manifest.permission.CALL_PHONE)) { startActivity(Intent(Intent.ACTION_CALL, uri)); ok("Rufe $label an") }
-        else { startActivity(Intent(Intent.ACTION_DIAL, uri)); ok("Wählhilfe für $label geöffnet (Anruf-Berechtigung fehlt, bitte selbst auf Anrufen tippen)") }
+        return if (has(Manifest.permission.CALL_PHONE)) { startActivity(Intent(Intent.ACTION_CALL, uri)); ok(tr("Rufe $label an", "Calling $label")) }
+        else { startActivity(Intent(Intent.ACTION_DIAL, uri)); ok(tr("Wählhilfe für $label geöffnet (Anruf-Berechtigung fehlt, bitte selbst auf Anrufen tippen)", "Dialer for $label opened (call permission missing, please tap call yourself)")) }
     }
 
     private suspend fun sms(target: String, text: String): JSONObject {
-        if (text.isBlank()) return fail("Kein Nachrichtentext.")
-        val (number, label) = resolveNumber(target) ?: return fail("Keine Nummer/kein Kontakt für '$target' gefunden.")
+        if (text.isBlank()) return fail(tr("Kein Nachrichtentext.", "No message text."))
+        val (number, label) = resolveNumber(target) ?: return fail(tr("Keine Nummer/kein Kontakt für '$target' gefunden.", "No number/contact found for '$target'."))
         if (!has(Manifest.permission.SEND_SMS)) {
             startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + Uri.encode(number))).putExtra("sms_body", text))
-            return ok("SMS-App mit Entwurf geöffnet (Senden-Berechtigung fehlt)")
+            return ok(tr("SMS-App mit Entwurf geöffnet (Senden-Berechtigung fehlt)", "SMS app opened with a draft (send permission missing)"))
         }
-        if (Prefs.confirmRisky && !Confirm.ask("Yume möchte eine SMS senden", "An $label: \"${text.take(120)}\"")) return fail("Vom Nutzer auf dem Handy abgelehnt.")
+        if (Prefs.confirmRisky && !Confirm.ask(tr("Yume möchte eine SMS senden", "Yume wants to send an SMS"), tr("An $label: \"${text.take(120)}\"", "To $label: \"${text.take(120)}\""))) return fail(tr("Vom Nutzer auf dem Handy abgelehnt.", "Declined by the user on the phone."))
         val sm = ctx.getSystemService(SmsManager::class.java)
         sm.sendMultipartTextMessage(number, null, sm.divideMessage(text), null, null)
-        return ok("SMS an $label gesendet")
+        return ok(tr("SMS an $label gesendet", "SMS sent to $label"))
     }
 
     // ------------------------------------------------------------------ web / alarm / system
     private fun openUrl(url: String): JSONObject {
-        if (!url.startsWith("http://") && !url.startsWith("https://")) return fail("Nur http(s)-Adressen sind erlaubt.")
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))); return ok("Geöffnet: $url")
+        if (!url.startsWith("http://") && !url.startsWith("https://")) return fail(tr("Nur http(s)-Adressen sind erlaubt.", "Only http(s) addresses are allowed."))
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))); return ok(tr("Geöffnet: $url", "Opened: $url"))
     }
 
     private fun setAlarm(p: JSONObject): JSONObject {
         val i = Intent(AlarmClock.ACTION_SET_ALARM).putExtra(AlarmClock.EXTRA_HOUR, p.optInt("hour", 7))
             .putExtra(AlarmClock.EXTRA_MINUTES, p.optInt("minute", 0)).putExtra(AlarmClock.EXTRA_MESSAGE, p.optString("label", "Yume"))
             .putExtra(AlarmClock.EXTRA_SKIP_UI, true)
-        startActivity(i); return ok("Wecker auf %02d:%02d gestellt".format(p.optInt("hour", 7), p.optInt("minute", 0)))
+        startActivity(i); return ok(tr("Wecker auf %02d:%02d gestellt", "Alarm set to %02d:%02d").format(p.optInt("hour", 7), p.optInt("minute", 0)))
     }
 
     private fun setTimer(p: JSONObject): JSONObject {
         val s = p.optInt("seconds", 60)
         startActivity(Intent(AlarmClock.ACTION_SET_TIMER).putExtra(AlarmClock.EXTRA_LENGTH, s).putExtra(AlarmClock.EXTRA_MESSAGE, p.optString("label", "Yume")).putExtra(AlarmClock.EXTRA_SKIP_UI, true))
-        return ok("Timer auf $s Sekunden gestellt")
+        return ok(tr("Timer auf $s Sekunden gestellt", "Timer set to $s seconds"))
     }
 
     private fun flashlight(on: Boolean): JSONObject {
         val cm = ctx.getSystemService(CameraManager::class.java)
         val id = cm.cameraIdList.firstOrNull { cm.getCameraCharacteristics(it).get(android.hardware.camera2.CameraCharacteristics.FLASH_INFO_AVAILABLE) == true }
-            ?: return fail("Dieses Handy hat keine Taschenlampe.")
-        cm.setTorchMode(id, on); return ok(if (on) "Taschenlampe an" else "Taschenlampe aus")
+            ?: return fail(tr("Dieses Handy hat keine Taschenlampe.", "This phone has no flashlight."))
+        cm.setTorchMode(id, on); return ok(if (on) tr("Taschenlampe an", "Flashlight on") else tr("Taschenlampe aus", "Flashlight off"))
     }
 
     private fun volume(level: Int): JSONObject {
         val am = ctx.getSystemService(AudioManager::class.java)
         val max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
         am.setStreamVolume(AudioManager.STREAM_MUSIC, (max * level.coerceIn(0, 100) / 100f).toInt(), 0)
-        return ok("Lautstärke $level %")
+        return ok(tr("Lautstärke $level %", "Volume $level %"))
     }
 
     private fun media(control: String): JSONObject {
         val code = when (control) { "next" -> KeyEvent.KEYCODE_MEDIA_NEXT; "previous" -> KeyEvent.KEYCODE_MEDIA_PREVIOUS; else -> KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE }
         val am = ctx.getSystemService(AudioManager::class.java)
         am.dispatchMediaKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, code)); am.dispatchMediaKeyEvent(KeyEvent(KeyEvent.ACTION_UP, code))
-        return ok("Medien: $control")
+        return ok(tr("Medien: $control", "Media: $control"))
     }
 
     private fun battery(): JSONObject {
         val bm = ctx.getSystemService(BatteryManager::class.java)
         val i = ctx.registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED))
         val charging = (i?.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0) ?: 0) != 0
-        return ok("Akku ${bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)} %" + if (charging) ", lädt" else "")
+        return ok(tr("Akku ${bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)} %", "Battery ${bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)} %") + if (charging) tr(", lädt", ", charging") else "")
     }
 
     @Suppress("MissingPermission")
     private fun location(): JSONObject {
-        if (!has(Manifest.permission.ACCESS_FINE_LOCATION)) return fail("Standort-Berechtigung fehlt.")
+        if (!has(Manifest.permission.ACCESS_FINE_LOCATION)) return fail(tr("Standort-Berechtigung fehlt.", "Location permission missing."))
         val lm = ctx.getSystemService(LocationManager::class.java)
-        val loc = lm.getProviders(true).mapNotNull { lm.getLastKnownLocation(it) }.maxByOrNull { it.time } ?: return fail("Kein Standort verfügbar.")
+        val loc = lm.getProviders(true).mapNotNull { lm.getLastKnownLocation(it) }.maxByOrNull { it.time } ?: return fail(tr("Kein Standort verfügbar.", "No location available."))
         var place = ""
         try {
             @Suppress("DEPRECATION")
             android.location.Geocoder(ctx).getFromLocation(loc.latitude, loc.longitude, 1)?.firstOrNull()?.let { place = it.getAddressLine(0) ?: "" }
         } catch (_: Exception) {}
-        return ok("Position %.5f, %.5f (±%d m)%s".format(loc.latitude, loc.longitude, loc.accuracy.toInt(), if (place.isNotEmpty()) " – $place" else ""))
+        return ok(tr("Position %.5f, %.5f (±%d m)%s", "Position %.5f, %.5f (±%d m)%s").format(loc.latitude, loc.longitude, loc.accuracy.toInt(), if (place.isNotEmpty()) " – $place" else ""))
     }
 
     /** A reminder of the PC: a normal notification on the phone (tap = open the app). */
@@ -285,7 +287,7 @@ object CommandExecutor {
 
     /** "Name|MM-DD" or "Name|YYYY-MM-DD" per line: the birthdays stored in the contacts */
     private fun birthdays(): JSONObject {
-        if (!has(Manifest.permission.READ_CONTACTS)) return fail("Kontakte-Berechtigung fehlt.")
+        if (!has(Manifest.permission.READ_CONTACTS)) return fail(tr("Kontakte-Berechtigung fehlt.", "Contacts permission missing."))
         val out = ArrayList<String>()
         val sel = ContactsContract.Data.MIMETYPE + "=? AND " + ContactsContract.CommonDataKinds.Event.TYPE + "=" + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY
         ctx.contentResolver.query(ContactsContract.Data.CONTENT_URI,
@@ -301,7 +303,7 @@ object CommandExecutor {
     }
 
     private fun calendarToday(days: Int = 1): JSONObject {
-        if (!has(Manifest.permission.READ_CALENDAR)) return fail("Kalender-Berechtigung fehlt.")
+        if (!has(Manifest.permission.READ_CALENDAR)) return fail(tr("Kalender-Berechtigung fehlt.", "Calendar permission missing."))
         val start = Calendar.getInstance().apply { set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0) }.timeInMillis
         val end = start + days * 24L * 3600 * 1000
         val out = ArrayList<String>()
@@ -310,12 +312,12 @@ object CommandExecutor {
             val f = java.text.SimpleDateFormat(if (days > 1) "EEE dd.MM. HH:mm" else "HH:mm", java.util.Locale.getDefault())
             while (c.moveToNext()) out += f.format(java.util.Date(c.getLong(1))) + " " + c.getString(0)
         }
-        return ok(if (out.isEmpty()) "Heute keine Termine." else out.joinToString("\n"))
+        return ok(if (out.isEmpty()) tr("Heute keine Termine.", "No appointments today.") else out.joinToString("\n"))
     }
 
     // ------------------------------------------------------------------ screen operation (accessibility)
     private inline fun <T> a11y(block: (YumeAccessibilityService) -> T): T {
-        val s = YumeAccessibilityService.instance ?: throw Denied("Der Bedienungshilfen-Dienst von Yume ist nicht aktiviert (Einstellungen → Bedienungshilfen).")
+        val s = YumeAccessibilityService.instance ?: throw Denied(tr("Der Bedienungshilfen-Dienst von Yume ist nicht aktiviert (Einstellungen → Bedienungshilfen).", "Yume's accessibility service is not enabled (Settings → Accessibility)."))
         return block(s)
     }
 
@@ -346,7 +348,7 @@ object CommandExecutor {
     private suspend fun screenLook(): JSONObject {
         val res = ok(a11y { it.readScreen() })
         val bmp = a11y { it.screenshot() }
-        if (bmp != null) res.put("image_b64", encode(bmp)) else res.put("data", res.optString("data") + "\n(Screenshot nicht möglich)")
+        if (bmp != null) res.put("image_b64", encode(bmp)) else res.put("data", res.optString("data") + tr("\n(Screenshot nicht möglich)", "\n(Screenshot not possible)"))
         return res
     }
 
@@ -355,26 +357,26 @@ object CommandExecutor {
         val done = when {
             text.isNotBlank() -> a11y { it.tapText(text) }
             p.has("x") && p.has("y") -> a11y { it.tapXY(p.getDouble("x").toFloat(), p.getDouble("y").toFloat()) }
-            else -> return fail("tap braucht 'text' oder 'x' und 'y'.")
+            else -> return fail(tr("tap braucht 'text' oder 'x' und 'y'.", "tap needs 'text' or 'x' and 'y'."))
         }
-        return if (done) followUp("getippt") else fail("Das Element '$text' wurde nicht gefunden – erst mit screen_read nachsehen.")
+        return if (done) followUp(tr("getippt", "tapped")) else fail(tr("Das Element '$text' wurde nicht gefunden – erst mit screen_read nachsehen.", "The element '$text' was not found – check with screen_read first."))
     }
 
     private suspend fun typeText(text: String): JSONObject {
-        if (Prefs.confirmRisky && !Confirm.ask("Yume möchte Text eintippen", "\"${text.take(160)}\"")) return fail("Vom Nutzer auf dem Handy abgelehnt.")
-        return if (a11y { it.typeText(text) }) followUp("Text eingegeben") else fail("Kein Eingabefeld gefunden – erst auf das Feld tippen.")
+        if (Prefs.confirmRisky && !Confirm.ask(tr("Yume möchte Text eintippen", "Yume wants to type text"), "\"${text.take(160)}\"")) return fail(tr("Vom Nutzer auf dem Handy abgelehnt.", "Declined by the user on the phone."))
+        return if (a11y { it.typeText(text) }) followUp(tr("Text eingegeben", "Text entered")) else fail(tr("Kein Eingabefeld gefunden – erst auf das Feld tippen.", "No input field found – tap the field first."))
     }
 
     private suspend fun global(action: Int, what: String): JSONObject {
         val ok = a11y { it.performGlobalAction(action) }
-        return if (ok) followUp(what) else fail("Aktion nicht möglich.")
+        return if (ok) followUp(what) else fail(tr("Aktion nicht möglich.", "Action not possible."))
     }
 
     // ------------------------------------------------------------------ camera
     private suspend fun cameraLook(facing: String): JSONObject {
-        if (!has(Manifest.permission.CAMERA)) return fail("Kamera-Berechtigung fehlt.")
-        val b64 = CameraCapture.capture(ctx, facing == "front") ?: return fail("Kamera nicht verfügbar (die App muss dafür kurz sichtbar sein – Handy entsperren oder 'Über anderen Apps einblenden' erlauben).")
-        return ok("Foto aufgenommen").put("image_b64", b64)
+        if (!has(Manifest.permission.CAMERA)) return fail(tr("Kamera-Berechtigung fehlt.", "Camera permission missing."))
+        val b64 = CameraCapture.capture(ctx, facing == "front") ?: return fail(tr("Kamera nicht verfügbar (die App muss dafür kurz sichtbar sein – Handy entsperren oder 'Über anderen Apps einblenden' erlauben).", "Camera not available (the app must be briefly visible for this – unlock the phone or allow 'Display over other apps')."))
+        return ok(tr("Foto aufgenommen", "Photo taken")).put("image_b64", b64)
     }
 }
 
@@ -393,23 +395,23 @@ object Confirm {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val open = PendingIntent.getActivity(ctx, id, Intent(ctx, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
         val needPin = Prefs.pinHash.isNotEmpty()
-        if (needPin && System.currentTimeMillis() < lockedUntil) { PhoneTts.speak("Zu viele falsche PIN-Eingaben. Bitte warte ein paar Minuten."); return false }
-        // with a PIN the "Allow" button is a small text field in the notification ("PIN eingeben"), the answer goes through the same receiver
+        if (needPin && System.currentTimeMillis() < lockedUntil) { PhoneTts.speak(tr("Zu viele falsche PIN-Eingaben. Bitte warte ein paar Minuten.", "Too many wrong PIN entries. Please wait a few minutes.")); return false }
+        // with a PIN the "Allow" button is a small text field in the notification (tr("PIN eingeben", "Enter PIN")), the answer goes through the same receiver
         val allowAction = if (needPin) {
-            val ri = androidx.core.app.RemoteInput.Builder("pin").setLabel("PIN eingeben").build()
+            val ri = androidx.core.app.RemoteInput.Builder("pin").setLabel(tr("PIN eingeben", "Enter PIN")).build()
             val mutable = PendingIntent.getBroadcast(ctx, id * 2 + 1,
                 Intent(ctx, ConfirmReceiver::class.java).putExtra("id", id).putExtra("allow", true).setPackage(ctx.packageName),
                 PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-            NotificationCompat.Action.Builder(0, "Mit PIN erlauben", mutable).addRemoteInput(ri).build()
-        } else NotificationCompat.Action.Builder(0, "Erlauben", pi(true)).build()
+            NotificationCompat.Action.Builder(0, tr("Mit PIN erlauben", "Allow with PIN"), mutable).addRemoteInput(ri).build()
+        } else NotificationCompat.Action.Builder(0, tr("Erlauben", "Allow"), pi(true)).build()
         val n = NotificationCompat.Builder(ctx, "confirm").setSmallIcon(android.R.drawable.ic_dialog_alert)
             .setContentTitle(title).setContentText(text).setStyle(NotificationCompat.BigTextStyle().bigText(text))
             .setPriority(NotificationCompat.PRIORITY_HIGH).setCategory(NotificationCompat.CATEGORY_CALL)
             .setFullScreenIntent(open, true).setAutoCancel(true)
-            .addAction(allowAction).addAction(0, "Ablehnen", pi(false)).build()
+            .addAction(allowAction).addAction(0, tr("Ablehnen", "Deny"), pi(false)).build()
         val nm = ctx.getSystemService(NotificationManager::class.java)
         nm.notify(id, n)
-        PhoneTts.speak(if (needPin) "$title. $text. Zum Erlauben die PIN eingeben." else "$title. $text")
+        PhoneTts.speak(if (needPin) tr("$title. $text. Zum Erlauben die PIN eingeben.", "$title. $text. Enter the PIN to allow.") else "$title. $text")
         val answer = withTimeoutOrNull(if (needPin) 90_000 else 45_000) { d.await() } ?: false
         nm.cancel(id)
         pending.remove(id)
@@ -426,7 +428,7 @@ object Confirm {
             if (!ok) {
                 failures++
                 if (failures >= 3) { lockedUntil = System.currentTimeMillis() + 5 * 60_000; failures = 0 }
-                PhoneTts.speak("Falsche PIN. Aktion abgelehnt.")
+                PhoneTts.speak(tr("Falsche PIN. Aktion abgelehnt.", "Wrong PIN. Action declined."))
                 pending[id]?.complete(false)
                 return
             }
