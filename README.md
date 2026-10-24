@@ -10,6 +10,7 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 ![Plattform](https://img.shields.io/badge/Windows%20%7C%20Android-lightgrey)
 ![KI lokal oder Cloud](https://img.shields.io/badge/KI-lokal%20oder%20Cloud-blueviolet)
 [![Discord](https://img.shields.io/badge/Discord-Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/5RBgNMCPKC)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Unterst%C3%BCtzen-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/kreqzxoo)
 
 **💬 [Komm auf unseren Discord-Server](https://discord.gg/5RBgNMCPKC)**: Fragen, Feedback, Charaktere und Ideen teilen.
 
@@ -261,6 +262,14 @@ Alles liegt in [`docs/`](docs/INDEX.md):
 
 * **Discord:** <https://discord.gg/5RBgNMCPKC>. Hier bekommst du schnelle Hilfe, kannst Charaktere und Avatare zeigen und Wünsche äußern.
 * **Fehler und Funktionswünsche:** als [Issue](../../issues) auf GitHub.
+
+## Projekt unterstützen
+
+Yume Companion ist kostenlos und Open Source. Wenn dir das Projekt gefällt, hilft deine Unterstützung bei Zeit, Tests und neuen Funktionen:
+
+[![Unterstütze mich auf Ko-fi](https://img.shields.io/badge/Ko--fi-Unterst%C3%BCtzen-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/kreqzxoo)
+
+Einmalig oder monatlich über <https://ko-fi.com/kreqzxoo>. Auch Mitarbeit, Fehlermeldungen, Charaktere und ein Stern auf GitHub helfen. Danke! 💜
 
 ## Lizenz und Danksagung
 
