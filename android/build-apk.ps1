@@ -1,6 +1,6 @@
 # Yume Companion for Android - builds the APK. Sets up JDK, Android SDK and Gradle on demand.
 # Usage: build-apk.ps1 [-Release]   (debug-signed APK; fine for installing on your own phone)
-param([switch]$SkipPublish)
+param([switch]$SkipPublish, [switch]$Release)
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $CacheRoot = Join-Path $env:LOCALAPPDATA 'YumeAndroidBuild'
@@ -95,11 +95,11 @@ if (-not (Test-Path $GradleBat)) {
 
 # ---- build
 $env:YUME_BUILD_ROOT = $CacheRoot      # build output outside the (OneDrive-synced) source folder
-$BuiltApk = Join-Path $CacheRoot 'out\app\outputs\apk\debug\app-debug.apk'
+$BuiltApk = Join-Path $CacheRoot $(if ($Release) { 'out\app\outputs\apk\release\app-release.apk' } else { 'out\app\outputs\apk\debug\app-debug.apk' })
 if (Test-Path $BuiltApk) { Remove-Item $BuiltApk -Force }
 Say 'Baue die APK (der erste Lauf dauert einige Minuten) ...'
 Push-Location $ProjectRoot
-try { $g = Invoke-Tool $GradleBat @('--no-daemon', '--console=plain', '--project-cache-dir', (Join-Path $CacheRoot 'projcache'), 'assembleDebug') } finally { Pop-Location }
+try { $g = Invoke-Tool $GradleBat @('--no-daemon', '--console=plain', '--project-cache-dir', (Join-Path $CacheRoot 'projcache'), $(if ($Release) { 'assembleRelease' } else { 'assembleDebug' })) } finally { Pop-Location }
 Write-Host $g.Output
 if ($g.ExitCode -ne 0 -or -not (Test-Path $BuiltApk)) { throw 'Gradle-Build fehlgeschlagen (keine neue APK). Details: build-apk.log' }
 $Final = Join-Path $CacheRoot 'Yume-Companion.apk'
