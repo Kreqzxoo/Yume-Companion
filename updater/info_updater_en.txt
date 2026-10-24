@@ -1,0 +1,12 @@
+﻿Yume Release Tool
+
+Builds a clean setup or update exe from your Yume Companion working folder (MAIN):
+  - works in a temporary copy only, your original folder stays untouched
+  - removes everything installer.bat installs later, plus caches, logs and personal data
+  - resets settings to the defaults
+  - optionally checks that the exe really works (start test, test installation, tiny AI)
+  - a log for every run, error analysis with rules and a local AI (only if a strong model is installed)
+
+Requirements:
+  - Inno Setup 6 (free). If it is missing, the tool offers to install it with winget on first start.
+  - Your working folder must contain the installed Python environment (app\data\envs\sow).

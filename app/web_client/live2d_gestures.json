@@ -1,0 +1,71 @@
+{
+  "_comment": "Idle micro-gestures for Live2D models (shared by the desktop program and the web / Android avatar view). Track values are OFFSETS added to the model's own parameters (eye openness: 1 = open, the offset is value-1). Times in seconds; every track returns to 0 at the end.",
+  "gestures": {
+    "curious_tilt": {
+      "dur": 3.4, "weight": 3,
+      "tracks": {
+        "ParamAngleZ":  [[0, 0], [0.7, 9], [2.5, 9], [3.4, 0]],
+        "ParamAngleX":  [[0, 0], [0.7, -5], [2.5, -5], [3.4, 0]],
+        "ParamEyeBallY": [[0, 0], [0.7, 0.3], [2.5, 0.3], [3.4, 0]]
+      }
+    },
+    "sigh": {
+      "dur": 3.6, "weight": 2,
+      "tracks": {
+        "ParamBodyAngleY": [[0, 0], [0.9, 5], [1.6, 5], [2.9, -6], [3.6, 0]],
+        "ParamAngleY":     [[0, 0], [0.9, 4], [1.6, 4], [2.9, -6], [3.6, 0]],
+        "ParamBreath":     [[0, 0], [0.9, 0.9], [1.6, 0.9], [2.9, 0], [3.6, 0]],
+        "ParamEyeLOpen":   [[0, 1], [2.1, 1], [2.8, 0.55], [3.5, 1]],
+        "ParamEyeROpen":   [[0, 1], [2.1, 1], [2.8, 0.55], [3.5, 1]]
+      }
+    },
+    "shy_glance": {
+      "dur": 3.2, "weight": 3,
+      "tracks": {
+        "ParamAngleX":   [[0, 0], [0.6, 14], [2.4, 14], [3.2, 0]],
+        "ParamAngleY":   [[0, 0], [0.6, -7], [2.4, -7], [3.2, 0]],
+        "ParamEyeBallX": [[0, 0], [0.5, 0.7], [2.4, 0.7], [3.2, 0]],
+        "ParamEyeBallY": [[0, 0], [0.5, -0.4], [2.4, -0.4], [3.2, 0]],
+        "ParamCheek":    [[0, 0], [0.7, 1], [2.5, 1], [3.2, 0]]
+      }
+    },
+    "nod": {
+      "dur": 2.2, "weight": 2,
+      "tracks": {
+        "ParamAngleY":     [[0, 0], [0.3, -8], [0.65, 2], [1.0, -8], [1.35, 2], [2.2, 0]],
+        "ParamBodyAngleY": [[0, 0], [0.3, -2], [0.65, 0], [1.0, -2], [1.35, 0], [2.2, 0]]
+      }
+    },
+    "shrug": {
+      "dur": 2.4, "weight": 2,
+      "tracks": {
+        "ParamBodyAngleZ": [[0, 0], [0.4, 5], [1.3, 5], [2.4, 0]],
+        "ParamAngleZ":     [[0, 0], [0.4, -5], [1.3, -5], [2.4, 0]],
+        "ParamBodyAngleY": [[0, 0], [0.4, 3], [1.3, 3], [2.4, 0]]
+      }
+    },
+    "slow_blink": {
+      "dur": 1.4, "weight": 3,
+      "tracks": {
+        "ParamEyeLOpen": [[0, 1], [0.4, 0], [0.8, 0], [1.4, 1]],
+        "ParamEyeROpen": [[0, 1], [0.4, 0], [0.8, 0], [1.4, 1]]
+      }
+    },
+    "lean_in": {
+      "dur": 3.6, "weight": 2,
+      "tracks": {
+        "ParamBodyAngleY": [[0, 0], [0.9, 7], [2.7, 7], [3.6, 0]],
+        "ParamAngleY":     [[0, 0], [0.9, 4], [2.7, 4], [3.6, 0]],
+        "ParamEyeBallY":   [[0, 0], [0.9, 0.2], [2.7, 0.2], [3.6, 0]]
+      }
+    },
+    "look_around": {
+      "dur": 4.0, "weight": 2,
+      "tracks": {
+        "ParamAngleX":   [[0, 0], [0.7, -12], [1.9, -12], [2.8, 12], [3.4, 12], [4.0, 0]],
+        "ParamEyeBallX": [[0, 0], [0.6, -0.7], [1.9, -0.7], [2.7, 0.7], [3.4, 0.7], [4.0, 0]],
+        "ParamBodyAngleX": [[0, 0], [0.8, -3], [1.9, -3], [2.9, 3], [3.4, 3], [4.0, 0]]
+      }
+    }
+  }
+}

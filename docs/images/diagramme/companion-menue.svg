@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="t d">
+  <title id="t">Das Rechtsklick-Menü des Desktop-Begleiters</title>
+  <desc id="d">Schematische Darstellung: links die Figur auf dem Desktop mit Hormonanzeige, rechts das Menü mit Schnellaktionen, Mikrofon, Streicheln, Animationen, Modi, Größe und Schlafen.</desc>
+  <defs><style>
+    .bg{fill:#17111f}.m{fill:#251b36;stroke:#ff8fc7;stroke-width:1.5}.f{fill:#33224a;stroke:#b69cff;stroke-width:2}
+    .t{font:600 15px Segoe UI,Arial,sans-serif;fill:#f3ecf7}.s{font:13px Segoe UI,Arial,sans-serif;fill:#c9bde0}.h{font:700 20px Segoe UI,Arial,sans-serif;fill:#ffc2e2}
+    .ln{stroke:#b69cff;stroke-width:1.5;fill:none}.bar{fill:#ff8fc7}.bg2{fill:#3a2b52}
+  </style></defs>
+  <rect class="bg" width="960" height="600" rx="18"/>
+  <text x="480" y="36" text-anchor="middle" class="h">Desktop-Begleiter: Figur und Rechtsklick-Menü</text>
+
+  <!-- Figur -->
+  <rect class="f" x="40" y="70" width="250" height="470" rx="16"/>
+  <circle cx="165" cy="210" r="62" fill="#b088eb"/><rect x="115" y="260" width="100" height="150" rx="40" fill="#5f50be"/>
+  <circle cx="145" cy="205" r="9" fill="#2a2140"/><circle cx="185" cy="205" r="9" fill="#2a2140"/>
+  <text x="165" y="450" text-anchor="middle" class="t">Figur (Bild, Live2D oder VRM)</text>
+  <text x="165" y="472" text-anchor="middle" class="s">schwebt über anderen Fenstern</text>
+  <text x="165" y="494" text-anchor="middle" class="s">folgt dem Mauszeiger mit den Augen</text>
+  <!-- HUD -->
+  <rect class="m" x="60" y="86" width="210" height="64" rx="10"/>
+  <text x="70" y="104" class="s">🧪 Oxytocin</text><rect class="bg2" x="150" y="96" width="110" height="8" rx="4"/><rect class="bar" x="150" y="96" width="72" height="8" rx="4"/>
+  <text x="70" y="120" class="s">⚡ Dopamin</text><rect class="bg2" x="150" y="112" width="110" height="8" rx="4"/><rect class="bar" x="150" y="112" width="58" height="8" rx="4"/>
+  <text x="70" y="136" class="s">🔥 Cortisol</text><rect class="bg2" x="150" y="128" width="110" height="8" rx="4"/><rect class="bar" x="150" y="128" width="26" height="8" rx="4"/>
+  <text x="70" y="148" class="s" style="font-size:10px">🔋 Energie (Hormonanzeige)</text>
+
+  <!-- Menü -->
+  <path class="ln" d="M292 300 L330 300"/>
+  <rect class="m" x="330" y="64" width="590" height="500" rx="14"/>
+  <g class="t">
+    <text x="352" y="96">⚡ Schnellaktionen</text>
+    <text x="372" y="118" class="s">📸 Meinen Bildschirm ansehen (Vision) · 📋 Zwischenablage lesen · 🧠 Was beschäftigt mich?</text>
+    <text x="352" y="150">Mikrofon ein-/ausschalten</text>
+    <text x="352" y="178">🤚 Streicheln</text>
+    <text x="352" y="206">🎭 Animation abspielen · Bewegungen</text>
+    <text x="352" y="240">Schalter</text>
+    <text x="372" y="262" class="s">👁‍🗨 Durchklickmodus · 📌 Immer im Vordergrund · 👁 Blickverfolgung</text>
+    <text x="372" y="284" class="s">💬 Fensterreaktionen · 📝 Untertitel · 💬 Textchat-Leiste (bei Mauszeiger / an / aus)</text>
+    <text x="372" y="306" class="s">🧠 Gedanken-Notizblock · 📊 Hormonanzeige</text>
+    <text x="352" y="340">Einstellungen</text>
+    <text x="372" y="362" class="s">Proaktives Intervall: 3 · 5 · 10 · 15 · 30 · 60 Minuten</text>
+    <text x="372" y="384" class="s">Verfolgungsgeschwindigkeit: langsam · normal · schnell</text>
+    <text x="372" y="406" class="s">📐 Modellgröße: klein 200×300 · mittel 400×600 · groß 600×900</text>
+    <text x="352" y="440">📍 Auf dem Bildschirm zentrieren · 🔄 Größe zurücksetzen</text>
+    <text x="352" y="472">Schlafen · Ausblenden</text>
+  </g>
+  <text x="352" y="520" class="s">Riskante Aktionen (Klicks, Tippen, Skripte, Programme) erscheinen als</text>
+  <text x="352" y="540" class="s">Freigabe-Banner „Erlauben / Ablehnen“ mit Ablauf-Zähler.</text>
+</svg>

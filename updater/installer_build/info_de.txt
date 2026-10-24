@@ -1,0 +1,36 @@
+﻿Willkommen bei Yume Companion
+
+Yume Companion ist ein KI-Begleiter für deinen PC: Chat, Sprache, 3D-/Live2D-Avatar und eine Handy-App.
+Entwickelt von Kreqzxoo. Basiert auf dem Open-Source-Projekt "Soul of Waifu" von jofizcd.
+
+Bitte vor der Installation lesen:
+
+SPEICHERPLATZ UND DAUER
+• Nach der Installation belegt das Programm ca. 15,5 GB (ohne KI-Modelle): rund 4,5 GB Programmdateien und 8 bis 11 GB Python-Pakete (u. a. PyTorch), die das Setup aus dem Internet lädt.
+• KI-Modelle (Sprachmodell, Stimme, Vision, Bildgenerierung) sind NICHT enthalten. Du lädst sie später im Programm herunter; je nach Auswahl kommen meist 5 bis 30 GB dazu. Plane deshalb mindestens 40 GB freien Platz ein.
+• Dauer: Kopieren 2 bis 5 Minuten, danach Komponenten laden je nach Internet 10 bis 40 Minuten (bei langsamer Leitung länger). Der Fortschritt steht im Setup-Fenster; es öffnet sich kein Konsolenfenster. Bitte das Fenster währenddessen nicht schließen.
+
+SYSTEMVORAUSSETZUNGEN
+• Windows 10 oder 11, 64 Bit, Internetverbindung für die Installation.
+• Empfohlen: 16 GB Arbeitsspeicher (mindestens 8 GB) und für lokale KI-Modelle eine NVIDIA-Grafikkarte mit 6 GB oder mehr Grafikspeicher. Ohne passende Grafikkarte läuft vieles trotzdem, aber deutlich langsamer. Wenn du Cloud-KI mit eigenem API-Schlüssel oder einen KI-Server im Netzwerk nutzt, reicht ein normaler PC.
+• Installationsordner: nicht in OneDrive (dort werden ständig Dateien geschrieben), kurzer Pfad (zum Beispiel C:\Yume). Ohne Administratorrechte nicht in "Programme".
+
+WAS DAS SETUP MACHT
+• Kopiert das Programm in den Installationsordner, legt Startmenü- und (auf Wunsch) Desktop-Verknüpfungen an und lädt die Komponenten (siehe oben).
+• Optional: Start mit Windows (ein Eintrag für deinen Benutzer, jederzeit wieder entfernbar).
+• Eigene Daten (Charaktere, Chats, Einstellungen, Modelle) werden bei Updates und Reparaturen nicht überschrieben.
+• Deinstallation: Startmenü → "Yume Companion entfernen". Dort wirst du gefragt, ob auch deine persönlichen Daten gelöscht werden sollen.
+• Die Komponenten kannst du am Ende überspringen und später über das Startmenü ("Komponenten installieren oder reparieren") nachholen. Ohne sie startet das Programm nicht.
+
+NETZWERK, FIREWALL, ANTIVIRUS
+• Für den Download müssen erreichbar sein: pypi.org, files.pythonhosted.org, download.pytorch.org, huggingface.co und *.hf.co, github.com. DNS-Filter (z. B. AdGuard) und manche Virenscanner blockieren diese Adressen oder verlangsamen den Download.
+• Die Handy-App verbindet sich mit einem lokalen Webserver des Programms (Standard-Port 8000). In der Windows-Firewall oder deinem Virenscanner muss dieser Zugriff im Heimnetz erlaubt sein (im Programm: Android-Connector → Firewall einrichten).
+
+DATENSCHUTZ
+• Chats, Charaktere, Gedächtnis und Einstellungen bleiben auf deinem PC.
+• Daten verlassen den PC nur, wenn du selbst Online-Dienste verwendest (zum Beispiel Cloud-KI mit eigenem Schlüssel, ElevenLabs, die Edge-Sprachausgabe von Microsoft oder Discord).
+
+CREDITS
+• Yume Companion – Entwicklung und Anpassung: Kreqzxoo
+• Basis: Soul of Waifu – Copyright jofizcd, GPL-3.0 (github.com/jofizcd/Soul-of-Waifu)
+• Mit freundlicher Hilfe vieler Open-Source-Projekte, unter anderem Qt/PyQt6, PyTorch, llama.cpp, Qwen3-TTS, Faster-Whisper, Vosk, three.js und three-vrm. Alle Lizenzen findest du auf der nächsten Seite und im Programmordner (LICENSE, NOTICE.md, docs\LIZENZEN_UND_UPLOAD.md).

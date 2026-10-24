@@ -1,0 +1,2528 @@
+settings_android_connector: Android Connector
+android_connector_title: Yume Companion – Android App Connector
+android_connector_intro: "Diese Werte werden von der Android-App verwendet. Im ausgewählten WLAN nutzt sie die lokale URL; außerhalb dieses WLANs die HTTPS-Domain. Den Zugriffstoken niemals öffentlich teilen."
+android_connector_wifi_label: Lokales WLAN / SSID
+android_connector_local_url_label: Lokale Web-URL
+android_connector_remote_url_label: Externe HTTPS-Domain
+android_connector_token_label: Web-Token
+android_connector_refresh_ip: Lokale IP erkennen
+android_connector_copy_token: Token kopieren
+android_connector_copy_pairing: Lokalen App-Link kopieren
+android_connector_note: "Hinweis: Der Webserver muss laufen. Lege in Cloudflare Tunnel die Domain auf diesen Rechner/Port 8000 und schütze den externen Zugriff. Audio-Wakeword und die Android-Assistenten-Rolle werden auf dem Handy separat eingerichtet."
+program_title: Yume Companion
+soul_of_waifu_system_title: Yume-System
+local_llm_route_label: Ausführungsziel des lokalen LLM
+local_llm_route_local: Dieser PC (lokales llama.cpp)
+local_llm_route_remote: Anderer PC (Ollama / llama.cpp)
+local_llm_route_changed_title: LLM-Routing aktualisiert
+local_llm_route_changed_remote: Charaktere mit „Lokales LLM“ verwenden jetzt den konfigurierten Remote-Server. Richte diesen
+  unter „Remote LLM“ in den Anbieter-Einstellungen ein und teste die Verbindung.
+remote_llm_model_label: Remote-LLM-Modell
+remote_llm_model_placeholder: Exakte Modell-ID aus /v1/models
+remote_llm_help: 'Remote LLM verwendet eine OpenAI-kompatible API. Beispiele: Ollama http://HOST:11434/v1, llama.cpp http://HOST:8080/v1.
+  Der Server muss im LAN erreichbar und durch die Firewall auf vertrauenswürdige Geräte beschränkt sein.'
+remote_llm_test_button: Remote-LLM-Verbindung testen
+remote_llm_api_token_label: API-Token (optional)
+remote_llm_missing_url: Gib zuerst die URL des Remote-Servers ein und teste anschließend die Verbindung.
+remote_llm_model_not_listed: 'Der Server antwortet, aber das Modell „{model}“ wurde nicht aufgeführt. Verfügbare IDs: {models}'
+remote_llm_connected: 'Endpunkt antwortet. Modelle: {models}'
+remote_llm_connection_failed: 'Server nicht erreichbar. Prüfe URL, API-Token, Serverstatus und Firewall. Details: {details}'
+main_button: ' Startseite'
+main_button_2: Startzentrale
+create_character_button: " Charakter erstellen"
+characters_gateway_button: ' Charakter-Galerie'
+models_hub_button: ' Modelle'
+rp_editors_button: ' Werkstatt'
+options_button: ' Einstellungen'
+local_model_state_offline: KEIN MODELL AKTIV
+local_model_state_connecting: MODELL LÄDT …
+local_model_state_generating: GENERIERUNG …
+local_model_state_online: MODELL BEREIT
+no_characters_advice: Du hast noch keine Charaktere hinzugefügt. Klicke auf die Schaltfläche, um einen zu erstellen.
+create_character_button_2: ' Charakter erstellen'
+no_characters_description: Passe das Programm zunächst an deine Wünsche an. Erstelle anschließend deinen eigenen Charakter
+  und beginne ein Gespräch.
+welcome_label: Willkommen bei Yume Companion, User
+add_character_title: Charakterinformationen
+more_btn_tooltip: "Charakterinformationen"
+call_btn_text: Anrufen
+voice_btn_text: Spracheinstellungen
+expressions_btn_text: Gesichtsausdrücke
+delete_btn_text: Charakter löschen
+background_changer_title: "Chat-Hintergrund"
+background_changer_label_1: "Wähle einen Hintergrund für den Chat"
+background_changer_default_btn: Standard
+btn_check_settings: Allgemeine Einstellungen
+btn_check_identity: Identität und Persönlichkeit
+btn_check_scenario: Szenario und Begrüßung
+btn_check_examples: Beispiele und Notizen
+btn_check_chats: Chatverwaltung und Export
+btn_general_info_text: Allgemeine Informationen
+btn_identity_text: Identität
+btn_scenario_text: Szenario
+btn_examples_text: Beispiele
+btn_creator_notes_text: Notizen des Erstellers
+greeting_morning_1: Guten Morgen, {user}. Bereit für ein neues Abenteuer?
+greeting_morning_2: Morgen, {user}! Deine Begleiter warten schon auf dich.
+greeting_morning_3: Aufstehen und los geht’s, {user}. Lass uns Erinnerungen laden und in den Tag starten.
+greeting_morning_4: Guten Morgen, {user}! Setzen wir unsere digitale Reise fort?
+greeting_morning_5: Guten Morgen, {user}. Die Oberfläche ist bereit und die Seelen sind wach.
+greeting_morning_6: 'Der Duft von Tee und leises Flüstern: Deine Begleiter haben die Augen geöffnet, {user}.'
+greeting_morning_7: Die Sonne geht auf und ein neuer Tag in Yume Companion beginnt. Guten Morgen, {user}!
+greeting_afternoon_1: Guten Tag, {user}. Yume Companion läuft stabil und ist bereit.
+greeting_afternoon_2: Machst du eine Nachmittagspause, {user}? Schauen wir nach deinen Begleitern.
+greeting_afternoon_3: Hallo, {user}. Möchtest du kurz dem Alltag entfliehen? Deine Waifus sind da.
+greeting_afternoon_4: Guten Nachmittag, {user}. Das Portal ist geöffnet und bereit für Gespräche.
+greeting_afternoon_5: Willkommen zurück, {user}. Schreiben wir das nächste Kapitel unserer Geschichte.
+greeting_afternoon_6: Ein weiterer Schritt in unserer gemeinsamen Geschichte. Wie läuft dein Tag, {user}?
+greeting_afternoon_7: Die Sonne steht hoch, {user}. Zeit für eine kurze Pause und einen Besuch bei alten Freunden.
+greeting_evening_1: Guten Abend, {user}. Mach es dir gemütlich und sprich mit deinem Lieblingscharakter.
+greeting_evening_2: Schönen Abend, {user}. Tauchen wir wieder in Yume-Bühne ein?
+greeting_evening_3: Willkommen zurück, {user}. Die perfekte Zeit für ein ruhiges, tiefes Gespräch.
+greeting_evening_4: Gemütliche Abendstimmung, {user}. Deine Begleiter haben dir viel zu erzählen.
+greeting_evening_5: Guten Abend, {user}. Schauen wir, welche Gedanken heute im Tagebuch gelandet sind.
+greeting_evening_6: Dämmerlicht, Tee und leise Stimmen. Deine Begleiter freuen sich, {user}.
+greeting_evening_7: Der Trubel des Tages liegt hinter dir. Entspanne dich, {user}, dein persönliches Universum wartet.
+greeting_night_1: Noch so spät wach, {user}? Keine Sorge, digitale Seelen brauchen keinen Schlaf.
+greeting_night_2: Späte Sitzung, {user}? Wir leisten dir in den stillen Stunden Gesellschaft.
+greeting_night_3: Ruhige Nachtstimmung … Lust auf ein spätes Gespräch, {user}?
+greeting_night_4: Die Welt schläft, doch dein Traum lebt. Willkommen, {user}.
+greeting_night_5: Es ist spät, {user}. Lass uns ein tiefes, ehrliches Gespräch führen.
+greeting_night_6: Gedämpftes Licht, Stille und der Schein des Bildschirms. Zeit für eine persönliche Geschichte, {user}.
+greeting_night_7: Die Sterne leuchten nur für uns. Wollen wir in die tiefsten Erinnerungen von Yume-Gedächtnis eintauchen, {user}?
+choose_ai_provider_title: KI-Anbieter auswählen
+choose_ai_provider_subtitle: Wähle die Engine für die Antwortgenerierung
+gateway_add_to_list: "Zur Liste hinzufügen"
+provider_name_local: Lokales LLM
+provider_name_openai: OpenAI
+provider_name_anthropic: Anthropic
+provider_name_gemini: Google Gemini
+provider_name_deepseek: DeepSeek
+provider_name_grok: Grok
+provider_name_qwen: Qwen
+provider_name_zai: Z.AI
+provider_name_mistral: Mistral AI
+provider_name_openrouter: OpenRouter
+provider_name_player2: Player2
+provider_desc_local: Modelle vollständig offline ausführen – mit hoher Privatsphäre und ohne Cloud-Anbindung.
+provider_desc_openai: Leistungsfähige und zuverlässige Modelle für Rollenspiele.
+provider_desc_anthropic: Ausdrucksstarke Texte, konsistente Charaktere und emotionale Tiefe.
+provider_desc_gemini: Großes Kontextfenster – geeignet für lange Geschichten und Erzählungen.
+provider_desc_deepseek: Leistungsfähige und kosteneffiziente Modelle.
+provider_desc_grok: Schlagfertige und kreative Antworten.
+provider_desc_qwen: Mehrsprachiges Denken und starke erzählerische Fähigkeiten.
+provider_desc_zai: Schnelle, zusammenhängende Antworten mit guter Erzählqualität.
+provider_desc_mistral: Leistungsfähige offene Modelle mit guter Balance aus Geschwindigkeit und Qualität.
+provider_desc_openrouter: Zugriff auf viele Modelle über einen gemeinsamen Anbieter.
+provider_desc_player2: Kostenlose KI über die Player2-App. Kein API-Schlüssel nötig; die App muss geöffnet sein.
+import_character_card_button: ' Charakterkarte importieren'
+export_character_card_button: ' Charakterkarte exportieren'
+clean_character_card_button: Alle Felder leeren
+preview_prompt_button: Rohtext anzeigen
+character_building_label: Charakter erstellen
+character_image_building_label: Charakterbild
+character_name_building_label: Charaktername
+placeholder_character_name: Name des Charakters
+character_description_building_label: Charakterbeschreibung
+placeholder_character_description: Beschreibung und wichtige Fakten, die die KI über den Charakter kennen soll.
+character_personality_building_label: Persönlichkeit des Charakters
+placeholder_character_personality: Kurze Zusammenfassung der Persönlichkeit des Charakters
+scenario: Szenario
+placeholder_scenario: Szenario der Unterhaltung
+first_message_building_label: Erste Nachricht
+placeholder_first_message: Die erste Nachricht legt Ton, Stil und Kommunikationsweise des Charakters fest.
+example_messages_title: Beispieldialoge
+placeholder_example_messages: Beschreibt, wie der Charakter spricht. Vor jedem Beispiel muss das Makro <START> stehen.
+alternate_greetings_label: Alternative Begrüßungen
+placeholder_alternate_greetings: Du kannst beliebig viele alternative Begrüßungen eintragen. Vor jede Begrüßung gehört das
+  Makro <GREETING>.
+creator_notes_label: Notizen des Erstellers
+placeholder_creator_notes: Zusätzliche Hinweise zur Charakterkarte
+card_version_label: Version der Charakterkarte
+placeholder_card_version: Version der Charakterkarte
+user_persona_building_label: Benutzerpersona
+system_prompt_building_label: System-Prompt-Vorlage
+lorebook_building_label: Weltwissen
+character_creator_desc_custom_variable: Eigene Statusvariablen konfigurieren, die der Charakter während einer Unterhaltung
+  verfolgen kann.
+character_creator_btn_add_custom_variable: + Eigene Variable hinzufügen
+var_editor_id_label: VARIABLEN-ID
+var_editor_id_placeholder: z. B. vertrauen
+var_editor_name_label: ANZEIGENAME
+var_editor_name_placeholder: z. B. Vertrauen
+var_editor_type_label: DATENTYP
+var_editor_icon_label: HUD-SYMBOL
+var_editor_min_label: MINIMALWERT
+var_editor_max_label: MAXIMALWERT
+var_editor_default_label: STANDARDWERT
+var_editor_default_placeholder: z. B. 90, True oder Gegenstand1
+var_editor_prompt_label: SYSTEM-PROMPT-VORLAGE
+var_editor_prompt_placeholder: 'z. B. [Vertrauen: {value}/100]'
+var_preset_custom: Eigene Variablen (keine Vorlage)
+var_preset_romance: Romantik und Beziehungen (Zuneigung und Vertrauen)
+var_preset_rpg: RPG-Abenteuer (HP, Mana, Gold und Inventar)
+var_preset_survival: Tamagotchi (Hunger, Energie und Stimmung)
+var_preset_horror: Horror-Survival (Geisteszustand, Panik und Taschenlampe)
+var_preset_detective: Detektiv-Verhör (Verdacht und Hinweise)
+var_preset_yandere: 'Anime: Yandere-Besessenheit (Besessenheit und Geisteszustand)'
+var_preset_shonen: 'Anime: Shonen-Kampf (Geist, Wille und Dämon)'
+var_preset_maid: 'Anime: Maid und Meister (Loyalität, Niedlichkeit und Frechheit)'
+var_preset_chuuni: 'Anime: Chuunibyou-Wahnvorstellungen (Wahn und Fremdscham)'
+var_preset_tsundere: 'Anime: Klassische Tsundere (Abwehr und Zuneigung)'
+var_preset_kuudere: 'Anime: Stille Kuudere (Zurückhaltung und Verbundenheit)'
+var_preset_dandere: 'Anime: Schüchterne Dandere (Schüchternheit und Bindung)'
+var_preset_himedere: 'Anime: Edle Himedere (Anspruchsdenken und Verletzlichkeit)'
+var_editor_preset_label: 'VORLAGE LADEN:'
+var_editor_apply_preset_btn: Übernehmen
+var_preset_confirm_title: Vorlage anwenden
+var_preset_confirm_msg: Diese Vorlage überschreibt und entfernt alle derzeitigen benutzerdefinierten Variablen. Möchtest du
+  fortfahren?
+var_editor_del_btn: Löschen
+create_character_button_3: Charakter erstellen
+total_tokens_label: "Tokens gesamt: 0"
+search_placeholder: Suchen
+var_editor_save_preset_btn: Vorlage speichern
+var_editor_delete_preset_btn: Vorlage löschen
+navigation_lbl: NAVIGATION
+character_creator_item_general_info: Allgemeine Informationen
+character_creator_item_personality: Persönlichkeit und Szenario
+character_creator_item_dialogues: Dialoge und Begrüßungen
+character_creator_item_advanced: Erweiterte Einstellungen und Lore
+character_creator_item_export: Export und Werkzeuge
+character_creator_title_general_info: Allgemeine Informationen
+character_creator_title_personality: Persönlichkeit und Szenario
+character_creator_title_dialogues: Dialoge und Begrüßungen
+character_creator_title_advanced: Erweiterte Einstellungen und Lore
+character_creator_title_custom_variable: Variablen und Status
+character_creator_title_export: Export und Werkzeuge
+models_hub_gguf_error: Keine GGUF-Modelle gefunden.
+models_hub_my_models: ' Meine Modelle'
+models_hub_popular: ' Beliebt'
+models_hub_recommendations: Empfehlungen
+model_widget_delete: 'Möchtest du dieses Modell löschen:'
+model_widget_delete_2: Dieser Vorgang kann nicht rückgängig gemacht werden.
+button_set_default: Als Standard festlegen
+button_launch_server: Modell laden
+button_disable_server: Modell entladen
+button_delete_model: Löschen
+models_hub_no_models: Der Ordner mit den lokalen Sprachmodellen ist leer
+button_download_model: Modell herunterladen
+models_hub_author: Autor –
+models_hub_downloads: Downloads –
+models_hub_compatibility: 'Kompatibilität: '
+models_hub_open_folder_btn: ' Ordner öffnen'
+models_hub_change_folder_btn: ' Verzeichnis ändern'
+download_model_title: "Modell herunterladen"
+select_quant_title: Quantisierungsstufe auswählen
+available_files_text: "Verfügbare Dateien im Repository:"
+quant_recommendation_text: "Empfehlung: Dateien mit „Q4_K_M“ oder „Q5_K_M“ laden – das beste Verhältnis aus Geschwindigkeit und Qualität."
+status_ready_download: Bereit zum Herunterladen.
+status_init_download: Download wird initialisiert …
+status_cancelling: Download wird abgebrochen und aufgeräumt …
+status_download_complete: Download abgeschlossen!
+btn_download_model: ' Herunterladen'
+btn_stop_download: Download stoppen
+btn_stopping: Wird gestoppt …
+btn_downloaded: ' Heruntergeladen ✓'
+btn_try_again: ' Erneut versuchen'
+error_title: Fehler
+error_download_failed: '{filename} konnte nicht heruntergeladen werden:
+
+
+  {error_msg}'
+network_error: "Netzwerkfehler: "
+system_error: "Systemfehler: "
+time_h: h
+time_m: m
+time_s: s
+time_left: "übrig"
+rp_editors_title: Werkstatt
+rp_editors_subtitle: Erstelle Charaktere, gestalte Szenen mit Yume-Bühne und verwalte Weltwissen, Personas und System-Prompts.
+rp_card_character_editor_title: Charaktereditor
+rp_card_character_editor_desc: Erstelle eigene Charaktere mit Persönlichkeiten, Hintergrundgeschichten und Dialogvorlagen.
+rp_card_soul_stage_title: Yume-Bühne
+rp_card_soul_stage_desc: Erlebe interaktive Geschichten mit mehreren Charakteren und einer KI-Regie.
+rp_card_lorebook_title: Lorebooks
+rp_card_lorebook_desc: Erstelle Regeln, Orte und Weltereignisse für deine Szenarien.
+rp_card_personas_title: Personas
+rp_card_personas_desc: Verwalte Benutzerprofile, Avatare und Identitätsbeschreibungen.
+rp_card_prompts_title: System-Prompts
+rp_card_prompts_desc: Konfiguriere Anweisungen und das Format, in dem die KI Charakterdaten erhält.
+rp_card_discord_bot_title: Discord-Gateway
+rp_card_discord_bot_desc: Verbinde deine Charaktere mit Discord und chatte von überall mit ihnen.
+rp_card_image_gen_title: Bildgenerierung
+rp_card_image_gen_desc: Konfiguriere die KI-Bildgenerierung für deine Charaktere und Geschichten.
+conversation_provider_title: Anbieter (lokal oder Cloud-API)
+api_configuration_title: "API-Konfiguration"
+user_profile_title: Benutzerprofil
+localization_title: Lokalisierung und Übersetzung
+audio_devices_title: Audio Devices
+hardware_spec_title: Hardware Specifications
+llm_settings_title: LLM-Einstellungen
+memory_and_offloading_title: Speicher und Auslagerung
+generation_params_title: "Generierungsparameter"
+global_editors_title: "Globale Editoren"
+visualizations_title: "Visualisierung (Live2D / VRM)"
+sub_modules_title: "Untermodule"
+options_sidebar_title: EINSTELLUNGEN
+label_base_url: Basis-URL
+label_mistral_model: Mistral-Modell
+gpu_layers_text: GPU-Layer
+context_size_text: "Kontextgröße"
+temperature_label: "Temperatur"
+top_p_label: Top P
+repeat_penalty_label: "Wiederholungsstrafe"
+max_tokens_label: Maximale Tokenanzahl
+configuration_tab: Konfiguration
+conversation_method_title: Konversationsmethode
+conversation_method_label: Anbieter
+conversation_method_item_cai: Character AI
+conversation_method_item_mistralai: Mistral AI
+conversation_method_item_openai: OpenAI
+conversation_method_item_openrouter: OpenRouter
+api_label: API-Schlüssel
+placeholder_api_value: API-Schlüssel eingeben
+placeholder_mistral_model_endpoint: API-Endpunkt des Mistral-Modells eingeben
+openrouter_models_label: Modell
+placeholder_base_url: Eigene Endpunkt-URL (optional)
+placeholder_base_api: "API-Wert eingeben (optional)"
+user_building_title: Benutzerpersona
+choose_your_name_label: Gib deinen Namen ein
+choose_your_description_label: Beschreibe dich
+placeholder_user_name: "Dein Name"
+placeholder_user_description: "Deine Persönlichkeit"
+choose_your_avatar_label: Avatar auswählen
+system_tab: System
+language_title: Sprache
+program_language_label: Programmsprache
+program_language_item_en: Englisch
+program_language_item_ru: Russisch
+devices_title: "Geräte"
+input_device_label: Eingabegerät
+output_device_label: Ausgabegerät
+translator_title: Übersetzer
+choose_translator_label: Übersetzer auswählen
+translator_item_none: Aus
+translator_item_google: Google
+translator_item_yandex: Yandex
+target_language_label: Zielsprache
+target_language_item_ru: Russisch
+translator_mode_item_both: Beide
+translator_mode_item_user: Nachricht des Benutzers
+translator_mode_item_character: Charakternachricht
+mode_translator_label: Modus
+computer_specs_title: "Computer-Daten"
+no_gpu: Keine GPU erkannt
+section_app_interface: PROGRAMMOBERFLÄCHE
+section_message_translation: NACHRICHTENÜBERSETZUNG
+section_audio_channels: AUDIO-EIN-/AUSGABE
+section_system_resources: SYSTEMRESSOURCEN
+local_llm_tab: LLM-Einstellungen
+llm_options_label: Server-Endpunkt
+llm_title: Einstellungen für lokales LLM
+llm_hw_title: Hardware und Backend
+llm_format_title: Prompting und Formatierung
+llm_gen_title: Allgemeine Generierungsparameter
+llm_adv_title: Erweiterte Sampling-Einstellungen für lokales LLM
+choose_llm_device_label: Rechenkonfiguration
+enable_mlock_checkbox: Speicherseiten sperren (MLock)
+enable_flash_attention_checkbox: Flash Attention
+chat_template_label: Chat-Vorlage
+chat_template_auto: Automatisch
+stop_strings_label: "Stopp-Zeichenfolgen"
+stop_strings_placeholder: \nUser:, </s>, <|eot_id|>, <|im_end|>
+reasoning_mode_checkbox: Denk-/Reasoning-Modus
+no_mmap_checkbox: No-MMAP-Modus
+max_tokens_text: Maximale Tokenanzahl
+temperature_text: "Temperatur"
+freq_penalty_text: "Häufigkeitsstrafe"
+pres_penalty_text: "Präsenzstrafe"
+min_p_text: Min-P
+top_p_text: Top-P
+dyn_temp_min_text: Dynamische Temperatur – Minimum
+dyn_temp_max_text: Dynamische Temperatur – Maximum
+xtc_prob_text: "XTC-Wahrscheinlichkeit"
+xtc_thresh_text: "XTC-Schwelle"
+dry_mult_text: "DRY-Multiplikator"
+dry_base_text: "DRY-Basis"
+dry_length_text: "DRY erlaubte Länge"
+enable_adv_sampling_text: Erweitertes Sampling aktivieren
+enable_adv_sampling_tooltip: Wenn deaktiviert, werden die normalen Generierungseinstellungen aus Karte 1 verwendet. Erweiterte
+  Einstellungen werden ignoriert.
+kv_cache_label: "KV-Cache-Typ"
+batch_size_text: "Prompt-Batchgröße"
+cpu_threads_text: "CPU-Threads"
+custom_args_label: "Eigene Argumente"
+section_hw_tuning: LEISTUNGS- UND SPEICHEROPTIMIERUNG
+section_response_control: ANTWORTSTEUERUNG
+section_creativity: KREATIVITÄT UND SAMPLING
+section_penalties: WIEDERHOLUNGSSTRAFEN
+section_core_samplers: KERN-SAMPLER
+section_dyn_temp: DYNAMISCHE TEMPERATUR
+section_xtc: XTC (GEGEN KLISCHEES)
+section_dry: DRY (GEGEN ENDLOSSCHLEIFEN)
+section_prompt_structure: PROMPT-STRUKTUR UND SYNTAX
+section_inference_engine: INFERENZ-ENGINE
+llama_cpp_updater: "LLAMA.CPP-UPDATER"
+checking_current_build: 'Aktuelle Version: wird geprüft …'
+lbl_target_tr: "Ziel:"
+lbl_release_notes_tr: "Verbinde mit der GitHub-API ..."
+rollback_btn: Zurücksetzen
+rollback_btn_tooltip: Vorherige Version wiederherstellen
+update_now_btn: Jetzt aktualisieren
+no_release_notes: Keine Versionshinweise verfügbar.
+current_ver_label: 'Aktuell:'
+github_error: Fehler bei der Verbindung zu GitHub
+conn_failed: Verbindung fehlgeschlagen.
+version_title: Version
+status_up_to_date: Du verwendest die aktuelle Version.
+btn_reinstall: Neu installieren
+status_no_binary: Keine kompatible Binärdatei gefunden.
+status_restoring: Sicherung wird wiederhergestellt …
+btn_done: Fertig
+update_btn: Aktualisieren
+update_engine_tooltip: Lädt die neuesten llama.cpp-Binärdateien für das ausgewählte Backend herunter und installiert sie.
+updater_subtitle: "BACKEND-ENGINE"
+tools_tab: Tool-Aufrufe und MCP
+tools_native_title: "Native KI-Fähigkeiten"
+section_tool_calling: BERECHTIGUNGEN FÜR TOOL-AUFRUFE
+enable_tool_calling_text: Native Tool-Aufrufe aktivieren
+enable_tool_calling_tooltip: Erlaubt der KI, während der Generierung direkt Python-Funktionen auszuführen.
+tool_web_title: Websuche
+tool_web_desc: Durchsucht das Web über eine DuckDuckGo-Schnittstelle nach aktuellen Fakten, Wetter oder Nachrichten.
+tool_browse_web_title: Browser-Agent [Playwright]
+tool_browse_web_desc: 'Automatisiert die Recherche mit Chromium: liest Seiteninhalte, klickt Schaltflächen, füllt Formulare
+  aus und lädt Dateien in einen Arbeitsbereich.'
+tool_gui_action_title: GUI-Steuerung [Computerbedienung]
+tool_gui_action_desc: Steuert Maus und Tastatur, klickt, tippt Text, scrollt Fenster und verwendet Tastenkombinationen.
+tool_execute_code_title: Code ausführen [Code-Interpreter]
+tool_execute_code_desc: Schreibt und führt Python- und PowerShell-Skripte in einer isolierten lokalen Umgebung für Berechnungen
+  und Dateiverarbeitung aus.
+tool_file_organizer_title: Dateiverwaltung [Arbeitsbereich]
+tool_file_organizer_desc: Durchsucht Desktop und Ordner und organisiert Dateien automatisch in Kategorien.
+tool_planner_title: Aufgabenplaner [Planung]
+tool_planner_desc: Zerlegt komplexe Aufgaben in aufeinanderfolgende Schritte und führt sie mit Sicherheitsprüfungen aus.
+tool_app_control_title: App-Steuerung
+tool_app_control_desc: 'Verwaltet Windows-Apps und Verknüpfungen: Programme starten, Ordner öffnen, Fenster fokussieren oder
+  Prozesse beenden.'
+tool_env_snapshot_title: Systemüberwachung [Hardware-Wächter]
+tool_env_snapshot_desc: Überwacht Hardwarewerte und meldet unter anderem niedrigen Akkustand, GPU-Überhitzung oder abgeschlossene
+  Downloads.
+tool_hardware_specs_title: PC-Hardware ermitteln
+tool_hardware_specs_desc: Ermittelt CPU, RAM, GPU, VRAM und Speicher, um die Kompatibilität mit Spielen und lokalen KI-Modellen
+  einzuschätzen.
+tool_read_clipboard_title: Zwischenablage lesen
+tool_read_clipboard_desc: Liest den aktuellen Text aus der Zwischenablage zur Analyse oder Beantwortung von Fragen.
+tool_url_title: URL öffnen
+tool_url_desc: Öffnet Links oder Webseiten bei Bedarf im Standardbrowser.
+tool_sysinfo_title: Systeminformationen
+tool_sysinfo_desc: Liest Datum und Uhrzeit des PCs aus, damit die KI den aktuellen Zeitkontext berücksichtigen kann.
+tool_media_title: Mediensteuerung
+tool_media_desc: Steuert die Medienwiedergabe auf diesem Windows-PC, etwa Pause, Wiedergabe, nächster/vorheriger Titel.
+tool_vision_title: Screenshot analysieren [Vision]
+tool_vision_desc: Analysiert den aktiven Bildschirminhalt. Dafür wird ein Screenshot aufgenommen und an ein multimodales KI-Modell
+  gesendet. Sehr rechenintensiv!
+sc_approval_title: ⚠️ Der Begleiter möchte eine Aktion ausführen
+sc_approval_action: Aktion
+sc_approval_allow: ✓ Erlauben
+sc_approval_deny: ✕ Ablehnen
+mcp_title: Model Context Protocol (MCP)
+section_mcp_settings: EXTERNE MCP-SERVER
+mcp_description: Verbinde externe MCP-Server (z. B. SearXNG oder GitHub), ohne native Python-Plugins schreiben zu müssen.
+  Dies dient als Proxy für externe Werkzeuge.
+enable_mcp_text: MCP-Proxy-Integration aktivieren
+mcp_url_label: MCP-Server-URL
+mcp_url_placeholder: z. B. http://127.0.0.1:8000
+sow_system_tab: Yume-Module
+sow_system_title: Yume-System
+enable_sow_system_checkbox: Yume-System aktivieren
+enable_ambient_checkbox: Umgebungsgeräusche aktivieren
+enable_soul_memory: Yume-Gedächtnis aktivieren
+enable_summary_checkbox: Automatische Zusammenfassungen aktivieren
+settings_summary_interval: 'Intervall (Nachrichten):'
+sow_system_modules_title: Module
+section_render_engine: RENDER-ENGINE
+section_environment_background: HINTERGRUND DER UMGEBUNG
+section_ambient_audio: UMGEBUNGSAUDIO
+section_cognitive_architecture: KOGNITIVE ARCHITEKTUR
+section_web_server: WEBINTERFACE-SERVER
+web_server_card_title: Lokaler Webserver
+soul_memory_mode_label: 'Gedächtnis-Modus:'
+soul_memory_batch_label: 'Batchgröße (0 = manuell):'
+web_server_status_stopped: 'Status: Gestoppt'
+web_server_start_btn: Server starten
+web_server_stop_btn: Server stoppen
+web_browser_open_btn: Im Browser öffnen
+web_browser_copy_mobile_btn: Mobil-Link kopieren
+web_browser_copied_btn: Kopiert! 📋
+web_server_starting_lbl: 'Status: Startet …'
+web_server_starting_lbl_2: 'Status: Läuft unter http://127.0.0.1:8000'
+web_server_error: 'Status: Port 8000 belegt oder Fehler'
+live2d_mode_label: Modus auswählen
+live2d_mode_with_gui: Yume-System
+live2d_mode_without_gui: Yume-Desktop-Begleiter
+choose_model_fps: Bildrate des Modells wählen
+model_fps_30: 30 FPS
+model_fps_60: 60 FPS
+model_fps_120: 120 FPS
+choose_model_background: Modellhintergrund auswählen
+model_background_1: Farbe
+model_background_2: Bild
+choose_model_background_color: Hintergrundfarbe auswählen
+model_background_color_1: Schwarz
+model_background_color_2: Tiefblau
+model_background_color_3: Bordeaux
+model_background_color_4: Dunkelgrün
+model_background_color_5: Zartviolett
+model_background_color_6: Warmes Kohlegrau
+choose_model_background_image: Hintergrundbild auswählen
+personas_button: Personas-Editor
+personas_editor_title: Persona-Editor
+personas_editor_choose_avatar: Bild auswählen
+personas_editor_default_btn: Als Standard festlegen
+personas_editor_delete_btn: Löschen
+personas_editor_name: Name der Persona
+personas_editor_description: Beschreibung der Persona
+personas_editor_close: Schließen
+personas_editor_add: Persona hinzufügen
+personas_editor_save: Änderungen speichern
+personas_editor_error: Der Name der Persona darf nicht leer sein.
+personas_editor_create_new: Neue Persona erstellen
+personas_editor_create_btn: Persona erstellen
+personas_editor_name_placeholder: 'Zum Beispiel: großer Held'
+personas_editor_description_placeholder: Beschreibe Rolle, Tonfall und Hintergrund der Persona …
+personas_editor_default_persona: (Standardpersona)
+personas_editor_confirm_delete: Löschen bestätigen
+personas_editor_confirm_delete_text: 'Möchtest du diese Persona wirklich löschen? '
+personas_editor_library: PERSONA-BIBLIOTHEK
+personas_editor_default_badge: STANDARD
+personas_editor_avatar_hint: 'Empfohlene Größe: 256 × 256 Pixel'
+system_prompt_button: System-Prompt-Editor
+system_prompt_editor_title: System-Prompt-Editor
+system_prompt_editor_system_prompt: System-Prompt
+system_prompt_editor_system_prompt_edit: System-Prompt hier eingeben
+system_prompt_editor_order: Reihenfolge der Prompt-Bausteine
+system_prompt_editor_default_btn: Standard
+system_prompt_editor_presets: Vorlagen
+system_prompt_editor_new_preset: Neue Vorlage
+system_prompt_editor_save_preset: Vorlage speichern
+system_prompt_editor_delete_preset: Vorlage löschen
+system_prompt_editor_delete_preset_title: Vorlage löschen
+system_prompt_editor_delete_preset_first: 'Möchtest du diese Vorlage wirklich entfernen:'
+system_prompt_editor_delete_preset_second: Dieser Vorgang kann nicht rückgängig gemacht werden.
+system_prompt_editor_preset_name: 'Namen der Vorlage eingeben:'
+system_prompt_editor_header_title: SYSTEM-PROMPT-EDITOR
+system_prompt_editor_subtitle: BAUSTEINE UND VORLAGEN
+system_prompt_editor_text_label: SYSTEM-PROMPT-ANWEISUNG
+system_prompt_editor_component_label: REIHENFOLGE DER PROMPT-BAUSTEINE (zum Sortieren ziehen)
+system_prompt_editor_panel_title: VORLAGEN-STEUERUNG
+preset_saved_successfully: Vorlage erfolgreich gespeichert.
+lorebook_editor_title: Weltwissen-Editor
+lorebook_editor_select: 'Aktuelles Weltwissen:'
+lorebook_editor_btn_create: Neues Weltwissen erstellen
+lorebook_editor_options: Weltwissen-Optionen (Import/Export/Löschen)
+lorebook_editor_edit_description: Beschreibung bearbeiten
+lorebook_editor_import_lorebook: JSON importieren
+lorebook_editor_export_lorebook: JSON exportieren
+lorebook_editor_delete_lorebook: Lorebook löschen
+lorebook_editor_delete_lorebook_confirm: '{name} löschen?'
+lorebook_editor_search: Einträge suchen…
+lorebook_editor_add_entry: + Neuen Eintrag hinzufügen
+lorebook_editor_depth: 'Suchtiefe:'
+lorebook_editor_entry_name: Name des Eintrags
+lorebook_editor_entry_description: z. B. Charaktername, Ort, Ereignis
+lorebook_editor_trigger: Auslösemethode
+lorebook_editor_keywords: Auslöse-Schlüsselwörter
+lorebook_editor_keywords_example: Zauberer, Magie, Zauberspruch
+lorebook_editor_exclude_keywords: Auszuschließende Schlüsselwörter
+lorebook_editor_exclude_keywords_example: Mensch, Physik (verhindert die Aktivierung, wenn vorhanden)
+lorebook_editor_start_msg: Startnachricht
+lorebook_editor_end_msg: Endnachricht
+lorebook_editor_hint: Wird nur zwischen diesen Nachrichtennummern aktiviert.
+lorebook_editor_content_title: Weltwissen / Anweisung
+lorebook_editor_content_hint: Dieser Text wird bei Auslösung in den Prompt eingefügt …
+lorebook_editor_timed_title: Erweiterte und zeitgesteuerte Effekte
+lorebook_editor_sticky: Dauer
+lorebook_editor_sticky_hint: Bleibt nach der Auslösung für N Nachrichten aktiv.
+lorebook_editor_cooldown: Abklingzeit
+lorebook_editor_cooldown_hint: Kann erst nach N Nachrichten erneut ausgelöst werden.
+lorebook_editor_suffix: ' Nachr.'
+lorebook_editor_delay: Verzögerung
+lorebook_editor_delay_hint: Kann erst aktiviert werden, wenn der Chat N Nachrichten enthält.
+lorebook_editor_probability: Wahrscheinlichkeit
+lorebook_editor_probability_hint: Chance auf Auslösung, wenn alle Bedingungen erfüllt sind.
+lorebook_editor_delete_entry: Eintrag löschen
+lorebook_editor_save: Alle Änderungen speichern
+lorebook_editor_main_hint: Wähle einen Eintrag zum Bearbeiten oder erstelle einen neuen.
+lorebook_editor_delete: Löschen
+lorebook_editor_delete_question: Eintrag löschen?
+lorebook_editor_new_lorebook: Neues Lorebook
+lorebook_editor_lorebook_name: 'Name:'
+lorebook_editor_edit_description_title: Beschreibung des Weltwissens bearbeiten
+lorebook_editor_edit_description_label: 'Beschreibung für {name}:'
+lorebook_editor_edit_description_updated: Beschreibung für das Weltwissen „{name}“ wurde aktualisiert.
+lorebook_editor_export_success: Weltwissen wurde exportiert.
+lorebook_editor_export_success_desc: Weltwissen erfolgreich gespeichert.
+lorebook_editor_export_error: Exportfehler
+lorebook_editor_import_success: Weltwissen wurde importiert.
+lorebook_editor_import_success_desc: Weltwissen „{new_name}“ mit {count} Einträgen importiert.
+lorebook_editor_import_error: Importfehler
+lorebook_editor_import_error_desc: 'Weltwissen konnte nicht gelesen werden: {error}'
+lorebook_editor_saved: Gespeichert
+lorebook_editor_saved_desc: Lorebooks wurden erfolgreich gespeichert.
+lorebook_editor_scan_depth: Such-Tiefe
+lorebook_editor_rename_lorebook: Lorebook umbenennen
+lorebook_editor_rename_label: 'Neuer Name für „{name}“:'
+lorebook_editor_rename_error_title: Fehler
+lorebook_editor_rename_error_exists: Ein Lorebook mit diesem Namen existiert bereits.
+lorebook_engine_title: Lorebook-Engine
+lorebook_library_label: BIBLIOTHEK
+lorebook_rename_btn: Umbenennen
+lorebook_filter_placeholder: Einträge filtern …
+lorebook_entries_count: '{total} Einträge'
+lorebook_entries_shown: '{shown} von {total} Einträgen'
+lorebook_empty_state: Wähle einen Eintrag aus oder erstelle einen neuen, um mit der Bearbeitung zu beginnen.
+lorebook_entry_name_placeholder: Name des Eintrags …
+lorebook_trigger_type_label: AUSLÖSERTYP
+lorebook_injection_label: EINFÜGUNG
+lorebook_trigger_config_label: AUSLÖSERKONFIGURATION
+lorebook_content_label: LORE-INHALT / SZENARIOTEXT
+lorebook_sticky_label: HAFTEND
+lorebook_cooldown_label: ABKLINGZEIT
+lorebook_delay_label: VERZÖGERUNG
+lorebook_probability_label: WAHRSCHEINLICHKEIT
+lorebook_apply_changes_btn: ÄNDERUNGEN ÜBERNEHMEN
+lorebook_include_keywords_label: SCHLÜSSELWÖRTER (durch Komma getrennt)
+lorebook_include_keywords_placeholder: Drache, uralt, Feuer …
+lorebook_exclude_keywords_label: AUSSCHLUSSBEGRIFFE (durch Komma getrennt)
+lorebook_exclude_keywords_placeholder: Ausnahmebegriffe …
+lorebook_semantic_label: SZENENBESCHREIBUNG FÜR SEMANTISCHE ERKENNUNG
+lorebook_semantic_placeholder: Beschreibe die Szene, die die KI erkennen soll …
+lorebook_always_on_hint: Immer aktiv – wird bei jeder Nachricht in den Kontext eingefügt.
+lorebook_random_hint: Wird pro Runde zufällig anhand der Wahrscheinlichkeit ausgelöst.
+lorebook_parent_uid_label: ELTERN-UID (-1 = beliebig)
+lorebook_chain_delay_label: KETTENVERZÖGERUNG (Nachrichten nach dem Elterneintrag)
+lorebook_first_msg_label: ERSTE NACHRICHT (einschließlich)
+lorebook_last_msg_label: LETZTE NACHRICHT (einschließlich)
+lorebook_any_value: beliebig (-1)
+lorebook_delete_entry_confirm: Diesen Eintrag löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.
+lorebook_delete_lb_confirm: „{name}“ und alle zugehörigen Einträge löschen?
+lorebook_export_success_toast: „{name}“ wurde gespeichert.
+lorebook_injection_passive: Passiv
+lorebook_injection_active: Aktiv
+lorebook_depth_suffix: Nachrichten
+lorebook_editor_suffix_entries: Einträge
+lorebook_trig_keyword: Schlüsselwörter
+lorebook_trig_semantic: Semantisch
+lorebook_trig_always_on: Immer aktiv
+lorebook_trig_random: Zufällig
+lorebook_trig_chain: Kette
+lorebook_trig_scenario: Szenario
+lorebook_trig_title_keyword: SCHLÜSSELWORTABGLEICH
+lorebook_trig_title_semantic: SEMANTISCHE SITUATION
+lorebook_trig_title_always_on: IMMER AKTIV
+lorebook_trig_title_random: ZUFÄLLIGER AUSLÖSER
+lorebook_trig_title_chain: KETTENABHÄNGIGKEIT
+lorebook_trig_title_scenario: SZENARIOBEREICH
+lorebook_selector_title: Weltwissen auswählen
+lorebook_selector_search: Lorebooks suchen …
+lorebook_selector_apply: Lorebooks übernehmen
+import_lorebook_title: Weltwissen importieren?
+import_lorebook_text: Diese Karte enthält eingebettetes Weltwissen „{book_name}“. Möchtest du es deiner Bibliothek hinzufügen?
+import_lorebook_added_text: Weltwissen „{final_name}“ wurde zur Bibliothek hinzugefügt.
+appearance_wtheme_default: Standard
+appearance_wtheme_obsidian: Obsidian
+appearance_wtheme_graphite: Graphite
+appearance_wtheme_nord: Nord
+appearance_wtheme_oceanic: Oceanic
+appearance_wtheme_midnight: "Mitternacht"
+appearance_wtheme_synthwave: Synthwave
+appearance_wtheme_royal: "Königlich"
+appearance_wtheme_rose: "Rosé"
+appearance_wtheme_forest: "Wald"
+appearance_wtheme_coffee: "Kaffee"
+appearance_wtheme_amber: "Bernstein"
+appearance_wtheme_slate: "Schiefer"
+appearance_wtheme_dracula: Dracula
+appearance_wtheme_cyberpunk: Cyberpunk
+appearance_wtheme_tokyo_night: "Tokio-Nacht"
+appearance_preset_default: Standard
+appearance_preset_nord: Nord
+appearance_preset_dracula: Dracula
+appearance_preset_onedark: One Dark
+appearance_preset_material: Material
+appearance_preset_sakura: Sakura
+appearance_preset_abyss: "Abgrund"
+appearance_preset_midnight: "Mitternacht"
+appearance_preset_emerald: "Smaragd"
+appearance_preset_crimson: "Purpur"
+appearance_color_white: "Weiß"
+appearance_color_soft: "Sanft"
+appearance_color_dimmed: "Gedimmt"
+appearance_color_warm_gray: "Warmgrau"
+appearance_color_cool_gray: "Kaltgrau"
+appearance_color_cream: "Creme"
+appearance_color_arctic: "Arktis"
+appearance_color_lavender: "Lavendel"
+appearance_color_sage: "Salbei"
+appearance_color_amber: "Bernstein"
+appearance_color_gold: Gold
+appearance_color_coral: "Koralle"
+appearance_color_sky: Sky
+appearance_color_lilac: "Flieder"
+appearance_color_sakura: Sakura
+appearance_color_muted: "Gedämpft"
+appearance_color_gray: "Grau"
+appearance_color_nord_green: "Nord-Grün"
+appearance_color_dracula_orange: Orange
+appearance_color_rose: "Rosa"
+appearance_color_dim: Dim
+appearance_color_blue: "Blau"
+appearance_color_green: "Grün"
+appearance_color_dark: "Dunkel"
+appearance_color_darker: "Dunkler"
+appearance_color_slate: "Schiefer"
+appearance_color_forest: "Wald"
+appearance_color_warm: Warm
+appearance_color_standard: "Standard"
+appearance_color_bright: "Hell"
+appearance_color_cool: "Kühl"
+appearance_color_accent: "Akzent"
+appearance_tooltip_custom: "Eigene Farbe"
+appearance_lbl_custom: "Eigene"
+appearance_dlg_user_bubble: "Farbe der Nutzer-Blase"
+appearance_dlg_char_bubble: "Farbe der Charakter-Blase"
+appearance_dlg_pick_color: "Farbe wählen"
+appearance_header_theme: "Design"
+appearance_header_text_color: "Textfarbe"
+appearance_header_quotes: "Anführungszeichen"
+appearance_header_italic: "Kursiv"
+appearance_lbl_corner_radius: "Eckenradius"
+appearance_lbl_bubble_opacity: "Blasen-Deckkraft"
+appearance_lbl_font_size: "Schriftgröße"
+appearance_lbl_max_width: "Maximale Breite"
+appearance_btn_reset: "Zurücksetzen"
+appearance_btn_save: Speichern
+appearance_header_preview: Vorschau
+appearance_header_window_theme: "UI-Design"
+appearance_header_ui: Oberfläche (Seitenleiste und Schaltflächen)
+appearance_header_ui_accent: Akzentfarbe (aktiver Menüpunkt)
+appearance_header_ui_hover: Hover-Farbe (Hintergrund aktiver Schaltflächen)
+appearance_header_ui_text: Textfarbe der Schaltflächen
+appearance_tab_name: Darstellung
+author_notes_header_title: EDITOR FÜR AUTORENNOTIZEN
+author_notes_subtitle: GLOBALE ERZÄHLVORGABEN
+author_notes_hint: Diese Anweisungen werden dynamisch in den Kontext eingefügt. Nutze sie, um das Verhalten des Charakters
+  zu steuern, einen bestimmten Schreibstil vorzugeben oder wichtige Regeln festzulegen.
+author_notes_input_label: INHALT DER VORGABEN
+author_notes_editor_cancel: ABBRECHEN
+author_notes_editor_save: VORGABEN SPEICHERN
+author_notes_editor_placeholder: Gib hier Anweisungen oder Hinweise für den Charakter ein …
+summary_editor_title: Story-Gedächtnis-Editor
+summary_editor_heading: Handlungsgedächtnis
+summary_editor_covered_history: 'Abgedeckter Verlauf: Nachrichten 1–{last_seq}'
+summary_editor_current_memory_text: Aktueller Gedächtnistext (wird in den Kontext eingefügt)
+summary_editor_memory_empty: Das Gedächtnis ist leer …
+summary_editor_sum_instructions: Anweisungen zur Zusammenfassung (wie die KI die Handlung verdichten soll)
+summary_editor_instruction_placeholder: Anweisungen für die KI eingeben …
+summary_editor_clear: Gedächtnis leeren
+summary_editor_generate: Zusammenfassung erstellen
+summary_editor_tooltip: Fasst neue Nachrichten anhand der untenstehenden Anweisungen sofort zusammen.
+summary_editor_save: Änderungen speichern
+summary_editor_clear_title: Gedächtnis leeren?
+summary_editor_clear_text: Möchtest du das Story-Gedächtnis wirklich löschen?
+summary_editor_update_text: Aktualisierung angestoßen. Das Gedächtnis wird in Kürze anhand der neuen Anweisungen erneuert.
+summary_editor_generating: Wird erstellt …
+model_generate_summary: Zusammenfassung wird erstellt …
+summary_editor_header_title: STORY-GEDÄCHTNIS-EDITOR
+summary_editor_subtitle: ARCHIV UND KOMPRIMIERUNG
+summary_editor_covered_badge: 'Verlauf: 1–{last_seq}'
+summary_editor_current_memory_label: AKTUELLES GEDÄCHTNISARCHIV
+summary_editor_prompt_label: VORGABEN FÜR DIE ZUSAMMENFASSUNG
+summary_editor_saved_toast: Gedächtnis und Anweisungen wurden gespeichert.
+character_name_chat: Charaktername
+write_user_message_placeholder: "Schreibe deine Nachricht an den Charakter"
+typingIndicator_text: Denkt nach
+model_generate_text: Text wird generiert …
+user_message_textEdit: Schreibe deine Nachricht als {user_name}
+user_message_textEdit_default: Schreibe deine Nachricht als Benutzer
+input_placeholder: "Lenke die Geschichte oder sprich mit jemandem ..."
+tts_selector_title: Text-to-Speech-Auswahl
+tts_selector_title_2: Charakterstimme
+tts_selector_title_label: Text-to-Speech-Methode auswählen
+tts_selector_save_button: Auswahl speichern
+tts_selector_save_information: Stimme erfolgreich gespeichert
+tts_selector_save_information_error: Wähle eine Stimme für den Charakter aus!
+tts_selector_select_button: Qwen-3-Einstellungen speichern
+tts_selector_elevenlabs: ElevenLabs-Konfiguration
+tts_selector_elevenlabs_2: ElevenLabs-API-Token eingeben …
+tts_selector_elevenlabs_3: Voice-ID von ElevenLabs eingeben
+tts_selector_elevenlabs_lbl_1: ELEVENLABS-API-SCHLÜSSEL
+tts_selector_xttsv2: XTTSv2-Konfiguration
+tts_selector_xttsv2_male: Männlich
+tts_selector_xttsv2_female: Weiblich
+tts_selector_xttsv2_calm_female: Weiblich, ruhig
+tts_selector_xttsv2_lbl_1: SPRECHERMODELL AUSWÄHLEN
+tts_selector_enable_rvc: RVC aktivieren
+tts_selector_invalid_rvc: Ungültiger RVC-Ordner
+tts_selector_no_folders: Keine Ordner gefunden
+tts_selector_no_folder: Kein Ordner
+tts_selector_rvc_no_folder: RVC ist aktiviert, aber kein Ordner ausgewählt
+tts_selector_no_pth: Keine PTH-Datei
+tts_selector_no_pth_in_folder: 'Keine .pth-Datei im Ordner gefunden: '
+tts_selector_edge: Edge-TTS-Konfiguration
+tts_selector_edge_tts_lbl_1: SPRACHE
+tts_selector_edge_tts_lbl_2: STIMME
+tts_selector_error: Eingabefehler
+tts_selector_error_2: Bitte gib einen gültigen Stimmnamen ein.
+tts_selector_error_3: Keine Stimmen
+tts_selector_error_4: Für diesen Namen wurden keine Stimmen gefunden.
+tts_selector_error_5: Abruffehler
+tts_selector_error_6: 'Stimmen konnten nicht abgerufen werden: '
+tts_selector_kokoro: Kokoro-TTS-Konfiguration
+tts_selector_kokoro_lbl_1: KOKORO-STIMME AUSWÄHLEN
+tts_selector_silero: Silero-RU-Konfiguration
+tts_selector_silero_lbl_1: RUSSISCHE STIMME AUSWÄHLEN
+tts_selector_qwen3: Qwen3-TTS-Konfiguration
+tts_selector_qwen3_lbl_1: MODELLGRÖSSE
+tts_selector_qwen3_lbl_2: SPRACHE
+tts_selector_qwen3_lbl_device: RECHENGERÄT
+tts_qwen_mode: GENERIERUNGSMODUS
+tts_selector_qwen3_lbl_3: VORDEFINIERTE STIMME WÄHLEN
+tts_selector_qwen3_lbl_4: STIMME AUF ENGLISCH BESCHREIBEN (PROMPT)
+tts_selector_qwen3_lbl_5: REFERENZ-AUDIODATEI (.WAV)
+tts_selector_qwen3_lbl_6: Keine Referenz-Audiodatei ausgewählt
+tts_selector_qwen3_lbl_7: Stilhinweis (optional)
+tts_selector_qwen3_lbl_ref_text: TRANSKRIPT DER REFERENZAUFNAHME (EMPFOHLEN)
+tts_selector_qwen3_lbl_ref_placeholder_text: Exakter Wortlaut der Referenzaufnahme (verbessert das Klonen) …
+expressions_selector_title: Ausdrucksauswahl
+expressions_selector_choose_method: Methode für Gesichtsausdrücke auswählen
+expressions_selector_nothing: Hier gibt es noch nichts anzuzeigen.
+expressions_selector_save_button: Auswahl speichern
+expressions_selector_mode_saved_title: Ausdrucksmodus gespeichert
+expressions_selector_mode_saved_body: Der Ausdrucksmodus wurde gespeichert.
+expressions_selector_select_folder: Ordner für Emotionen auswählen
+expressions_selector_no_folders: Keine Ordner gefunden
+expressions_selector_invalid_directory: Ungültiger Ordner für Gesichtsausdrücke
+expressions_selector_folder_saved_title: Emotionsordner gespeichert
+expressions_selector_foler_saved_body: Der Emotionsordner wurde gespeichert.
+expressions_selector_select_folder_live2d: Ordner mit dem Live2D-Modell auswählen
+expressions_selector_live2d_folder_saved_title: Live2D-Ordner gespeichert
+expressions_selector_live2d_folder_saved_body: Der Live2D-Ordner wurde gespeichert.
+expressions_selector_select_file_vrm: VRM-Modell auswählen
+expressions_vrm_selector_no_files: "Keine VRM-Dateien gefunden"
+expressions_vrm_selector_invalid_directory: "Ungültiger VRM-Modellordner"
+expressions_selector_vrm_file_saved_title: VRM-Datei gespeichert
+expressions_selector_vrm_file_saved_body: Die VRM-Datei wurde gespeichert.
+visual_engine_menu_title: VISUALISIERUNGS-ENGINE
+expressions_selector_nothing_desc: Erweiterte Visualisierung deaktivieren. Es wird nur die statische Charakterkarte angezeigt.
+motion_mapper_title: "Live2D-Bewegungszuordnung"
+motion_mapper_desc: "Weise jedem der 28 erkannten Gefühle eine bestimmte Körperanimationsgruppe zu."
+reset_def_btn: Standard wiederherstellen
+save_mapping_btn: Zuordnung speichern
+characters_gateway_trending: Im Trend
+characters_gateway_query: 'Deine Suchanfrage: '
+characters_gateway_tab_title: Charakterkarten
+characters_gateway_cai_add: Zur Liste hinzufügen
+gw_preview_type_lorebook: LOREBOOK
+gw_preview_type_scene: SZENARIO
+gw_preview_loading: Sichere Verbindung wird hergestellt …
+gw_preview_btn_close: Schließen
+gw_preview_btn_import: In das System importieren
+gw_preview_error: "⚠️  Datenbankverbindung fehlgeschlagen\nAsset-Details konnten nicht geladen werden:\n{error}"
+gw_preview_lorebook_summary: 'Datensatz enthält {count} kognitive Regeln:'
+gw_preview_unnamed: Unbenannter Eintrag
+gw_preview_trigger: Auslöser
+gw_preview_keys: Schlüssel
+gw_preview_header_context: WELTKONTEXT UND SZENARIO
+gw_preview_header_narration: EINLEITENDE ERZÄHLUNG
+gw_preview_header_style: ERZÄHLSTIL
+gw_preview_tone: Ton
+gw_preview_time: Zeit
+gw_card_author_prefix: von {author}
+gw_card_entries: 📖 {count} Einträge
+gw_card_location: 📍 {location}
+gw_card_add_lorebook: Zur Bibliothek hinzufügen
+gw_card_add_scene: Zu den Stages hinzufügen
+chat_edit_message: Nachricht bearbeiten
+chat_save_message: Speichern
+chat_delete_message: Löschen
+chat_edit_message_2: Bearbeiten
+chat_continue_message: Ab dieser Nachricht fortsetzen
+chat_regenerate_message: Neu generieren
+msg_action_translate: "Übersetzen"
+msg_action_generate_image: "Bild generieren"
+creator_info_button: Ersteller-Notizen
+creator_info_window_title: Ersteller-Notizen
+creator_info_title: 'Titel des Erstellers:'
+creator_info_close_button: Schließen
+export_card_button: Charakter exportieren
+character_edit_settings: 'Charaktereinstellungen: '
+character_edit_description: Beschreibung
+character_edit_description_placeholder_1: Charakterbeschreibung eingeben
+character_edit_description_placeholder_2: Charakterbeschreibung
+character_edit_personality: 'Persönlichkeit des Charakters:'
+character_edit_personality_placeholder: Persönlichkeitsmerkmale des Charakters eingeben
+character_edit_first_message: 'Erste Nachricht des Charakters:'
+character_edit_first_message_placeholder: Erste Nachricht des Charakters eingeben
+character_edit_save_button: Speichern
+character_edit_edit_title: Text bearbeiten
+character_edit_saved: Gespeichert
+character_edit_cancel: Abbrechen
+character_edit_saved_2: Änderungen wurden erfolgreich gespeichert.
+character_edit_saved_error: Fehler beim Speichern
+character_edit_saved_error_2: Charakter wurde in der Konfiguration nicht gefunden.
+character_edit_start_new_dialogue: Neuen Chat starten
+character_edit_start_new_dialogue_sure: Möchtest du wirklich einen neuen Chat starten?
+character_edit_start_new_dialogue_success: Ein neuer Chat wurde erfolgreich gestartet.
+character_settings_engine: ENGINE-EINSTELLUNGEN
+character_settings_subtitle: META UND PROMPTS
+character_settings_name_label: CHARAKTERNAME
+character_settings_nav_label: KONFIGURATION
+character_settings_new_chat_btn: NEUEN CHAT STARTEN
+character_settings_save_btn: ÄNDERUNGEN SPEICHERN
+character_settings_close_btn: SCHLIESSEN
+character_card_label: Charakterkarte
+export_card_dialog_title: Charakterkarte exportieren
+chat_manager_label: Chatverlauf verwalten
+character_edit_conv_method: Konversationsmethode
+character_edit_persona: Persona
+character_edit_prompt_preset: System-Prompt-Vorlage
+character_edit_lorebooks: Weltwissen
+character_settings_none: Keine
+character_settings_selected_count: 'Ausgewählt: {count}'
+invalid_sowchat_file: "Diese Datei ist keine gültige .sowchat-Datei."
+import_chat_mismatch_title: Charakter stimmt nicht überein
+import_chat_mismatch: Dieser Chat wurde für {exported_from} erstellt, du möchtest ihn aber in {character_name} importieren.
+  Trotzdem fortfahren?
+import_chat_conflict: Ein Chat mit der ID {chat_id} ist bereits vorhanden. Soll er überschrieben werden? Wenn du „Nein“ wählst,
+  wird ein neuer Chat angelegt.
+import_chat_conflict_title: Konflikt erkannt
+new_chat_title: Neuer Chat
+new_chat_prompt: 'Chatnamen eingeben:'
+duplicate_character_error_title: Doppelter Name
+duplicate_character_error: Ein Charakter mit diesem Namen existiert bereits. Dem Namen wird eine Nummer hinzugefügt.
+rename_chat_button: ''
+delete_chat_button: ''
+export_chat_button: Chat exportieren
+import_chat_button: Importieren
+btn_duplicate_character: "Duplizieren"
+new_folder_btn: Neuer Ordner
+folder_create_title: Neuer Ordner
+folder_create_subtitle: Organisiere deine Charaktere in eigenen Ordnern
+folder_name_label: 'Ordnername:'
+folder_name_placeholder: Ordnernamen eingeben …
+folder_select_chars_label: 'Charaktere auswählen:'
+folder_create_btn: Ordner erstellen
+folder_create_btn_with_count: Ordner erstellen ({group_count})
+folder_created: Ordner erstellt!
+folder_name_empty: Der Ordnername darf nicht leer sein.
+folder_name_exists: Ein Ordner mit diesem Namen existiert bereits.
+folder_editor_title: Ordner bearbeiten
+folder_members_label: 'Charaktere im Ordner:'
+folder_add_char: Charakter hinzufügen
+folder_remove_char: Ausgewählte entfernen
+folder_add_char_title: Charakter hinzufügen
+folder_add_char_prompt: 'Auswählen:'
+folder_drag_tip: Zum Neuordnen ziehen
+folder_save_btn: Speichern
+folder_saved: Ordner gespeichert!
+folder_delete_btn: Ordner löschen
+folder_delete_confirm_title: Ordner löschen
+folder_delete_confirm_msg: Diesen Ordner löschen?
+folder_delete_detail: Die Charaktere werden in die Hauptliste zurückverschoben.
+folder_characters_label: Charaktere
+folder_edit_btn: Ordner bearbeiten
+move_to_folder_btn: "In Ordner verschieben"
+remove_from_folder: "Aus Ordner entfernen"
+no_folders_title: Keine Ordner
+no_folders_prompt: Noch keine Ordner vorhanden. Möchtest du einen erstellen?
+folder_select_hint: Zum Auswählen anklicken
+selected_label: "ausgewählt"
+drag_and_drop_overlay: Ziehe eine .png- oder .json-Datei hierher, um sie in Yume Companion zu importieren
+image_gen_editor_title: Einstellungen für die Bildgenerierung
+image_gen_enable: Bildgenerierung aktivieren
+image_gen_grp_connection: Verbindung
+image_gen_provider: 'Anbieter:'
+image_gen_api_url: 'API-URL (nur lokal):'
+image_gen_grp_prompts: Prompt-Ergänzungen
+image_gen_prefix: 'Zusätzlicher Prompt (immer angefügt):'
+image_gen_negative: 'Negativer Prompt:'
+image_gen_grp_dimensions: Generierungsparameter
+image_gen_width: 'Breite:'
+image_gen_height: 'Höhe:'
+image_gen_steps: 'Schritte:'
+image_gen_warning: '⚠ Achtung: Lokales LLM und lokale Bildgenerierung gleichzeitig benötigen viel VRAM. Bei zu wenig Grafikspeicher
+  kann es zu Speicherfehlern kommen.'
+image_gen_save: Speichern und schließen
+image_gen_subtitle: LOKALE UND CLOUD-BILDERZEUGUNG
+image_gen_api_key_placeholder: API-Schlüssel hier eingeben …
+discord_gateway_title: Discord-Gateway
+discord_info: "Gib deinen Discord-Bot-Token ein, um den aktuell aktiven Charakter mit Discord zu verbinden. Der Bot antwortet auf Nachrichten in Servern, auf die er Zugriff hat."
+discord_status_stopped: GESTOPPT
+discord_status_running: LÄUFT
+discord_start_btn: Bot starten
+discord_stop_btn: Bot stoppen
+discord_gateway_header: DISCORD-GATEWAY
+discord_gateway_subtitle: BOT-INTEGRATION
+discord_token_label: BOT-TOKEN
+discord_gateway_status: 'Aktueller Status:'
+soul_memory_title: Gedächtnis-Archiv
+soul_memory_subtitle: Der Gedächtnis-Agent analysiert Gespräche und aktualisiert diese Datenbank im Hintergrund. Fakten können
+  hier manuell bearbeitet werden.
+soul_memory_placeholder: Inhalt der Gedächtnisdatei erscheint hier …
+soul_memory_tab_db: Gedächtnisdatenbank
+soul_memory_tab_user: Benutzerprofil
+soul_memory_tab_diary: Tagebuch
+soul_memory_tab_logs: Protokolle zur Selbstkorrektur
+soul_memory_btn_save: Änderungen speichern
+soul_memory_btn_delete: Datei löschen
+soul_memory_btn_refresh: ' Aktualisieren'
+soul_memory_btn_open: ' .soul-Ordner öffnen'
+soul_memory_btn_edit: Bearbeiten
+soul_memory_btn_preview: Vorschau
+soul_memory_save_success: Erfolgreich gespeichert
+soul_memory_save_error: Fehler beim Speichern
+soul_memory_del_title: Löschen bestätigen
+soul_memory_del_text: Möchtest du diese Gedächtnisdatei dauerhaft löschen?
+soul_memory_del_success: Datei gelöscht
+soul_memory_del_error: Fehler beim Löschen
+soul_memory_logs_empty: Das Agentenprotokoll ist leer. Chatte mit einem Charakter, um die Gedächtnisanalyse auszulösen.
+soul_stage_title: Yume-Bühne
+new_scene: ＋ Neue Szene
+search_scenes: "Szenen suchen ..."
+no_scenes: 'Noch keine Szenen vorhanden.
+
+  Klicke auf „＋ Neue Szene“, um deine erste Geschichte zu starten.'
+export_scene: Exportieren
+import_scene: Importieren
+export_all: Alles exportieren
+import_file: Szene importieren
+play: "Abspielen"
+edit: Bearbeiten
+delete: Löschen
+new_adventure: Neues Abenteuer
+no_description: Keine Beschreibung festgelegt.
+export_title: Szene exportieren
+import_title: Szene importieren
+export_success: Szene erfolgreich exportiert!
+import_success: Szene erfolgreich importiert!
+import_error: "Szene konnte nicht importiert werden. Ungültiges Dateiformat."
+select_file: Szenendatei auswählen
+folder_select_scenes_label: 'Szenen in diesem Ordner:'
+delete_folder: Ordner löschen
+folder_select_scenes_title: 'Ordner bearbeiten: '
+back: "← Zurück"
+edit_scene: "Szene bearbeiten"
+save_launch: "Speichern & starten  ▶"
+save_changes: Änderungen speichern
+section_identity: I. SZENENIDENTITÄT
+section_world: II. WELTZUSTAND UND UMGEBUNG
+section_opening: III. SZENENBEGINN
+section_party: IV. GRUPPENMITGLIEDER
+section_engine: V. ENGINE-EINSTELLUNGEN
+title: "Titel  *"
+short_description: "Kurzbeschreibung"
+world_context: Weltkontext / Szenario *
+world_context_hint: Wird jedem KI-Prompt als Hintergrundwissen hinzugefügt.
+starting_location: Ausgangsort
+time_of_day: Tageszeit
+gm_tone: "Ton des Spielleiters"
+starting_background: Ausgangssituation
+starting_background_hint: Der Planer kann dies während der Szene dynamisch ändern.
+starting_ambient: Ausgangsatmosphäre
+starting_ambient_hint: Hintergrundgeräusche für diese Szene. Der Planer kann sie dynamisch ändern.
+opening_narration: "Eröffnungserzählung  *"
+opening_narration_hint: "Die ersten Worte des Erzählers – versetzt den Spieler in die Szene."
+first_message: "Erste Charakter-Nachricht  (optional)"
+select_characters: Charaktere für diese Szene auswählen
+no_characters: Keine Charaktere gefunden.
+conversation_method: Konversationsmethode
+user_persona: Benutzerpersona
+user_persona_hint: Name und Avatar, die im Chat für deine Nachrichten angezeigt werden.
+lorebook: Weltwissen (optional)
+title_placeholder: "z. B. Die Obsidian-Zitadelle"
+desc_placeholder: "Kurze Zusammenfassung für die Liste"
+world_placeholder: Wissen, aktuelle Spannungen, Magie- oder Physikregeln …
+location_placeholder: "z. B. Taverne zum Goldenen Drachen"
+opening_placeholder: "Der Regen hämmert auf das Kopfsteinpflaster, als du die schwere Eisentür aufstößt ..."
+first_msg_placeholder: "Optionale Begrüßung des ersten Gruppenmitglieds."
+morning: "Morgen"
+day: Day
+evening: "Abend"
+night: "Nacht"
+epic_fantasy: "Epische Fantasy"
+slice_of_life: "Alltag (Slice of Life)"
+mystery_noir: "Krimi & Noir"
+romance: "Romantik"
+horror: Horror
+comedy: "Komödie"
+sci_fi: Sci-Fi
+narrator_style: Erzählstil
+narrator_style_hint: Legt den konkreten Prosastil, die Autorenstimme oder das Erzähltempo fest.
+narrator: ⬡  ERZÄHLER
+party_prefix: ✦
+interactive_narrative: "Interaktive Erzählung"
+memory: ⊕ Gedächtnis
+intervene: "⚡ Eingreifen"
+continue_session: "Fortsetzen"
+new_session: Neue Sitzung
+cancel: Abbrechen
+narrator_image_generating: ⬡  SZENENBILD WIRD ERSTELLT …
+narrator_image_done: ⬡  SZENENBILD
+plot_wish_dialog_title: Handlung fortsetzen
+plot_wish_label: Was soll als Nächstes passieren? (Optionale Hinweise für die KI)
+plot_wish_placeholder: z. B. Draußen gibt es eine Explosion oder jemand klopft an die Tür …
+plot_wish_continue_btn: Handlung fortsetzen
+ss_setup_dialog_title: Yume-Bühne – Gruppenaufstellung
+ss_setup_header: ⬡ Yume-Bühne
+ss_setup_sub: Wähle Charaktere für die Gruppe aus. <b>{name}</b> wird automatisch hinzugefügt.
+ss_setup_btn_launch: ⬡ Yume-Bühne starten
+ss_activated_msg: '<i>Yume-Bühne aktiviert.</i><br><i>Gruppe: {party}</i><br><i>Beschreibe eine Handlung – die Geschichte
+  beginnt.</i>'
+ss_deactivated_msg: <i>Yume-Bühne beendet. Standardmodus wiederhergestellt.</i>
+ss_error: FEHLER
+error_header: ⚠ FEHLER
+error_generation_header: ⚠ GENERIERUNGSFEHLER
+error_generation_failed: Bild konnte nicht erstellt werden.
+scene_has_entries: "Diese Szene hat {} gespeicherte Einträge. Fortsetzen oder neue Sitzung starten?"
+delete_scene_title: Szene löschen
+delete_scene_confirm: Diese Szene und ihren gesamten Verlauf dauerhaft löschen?
+delete_scene_detail: „{title}“ · {count} gespeicherte Nachrichten gehen verloren.
+open_scene_title: Yume-Bühne – Szene öffnen
+open_scene_has_history: Für diese Szene ist ein Verlauf gespeichert.
+open_scene_continue_desc: '{count} gespeicherte Nachrichten laden und fortfahren'
+open_scene_new_desc: Neu beginnen – der bisherige Verlauf wird gelöscht
+memory_select_title: Yume-Gedächtnis – Charakter auswählen
+memory_select_query: Wessen Erinnerungen möchtest du ansehen?
+inventory: "Inventar"
+inventory_full_title: "Inventar — Yume-Bühne"
+inventory_empty: "Dein Inventar ist leer."
+items_count: "{count} Gegenstände"
+category_weapons: Waffen
+category_consumables: Verbrauchsgegenstände
+category_tools: Werkzeuge
+category_valuables: Wertgegenstände
+category_quest_items: Quest-Gegenstände
+category_other: Sonstiges
+btn_use: Verwenden
+btn_drop: "Ablegen"
+tooltip_drop: Gegenstand ablegen
+tooltip_open_inventory: Vollständiges Inventar öffnen
+tooltip_use_item: 'Verwenden: {item}'
+more_items: "+{count} weitere"
+choice_hint_none: WÄHLE DEINE AKTION ODER GIB EINE EIGENE EIN
+choice_hint_encounter: REAGIERE AUF DIE BEDROHUNG ODER GIB EINE EIGENE AKTION EIN
+choice_hint_discovery: WAS TUST DU? ODER GIB EINE EIGENE AKTION EIN
+choice_hint_visitor: WIE REAGIERST DU? ODER GIB EINE EIGENE AKTION EIN
+choice_hint_twist: DU BIST DRAN ODER GIB EINE EIGENE AKTION EIN
+choice_hint_romance: WÄHLE DEINE ANTWORT ODER GIB EINE EIGENE EIN
+world_state_title: Weltzustand – Yume-Bühne
+tab_scene: Szene
+tab_facts: Wichtige Fakten
+tab_inventory: Inventar
+tab_status: Status
+tab_resources: Ressourcen
+tab_lore: Weltwissen-Karten
+tab_campaign: Kampagnenübersicht
+tab_npcs: Aktive NPCs
+section_environment: Umgebung einrichten
+section_memory: Gedächtniseinstellungen
+section_player_items: Gegenstände des Spielers
+section_player_conditions: Zustände des Spielers
+section_npcs: Charaktere in der Szene
+field_location: Ort
+field_time: Tageszeit
+field_atmosphere: Weltkontext
+field_facts_hint: 'Format: „Schlüssel: Wert“ (eine Zeile pro Eintrag)'
+field_inventory_hint: Ein Gegenstand pro Zeile
+field_status_hint: Ein Zustand pro Zeile
+field_status_effects: Zustandseffekte
+hint_npc_readonly: NPCs, die aktuell von der Engine erzeugt wurden (schreibgeschützt)
+no_active_npcs: Keine aktiven NPCs in dieser Szene
+btn_apply_changes: Änderungen übernehmen
+unknown: "Unbekannt"
+tooltip_soul_memory: Yume-Gedächtnis
+tooltip_world_state: Weltzustand
+tooltip_continue_plot: Handlung fortsetzen
+tooltip_intervene: Eingreifen (KI-Zug stoppen)
+ss_menu_copy: Kopieren
+ss_menu_edit: Nachricht bearbeiten
+ss_menu_translate_ru: Ins Russische übersetzen
+ss_menu_translate_en: Ins Englische übersetzen
+ss_menu_regenerate: Runde neu generieren
+ss_menu_delete: Nachricht löschen
+ss_edit_msg_dialog_title: Nachricht bearbeiten – Yume-Bühne
+ss_edit_msg_title: SPIELERNACHRICHT BEARBEITEN
+ss_edit_msg_sub: Beim Speichern wird dein Text aktualisiert, der Weltzustand zurückgesetzt und der Story-Zug neu ausgeführt.
+ss_edit_msg_save_btn: Speichern und Zug zurücksetzen
+event_encounter: BEGEGNUNG
+event_discovery: ENTDECKUNG
+event_visitor: BESUCH
+event_twist: HANDLUNGSWENDUNG
+event_moment: MOMENT
+soul_stage_mode_title: 'Yume-Bühne: Erzählerische Inszenierung'
+soul_stage_narrator_name: Erzähler
+soul_stage_active_actors: Aktiv auf der Bühne
+soul_stage_backstage: Hinter der Bühne / Rollenliste
+soul_stage_btn_interrupt: Unterbrechen / Eingreifen
+soul_stage_btn_spawn: NPC herbeirufen
+soul_stage_wait_user: Wartet auf die Aktion des Spielers …
+soul_stage_log_spawn: 'Der Erzähler hat einen neuen NPC hinzugefügt: '
+soul_stage_log_remove: 'Die Figur hat die Szene verlassen: '
+llm_error_title: Kein lokales LLM
+llm_error_body: Wähle im Modell-Hub „Local LLM“ aus.
+voice_error_title: Sprachfehler
+voice_error_body: Weise dem Charakter eine Stimme zu, bevor du den Anruf startest.
+sow_system_status_speak: Spricht …
+sow_system_status_stop: Unterhaltung starten
+no_gui_error_title: Ungültiger Ausdruckstyp
+no_gui_error_body: Wähle Live2D oder VRM, um den Modus ohne Benutzeroberfläche zu verwenden.
+persona_error_title: "Persona ändern"
+persona_error_body: "Es wurde eine nicht existierende Person ausgewählt, bitte ändere sie."
+add_character_text_1: wurde erfolgreich hinzugefügt!
+add_character_text_2: Du kannst jetzt über deine Charakterliste mit dem Charakter interagieren.
+add_character_text_3: Beim Hinzufügen des Charakters ist ein Fehler aufgetreten.
+add_character_text_4: Bitte versuche es erneut.
+add_character_error: Gib einen Namen und die erste Nachricht für deinen Charakter ein.
+add_character_title_error: Fehler beim Hinzufügen eines Charakters
+delete_message_1: Charakter löschen
+delete_message_2: 'Möchtest du diesen Charakter wirklich löschen? '
+welcome_message: "Willkommen bei Yume Companion, "
+model_loading_step_1: ENGINE WIRD INITIALISIERT …
+model_loading_step_2: GGUF WIRD ÜBERPRÜFT …
+model_loading_step_3: TENSOREN WERDEN GELADEN …
+model_loading_step_4: KONTEXT WIRD ZUGEWIESEN …
+model_loading_step_5: ABSCHLUSSARBEITEN …
+model_loading_step_6: MODELL BEREIT
+update_available_title: Update verfügbar
+update_available_body: 'Eine neue Version ist verfügbar: '
+update_available_info: Möchtest du das Programm aktualisieren?
+update_current_version: 'Aktuelle Version: v3.0.0 BETA'
+update_available_close: Schließen
+update_available_link: GitHub öffnen
+language_changed_title: Neustart erforderlich
+language_changed_body: Das Programm muss neu gestartet werden, damit die Änderung wirksam wird.
+language_changed_question: Möchtest du das Programm jetzt neu starten?
+language_changed_yes: Ja
+language_changed_no: Nein
+about_program: Über Yume Companion
+about_program_title: Über Yume Companion
+about_program_description: <b>Yume Companion</b> ist eine kostenlose Open-Source-Desktop-Anwendung, in der KI-Charaktere sich
+  erinnern, entwickeln und sowohl im Programm als auch auf deinem Desktop präsent sein können. Erstelle oder importiere einen
+  Charakter einmal und interagiere mit ihm über drei miteinander verbundene Bereiche:<br><br>• 💬 <b>Interaktiver Text- und
+  Sprachchat:</b> Live-Dialoge zu zweit mit animierten Live2D-/VRM-Avataren, laufender Sprachausgabe, adaptiver Statusanzeige,
+  Dateianhängen und Werkzeugnutzung.<br><br>• 🎲 <b>Bühnen-Rollenspiel-Engine:</b> Textbasierte Pen-and-Paper-Rollenspiele
+  mit einem KI-Spielleiter, Weltzustand, Inventarverwaltung und dynamischen NPCs.<br><br>• 🖥️ <b>Yume-Desktop-Begleiter:</b> Eine
+  eigenständige Figur auf deinem Desktop mit neurohormonellem Stimmungsmodell, Sichtfunktionen, Pufferlesen und Werkzeugaufrufen.<br><br>Alle
+  Bereiche sind über das Modul <b>Yume-Gedächtnis</b> verbunden – ein kognitives Gedächtnissystem mit emotionaler Entwicklung,
+  persönlichem Tagebuch und automatischer Auflösung von Widersprüchen. Läuft mit GGUF zu 100 % lokal und privat auf deinem
+  PC (CUDA, Vulkan, HIP, SYCL), ohne Filter oder Abonnements; Cloud-APIs, Discord und ein lokaler Webclient werden ebenfalls
+  unterstützt.
+support_btn: "Unterstützen"
+creator_label: Entwickelt von
+simple_version_label: Version
+version_label: v3.0.0 BETA
+nsfw_checkbox: NSFW
+value: "Wert: "
+duplicate_title: Charakter dupliziert
+character_edit_title: Charaktereinstellungen
+add_character_error_title: Fehler bei der Erstellung
+system_error_title: Systemfehler
+new_chat_toast_title: Chatsystem
+toast_folder_title: Ordnerverwaltung
+toast_folder_error_title: Ordnerfehler
+soul_memory_no_chat: Öffne zuerst einen Chat mit einem Charakter.
+soul_memory_empty: Der Chatverlauf ist leer.
+soul_memory_manual_start: Manuelle Gedächtnisaktualisierung gestartet …
+soul_memory_manual_completed: Die manuelle Gedächtnisaktualisierung wurde abgeschlossen.
+soul_memory_manual_error: Die manuelle Gedächtnisaktualisierung ist fehlgeschlagen.
+soul_memory_manual_cancelled: Die manuelle Gedächtnisaktualisierung wurde abgebrochen.
+soul_memory_provider_error: Anbieter „{provider}“ nicht gefunden.
+toast_voice_settings_title: Spracheinstellungen
+toast_search_title: Stimmensuche
+toast_connection_error_title: Verbindungsfehler
+toast_visual_settings_title: Visuelle Einstellungen
+toast_llm_error_title: Konfigurationsfehler
+toast_translate_error_title: Übersetzungsfehler
+toast_image_gen_title: Bildgenerierung
+toast_image_gen_prompt_error: Bild-Prompt konnte nicht erstellt werden.
+toast_image_gen_creating: Bild wird generiert …
+toast_image_gen_failed: Bildgenerierung fehlgeschlagen.
+toast_message_editor_title: Nachrichteneditor
+toast_character_editor_title: Charaktereditor
+toast_call_system_title: Anrufsystem
+toast_profile_error_title: Profilfehler
+toast_companion_error_title: Begleiterfehler
+toast_persona_exist: Eine Persona mit diesem Namen existiert bereits
+toast_success: Erfolg
+toast_saved_successfully: Erfolgreich gespeichert
+soul_memory_tooltip: '<b>🧠 Yume-Gedächtnis</b><br><br>Entwickle deinen Charakter von einer einfachen KI zu einer digitalen Figur
+  mit einem <b>kontinuierlichen Langzeitgedächtnis</b>. Yume-Gedächtnis ist der kognitive Kern des Yume-Ökosystems.<br><br>Statt
+  sich auf unzuverlässige Volltextsuchen zu verlassen, verwendet Yume-Gedächtnis eine fortgeschrittene <b>Multi-Agenten-Architektur</b>:<br>•
+  <b>Dual-Core-Indexierung:</b> Trennt die Psychologie des Charakters (<i>MEMORY.md</i>) vom Benutzerprofil und den Beziehungsmetadaten
+  (<i>USER.md</i>). Das verhindert Rollenkonflikte und optimiert Prompt-Caching.<br>• <b>Archivar und Tagebuch:</b> Hintergrundagenten
+  erstellen selbstständig dichte, episodische Wissenseinträge und schreiben persönliche <i>emotionale Tagebucheinträge in
+  der Ich-Form</i> über eure Interaktionen.<br>• <b>Selbstheilung und Verfall:</b> Erkennt und löst logische Widersprüche
+  im Gedächtnis mit der Zeit automatisch und berücksichtigt dabei natürliche emotionale Übergänge.<br><br>Das Ergebnis: weniger
+  unnötiger Kontext und eine konsistente Persönlichkeit. Ob im Bühnen-Abenteuer oder mit deinem Yume-Desktop-Begleiter – <b>der
+  Charakter kann sich an frühere Inhalte erinnern</b>.'
+sm_mode_full: "Volle Synchronisation"
+sm_mode_soul_link: "Seelenverbindung"
+sm_mode_mind_spark: "Gedankenfunke"
+sm_mode_reflection_flow: "Reflexionsfluss"
+sm_mode_full_tooltip: "<b>🌌 Volle Synchronisation</b><br><br>\nVollständige kognitive Verbindung. Jeder Aspekt des Charakters ist aktiv:<br><br>\n• <b>Psychologischer Index:</b> Stimmungsverfolgung in Echtzeit.<br>\n• <b>Lore-Themen:</b> Tiefes Weltwissen und Fakten.<br>\n• <b>Tagebuch:</b> Emotionale Reflexionen in der Ich-Form.<br><br>\n<i>Das ultimative Erlebnis. Erfordert einen leistungsstarken PC oder eine API.</i>"
+sm_mode_soul_link_tooltip: "<b>🔗 Seelenverbindung</b><br><br>\nKonzentriert sich auf Persönlichkeit und Gefühle.<br><br>\n• Aktualisiert den <b>MEMORY.md</b>-Index, damit Stimmung und Ziele des Charakters konsistent bleiben.<br>\n• Der <b>Tagebuch-Agent</b> hält die privaten Gefühle gegenüber dir fest.<br><br>\n<b>Entfällt:</b> Lore-Themen werden weder erstellt noch aktualisiert.<br><br>\n<i>Ideal für: eine tiefe Bindung ohne hohe CPU-/GPU-Last.</i>"
+sm_mode_mind_spark_tooltip: "<b>⚡ Gedankenfunke</b><br><br>\nTaktisches Gedächtnis für maximale Leistung.<br><br>\n• Aktualisiert <b>NUR</b> den <b>MEMORY.md</b>-Index.<br><br>\nSorgt dafür, dass der Charakter weiß, wer er ist, wie er sich fühlt und was er gerade will.<br><br>\n<b>Entfällt:</b> Es werden keine Tagebücher oder Lore-Dateien erzeugt.<br><br>\n<i>Ideal für: langsame PCs oder schnelles Rollenspiel, bei dem nur die Logik zählt.</i>"
+sm_mode_reflection_flow_tooltip: "<b>📓 Reflexionsfluss</b><br><br>\nEmotionales Protokoll ohne Einfluss auf die Chat-Logik.<br><br>\n• Nur der <b>Tagebuch-Agent</b> ist aktiv.<br><br>\nDer Charakter aktualisiert seinen „inneren Zustand“ nicht im Index, schreibt aber weiterhin emotionale Einträge in sein Tagebuch.<br><br>\n<b>Entfällt:</b> Kein psychologischer Index und keine Lore-Updates.<br><br>\n<i>Ideal für: maximale Geschwindigkeit bei erhaltener Gefühlshistorie des Charakters.</i>"
+ambient_sound_tooltip: '<b>🎵 Modul für Umgebungsgeräusche</b><br><br>Diese Funktion spielt beim Öffnen eines Charakter-Chats
+  passende <b>Atmosphärenklänge</b> ab.<br><br>Nach dem Aktivieren kannst du eine passende <b>Umgebungskulisse</b> auswählen
+  – Hintergrundmusik oder Geräusche, die die richtige Stimmung erzeugen: etwa rauschender Wind, Regentropfen oder das gemütliche
+  Knistern eines Lagerfeuers.<br><br><b>Beispiel:</b><br>Wenn du mit einem Charakter in einer <i>Taverne</i> chattest, kannst
+  du eine Kulisse mit <i>Stimmengewirr und einer fröhlichen Melodie</i> wählen, um tiefer in die Atmosphäre des Ortes einzutauchen
+  und die emotionale Verbindung zum Charakter zu verstärken.'
+sow_system_tooltip: <b>✨ Yume-System</b><br><br>Dies ist der <b>erweiterte Modus</b> des Programms, der das <b>volle
+  Potenzial</b> der Interaktion mit Charakteren freischaltet.<br><br>Du kannst:<br>• Charakteren statische Bilder, GIFs, animierte
+  Live2D-Modelle oder räumliche VRM-Modelle zuweisen;<br>• Charaktere aufrufen und über ein Mikrofon in einer speziell für
+  diesen Modus gestalteten Oberfläche mit ihnen sprechen;<br>• zusätzliche Module wie Yume-Gedächtnis, Umgebungsgeräusche, Übersetzer
+  und weitere Funktionen verbinden.
+personas_button_tooltip: <b>Öffnet den Persona-Editor</b><br><br>Hier kannst du Personas erstellen, bearbeiten, auswählen
+  und löschen – Informationen über den Benutzer, der mit dem Charakter chattet.
+system_prompt_button_tooltip: Hier kannst du den <b>System-Prompt anpassen</b>, der festlegt, wie sich der Charakter während
+  eurer Gespräche verhalten soll.<br><br>Du kannst:<br>• <b>den Prompt-Text bearbeiten</b> – Tonfall, Sprechmuster oder Eigenheiten
+  anpassen.<br>• <b>Bausteine neu sortieren</b> – die Priorität der Informationen steuern.<br><br><b>Warum ist die Reihenfolge
+  wichtig?</b><br>Das Modell berücksichtigt häufig Inhalte besser, die <b>näher am Ende</b> des Prompts stehen.<br>Wenn der
+  Charakter öfter auf Weltwissen zurückgreifen soll, verschiebe das Weltwissen ans Ende.<br>Wenn die Persönlichkeit besonders
+  wichtig ist, platziere die Charakterinformationen zuletzt.<br><br>💡 <i>Nutze diesen Editor, damit dein Charakter authentischer,
+  konsistenter und lebendiger wirkt. Passe Text und Reihenfolge an, bis die Antworten so klingen, wie du es möchtest.</i>
+lorebook_editor_button_tooltip: '<b>Weltwissen-Editor</b><br><br>Ein Weltwissensbuch ist ein <b>Nachschlagewerk</b>, das einem
+  Charakter hilft, wichtige Ereignisse, Begriffe, Orte und Figuren im Gedächtnis zu behalten.<br><br>Wenn du etwas aus dem
+  Weltwissen erwähnst, fügt das Programm die <b>passenden Informationen automatisch</b> zur Anfrage hinzu, sodass der Charakter
+  antworten kann, als würde er es kennen.<br><br><b>Was du tun kannst:</b><br>• <b>Weltwissensbücher erstellen und löschen</b>.<br>•
+  <b>Einträge hinzufügen</b> – etwa Orte, Figuren, Ereignisse oder Begriffe.<br>• <b>Schlüsselwörter bearbeiten</b> – was
+  einen Eintrag auslösen soll.<br>• <b>Suchtiefe wählen</b> – wie viele der letzten Nachrichten auf passende Begriffe geprüft
+  werden.<br><br><b>Beispiel:</b><br>Du legst einen Eintrag an:<br>• <i>Text:</i> „Yume Companion ist ein Programm, mit dem
+  man mit KI kommunizieren kann.“<br>• <i>Schlüsselwörter:</i> Yume Companion, KI<br>Wenn du fragst: <i>„Was ist Yume Companion?“</i>,
+  kann sich der Charakter an den Eintrag erinnern und entsprechend antworten.'
+gpu_layers_tooltip: "<b>GPU-Layer-Auslagerung</b><br><br>\nHiermit steuerst du, <b>wie viel vom LLM</b> direkt auf deiner Grafikkarte läuft, und balancierst <b>Geschwindigkeit</b> und <b>Grafikspeicher-Verbrauch</b>.<br><br>\nJe mehr Schichten im VRAM liegen, desto schneller antwortet das Modell – aber desto höher ist der Speicherbedarf.<br>\nDu kannst die Zahl der ausgelagerten Schichten manuell anpassen und so auch große Modelle auf Mittelklasse-Grafikkarten betreiben.<br><br>\n💡 <i>Besonders nützlich bei großen Modellen. Je stärker deine GPU, desto mehr Schichten kannst du zuweisen.</i>"
+context_size_tooltip: "<b>Kontextfenster</b><br><br>\nDie maximale Anzahl an Tokens, die das Modell gleichzeitig verarbeiten kann (sein Arbeitsgedächtnis). Sie umfasst Chatverlauf, Autorennotizen und Lorebook-Einträge.<br><br>\nWähle den höchsten Wert für unbegrenzten Kontext (API) oder um das größte verfügbare Kontextfenster deines lokalen Modells automatisch zu erkennen.<br><br>\nEin größeres Kontextfenster lässt den Charakter <b>mehr behalten</b>, erhöht aber den VRAM-Bedarf deutlich.<br><br>\n💡 <i>Senke den Wert auf schwächeren PCs. Für ein Langzeitgedächtnis lieber das Modul „Yume-Gedächtnis“ aktiv lassen, statt den Kontext voll auszureizen.</i>"
+mlock_tooltip: <b>MLock (Speicher sperren)</b><br><br>Diese Funktion <b>verhindert, dass das Sprachmodell aus dem RAM in die
+  Auslagerungsdatei</b> auf deinem Laufwerk verschoben wird.<br><br>Wenn aktiviert, bleibt das Modell vollständig im Arbeitsspeicher.
+  Das sorgt für <b>möglichst kurze Antwortzeiten</b> und reduziert kleine Verzögerungen bei der Textgenerierung.<br><br>💡
+  <i>Nur empfehlenswert, wenn ausreichend RAM vorhanden ist, da dieser dauerhaft reserviert wird. Auf Systemen mit wenig RAM
+  sollte die Option deaktiviert bleiben.</i>
+no_mmap_tooltip: <b>No-MMAP-Modus (direktes Laden in den RAM)</b><br><br>Standardmäßig werden Modelle per Memory Mapping (<b>mmap</b>)
+  geladen. Dabei werden Teile des Modells während der Generierung bei Bedarf vom Laufwerk gelesen.<br><br>Wenn du diese Option
+  aktivierst, wird das <b>gesamte Modell vorab in den RAM geladen</b>.<br>Das verlängert den ersten Ladevorgang und erhöht
+  den RAM-Bedarf etwas, kann aber kleine Verzögerungen bei der Textgenerierung vermeiden.<br><br>💡 <i>Empfehlenswert, wenn
+  genügend RAM vorhanden ist. Auf Systemen mit wenig RAM deaktiviert lassen, damit es nicht zu Speicherfehlern kommt.</i>
+reasoning_mode_tooltip: <b>Denk-/Reasoning-Modus (&lt;think&gt;)</b><br><br>Wenn aktiviert, gibt das KI-Modell vor der endgültigen
+  Antwort zusätzliche Denkschritte innerhalb von <b>&lt;think&gt;</b>-Tags aus.<br><br>Das kann Logik, Mathematik und Problemlösung
+  verbessern, weil das Modell schrittweise vorgeht.<br>Allerdings verbraucht es mehr Tokens und erhöht die Antwortzeit, da
+  zuerst die internen Denkschritte generiert werden.<br><br>💡 <i>Für komplexe Aufgaben, Rätsel oder anspruchsvolle Rollenspiel-Logik
+  aktivieren. Für einfache, schnelle Chats deaktivieren.</i>
+flashattention_tooltip: <b>Flash Attention</b><br><br>Diese Technik <b>beschleunigt die KI</b> und <b>reduziert den VRAM-Verbrauch</b>
+  bei langen Gesprächen.<br><br>Sie optimiert Berechnungen und macht die Textgenerierung auch bei großen Kontextfenstern effizienter.<br><br>💡
+  <i>Für maximale Leistung aktiviert lassen, sofern Modell und Backend diese Funktion unterstützen.</i>
+max_tokens_tooltip: "<b>Maximale Antwortlänge</b><br><br>\nLegt fest, <b>wie lang die Antwort des Charakters</b> höchstens sein darf.<br><br>\n💡 <i>Sehr lange Antworten verbrauchen Kontext. Empfohlen: 300–500 Tokens.</i>"
+reasoning_effort_tooltip: "<b>Denkaufwand</b><br><br>\nLegt fest, wie viel internes Nachdenken Cloud-Reasoning-Modelle vor der Antwort betreiben dürfen.<br>\nGilt für OpenAI o-Serie/GPT-5, Claude Extended Thinking, Gemini, Grok, DeepSeek, Qwen und GLM-Reasoning-Modelle."
+custom_args_tooltip: "<b>Eigene Backend-Argumente</b><br><br>\nErlaubt es, zusätzliche Kommandozeilen-Argumente direkt an den lokalen LLM-Server (llama.cpp) zu übergeben.<br><br>\nFür fortgeschrittene Nutzer gedacht, die Engine-Parameter (z. B. RoPE-Skalierung oder Cache-Einstellungen) feinjustieren wollen, die nicht in der Oberfläche stehen.<br><br>\n💡 <i>Mit Vorsicht verwenden. Falsche Flags können den Server abstürzen lassen oder deine Einstellungen überschreiben. Beispiel: <b>--rope-freq-base 10000</b></i>"
+chat_template_tooltip: <b>Chat-Vorlage</b><br><br>Legt fest, wie das System den Gesprächsverlauf vor dem Senden an die KI
+  formatiert. Verschiedene Modelle wurden mit bestimmten Formaten trainiert.<br><br>Bei einer falschen Vorlage kann die KI
+  halluzinieren oder merkwürdige Symbole ausgeben, etwa <code>&lt;|im_end|&gt;</code>.<br><br>💡 <i>„Auto“ liest die Vorlage
+  direkt aus der GGUF-Datei. Wenn sich das Modell ungewöhnlich verhält, erzwinge eine passende Vorlage wie „ChatML“ oder „Llama-3“.</i>
+stop_strings_tooltip: '<b>Stoppzeichenfolgen</b><br><br>Eine Liste von Wörtern oder Symbolen, bei denen die KI die Textgenerierung
+  <b>sofort beendet</b>.<br><br>Das hilft zu verhindern, dass die KI für dich spricht oder handelt, beispielsweise indem sie
+  <code>\nUser:</code> generiert und deine Antwort fortsetzt.<br><br>💡 <i>Mit Kommas trennen. Beispiel: <code>\nUser:, &lt;/s&gt;,
+  &lt;|eot_id|&gt;</code></i>'
+temperature_tooltip: "<b>Temperatur (Kreativität)</b><br><br>\nSteuert die grundlegende Zufälligkeit der KI-Antworten.<br><br>\n• <b>Niedrig (0,1–0,5):</b> Logisch und vorhersehbar. Langweilig fürs Rollenspiel.<br>\n• <b>Hoch (0,8–1,5):</b> Sehr kreativ, ausdrucksstark und unberechenbar.<br><br>\n💡 <i>Empfohlen: 0,8–1,0. Bei höheren Werten unbedingt <b>Min-P</b> nutzen, um unsinnige Wörter abzuschneiden.</i>"
+freq_penalty_tooltip: "<b>Häufigkeitsstrafe</b><br><br>\nBestraft Wörter danach, <b>wie oft sie schon im Text vorkamen</b>.<br><br>\nSo muss die KI einen reicheren Wortschatz nutzen und Synonyme suchen, statt immer dieselben Adjektive zu wiederholen.<br><br>\n💡 <i>Zu hohe Werte zerstören die Grammatik. Empfohlen: 0,0 – 0,5.</i>"
+pres_penalty_tooltip: "<b>Präsenzstrafe</b><br><br>\nBestraft ein Wort pauschal, sobald es <b>mindestens einmal</b> vorkam.<br><br>\nAnders als die Häufigkeitsstrafe ermutigt sie die KI, <b>das Thema zu wechseln</b> und neue Konzepte einzubringen, damit das Gespräch nicht in einer Schleife hängen bleibt.<br><br>\n💡 <i>Hohe Werte lassen die KI sprunghaft zwischen Themen wechseln. Empfohlen: 0,0 – 0,4.</i>"
+min_p_tooltip: "<b>Min-P (Intelligenter Cut-off)</b><br><br>\nDer neue Goldstandard fürs Rollenspiel. Er schneidet Unsinnswörter dynamisch anhand der Wahrscheinlichkeit des besten Wortes ab.<br><br>\nIst die KI sich sicher, entfernt er Unsinn konsequent. Soll sie kreativ sein, senkt er die Hürde und lässt gute Synonyme zu.<br><br>\n💡 <i>Ersetzt Top-P. Top-P auf 1,0 stellen und Min-P auf <b>0,05 – 0,10</b> setzen: perfekte Logik bei hoher Temperatur.</i>"
+top_p_tooltip: "<b>Top-P</b><br><br>\nEin älteres Sampling-Verfahren, das die Wortauswahl auf einen kumulativen Prozentsatz begrenzt.<br><br>\n💡 <i>Wenn du <b>Min-P</b> nutzt, solltest du Top-P deaktivieren, indem du es auf <b>1,0</b> stellst.</i>"
+dyn_temp_min_tooltip: <b>Dynamische Temperatur (Minimum/Maximum)</b><br><br>Statt eines festen Werts verändert sich die Temperatur
+  abhängig von der Sicherheit des Modells dynamisch zwischen Minimal- und Maximalwert.<br><br>Bei Fakten sinkt die Temperatur,
+  damit die Antwort logisch bleibt. Beim Beschreiben von Emotionen steigt sie, um kreative Formulierungen zu ermöglichen.
+dyn_temp_max_tooltip: <b>Dynamische Temperatur (Minimum/Maximum)</b><br><br>Statt eines festen Werts verändert sich die Temperatur
+  abhängig von der Sicherheit des Modells dynamisch zwischen Minimal- und Maximalwert.<br><br>Bei Fakten sinkt die Temperatur,
+  damit die Antwort logisch bleibt. Beim Beschreiben von Emotionen steigt sie, um kreative Formulierungen zu ermöglichen.
+xtc_prob_tooltip: "<b>XTC (Top-Auswahl ausschließen)</b><br><br>\nEine geniale Funktion fürs Rollenspiel. Sie <b>entfernt gezielt die offensichtlichsten Klischee-Wörter</b> aus der Auswahl der KI.<br><br>\nGenervt von <i>„Schauer liefen mir über den Rücken“</i> oder <i>„raubtierhaftes Grinsen“</i>? XTC zwingt das Modell zu eigenständigen, literarischen Alternativen und macht die Sprache viel lebendiger.<br><br>\n💡 <i><b>Wahrscheinlichkeit:</b> Chance, dass XTC auslöst (probiere 0,3 – 0,5).</i>"
+xtc_thresh_tooltip: "<b>XTC-Schwelle</b><br><br>\nLegt fest, wie „beliebt“ ein Wort sein muss, damit XTC es entfernen darf.<br><br>\n💡 <i>Empfohlen: 0,1 (nur Wörter mit mehr als 10 % Wahrscheinlichkeit können entfernt werden).</i>"
+dry_mult_tooltip: "<b>DRY (Wiederhole dich nicht)</b><br><br>\nAnders als ältere Strafen, die einzelne Wörter treffen, erkennt DRY <b>ganze sich wiederholende Abfolgen und Satzstrukturen</b> und bestraft sie.<br><br>\nBeginnt deine Waifu jede Nachricht mit <i>„Ich seufze und sehe dich an“</i>, erkennt DRY das Muster und zwingt sie, anders zu handeln.<br><br>\n💡 <i><b>Multiplikator:</b> Stärke der Strafe (probiere 0,8).</i>"
+dry_base_tooltip: "<b>DRY-Basis</b><br><br>\nDer Skalierungsfaktor des DRY-Algorithmus. Bestimmt, wie stark die Strafe mit der Länge der Abfolge wächst.<br><br>\n💡 <i>Empfohlen: 1,75</i>"
+dry_length_tooltip: "<b>DRY erlaubte Länge</b><br><br>\nDie Anzahl an Tokens, die sich wiederholen dürfen, bevor die DRY-Strafe greift.<br><br>\n💡 <i>Empfohlen: 2 (verhindert, dass gängige Zwei-Wort-Phrasen wie „ich bin“ bestraft werden).</i>"
+kv_cache_tooltip: "Quantisiert den Kontext-Cache und spart bei langen Kontexten enorm viel VRAM."
+batch_size_tooltip: "Tokens, die bei der Prompt-Auswertung gleichzeitig verarbeitet werden.<br><br> 512 ist sicher. Höher = schnelleres Laden, mehr VRAM."
+cpu_threads_tooltip: "0 = automatisch.<br><br> Auf die Anzahl der physischen CPU-Kerne setzen, für optimale Geschwindigkeit auf der CPU."
+cpu_moe_layers_tooltip: "0 = deaktiviert. Wie viele Mixture-of-Experts-(MoE)-Schichten im CPU-RAM bleiben. Wichtig für riesige MoE-Modelle."
+auto_summary_tooltip: "Hier legst du fest, nach wie vielen Nachrichten eine Zusammenfassung deines Chats erstellt wird."
+attach_file_tooltip: "Bild oder Dokument an die Nachricht anhängen"
+tooltip_create_character: Neuen Charakter erstellen
+tooltip_import_character: Charakterkarte importieren
+tooltip_new_folder: Neuen Ordner erstellen
+sc_menu_quick_actions: ⚡ Schnellaktionen
+sc_menu_vision: 📸 Meinen Bildschirm ansehen (Vision)
+sc_menu_clipboard: 📋 Zwischenablage lesen (Analysieren)
+sc_menu_mind: 🧠 Was beschäftigt mich?
+sc_menu_mic_on: Mikrofon einschalten
+sc_menu_mic_off: Mikrofon ausschalten
+sc_menu_pet: 🤚 Streicheln
+sc_menu_play_animation: 🎭 Animation abspielen
+sc_menu_motions: Bewegungen
+sc_menu_click_through_on: '👁‍🗨 Durchklickmodus: AN'
+sc_menu_click_through_off: '👁‍🗨 Durchklickmodus: AUS'
+sc_menu_aot_on: '📌  Immer im Vordergrund: EIN'
+sc_menu_aot_off: '📌  Immer im Vordergrund: AUS'
+sc_menu_eye_on: '👁  Blickverfolgung: EIN'
+sc_menu_eye_off: '👁  Blickverfolgung: AUS'
+sc_menu_react_on: '💬  Fensterreaktionen: EIN'
+sc_menu_react_off: '💬  Fensterreaktionen: AUS'
+sc_menu_sub_on: '📝  Untertitel: EIN'
+sc_menu_sub_off: '📝  Untertitel: AUS'
+sc_menu_settings: Einstellungen
+sc_menu_proactive: Proaktives Intervall
+sc_menu_sleep: Schlafen
+sc_menu_speed: Verfolgungsgeschwindigkeit
+sc_menu_speed_slow: Langsam
+sc_menu_speed_normal: Normal
+sc_menu_speed_fast: Schnell
+sc_menu_size: 📐  Modellgröße
+sc_menu_size_small: Klein (200 × 300)
+sc_menu_size_medium: Mittel (400 × 600)
+sc_menu_size_large: Groß (600 × 900)
+sc_menu_hud: 📊  Hormonanzeige anzeigen
+sc_menu_center: 📍  Auf dem Bildschirm zentrieren
+sc_menu_reset: 🔄  Größe zurücksetzen
+sc_menu_hide: Ausblenden
+sc_menu_min_3: 3 Minuten
+sc_menu_min_5: 5 Minuten
+sc_menu_min_10: 10 Minuten
+sc_menu_min_15: 15 Minuten
+sc_menu_min_30: 30 Minuten
+sc_menu_min_60: 60 Minuten
+tts_notice_title: 💡 Hinweis beim ersten Start der TTS-Engines
+tts_notice_first_run_text: 'Bitte beachte: Vor dem ersten Start von <b>XTTSv2</b>, <b>Kokoro</b>, <b>Silero</b> oder <b>Qwen
+  3 TTS</b> lädt das Programm die benötigten Modellgewichte und Komponenten automatisch herunter. Den Downloadfortschritt
+  kannst du in der Konsole verfolgen.<br><br>Nach dem ersten erfolgreichen Download funktioniert die Sprachgenerierung auch
+  offline.'
+models_hub_recommendations_banner: "⭐ Kuratierte Liste lokaler Sprachmodelle, ausgewählt und geprüft vom Entwickler der Anwendung. Die Kompatibilitätsangaben beziehen sich auf die Q4-Quantisierung."
+models_hub_popular_banner: "🔥 Aktuell beliebte GGUF-Modelle, direkt vom HuggingFace Hub abgerufen."
+world_lorebook_gateway: Welt-Wissenssammlungen
+soul_stage_scenarios: Bühnen-Szenarien
+lorebooks_soul_stage_page: "Lorebooks  (optional)"
+max_actor_depth: Maximale Anzahl Figuren pro Zug
+max_actor_depth_hint: 'Wie viele Gruppenmitglieder und NPCs in einem Zug sprechen dürfen (1–6, Standard: 3).'
+dice_rolls: "Würfelwürfe"
+dice_rolls_hint: "Lässt den Spielleiter bei riskanten oder umstrittenen Aktionen W20/2W6/3W6-Proben verlangen."
+dice_rolls_enable: "🎲 Würfelwürfe für diese Szene aktivieren"
+mode_say: 💬 Sprechen
+mode_do: ⚔ Handeln
+mode_think: 💭 Denken
+mode_director: 🎬 Regie
+mode_tooltip: "Sagen: laut gesprochen · Tun: eine Handlung · Denken: stiller innerer Gedanke · Regie: eine Anmerkung außerhalb der Rolle an den Spielleiter"
+target_next_label: "Als Nächstes:"
+target_tooltip: "Wähle manuell, wer als Nächstes spricht, statt es dem Spielleiter zu überlassen."
+target_auto: Auto
+whisper_label: "Privat"
+whisper_tooltip: "Wenn aktiviert, wird deine Nachricht zu privatem Wissen, das nur der ausgewählte Charakter kennt – der Rest der Gruppe erfährt nichts davon."
+section_resources: Ressourcen und Fähigkeiten
+field_resources: Ressourcen
+field_resources_hint: 'Format: „Name: aktuell/maximal“ (eine Zeile pro Eintrag)'
+field_skills: Fähigkeiten
+field_skills_hint: 'Format: „Fähigkeit: Modifikator“ (−5 bis +10, eine Zeile pro Eintrag)'
+section_lore: Kampagnenwissen
+hint_lore_format: Eine Karte pro Block; Blöcke durch eine Leerzeile trennen. Karten werden nur dann in die Geschichte eingefügt,
+  wenn ihre Auslöser im Text vorkommen.
+section_campaign: Kampagnenübersicht
+field_objectives: Ziele
+field_objectives_hint: 'Format: „Titel | aktuell/maximal | Status | Beschreibung“ (Status: aktiv/abgeschlossen/fehlgeschlagen)'
+field_clocks: Uhren
+field_clocks_hint: 'Format: „Titel | aktuell/maximal | Beschreibung“'
+website_btn: "Webseite"
+docs_btn: "Doku"
+lock_background: "🔒 Hintergrund sperren (keine automatische Änderung)"
+lock_background_hint: "Wenn aktiviert, bleibt das Hintergrundbild fest und ändert sich<br>\nwährend der Szene NICHT automatisch – auch nicht bei einem Ortswechsel."
+disable_ambient: "🔇 Umgebungsgeräusche deaktivieren (in Stille spielen)"
+disable_ambient_hint: "Wenn aktiviert, wird während der Szene kein Umgebungsgeräusch abgespielt.<br>\nPraktisch, wenn du Stille möchtest oder nur wenige Audiodateien hast."
+ai_asst_window_title: KI-Assistent – Charakter erstellen
+ai_asst_header_title: KI-Charakterassistent
+ai_asst_header_subtitle: Beantworte ein paar Fragen – das neuronale Netz kümmert sich um den Rest
+ai_asst_close_tooltip: Schließen
+ai_asst_stepper_title: SCHRITTE
+ai_asst_step_indicator: Schritt {n} von {total}
+ai_asst_btn_back: ← Zurück
+ai_asst_btn_back_tooltip: Zum vorherigen Schritt zurückkehren
+ai_asst_btn_next: Weiter →
+ai_asst_btn_next_tooltip: Zum nächsten Schritt weitergehen
+ai_asst_btn_done: Fertig
+ai_asst_step_1: Grundidee
+ai_asst_step_2: Charakter und Stimme
+ai_asst_step_3: Aussehen und Hintergrundgeschichte
+ai_asst_step_4: Beziehungen
+ai_asst_step_5: Details und Grenzen
+ai_asst_step_6: Generator
+ai_asst_concept_card_title: Wer ist dein Charakter?
+ai_asst_concept_card_subtitle: Beschreibe die Grundidee frei – die übrigen Details kannst du unten verfeinern.
+ai_asst_concept_field_label: Kurze Charakteridee
+ai_asst_concept_field_tooltip: Pflichtfeld. Die KI verwendet diese Idee als Grundlage für alle weiteren Felder.
+ai_asst_concept_field_placeholder: z. B. ein ehemaliger Söldner-Elf, kriegsmüde, der nun am Rand des Königreichs eine Taverne
+  betreibt und eine dunkle Vergangenheit verbirgt …
+ai_asst_genre_card_title: "Setting / Genre"
+ai_asst_genre_card_subtitle: Wähle eine oder mehrere Optionen oder füge eigene hinzu
+ai_asst_genre_fantasy: Fantasy
+ai_asst_genre_scifi: Science-Fiction
+ai_asst_genre_modern: Moderne
+ai_asst_genre_historical: Historisch
+ai_asst_genre_anime: Anime / Manga
+ai_asst_genre_postapoc: Postapokalypse
+ai_asst_genre_cyberpunk: Cyberpunk
+ai_asst_genre_horror: Horror
+ai_asst_genre_sliceoflife: Alltag
+ai_asst_role_card_title: Rolle des Charakters
+ai_asst_role_card_subtitle: Welche Rolle spielt der Charakter in der Geschichte?
+ai_asst_role_companion: Begleiter
+ai_asst_role_mentor: Mentor
+ai_asst_role_antagonist: Gegenspieler
+ai_asst_role_love: Romantisches Interesse
+ai_asst_role_rival: Rivale
+ai_asst_role_assistant: Assistent
+ai_asst_role_stranger: Mysteriöser Fremder
+ai_asst_role_friend: Freund
+ai_asst_traits_card_title: Charaktereigenschaften
+ai_asst_traits_card_subtitle: Wähle mehrere Optionen oder ergänze eigene
+ai_asst_trait_kind: Freundlich
+ai_asst_trait_tsundere: Tsundere
+ai_asst_trait_sarcastic: Sarkastisch
+ai_asst_trait_shy: Schüchtern
+ai_asst_trait_confident: Selbstbewusst
+ai_asst_trait_cold: Kühl
+ai_asst_trait_playful: Verspielt
+ai_asst_trait_serious: Ernst
+ai_asst_trait_chaotic: Chaotisch
+ai_asst_trait_loyal: Loyal
+ai_asst_trait_manipulative: Manipulativ
+ai_asst_trait_naive: Naiv
+ai_asst_trait_wise: Weise
+ai_asst_trait_energetic: Energiegeladen
+ai_asst_trait_calm: Ruhig
+ai_asst_trait_caring: Fürsorglich
+ai_asst_speech_card_title: Sprechstil
+ai_asst_speech_card_subtitle: Wie spricht der Charakter?
+ai_asst_speech_formal: Formell
+ai_asst_speech_slang: Locker / Umgangssprache
+ai_asst_speech_poetic: Poetisch
+ai_asst_speech_direct: Direkt
+ai_asst_speech_teasing: Neckisch
+ai_asst_speech_archaic: Altertümlich
+ai_asst_speech_accent: Akzent / Sprachmarotte
+ai_asst_speech_emoji: Mit Emojis
+ai_asst_motive_card_title: Inneres Motiv
+ai_asst_motive_card_subtitle: Was treibt den Charakter an? Angst, Ziel oder Geheimnis …
+ai_asst_motive_placeholder: z. B. Angst, erneut jemanden zu verlieren, weshalb andere auf Abstand gehalten werden …
+ai_asst_bg_skip_hint: Dieser Schritt ist optional. Wenn du ihn überspringst, ergänzt die KI die Details selbst.
+ai_asst_age_card_title: Alter und Spezies / Rasse
+ai_asst_age_placeholder: z. B. „24 Jahre, Mensch“ oder „unbekannt, uralter Vampir“
+ai_asst_appearance_card_title: Aussehen
+ai_asst_appearance_card_subtitle: Die wichtigsten Details – die KI ergänzt den Rest
+ai_asst_appearance_placeholder: Haar-/Augenfarbe, Statur, Kleidung, besondere Merkmale …
+ai_asst_backstory_card_title: Hintergrundgeschichte
+ai_asst_backstory_placeholder: Wichtige vergangene Ereignisse, die den Charakter geprägt haben …
+ai_asst_rel_card_title: In welcher Beziehung steht der Charakter zu dir?
+ai_asst_rel_card_subtitle: Wähle die Option, die eure Beziehung am besten beschreibt
+ai_asst_rel_stranger: Fremder
+ai_asst_rel_friend: Freund
+ai_asst_rel_partner: Romantischer Partner
+ai_asst_rel_family: Familienmitglied
+ai_asst_rel_enemy: Rivale / Feind
+ai_asst_rel_mentor: Mentor / Schüler
+ai_asst_rel_boss: Chef / Untergebener
+ai_asst_rel_chance: Zufällige Begegnung
+ai_asst_meeting_card_title: Wie findet das erste Treffen statt?
+ai_asst_meeting_card_subtitle: Dies bildet die Grundlage für das Szenario und die erste Nachricht
+ai_asst_meeting_placeholder: z. B. {{user}} betritt spät nachts eine Taverne, während der Charakter gerade schließen will
+  …
+ai_asst_tone_card_title: Stimmung der Geschichte
+ai_asst_tone_light: Leicht / Freundlich
+ai_asst_tone_romance: Romantik (ohne explizite Szenen)
+ai_asst_tone_drama: Drama / Dunkle Themen
+ai_asst_tone_comedy: Komödie
+ai_asst_tone_adventure: Abenteuer / Action
+ai_asst_tone_mystery: Mystery / Krimi
+ai_asst_extra_card_title: Was muss noch beachtet werden?
+ai_asst_extra_card_subtitle: Besondere Formulierungen, Hintergrundwissen, Referenzen, Einschränkungen – alles, was wichtig
+  ist
+ai_asst_extra_placeholder: Freitext …
+ai_asst_fields_card_title: Welche Felder sollen ausgefüllt werden?
+ai_asst_fields_card_subtitle: Markiere nur die Felder, die die KI erzeugen soll. Andere Felder bleiben unverändert.
+ai_asst_btn_select_all: Alle auswählen
+ai_asst_btn_select_none: Alle abwählen
+ai_asst_mode_card_title: Übernahmemodus
+ai_asst_mode_tooltip: Legt fest, wie die erzeugten Werte in den Editor übernommen werden.
+ai_asst_mode_overwrite: Ausgewählte Felder vollständig überschreiben
+ai_asst_mode_empty: Nur leere Felder füllen (bestehende Inhalte behalten)
+ai_asst_field_name_label: Charaktername
+ai_asst_field_name_hint: Kurzer, einprägsamer Name, gegebenenfalls mit Nachname oder Spitzname. Nur den Namen ausgeben.
+ai_asst_field_description_label: Beschreibung
+ai_asst_field_description_hint: 'Zusammenhängende Beschreibung in der dritten Person: Identität, Aussehen, Beruf und wichtige
+  biografische Merkmale. 3–6 Sätze, ohne Fülltext oder Meta-Kommentare.'
+ai_asst_field_personality_label: Persönlichkeit
+ai_asst_field_personality_hint: Knappe Zusammenfassung von Eigenschaften, Gewohnheiten, Sprechweise, Auslösern und Schwächen.
+  Stichpunkte oder kurze Sätze.
+ai_asst_field_scenario_label: Szenario
+ai_asst_field_scenario_hint: Beschreibe die Situation und den Ort, an dem das Rollenspiel zwischen dem Charakter und {{user}}
+  beginnt. 2–4 Sätze.
+ai_asst_field_first_message_label: Erste Nachricht
+ai_asst_field_first_message_hint: Erste Nachricht des Charakters an {{user}}, in der ersten Person und in der Rolle. Handlungen
+  in *Sternchen*, Dialog als normaler Text. Atmosphärisch und lebendig, ohne Spoiler.
+ai_asst_field_alt_greetings_label: Alternative Begrüßungen
+ai_asst_field_alt_greetings_hint: 2–3 alternative erste Nachrichten mit anderen Ausgangssituationen oder Stimmungen. Als JSON-Array
+  aus Texten zurückgeben.
+ai_asst_field_example_messages_label: Beispieldialoge
+ai_asst_field_example_messages_hint: '1–2 kurze Gesprächsbeispiele zwischen {{user}} und dem Charakter, die dessen Sprechstil
+  zeigen. Format:
+
+  {{user}}: …
+
+  {{char}}: …
+
+
+  {{user}}: …
+
+  {{char}}: …'
+ai_asst_field_creator_notes_label: Notizen des Erstellers
+ai_asst_field_creator_notes_hint: 'Kurze Hinweise für Personen, die die Karte verwenden: Genre, Tags und Anwendungstipps.
+  1–3 Sätze.'
+ai_asst_provider_card_title: Sprachmodell (Anbieter)
+ai_asst_provider_card_subtitle: Verwendet denselben Anbieter, der im Programm konfiguriert ist
+ai_asst_provider_tooltip: Klicke, um diesen Anbieter für die Generierung auszuwählen.
+ai_asst_btn_generate: ✨ Charakterkarte erstellen
+ai_asst_btn_generate_tooltip: Sende die gesammelten Antworten an den ausgewählten Anbieter, um die Charakterfelder zu erstellen.
+ai_asst_stream_card_title: Modellantwort
+ai_asst_review_card_title: Prüfen und übernehmen
+ai_asst_review_card_subtitle: Du kannst den Text vor der Übernahme bearbeiten. Nicht markierte Felder werden nicht übernommen.
+ai_asst_btn_regen: Neu generieren
+ai_asst_btn_regen_tooltip: Nur dieses Feld neu generieren und die übrigen freigegebenen Angaben als Kontext beibehalten.
+ai_asst_btn_apply: In den Editor übernehmen
+ai_asst_btn_apply_tooltip: Übernimmt die markierten Felder in den Charaktereditor und schließt diesen Dialog.
+ai_asst_status_no_token: ⚠ Kein API-Token für „{provider}“ hinterlegt. Richte es unter Einstellungen → API ein und kehre dann
+  hierher zurück.
+ai_asst_status_no_fields: ⚠ Wähle im vorherigen Schritt mindestens ein Feld zur Generierung aus.
+ai_asst_err_provider: 'Fehler: Anbieter konnte nicht geladen werden. Prüfe die Einstellungen.'
+ai_asst_err_generation: '[Generierung fehlgeschlagen: {error}]'
+ai_asst_err_parse: '
+
+
+  [Die Modellantwort konnte nicht als JSON oder Markdown gelesen werden. Verwende einen anderen Anbieter oder vereinfache
+  die Anfrage.]'
+ai_asst_custom_placeholder: Eigene Variante … (Eingabetaste zum Hinzufügen)
+ai_asst_custom_tooltip: Gib einen Wert ein und drücke die Eingabetaste, um ihn als auswählbare Option hinzuzufügen.
+ai_asst_prompt_system: 'Du bist ein erfahrener Drehbuchautor und Spieldesigner und hilfst dem Benutzer eines KI-Rollenspielprogramms
+  dabei, eine fiktive Charakterkarte zu erstellen. Arbeite AUSSCHLIESSLICH mit Fiktion. Antworte AUSSCHLIESSLICH mit gültigem
+  JSON – ohne Erklärungen, Einleitung, Markdown-Codeblöcke oder Kommentare, nur das JSON-Objekt. Schreibe in DERSELBEN SPRACHE
+  wie die Antworten des Benutzers (Standard: Deutsch). Verwende den Platzhalter {{user}} für den Benutzer und {{char}} für
+  den Charakter selbst in Dialogbeispielen.'
+ai_asst_prompt_user_header: 'Hier sind die Charakterinformationen, die der Benutzer im Fragebogen angegeben hat:'
+ai_asst_prompt_field_keys_header: 'Erzeuge JSON mit GENAU den folgenden Schlüsseln (und keinen weiteren):'
+ai_asst_prompt_user_footer: 'Gib genau ein JSON-Objekt mit diesen Schlüsseln zurück. Schreibe keinen Text vor oder nach dem
+  JSON. Lasse keine Felder leer: Wenn eine Information fehlt, ergänze eine plausible, zum bisherigen Konzept passende Angabe.
+  Erfinde keine Widersprüche zu den Angaben des Benutzers.'
+ai_asst_prompt_l_concept: Grundidee
+ai_asst_prompt_l_genre: Setting / Genre
+ai_asst_prompt_l_role: Rolle des Charakters
+ai_asst_prompt_l_traits: Persönlichkeitsmerkmale
+ai_asst_prompt_l_speech: Sprechweise
+ai_asst_prompt_l_motive: Innerer Antrieb / Angst / Ziel
+ai_asst_prompt_l_age: Alter / Spezies
+ai_asst_prompt_l_appearance: Aussehen
+ai_asst_prompt_l_backstory: Hintergrundgeschichte
+ai_asst_prompt_l_relationship: Beziehung zu {{user}}
+ai_asst_prompt_l_meeting: Umstände des Kennenlernens
+ai_asst_prompt_l_tone: Erzählton
+ai_asst_prompt_l_extra: Zusätzliche Wünsche / Einschränkungen
+ai_asst_prompt_l_array: Array aus Zeichenketten
+ai_asst_prompt_l_string: Zeichenkette
+ai_asst_prompt_refine_addition: '
+
+
+  Already approved parts of the card (for consistency, do not rewrite them):
+
+  '
+sc_menu_scratchpad: 🧠  Gedanken-Notizblock
+sc_menu_text_bar_hover: 💬  Textchat-Leiste (bei Mauszeiger)
+sc_menu_text_bar_on: 💬  Textchat-Leiste (EIN)
+sc_menu_text_bar_off: 💬  Textchat-Leiste (AUS)
+sc_hud_hormones_title: Endokrines System und Hormonbalance
+sc_hud_oxytocin: 🧪 Oxytocin (Liebe)
+sc_hud_dopamine: ⚡ Dopamin (Fokus)
+sc_hud_cortisol: "🔥 Cortisol (Stress)"
+sc_hud_energy: 🔋 Energie (Vitalität)
+sc_hud_scratchpad_title: 🧠 Interne Gedanken des Begleiters (Notizblock)
+sc_input_placeholder: Schreibe deinen Text …
+no_folders_prompt_scenes: Noch keine Ordner vorhanden. Möchtest du einen erstellen?
+create: "Erstellen"
+new_folder: 📁 Neuer Ordner
+lobby_folders_section: "SZENENORDNER"
+lobby_scenes_section: "SZENEN"
+folder_scenes_label: Szenen
+folder_create_title_scene: Szenenordner erstellen
+folder_delete_detail_scenes: Die Szenen werden zurück in die Hauptübersicht verschoben.
+party_member_selected: "{n} ausgewählt"
+soul_stage_no_party_error: Keine Gruppenmitglieder in der Szene! Füge mindestens einen Charakter hinzu, bevor du startest.
+tab_arcs: Handlungsbögen
+tab_relationships: Beziehungen
+tab_character_states: Charakterzustände
+section_arcs: Handlungsbögen
+hint_arcs_format: Hier steuerst du deinen Handlungsverlauf. Ein Handlungsbogen im Status „gesperrt“ existiert für keine Figur
+  – niemand wird ihn erwähnen.
+section_relationships: Beziehungen
+hint_relationships_format: Beschreibt, wie eine Figur eine andere wahrnimmt – meistens, wie ein Gruppenmitglied oder NPC den
+  SPIELER sieht; möglich sind auch andere Beziehungen.
+field_relationships: Beziehungen
+field_relationships_hint: 'Format: „Subjekt -> Ziel | Sympathie (-100 bis 100) | Rollenperspektive | Stichwort1, Stichwort2“'
+section_character_states: Charakterzustände
+hint_overlays_format: Der sich entwickelnde Zustand eines Charakters – aktuelle Rolle oder Titel und persönliche Fakten, die
+  verfolgt werden sollen (z. B. Loyalität oder ein Geheimnis).
+export_md_no_scene: Keine aktive Szene zum Exportieren vorhanden.
+export_md_failed: Export konnte nicht erstellt werden.
+export_md_dialog_title: Szene als Markdown exportieren
+export_md_write_failed: Datei konnte nicht geschrieben werden – überprüfe Pfad und Berechtigungen.
+export_md_success: Szene als Markdown exportiert.
+call_mode_dialog_title: Anrufmodus auswählen
+call_mode_dialog_subtitle: "Du kannst den Modus jederzeit wechseln – deine Standardeinstellungen bleiben unverändert."
+call_mode_sow_title: Yume-System
+call_mode_sow_desc: Vollbild-Anruffenster mit interaktivem Avatar und Sprachchat.
+call_mode_companion_title: Yume-Desktop-Begleiter
+call_mode_companion_desc: Schwebender Desktop-Begleiter ohne Rahmen, der über anderen Fenstern bleibt.
+call_mode_dialog_cancel: Abbrechen
+call_mode_dialog_confirm: Anruf starten
+confirm: "Bestätigen"
+var_preset_empty_title: Leer
+var_preset_empty_msg: Es sind keine Variablen zum Speichern vorhanden.
+var_preset_save_title: Vorlage speichern
+var_preset_save_label: 'Vorlagennamen eingeben:'
+var_preset_save_placeholder: Meine benutzerdefinierte Vorlage
+var_preset_overwrite_title: Vorlage überschreiben
+var_preset_overwrite_msg: Eine Vorlage namens „{name}“ existiert bereits. Überschreiben?
+var_preset_saved_title: Gespeichert
+var_preset_saved_msg: Vorlage „{name}“ wurde gespeichert.
+var_preset_not_found_title: Nicht gefunden
+var_preset_not_found_msg: Es können nur benutzerdefinierte Vorlagen gelöscht werden.
+var_preset_delete_title: Vorlage löschen
+var_preset_delete_msg: Vorlage „{preset_name}“ löschen?
+var_preset_deleted_title: Gelöscht
+var_preset_deleted_msg: Vorlage „{preset_name}“ wurde gelöscht.
+reasoning_effort_text: Reasoning-Aufwand
+reasoning_effort_none: Aus
+reasoning_effort_low: Niedrig
+reasoning_effort_medium: Mittel
+reasoning_effort_high: Hoch
+tts_rules_title: Text-zu-Sprache-Regeln
+section_tts_voicing_mode: AUSWAHL DES SPRACHMODUS
+tts_voicing_mode_label: Sprachausgabemodus
+tts_custom_regex_label: Benutzerdefinierter regulärer Ausdruck (Gruppe 1)
+tts_custom_regex_placeholder: z. B. \*(.*?)\* – spricht nur Text zwischen Sternchen
+custom_args_placeholder: e.g., --rope-freq-base 10000 --temp 0.8
+web_server_starting_btn: Startet …
+web_server_running_status: 'Status: Läuft unter http://127.0.0.1:8000'
+checkbox_auto_translate_new_messages: Neue Nachrichten automatisch übersetzen
+auto_translate_new_messages_tooltip: "Wenn aktiviert, wird jede neue Charakternachricht automatisch übersetzt.\nWenn deaktiviert, bleiben Nachrichten in ihrer Originalsprache und du kannst sie über die Aktion „Übersetzen“ im Nachrichtenmenü einzeln übersetzen."
+delete_model: LLM löschen
+toggle_tools_tooltip: "Lass den Charakter beim Antworten Werkzeuge nutzen (Rechner, Datum/Uhrzeit, Websuche)"
+toast_tools_title: Werkzeuge
+toast_tools_enabled: 'Der Charakter kann jetzt beim Antworten Werkzeuge verwenden: {tool_list}'
+toast_tools_disabled: Werkzeuge sind jetzt deaktiviert.
+tool_using_label: verwendet {tool} …
+thinking_process_label: "DENKPROZESS"
+thinking_hide_hint: "ausblenden"
+thinking_show_hint: "einblenden"
+toast_attach_title: Anhänge
+toast_attach_limit: Du kannst bis zu {limit} Dateien pro Nachricht anhängen.
+attach_file_dialog_title: "Dateien an die Nachricht anhängen"
+toast_attach_too_large: „{filename}“ ist größer als {size} MB und wurde übersprungen.
+toast_tts_replay_title: Sprachnachricht
+toast_tts_replay_missing: Für diese Nachricht ist keine gespeicherte Sprachausgabe vorhanden.
+replay_voice_tooltip: "Sprachnachricht abspielen"
+msg_action_replay_voice: "Sprachnachricht abspielen"
+preview_prompt_title: "Rohprompt-Vorschau"
+preview_prompt_desc: "So ungefähr sieht das LLM deine Charakterkarte, bevor es antwortet:"
+toast_ai_assistant_title: KI-Assistent
+toast_ai_assistant_applied: '{applied_count} Felder wurden erfolgreich übernommen!'
+duplicate_success: Charakter wurde als „{new_name}“ dupliziert.
+default_chat_name: "Standard-Chat"
+rename_chat_title: "Chat umbenennen"
+rename_chat_prompt: "Neuen Chatnamen eingeben:"
+chat_renamed_success: Chat in „{new_name}“ umbenannt.
+imported_suffix: "Importiert"
+edit_save_error: "Bearbeitete Nachricht konnte nicht gespeichert werden!"
+translate_error: "Übersetzung fehlgeschlagen"
+force_memory_tooltip: "Gedächtnis jetzt erzwingen"
+image_gen_api_key: 'API-Schlüssel:'
+image_gen_started: Szene wird analysiert und ein filmischer Prompt erstellt …
+image_gen_placeholder: 🖼 Bild wird generiert …
+image_gen_failed: ⚠ Bildgenerierung fehlgeschlagen
+retry_button: "Erneut versuchen"
+generated_image_title: "Generiertes Bild"
+save_image_as: "Bild speichern unter ..."
+regenerate_image: "Bild neu generieren"
+show_in_folder: "Im Ordner anzeigen"
+visual_engine_nothing: Keine Visualisierung
+visual_engine_images: Ausdrucksbilder
+visual_engine_live2d: Live2D-Modell
+visual_engine_vrm: VRM-3D-Modell
+live2d_motion_mapper_btn: "Gefühle Bewegungen zuordnen"
+folder_no_chars_available: Keine weiteren Charaktere verfügbar
+folder_empty: Keine Charaktere in diesem Ordner
+about_tagline: KI-ROLLENSPIEL-ENGINE
+author_notes_title: Autornotizen
+author_notes_saved_body: Die Autornotizen wurden erfolgreich gespeichert.
+summary_editor_no_new_msg: Keine neuen Nachrichten zum Zusammenfassen.
+appearance_preview_text_1: Sie blickt dich an,
+appearance_preview_text_2: während sich ihre Augen langsam verengen.
+appearance_preview_text_3: Also … du erinnerst dich an nichts?
+appearance_preview_text_4: Ich erinnere mich an genug.
+program_language_item_de: Deutsch
+tts_qwen_advanced_title: ERWEITERTE GENERIERUNG UND SEGMENTIERUNG
+tts_qwen_gpu_label: TTS-GPU
+tts_qwen_tokens_label: Maximale Anzahl neuer Tokens
+tts_qwen_temperature_label: Temperatur
+tts_qwen_top_p_label: Top-p
+tts_qwen_chunk_chars_label: Maximale Zeichen pro TTS-Segment
+tts_qwen_pause_label: Pause zwischen TTS-Segmenten
+tts_qwen_end_silence_label: Stille am Ende jedes Segments
+tts_qwen_advanced_hint: Wenn die Stimme am Satzende abbricht, teste kürzere Textsegmente, ein etwas höheres Tokenlimit und
+  100–250 ms zusätzliche Stille am Ende. Starte die Sprachgenerierung nach Änderungen neu.
+voice_anti_echo_half_duplex: Anti-Echo / Halbduplex (Mikrofon stummschalten, während die App spricht)
+voice_wake_word_help: Wake-Phrasen werden im Whisper-Transkript erkannt; hierfür wird kein separates, ständig lauschendes
+  Wake-Word-Modell verwendet.
+tts_qwen_gpu: TTS-GPU
+tts_qwen_max_tokens: Maximale Anzahl neuer Tokens
+tts_qwen_temperature: Temperatur
+tts_qwen_top_p: Top-p
+tts_qwen_chunk_size: Maximale Zeichen pro TTS-Segment
+tts_qwen_pause: Pause zwischen TTS-Segmenten
+tts_qwen_end_silence: Stille am Ende jedes Segments
+tts_qwen_chunk_hint: Wenn die Stimme am Satzende abbricht, teste kürzere Textsegmente, ein etwas höheres Tokenlimit und 100–250
+  ms zusätzliche Stille am Ende. Starte die Sprachgenerierung nach Änderungen neu.
+
+# Integration hub and conversational controls added in the Yume Companion enhancement.
+settings_system_ui: System & Benutzeroberfläche
+settings_api_providers: APIs & Anbieter
+settings_local_llm: Sprachmodell & APIs
+settings_tool_calling_mcp: Werkzeugaufrufe & MCP
+settings_home_assistant: Home Assistant
+settings_tools_plugins: Werkzeuge & Plugins
+settings_ai_services: KI-Dienste
+settings_conversation_audio: Gespräch & Audio
+settings_sow_modules: Yume-Module
+settings_appearance: Darstellung
+ha_card_title: Home Assistant – Smart Home
+ha_intro: Verbinde Yume Companion mit Home Assistant im Heimnetz. Der Zugriff ist optional; Steuerbefehle erfordern ausdrücklich
+  freigegebene Entitäten.
+ha_enable: Home Assistant aktivieren
+ha_url_label: Home-Assistant-URL
+ha_token_label: Langlebiger Zugriffstoken
+ha_token_placeholder: Token wird lokal gespeichert
+ha_allow_control: Steuerbefehle erlauben (nur freigegebene Entitäten)
+ha_entities_label: Erlaubte Entitäten für Steuerbefehle (eine pro Zeile)
+ha_safety_note: Statusabfragen funktionieren ohne Steuerfreigabe. Für Steuerbefehle ist eine ausdrückliche
+  Entitäten-Freigabeliste erforderlich; jede Steueraktion wird standardmäßig einzeln bestätigt. Schlösser,
+  Alarmanlagen und freie Skriptausführung werden nicht angeboten. Bei einem Cloud-LLM können
+  Werkzeugergebnisse an diesen Anbieter gesendet werden.
+ha_test_button: Verbindung testen
+ha_not_tested: Noch nicht getestet
+tool_hub_title: Werkzeuge & Plugins
+tool_hub_intro: Lege fest, welche Werkzeuge die KI im Chat verwenden darf. Integrationen werden als Module registriert; freie
+  Shell-Befehle sind absichtlich nicht verfügbar.
+chat_tools_enabled_label: Werkzeugnutzung im Chat aktivieren
+tool_pref_web_search: Websuche erlauben
+tool_pref_open_url: Webseiten im Standardbrowser öffnen erlauben
+tool_pref_system_info: Systeminformationen und Datum/Uhrzeit erlauben
+tool_pref_clipboard: Zwischenablage lesen erlauben
+tool_pref_launch_program: Freigegebene Windows-Programme starten erlauben
+tool_allowed_programs_label: Programme, die Yume starten darf (aus deinen installierten Apps wählen)
+tool_hub_security_note: "Jeder Programmstart muss bestätigt werden. Die KI kann weder beliebige Befehle noch Argumente ausführen; erlaubt sind nur vorhandene .exe- oder .lnk-Dateien aus dieser Liste. Werkzeugergebnisse können an den ausgewählten LLM-Anbieter gesendet werden. Aktiviere den Zwischenablagezugriff nicht, wenn dort sensible Texte liegen, und nutze für private Daten möglichst ein vertrauenswürdiges lokales LLM."
+ai_services_title: KI-Dienste & GPU-Zuweisung
+ai_services_intro: Verwalte die Rechenzuweisung zentral. Whisper und Qwen-TTS laufen auf diesem Host; lokales llama.cpp kann
+  ausgewählte GPU(s) verwenden. Bei Remote-LLM wird die GPU auf dem entfernten PC verwaltet.
+ai_route_local: Dieser PC – lokales llama.cpp
+ai_route_remote: Entfernter PC – Ollama / llama.cpp
+ai_primary_llm_route: LLM-Ausführungsziel
+ai_device_cuda: CUDA-GPU
+ai_device_cpu: CPU
+ai_whisper_device: Whisper-Gerät
+ai_whisper_gpu: Whisper-GPU
+ai_qwen_gpu: Qwen-TTS-Standard-GPU
+ai_gpu_note: GPU-Indizes beziehen sich auf die Nummerierung des jeweiligen Prozesses. Nach Änderungen können ein Neustart
+  des lokalen LLM-Servers bzw. des Sprachmodus nötig sein.
+ai_refresh_gpu: GPU-Liste aktualisieren
+ai_gpu_not_checked: GPU-Erkennung noch nicht ausgeführt
+ai_detected_gpus: 'Erkannte CUDA-GPUs: {count}'
+ai_no_gpus_detected: Keine CUDA-GPU erkannt. CPU-Modus ist verfügbar, sofern das Backend ihn unterstützt.
+dialogue_style_title: Gespräch & Emotionen
+dialogue_style_intro: Diese Hinweise ergänzen die Persönlichkeit des Charakters, überschreiben sie aber nicht. Sie wirken
+  auf neue Generierungen; Audioparameter werden beim nächsten Start des Sprachmodus geladen.
+natural_dialogue_enabled: Natürlichere Gesprächsführung aktivieren
+emotion_continuity_enabled: Emotionen über mehrere Antworten konsistent halten
+avoid_repetition_enabled: Wiederholte Begrüßungen und Floskeln vermeiden
+dialogue_style_balanced: Natürlich / ausgewogen
+dialogue_style_warm: Warm und persönlich
+dialogue_style_concise: Kurz und direkt
+dialogue_style_casual: Locker und spontan
+dialogue_style_label: Gesprächsstil
+emotion_intensity_label: Emotionale Ausdrucksstärke
+audio_behavior_title: Spracheingabe, Wake-Word & Echo-Schutz
+wake_word_enabled_label: Wake-Word aktivieren
+wake_word_phrase_label: Aktivierungswort/-phrasen (mit Komma trennen)
+wake_word_timeout_label: Aktiv bleiben nach Wake-Word
+anti_echo_half_duplex: 'Halbduplex: während Wiedergabe nicht zuhören'
+anti_echo_off: Aus
+anti_echo_mode_label: Echo-Schutz-Modus
+anti_echo_tail_label: Echo-Nachlauf (nur für den Halbduplex-Fallback)
+voice_silence_label: Stille bis zum Satzende
+voice_preroll_label: Audio-Vorlauf gegen abgeschnittene Anfangslaute
+ha_enabled_notice: Home Assistant ist aktiviert. Damit die KI es im Chat verwenden kann, muss auch die Werkzeugnutzung aktiv
+  sein.
+ha_testing: Verbindung wird geprüft …
+ha_connected: 'Verbunden: {message}'
+ha_test_success: Verbindung erfolgreich.
+ha_connection_failed: 'Verbindung fehlgeschlagen: {details}'
+program_launch_confirm_title: Programmstart bestätigen
+program_launch_confirm_body: 'Soll dieses Programm gestartet werden?
+
+
+  {name}
+
+  {path}'
+
+# Audio segment tuning and integration status.
+tts_chunk_max_chars_label: Maximale Textlänge pro TTS-Segment
+tts_chunk_pause_label: Pause zwischen TTS-Segmenten
+lipsync_smoothing_label: Lippensynchronisation glätten
+tool_registry_status: 'Aktive Werkzeuge: {tools}'
+ai_remote_settings_button: "Entfernten PC einrichten (Lokales LLM → Netzwerk)"
+ai_render_gpu_note: "Live2D-/VRM-Rendering nutzt die Windows-Grafikzuweisung und kann hier nicht unabhängig als CUDA-Prozess einer GPU zugewiesen werden."
+mcp_confirm_calls_label: "Vor jedem externen MCP-Werkzeugaufruf nachfragen"
+mcp_call_confirm_title: "Externe MCP-Aktion bestätigen"
+mcp_call_confirm_body: "Der konfigurierte MCP-Server möchte dieses Werkzeug ausführen. Fahre nur fort, wenn du diesem Server vertraust.\n\nWerkzeug: {tool}\nArgumente:\n{args}"
+mcp_test_connection_button: "MCP-Verbindung testen"
+mcp_connection_not_tested: "Verbindung noch nicht getestet"
+mcp_connection_testing: "MCP-Verbindung wird geprüft …"
+mcp_invalid_url: "Gib eine vollständige HTTP(S)-Adresse des MCP-Servers ein."
+mcp_connection_failed_detail: "Der Server hat den MCP-Verbindungsaufbau nicht abgeschlossen."
+mcp_no_tools: "Keine Werkzeuge bereitgestellt"
+mcp_connection_success: "Verbunden — {count} Werkzeuge: {tools}"
+mcp_connection_failed: "Verbindung fehlgeschlagen: {details}"
+
+# Additional safety prompts for state-changing Home Assistant actions
+ha_confirm_actions: "Steueraktionen vor jeder Ausführung bestätigen"
+ha_action_confirm_title: "Home-Assistant-Aktion bestätigen"
+ha_action_confirm_body: "Yume Companion möchte eine Home-Assistant-Aktion ausführen. Bestätige nur, wenn du sie angefordert hast.\n\nDienst: {service}\nEntität: {entity_id}\nDaten: {data}"
+
+# WebRTC AEC and Qwen anti-truncation controls
+
+
+
+
+
+tts_qwen_retry_short_label: "Auffällig kurze Qwen-Ausgabe automatisch einmal wiederholen"
+tts_qwen_retry_short_hint: "Erkennt nur auffällig kurze Ausgaben im Verhältnis zur Textlänge. Das ist eine Schutzmaßnahme, keine Garantie gegen jeden Modellfehler."
+tts_qwen_generation_timeout: "Maximale Generierungsdauer pro Segment"
+tts_qwen_timeout_hint: "Bei langsamer GPU oder großen Segmenten erhöhen. Das ist die maximale Wartezeit, bevor das Segment als fehlgeschlagen gilt."
+ai_tts_default_device: Standardgerät für lokale TTS
+ai_tts_device_auto: Automatisch (GPU, falls verfügbar)
+ai_tts_gpu: Standard-GPU für lokale TTS
+tts_qwen_device_default: Standard (KI-Dienste)
+tts_qwen_device_cuda: CUDA (GPU) – eigene Auswahl
+tts_qwen_device_cpu: CPU – eigene Auswahl
+tts_qwen_device_note: Standard verwendet die Auswahl unter Einstellungen → KI-Dienste. Eine eigene CPU-/GPU-Auswahl überschreibt sie nur für diesen Charakter.
+# Version 2.5.3 – Android Connector server control
+android_webserver_status: "Webserver: Status wird geprüft …"
+android_webserver_status_prefix: "Webserver: "
+android_webserver_start: "Webserver starten"
+android_webserver_stop: "Webserver stoppen"
+
+# Audio echo feature availability (v2.5.3)
+aec_noise_suppression_label: "Zusätzliche AEC-Rauschunterdrückung (nicht verfügbar)"
+aec_library_ready: "Kein echter AEC3-Prozessor integriert; Halbduplex-Fallback verfügbar."
+aec_library_missing: "Kein echter AEC3-Prozessor integriert; Halbduplex-Fallback wird verwendet."
+audio_echo_note: "WebRTC AEC3 nutzt das tatsächlich ausgegebene Audiosignal als Referenz und kann Spracheingabe während der Wiedergabe ermöglichen. Dafür müssen AEC3-Test und Referenz-Audiopfad funktionieren; andernfalls greift der Halbduplex-Fallback."
+
+# WebRTC AEC3 (v2.5.3 AEC-Reparatur)
+anti_echo_aec: "WebRTC AEC3 (Vollduplex-Echoentfernung)"
+aec_delay_label: "AEC-Referenzverzögerung (Audiogeräte)"
+aec_controls_disabled_hint: "AEC3-Einstellungen werden freigegeben, nachdem die native WebRTC-Erweiterung den Starttest besteht."
+aec_not_implemented: ""
+aec_install_button: "WebRTC AEC3 prüfen / installieren"
+aec_recheck_button: "AEC3 erneut prüfen"
+aec_status_checking: "WebRTC AEC3 wird beim Start geprüft …"
+aec_status_ready: "WebRTC AEC3 ist bereit. Vollduplex-Echoentfernung ist verfügbar."
+aec_status_missing: "WebRTC AEC3 fehlt oder konnte nicht initialisiert werden. Bis zur Reparatur wird Halbduplex verwendet."
+aec_status_installing: "WebRTC AEC3 wird installiert – bitte warten …"
+aec_install_title: "WebRTC AEC3"
+aec_install_prompt: "Das WebRTC-AEC3-Paket fehlt oder funktioniert nicht. Soll es jetzt in der tatsächlich von Yume Companion verwendeten Python-Umgebung installiert/repariert werden? Dafür ist Internetzugriff nötig."
+aec_install_success: "WebRTC AEC3 wurde installiert und erfolgreich initialisiert."
+aec_install_restart_note: "Bitte den Sprachmodus neu starten; falls nötig auch Yume Companion."
+aec_install_failure: "AEC3 konnte nicht installiert oder initialisiert werden. Die Anwendung verwendet weiterhin Halbduplex."
+aec_delay_help: "Verzögerung zwischen Lautsprecher-Referenz und Mikrofon-Echo; gilt beim nächsten Start der Spracheingabe."
+aec_ns_help: "Aktiviert WebRTC-Rauschunterdrückung zusätzlich zur akustischen Echoentfernung."
+# Backup and restore (v2.5.3)
+settings_backup_restore: "Backup & Wiederherstellung"
+backup_restore_title: "Backup erstellen / importieren"
+backup_restore_intro: "Erstelle ein portables Yume-Backup oder importiere ältere Backups, auch aus Version 2.5.1. Vor jeder Wiederherstellung wird automatisch eine Sicherheitssicherung erstellt."
+backup_include_assets: "Eigene Stimmen, Modelle und Asset-Ordner einschließen (kann sehr groß werden)"
+backup_include_assets_tooltip: "Wenn aktiviert, werden zusätzliche Modell- und Stimmenordner aufgenommen. Große lokale Modelle können die Backup-Datei mehrere Gigabyte groß machen."
+backup_create_button: "Yume-Backup erstellen …"
+backup_import_button: "Backup importieren / wiederherstellen …"
+backup_import_folder_button: "Alten Backup-Ordner importieren …"
+backup_sensitive_warning: "Backups enthalten API-Schlüssel und persönliche Charakter-/Chatdaten. Bewahre Backup-Dateien privat auf. Bei der Wiederherstellung werden passende Konfigurationsdateien ersetzt; andere vorhandene Dateien werden nicht gelöscht."
+backup_status_idle: "Noch keine Backup-Aktion ausgeführt."
+backup_started_status: "Backup wird erstellt …"
+backup_create_dialog_title: "Yume-Backup erstellen"
+backup_created_title: "Backup erstellt"
+backup_created_message: "Das Backup wurde erfolgreich erstellt. Es enthält API-Tokens und persönliche Charakterdaten – bewahre es vertraulich auf.\n\n{path}\n\nDateien: {count}"
+backup_created_status: "Backup erstellt: {path} ({count} Dateien)"
+backup_import_dialog_title: "Yume-Backup importieren"
+backup_import_folder_dialog_title: "Alten Backup-Ordner auswählen"
+backup_restore_confirm_title: "Backup-Wiederherstellung bestätigen"
+backup_restore_confirm_message: "Backup aus Version {version} mit {count} unterstützten Dateien importieren?\n\nPassende Einstellungen, API-Tokens und Charakter-/Chatdaten werden überschrieben. Zuvor wird automatisch eine Sicherheitssicherung erstellt. Alte Backups aus Version 2.5.1 werden unterstützt. Starte Yume Companion nach dem Import neu."
+backup_restore_done_title: "Backup wiederhergestellt"
+backup_restore_done_message: "Der Backup-Import wurde abgeschlossen.\n\nWiederhergestellte Dateien: {count}\nErkannte Backup-Version: {version}\n\nAutomatische Sicherung des vorherigen Zustands:\n{backup}\n\nBitte starte Yume Companion neu, damit die Einstellungen und Charaktere neu geladen werden."
+backup_restored_status: "{count} Dateien aus Backup-Version {version} wiederhergestellt."
+backup_error_title: "Backup-Fehler"
+
+ambient_default_track_label: 'Standard-Titel:'
+ambient_default_volume_label: 'Standard-Lautstärke:'
+audio_hud_title: 'Hintergrundgeräusche'
+audio_hud_track_label: 'KLANGKULISSE'
+audio_hud_volume_label: 'LAUTSTÄRKE'
+open_ambient_folder_btn: 'Ambient-Ordner öffnen (eigene Audiodateien hinzufügen)'
+reload_ambient_tooltip: 'Audioliste aktualisieren'
+settings_updates: 'Updates'
+updates_title: 'Updates'
+updates_intro: 'Prüft ein GitHub-Repository auf eine neuere Version. Es wird nichts automatisch heruntergeladen oder installiert; hole das Update über die Release-Seite und sichere vorher deine Daten.'
+updates_current_version: 'Installierte Version: {version}'
+updates_repo_label: 'GitHub-Repository (Besitzer/Name):'
+updates_check_button: 'Nach Updates suchen'
+updates_open_release_button: 'Release-Seite öffnen'
+updates_status_idle: 'Noch keine Update-Prüfung durchgeführt.'
+updates_checking: 'Prüfe GitHub...'
+updates_not_configured: 'Noch kein GitHub-Repository eingetragen. Trage es oben ein (Besitzer/Repository), sobald das Projekt veröffentlicht ist.'
+updates_invalid_repo: 'Ungültiges Repository. Nutze die Form Besitzer/Repository oder eine github.com-URL.'
+updates_repo_not_found: 'Repository nicht gefunden (oder privat).'
+updates_no_releases: 'Das Repository hat noch keine Releases oder Tags.'
+updates_rate_limited: 'GitHub-Limit erreicht. Versuche es später erneut.'
+updates_network_error: 'GitHub nicht erreichbar. Prüfe deine Internetverbindung.'
+updates_error: 'Update-Prüfung fehlgeschlagen: {error}'
+updates_available: 'Neue Version verfügbar: {remote} (installiert: {local}).'
+updates_up_to_date: 'Du bist auf dem neuesten Stand (installiert: {local}, neueste: {remote}).'
+edit_personas: "Personas verwalten..."
+jump_to_bottom_tooltip: "Zur neuesten Nachricht springen"
+switch_persona_tooltip: "Nutzer-Persona wechseln"
+next_variant_tooltip: "Nächste Antwort"
+prev_variant_tooltip: "Vorherige Antwort"
+llm_reset_confirm_button: "Zurücksetzen"
+llm_reset_confirm_text: "Die wichtigsten Generierungs-Parameter werden auf Standardwerte zurückgesetzt.\nPresets bleiben unverändert."
+llm_reset_confirm_title: "Einstellungen zurücksetzen?"
+llm_reset_defaults: "Zurücksetzen"
+llm_reset_defaults_tooltip: "Setzt Temperatur, Top-P, Kontextgröße, Max Tokens und Penalties auf Standardwerte zurück."
+llm_reset_done_text: "Generierungs-Parameter auf Standard zurückgesetzt."
+llm_preset_applied: "Preset '{name}' angewendet."
+llm_preset_created: "Preset '{name}' gespeichert."
+llm_preset_delete: "Löschen"
+llm_preset_delete_confirm: "Preset '{name}' wirklich löschen?"
+llm_preset_delete_title: "Preset löschen"
+llm_preset_delete_tooltip: "Ausgewähltes Preset löschen"
+llm_preset_empty: "Noch keine Presets gespeichert"
+llm_preset_label: "VORLAGE"
+llm_preset_placeholder: "z. B. Dense 8B RP, MoE 30B Schnell..."
+llm_preset_rename: "Umbenennen"
+llm_preset_rename_prompt: "Neuer Name:"
+llm_preset_rename_title: "Preset umbenennen"
+llm_preset_rename_tooltip: "Ausgewähltes Preset umbenennen"
+llm_preset_save: "Speichern"
+llm_preset_save_as: "Neues Preset"
+llm_preset_save_as_prompt: "Preset-Name:"
+llm_preset_save_as_title: "Neues Preset speichern"
+llm_preset_save_as_tooltip: "Aktuelle Einstellungen als neues Preset speichern"
+llm_preset_save_tooltip: "Ausgewähltes Preset mit den aktuellen Einstellungen überschreiben"
+llm_preset_tooltip: "Speichere und wechsle zwischen kompletten Schnappschüssen deiner Generierungs- und Sampling-Einstellungen."
+llm_preset_updated: "Preset '{name}' aktualisiert."
+settings_vision: "Vision-KI"
+ai_vision_device: "Vision-Gerät"
+ai_vision_gpu: "Vision-GPU"
+vision_title: "Vision (Bilder verstehen)"
+vision_intro: "Ein kleines separates Vision-Modell beschreibt Bilder (Chat-Anhänge, Discord-Bilder), damit jedes Chat-Modell - auch reine Text-Modelle und lokale - mit Bildern arbeiten kann. Es läuft in einem eigenen Prozess auf der unter „KI-Dienste“ gewählten GPU und wird bei Nichtnutzung automatisch beendet."
+vision_enable: "Vision-Plugin aktivieren"
+vision_mode_fallback: "Nur wenn das Chat-Modell keine Bilder versteht (Standard)"
+vision_mode_always: "Immer (jedes Bild als Text beschreiben)"
+vision_mode_label: "Plugin verwenden"
+vision_idle_label: "Automatisch beenden nach"
+vision_idle_tip: "Beendet das Vision-Modell nach so vielen Minuten ohne Nutzung und gibt GPU-Speicher frei. 0 = läuft weiter."
+vision_px_label: "Bildgröße für das Modell"
+vision_px_tip: "Längste Bildseite. Kleiner = schneller und weniger Speicher."
+vision_model_title: "Vision-Modell"
+vision_model_none: "- kein Modell gewählt -"
+vision_model_custom: "Eigenes Modell (Dateien wählen)..."
+vision_download: "Herunterladen && installieren"
+vision_installed: "Installiert"
+vision_delete: "Dateien entfernen"
+vision_cancel: "Download abbrechen"
+vision_pick: "Wählen..."
+vision_custom_model: "Modell (.gguf)"
+vision_custom_mmproj: "Projektor (mmproj .gguf)"
+vision_custom_note: "Wähle ein Vision-GGUF und die passende mmproj-Datei."
+vision_hw_title: "Hardware, Anweisung & Test"
+vision_open_ai_services: "Gerät / GPU wählen (KI-Dienste)"
+vision_hw_cpu: "Läuft auf der CPU (langsamer)."
+vision_hw_gpu: "Läuft auf: {name}"
+vision_prompt_label: "Anweisung an das Vision-Modell"
+vision_prompt_reset: "Standard-Anweisung wiederherstellen"
+vision_test: "Mit einem Bild testen..."
+vision_test_running: "Lade das Modell und beschreibe das Bild..."
+vision_test_failed: "Fehlgeschlagen: {error}"
+vision_result_hint: "Hier erscheint die Beschreibung des Testbilds."
+vision_server_start: "Vision-Modell jetzt laden"
+vision_server_stop: "Vision-Modell beenden"
+vision_loading: "Lade das Vision-Modell..."
+vision_loaded: "Vision-Modell geladen."
+vision_state_off: "Vision-Plugin ist aus."
+vision_state_ready: "Bereit. Das Modell wird bei der ersten Nutzung geladen."
+vision_state_nomodel: "Aktiv, aber kein installiertes Modell gewählt."
+vision_download_done: "Installiert. Das Plugin ist bereit."
+vision_download_failed: "Download fehlgeschlagen: {error}"
+vision_download_cancelled: "Download abgebrochen."
+vision_delete_confirm: "Die heruntergeladenen Dateien dieses Modells löschen?"
+vision_err_dns: "{host} ist nicht erreichbar: Der Name konnte nicht aufgelöst werden. Vermutlich blockiert ein DNS-Filter, eine Firewall oder ein VPN die Download-Server von Hugging Face (*.hf.co). Gib sie dort frei oder lade die Dateien manuell herunter (Links oben)."
+vision_err_network: "Netzwerkfehler beim Download. Prüfe die Verbindung und versuche es erneut."
+vision_manual: "Manueller Download (beide Dateien in den Ordner assets/vision_models/"
+vision_min_vram: "empfohlen ab"
+vision_language_label: "Sprache der Beschreibung"
+vision_language_auto: "Wie Programmsprache (Standard)"
+tts_mode_voice_everything: "Alles vorlesen"
+tts_mode_voice_quotes: "Nur Zitate vorlesen"
+tts_mode_ignore_asterisks: "Sternchen-Text überspringen"
+tts_mode_voice_outside_quotes: "Außerhalb von Zitaten vorlesen"
+tts_mode_custom_regex: "Eigener Regex"
+translator_item_ai: "KI-Übersetzer (aktuelles Modell)"
+settings_group_general: Allgemein
+settings_group_ai: KI & Sprachmodell
+settings_group_voice: Stimme & Audio
+settings_group_extras: Erweiterungen & Geräte
+settings_search_placeholder: Einstellungen durchsuchen ...
+settings_sakura_effect: Sakura-Effekt
+appearance_wtheme_yume_sakura: Yume Sakura
+appearance_wtheme_yume_moon: Yume Mondlicht
+settings_dashboard: Dashboard
+dashboard_title: Leistungs-Dashboard
+dashboard_intro: "Eine eigene Webseite (eigener Port, eigener Zugriffstoken) mit CPU, RAM, GPU, Prozessen, aktiven Diensten und den letzten Log-Zeilen von Yume Companion. Sie ist nur lesend und zeigt weder Chats noch API-Schlüssel."
+dashboard_autostart: Dashboard zusammen mit dem Programm starten
+dashboard_lan: Aus dem Heimnetz erreichbar (LAN)
+dashboard_port_label: Port
+dashboard_link_label: Link
+dashboard_start: Dashboard starten
+dashboard_stop: Dashboard stoppen
+dashboard_open: Im Browser öffnen
+dashboard_copy: Link kopieren
+dashboard_new_token: Neuer Zugriffstoken
+dashboard_status_stopped: "Status: gestoppt"
+dashboard_status_running: "Status: läuft auf Port {port}"
+dashboard_status_error: "Dashboard-Fehler: {err}"
+dashboard_port_conflict: Dieser Port wird vom Android-Webserver benutzt. Bitte einen anderen wählen.
+dashboard_port_busy: "Port {port} ist bereits belegt."
+dashboard_restart_hint: Dashboard neu starten, damit die Änderung wirkt.
+dashboard_link_copied: Link kopiert.
+dashboard_note: "Standardmäßig ist das Dashboard nur auf diesem PC erreichbar. LAN-Zugriff nur in vertrauenswürdigen Netzen aktivieren. Der Link enthält den Zugriffstoken – nicht weitergeben."
+tool_hub_toggle_tooltip: Werkzeug aktiv
+tool_action_confirm_title: Aktion bestätigen
+tool_action_confirm_body: "Die KI möchte eine Aktion ausführen. Nur bestätigen, wenn du sie angefordert hast.\n\nWerkzeug: {tool}\n{summary}"
+agent_models_title: Empfohlene Modelle für Werkzeuge
+agent_models_vision: "GUI-Steuerung & Bildschirmanalyse: ein Vision-AI-Modell verwenden (empfohlen: Qwen2.5-VL 3B oder 7B, stark bei Bildschirminhalten)."
+agent_models_open_vision: Vision AI öffnen
+agent_models_download: Herunterladen
+agent_models_cancel: Abbrechen
+agent_models_delete: Löschen
+agent_models_installed: "Installiert: {p}"
+agent_models_ready: "Fertig: unter „Lokales LLM“ auswählen. Datei: {p}"
+agent_models_cancelled: Abgebrochen.
+backup_grp_characters: Charaktere & Chats
+backup_grp_user_data: Einstellungen, Personas, Presets & Lorebooks
+backup_grp_api_keys: API-Schlüssel
+backup_grp_soul_memory: Yume-Gedächtnis
+backup_grp_soul_stage: Bühnen-Szenen & NPC-Gedächtnis
+backup_grp_avatars: Avatare & Bild-Cache
+backup_grp_media: Hintergründe & Umgebungsklänge
+backup_grp_live2d: Live2D-/VRM-Assets
+backup_grp_voices: TTS-Stimmen
+backup_grp_rvc: RVC-Modelle
+backup_grp_models: Lokale LLM-Modelle
+pbackup_title: Profil-Backup
+pbackup_intro: "Sichert dein ganzes Profil in einer .yumepack-Datei: Charaktere und Chats, Personas, Gedächtnis, Bühnen-Szenen und auf Wunsch deine Assets. Vor einer Wiederherstellung wird automatisch ein Sicherheits-Snapshot der aktuellen Daten angelegt."
+pbackup_sensitive: sensibel
+pbackup_large: groß
+pbackup_locked: Wichtige Daten – immer enthalten
+pbackup_recalc: Größen neu berechnen
+pbackup_save_to: "Speichern unter:"
+pbackup_create: Backup jetzt erstellen
+pbackup_open_folder: Backup-Ordner öffnen
+pbackup_restore_title: Profil-Backup wiederherstellen
+pbackup_pick: ".yumepack-Datei wählen …"
+pbackup_restore: Wiederherstellen
+pbackup_total: "Gesamt:"
+pbackup_nothing: Nichts ausgewählt
+pbackup_save_dialog: Profil-Backup speichern
+pbackup_need_path: Wähle zuerst, wo das Backup gespeichert werden soll.
+pbackup_chars_required: Charaktere können nicht ausgeschlossen werden.
+pbackup_api_warning: Das Backup enthält deine API-Schlüssel. Datei privat halten. Fortfahren?
+pbackup_overwrite: Dort existiert schon eine Datei. Ersetzen?
+pbackup_collecting: Sammle Dateien …
+pbackup_open_dialog: Profil-Backup wählen
+pbackup_not_a_backup: Diese Datei ist kein gültiges Profil-Backup.
+pbackup_created: "Erstellt:"
+pbackup_newer: Von einer neueren Version erstellt – Wiederherstellen kann Probleme verursachen.
+pbackup_pick_first: Wähle zuerst eine Backup-Datei.
+pbackup_restore_confirm_title: Backup wiederherstellen?
+pbackup_restore_confirm: "Deine aktuellen Charaktere, Chats, Erinnerungen und die ausgewählten Daten werden durch das Backup ERSETZT.\n\nVorher wird ein Sicherheits-Snapshot deiner aktuellen Daten angelegt (Ordner .soul_stage/backups). Danach ist ein Neustart nötig. Fortfahren?"
+pbackup_busy_running: Es läuft bereits ein Backup-Vorgang.
+pbackup_busy_generating: Gerade wird eine Antwort erzeugt.
+pbackup_busy_download: Ein Modell-Download läuft.
+pbackup_phase_validate: Prüfe Backup …
+pbackup_phase_extract: Entpacke …
+pbackup_phase_safety: Erstelle Sicherheits-Snapshot …
+pbackup_phase_apply: Stelle Dateien wieder her …
+pbackup_phase_cleanup: Räume auf …
+pbackup_err_permission: Zugriff verweigert. Schließe Programme, die diese Dateien nutzen, und versuche es erneut.
+pbackup_err_empty: Es gab nichts zu sichern.
+pbackup_err_rolled_back: Wiederherstellung fehlgeschlagen. Deine vorherigen Daten wurden aus dem Sicherheits-Snapshot zurückgeholt.
+pbackup_err_no_rollback: Wiederherstellung und Rollback sind fehlgeschlagen. Nutze den Snapshot in .soul_stage/backups zur manuellen Rettung.
+pbackup_failed: Backup fehlgeschlagen
+pbackup_done_title: Backup abgeschlossen
+pbackup_done: "Backup gespeichert unter:\n{path}"
+pbackup_restored_title: Wiederherstellung abgeschlossen
+pbackup_restored: "{count} Dateien wurden wiederhergestellt.\nJetzt neu starten, um die Daten zu laden?"
+home_greet_morning: Guten Morgen
+home_greet_day: Hallo
+home_greet_evening: Guten Abend
+home_greet_night: Gute Nacht
+home_welcome_title: Willkommen bei {name}
+home_welcome_sub: Drei kleine Schritte, dann ist deine Begleiterin bereit.
+home_step1_title: Modell wählen
+home_step1_text: Wähle ein lokales Modell oder verbinde einen Online-Anbieter.
+home_step1_btn: Einstellungen öffnen
+home_step2_title: Charakter erstellen
+home_step2_text: Beschreibe Persönlichkeit und Aussehen – oder lass den KI-Helfer das übernehmen.
+home_step2_btn: Charakter erstellen
+home_step3_title: Oder entdecken
+home_step3_text: Importiere Charakterkarten oder stöbere in der Galerie nach fertigen Charakteren.
+home_step3_btn: Galerie öffnen
+home_tip: "Tipp: Das Dashboard in den Einstellungen zeigt Geschwindigkeit und Ressourcen, während du chattest."
+alerts_title: Alarme
+alerts_intro: "Warnt dich, wenn Grafikspeicher, RAM, CPU, Temperatur oder Kontext voll laufen oder KI und Sprachausgabe langsam werden. Die Alarme erscheinen im Dashboard und als kleine Meldung in der App."
+alerts_enable: Alarme aktivieren
+alerts_toast: Alarme als Meldung in der App anzeigen
+alerts_vram: Grafikspeicher ab
+alerts_ram: Arbeitsspeicher ab
+alerts_context: Kontext ab
+alerts_temp: GPU-Temperatur ab
+toollog_title: Werkzeugprotokoll
+toollog_intro: "Zeigt, was die KI über Werkzeuge ausgeführt hat, ob du es bestätigt hast und was dabei herauskam. Geheimnisse werden maskiert, lange Texte gekürzt. Die Datei liegt unter logs/tool_log.jsonl."
+toollog_enable: Werkzeugprotokoll führen
+toollog_col_time: Zeit
+toollog_col_tool: Werkzeug
+toollog_col_status: Status
+toollog_col_details: Details
+toollog_refresh: Aktualisieren
+toollog_clear: Protokoll löschen
+toollog_open: Ordner öffnen
+toollog_declined: abgelehnt
+toollog_approved_ok: bestätigt · ok
+toollog_approved_fail: bestätigt · fehlgeschlagen
+toollog_ok: ok
+toollog_failed: fehlgeschlagen
+toollog_clear_confirm: Das gesamte Werkzeugprotokoll löschen?
+presets_title: Schnellvorlagen
+presets_detected: "Erkannt: {gpu} · {vram:.0f} GB Grafikspeicher"
+presets_no_gpu: Keine NVIDIA-Grafikkarte erkannt – die Vorlagen nutzen vorsichtige Werte.
+presets_intro: "Ein Klick stellt Kontextgröße, Antwortlänge, Denktiefe, Sprach-Blöcke und Bildgröße ein. Danach kannst du alles weiter fein anpassen."
+presets_recommended: empfohlen
+presets_facts: "Kontext {ctx} · Antwort bis {mt} Tokens"
+presets_apply: Anwenden
+autobackup_title: Automatische Backups
+autobackup_enable: Automatisch sichern (Charaktere, Chats, Einstellungen, Erinnerungen – ohne API-Schlüssel)
+autobackup_daily: jeden Tag
+autobackup_3days: alle 3 Tage
+autobackup_weekly: jede Woche
+autobackup_keep: behalte die neuesten
+autobackup_now: Jetzt sichern
+autobackup_open: Ordner öffnen
+autobackup_last: "Letztes automatisches Backup: {when} · {n} gespeichert"
+autobackup_none: Noch kein automatisches Backup.
+autobackup_off: automatische Backups sind aus
+autobackup_failed: Das automatische Backup ist fehlgeschlagen. Details stehen im Log.
+apps_search: Programme suchen ...
+apps_rescan: Neu scannen
+apps_add: Programm hinzufügen ...
+apps_scanning: Suche installierte Programme ...
+apps_manual: (manuell)
+apps_status: "{found} Programme gefunden · {sel} freigegeben"
+apps_add_dialog: Programm auswählen
+netllm_title: Wo läuft das Sprachmodell?
+netllm_this_pc: "💻  Auf diesem PC\nYume startet llama.cpp selbst."
+netllm_other_pc: "🌐  Auf einem anderen PC im Netzwerk\nDort läuft llama.cpp oder Ollama."
+netllm_placeholder: "IP-Adresse des anderen PCs, z. B. 192.168.1.50"
+netllm_port: Port
+netllm_test: Verbindung testen
+netllm_scan: "🔍  Netzwerk automatisch durchsuchen"
+netllm_model: Modell auf dem Server
+netllm_model_auto: wird nach dem Test automatisch erkannt
+netllm_key: Zugangsschlüssel (nur falls der Server einen verlangt)
+netllm_hint: "Tipp: Starte den Server auf dem anderen PC mit  llama-server -m modell.gguf --host 0.0.0.0 --port 8080  (ohne --host 0.0.0.0 hört er nur auf diesem PC selbst). Gib den Port in der Firewall des anderen PCs frei."
+netllm_saved: "Gespeichert: {url}"
+netllm_enter_ip: Bitte zuerst die IP-Adresse des anderen PCs eingeben.
+netllm_testing: "Teste {url} ..."
+netllm_ok: "✓ Verbunden. Modell: {model}"
+netllm_fail_conn: "Keine Antwort von {url}. Läuft der Server mit --host 0.0.0.0 und ist der Port in der Firewall freigegeben?"
+netllm_fail_timeout: Der Server hat nicht rechtzeitig geantwortet.
+netllm_fail: "Verbindung fehlgeschlagen: {err}"
+netllm_scanning: Suche im Netzwerk nach llama.cpp- und Ollama-Servern ... (ca. 10 Sekunden)
+netllm_found: "{n} Server gefunden – wähle einen aus der Liste, dann „Verbindung testen“."
+netllm_none: Kein Server gefunden. Starte llama-server auf dem anderen PC mit --host 0.0.0.0 oder gib die IP-Adresse von Hand ein.
+netllm_scan_toast_title: Netzwerksuche
+netllm_scan_toast: Suche nach llama.cpp / Ollama im lokalen Netzwerk ... (ca. 10 Sekunden)
+netllm_remote_on_title: Entfernter PC aktiv
+netllm_remote_on_toast: Alle Charaktere mit lokalem LLM ({n}) wurden automatisch auf den entfernten PC umgestellt. Das Ausführungsziel ist gesperrt.
+netllm_remote_off_title: Dieser PC aktiv
+netllm_remote_off_toast: Charaktere nutzen wieder das lokale llama.cpp auf diesem PC.
+netllm_locked_hint: "Entfernter PC aktiv: Das Ausführungsziel ist gesperrt. Alle Charaktere mit lokalem LLM ({n}) nutzen automatisch das LLM auf dem entfernten PC. Zum Ändern im Netzwerk-Bereich auf „Dieser PC“ wechseln."
+provider_simple_hint: "Cloud-APIs: Anbieter wählen und Zugangsschlüssel eintragen. „Local LLM“ = KI läuft auf diesem oder einem anderen PC (siehe Karte darunter)."
+character_language_label: Antwortsprache des Charakters
+character_language_auto: Automatisch (Programmsprache)
+audio_devices_title: Audiogeräte
+hardware_spec_title: Hardware dieses PCs
+remote_model_ready: REMOTE BEREIT
+remote_model_loading: REMOTE LÄDT ...
+remote_model_offline: REMOTE OFFLINE
+agent_models_intro: "Werkzeuge (Browser, Dateien, Code ...) steuert dein Sprachmodell - es muss Werkzeug-Aufrufe unterstützen. Die Modelle unten sind dafür geeignet: herunterladen, danach unter „Sprachmodell & APIs“ auswählen. Welche Grafikkarte(n) ein Modell nutzt, stellst du unter „KI-Dienste“ ein."
+agent_models_open_services: GPU-Zuweisung öffnen (KI-Dienste)
+ai_no_cuda_gpu: Keine CUDA-GPU gefunden
+ai_llm_gpu_indices: "Sprachmodell (lokal): GPUs"
+ai_tool_models_gpu_title: "Werkzeug-Modelle (aus „Werkzeugaufrufe & MCP“): GPU-Zuweisung. Nichts angehakt = wie beim Sprachmodell."
+settings_visualization: Visualisierung
+vrm_card_title: Natürliche Bewegung (VRM-Avatar)
+vrm_natural_label: Natürliche Bewegung aktivieren
+vrm_eye_contact_label: Augenkontakt (Avatar schaut in die Kamera)
+vrm_animations_label: Ganzkörper-Animationen zu Gefühlen abspielen
+vrm_intensity_label: Stärke der Gefühle
+vrm_idle_label: Atmen / Kopfbewegung
+vrm_blink_label: Blinzelhäufigkeit
+vrm_hold_label: Gefühl halten, dann entspannen
+btn_check_visualization: Visualisierung
+char_viz_engine_label: Visualisierung dieses Charakters
+char_viz_open_button: Modell, Ordner und Ausdrücke einstellen …
+char_viz_natural_label: Natürliche Bewegung (VRM) für diesen Charakter
+visuals_disabled_hint: Aktiviere oben das Yume-System, dann erscheinen hier Render-Modus, FPS und Hintergrund.
+author_notes_editor_title: "Autorennotizen-Editor"
+info_title: "Info"
+success_title: "Erfolg"
+download_complete_title: "Download abgeschlossen"
+no_files_title: "Keine Dateien"
+no_files_desc: "In diesem Repository gibt es keine .gguf-Dateien."
+character_edit_error_2: "Der Charakter wurde in der Konfiguration nicht gefunden."
+conflict_title: "Konflikt"
+cpu_moe_layers_text: "CPU-MoE-Schichten"
+error_unsupported_backend: "Für das lokale Modell wurde eine nicht unterstützte Geräte-/Backend-Kombination gewählt."
+error_server_start_failed: "Der lokale Server-Prozess wurde direkt nach dem Start beendet. Details stehen in den Logs."
+soul_stage_button: " Yume-Bühne"
+ctx_status_optimal: "Optimal"
+ctx_status_moderate: "Mäßig"
+ctx_status_critical: "Kritisch"
+ctx_unlimited: "Unbegrenzt"
+ctx_tip_limit: "⚠️ Kontext fast voll — Zusammenfassung starten oder Verlauf kürzen."
+ctx_tip_large: "💡 Chatverlauf ist groß — bald zusammenfassen."
+ctx_tip_ok: "✨ Die Gedächtnislast ist ausgewogen und gesund."
+ctx_title: "KONTEXT-INSPEKTOR"
+ctx_system: "System & Karte"
+ctx_memory: "Yume-Gedächtnis"
+ctx_lore: "Aktive Lorebooks"
+ctx_history: "Chatverlauf"
+ctx_budget: "Verfügbares Budget"
+tooltip_create_character: Neuen Charakter erstellen
+settings_image_gen: "Bildgenerierung"
+img_enable: "Bildgenerierung aktivieren"
+img_provider: "Dienst"
+img_style_title: "Modell, Stil & Größe"
+img_test_title: "Testbild"
+img_test_btn: "Testbild erzeugen"
+img_cancel_btn: "Abbrechen"
+img_prefix: "Stil-Präfix (immer vorangestellt)"
+img_negative: "Negativ-Prompt"
+img_width: "Breite"
+img_height: "Höhe"
+img_steps: "Schritte"
+img_card_title: "Anbieter (lokal oder Cloud-API)"
+img_model: "Modell auf dem Server"
+img_where_title: "Wo läuft die Bild-KI?"
+img_provider_hint: "Cloud-Dienste (DALL-E, NovelAI, FLUX): Dienst wählen und Zugangsschlüssel eintragen. A1111 / Forge / ComfyUI: lokal oder auf einem anderen PC – siehe Karte darunter."
+img_tip: "Tipp: Starte den Bild-Server auf dem anderen PC mit aktivierter API und Netzwerkzugriff (A1111 / Forge: --api --listen, ComfyUI: --listen) und gib den Port in der Firewall frei."
+srv_installer_hint: "KI auf einem anderen PC laufen lassen? Der „Yume LLM Server“ richtet dort alles ein: Engine, empfohlene Modelle passend zur Hardware und einen Start-Button – mit Installer, Desktop-Verknüpfung und Deinstallation."
+srv_installer_button: "Server-Installer speichern …"
+srv_installer_missing: "Der Server-Installer wurde in diesem Programmordner nicht gefunden (tools\\server\\Yume-LLM-Server-Setup.exe)."
+srv_installer_dialog: "Server-Installer speichern (z. B. auf einen USB-Stick oder in einen Netzwerkordner)"
+srv_installer_saved: "Installer gespeichert: {p}\nAuf dem anderen PC ausführen – danach dort „Server starten“ und hier die angezeigte Adresse eintragen."
+vis_where_title: "Wo läuft das Vision-Modell?"
+vis_this_pc: "💻  Auf diesem PC\nYume startet das Vision-Modell selbst."
+vis_other_pc: "🌐  Auf einem anderen PC im Netzwerk\nDort läuft der Yume LLM Server."
+vis_address_ph: "IP-Adresse des anderen PCs, z. B. 192.168.1.50"
+vis_tip: "Tipp: Im Yume LLM Server auf dem anderen PC ein Vision-Modell wählen – es läuft dort auf Port 8081."
+vis_live_loading: "● Verbinde mit dem Vision-Server ..."
+vis_live_online: "● Vision-Server erreichbar{m}"
+vis_fail_conn: "Keine Antwort. Läuft der Yume LLM Server mit einem Vision-Modell, und ist die Firewall-Freigabe eingerichtet?"
+srv_installer_hint_image: "Bild-KI auf einem anderen PC? Der „Yume LLM Server“ installiert dort die Bild-Engine und empfohlene Anime-Modelle – dann „Automatic1111“ wählen und die angezeigte Adresse (Port 8082) eintragen."
+pair_title: "Handy koppeln (Yume Companion für Android)"
+pair_hint: "1. APK auf dem Handy installieren (Button „APK speichern“).  2. App öffnen → „Mit QR-Code koppeln“.  3. Diesen Code scannen. Der Code ist nur wenige Minuten gültig und nur einmal verwendbar – er wird ständig neu erzeugt. Das Handy bekommt danach seinen eigenen, jederzeit widerrufbaren Schlüssel. Die App erkennt selbst, ob sie im Heimnetz (lokale Adresse) oder unterwegs (externe Domain, falls eingetragen) verbunden wird."
+pair_new: "Neuen QR-Code erzeugen"
+pair_apk: "APK für das Handy speichern …"
+pair_copy: "Kopplungs-Link kopieren (statt QR)"
+pair_devices: "GEKOPPELTE GERÄTE"
+pair_revoke: "Ausgewähltes Gerät entfernen (Zugriff entziehen)"
+pair_revoke_ask: "Dieses Gerät wirklich entfernen? Es muss danach neu gekoppelt werden."
+pair_phone_control: "Die KI darf das Handy bedienen (Apps öffnen, Bildschirm lesen, anrufen …)"
+pair_call_mute: "Bei Handy-Anrufen: Stimme nur auf dem Handy, PC-Lautsprecher stumm"
+pair_server_off: "⚠ Der Webserver läuft nicht – rechts auf „Webserver starten“ drücken, sonst kann das Handy nicht koppeln."
+pair_local: "Lokal: {u}"
+pair_remote: "Extern: {u}"
+pair_remote_empty: "– (leer, jederzeit eintragbar)"
+pair_valid: "Code gültig noch {s} s – wird automatisch erneuert"
+pair_last_seen: "zuletzt"
+apk_missing: "Die APK wurde in diesem Programmordner nicht gefunden (tools\u0007ndroid\\Yume-Companion.apk). Sie lässt sich mit dem Ordner „Yume Android“ (build-apk.bat) bauen."
+apk_dialog: "APK speichern (dann auf das Handy übertragen und installieren)"
+apk_saved: "APK gespeichert: {p}\nAuf dem Handy installieren (Installation aus unbekannten Quellen erlauben), dann „Mit QR-Code koppeln“."
+pair_fw_button: "Windows-Firewall für das Handy freigeben …"
+pair_fw_missing: "⚠ Die Windows-Firewall blockiert wahrscheinlich Verbindungen vom Handy (Port {p}). Rechts „Windows-Firewall freigeben“ drücken."
+pair_fw_failed: "Die Firewall-Regel wurde nicht angelegt (Administrator-Abfrage abgebrochen?)."
+android_autostart: "Android Connector (Webserver) zusammen mit dem Programm starten"
+pair_contact: "Letzter Kontakt vom Handy: {ip} (vor {s} s)"
+pair_no_contact: "Noch kein Kontakt vom Handy – kommt nichts an, liegt es am Netzwerk (WLAN-Isolation / Gast-WLAN / VPN am Handy)."
+netllm_auto_check: "Netzwerk automatisch nach LLM-Servern durchsuchen (beim Start und regelmäßig) und Bescheid geben"
+netllm_auto_minutes: "Min"
+netllm_auto_every: "alle"
+netllm_auto_more: "… und {n} weitere"
+netllm_auto_found_title: "LLM-Server im Netzwerk gefunden"
+netllm_auto_found_hint: "Auswählen unter Sprachmodell → „Anderer PC“."
+vrm_gestures_label: "Kleine Idle-Gesten (Kopf anfassen, Haare richten, strecken …)"
+android_speech_only: "Aufs Handy nur das Gesprochene senden (Text in Anführungszeichen) – ohne *Handlungen* und Beschreibungen"
+llm_plain_text_label: "Nur normalen, gesprochenen Text generieren (ohne Anführungszeichen, *Handlungen* und Beschreibungen)"
+llm_plain_text_hint: "Die KI antwortet nur noch mit dem, was die Figur sagt – kurz und ohne Erzähltext. Dadurch wird deutlich weniger erzeugt und die Antwort ist schneller da. Gilt für alle Charaktere."
+stt_language_label: "Sprache der Spracherkennung"
+stt_language_tooltip: "Feste Sprache ist zuverlässiger als „Automatisch“ - besonders bei kurzen Sätzen."
+stt_language_auto: "Automatisch erkennen"
+settings_spotify: Spotify
+spotify_title: Spotify
+spotify_intro: Verbinde einmalig deine eigene Spotify-App (hier werden weder Passwort noch Secret gespeichert). Yume kann dann Musik starten, pausieren, überspringen und sagen, was läuft – im PC-Dashboard und am Handy. Die Anmeldung wird automatisch an das gekoppelte Handy weitergegeben, du meldest dich nur einmal an. Die Wiedergabe-Steuerung braucht Spotify Premium.
+spotify_steps: "1. Öffne das Spotify-Entwicklerportal und erstelle eine App.
+2. Trage die unten angezeigte Redirect-URI in dieser App ein (Settings > Redirect URIs) und für das Handy zusätzlich  yume://spotify .
+3. Füge die Client-ID der App hier ein und klicke auf „Anmelden“."
+spotify_client_label: Client-ID
+spotify_redirect_label: Redirect-URI (PC)
+spotify_login: Anmelden
+spotify_logout: Abmelden
+spotify_open_dev: Spotify-Entwicklerportal
+spotify_copy_redirect: Redirect-URI kopieren
+spotify_redirect_copied: Redirect-URI kopiert.
+spotify_connected: Mit Spotify verbunden. Das gekoppelte Handy nutzt dieselbe Anmeldung.
+spotify_not_connected: Nicht verbunden.
+spotify_player_title: Läuft gerade
+spotify_idle: Es läuft nichts – starte Spotify einmal am Handy oder PC.
+spotify_prev: Zurück
+spotify_toggle: Wiedergabe / Pause
+spotify_next: Weiter
+settings_organizer: "Organizer"
+reminder_title: "Erinnerung"
+organizer_cal_title: "Kalender"
+organizer_cal_intro: "Yume liest deine Kalender und kann eigene Termine eintragen („Yume, trag morgen um 15 Uhr Zahnarzt ein“). Den Kalender des Handys liest sie automatisch über das Handy (Kalender-Berechtigung in der App). Für Google-, Outlook- oder Apple-Kalender am PC fügst du hier den geheimen iCal-Link ein, einen pro Zeile (Google: Kalender-Einstellungen > dein Kalender > „Geheime Adresse im iCal-Format“). Die Links sind nur lesbar und werden verschlüsselt gespeichert."
+organizer_save_test: "Speichern und testen"
+organizer_mail_title: "Mail (nur lesen)"
+organizer_mail_intro: "Yume kann dir neue Mails nennen und zusammenfassen. Sie LIEST nur (nichts wird gesendet, gelöscht oder als gelesen markiert). Nimm ein IMAP-App-Passwort, nicht dein normales Passwort (Gmail: Google-Konto > Sicherheit > App-Passwörter; IMAP muss aktiv sein). Das Passwort wird verschlüsselt gespeichert. Hinweis: Der Text gelesener Mails geht an das gewählte Sprachmodell – bei einem Cloud-Modell also an diesen Anbieter."
+organizer_mail_host: "IMAP-Server"
+organizer_mail_port: "Port"
+organizer_mail_user: "Adresse / Benutzer"
+organizer_mail_password: "App-Passwort"
+organizer_mail_folder: "Ordner"
+organizer_mail_remove: "Mail-Konto entfernen"
+organizer_rem_title: "Erinnerungen und eigene Termine"
+organizer_rem_intro: "Sag zu Yume: „Erinnere mich in 20 Minuten an die Wäsche“. Zur Zeit erscheint hier eine Meldung und als Benachrichtigung auf dem gekoppelten Handy (das Programm muss laufen). Offen:"
+organizer_refresh: "Aktualisieren"
+organizer_delete: "Ausgewählte löschen"
+routine_title: "Routinen"
+routine_intro: "Morgen-Briefing: Zur eingestellten Zeit sagt dir Yume das Wetter, die Termine von heute, Erinnerungen und neue Mails (am Handy, wenn es verbunden ist, sonst am PC; das Programm muss laufen). Sag jederzeit „Guten Morgen“ oder „Briefing“, um es sofort zu bekommen. Gute Nacht: Sag „Gute Nacht“, dann pausiert Yume die Musik, schaltet die Taschenlampe aus, prüft deinen Wecker und sagt, was morgen ansteht."
+routine_location: "Ort für das Wetter"
+routine_weather_test: "Ort speichern und Wetter testen"
+routine_morning_on: "Morgen-Briefing automatisch geben"
+routine_time: "Uhrzeit:"
+routine_inc_weather: "Wetter"
+routine_inc_calendar: "Termine"
+routine_inc_reminders: "Erinnerungen"
+routine_inc_mail: "Neue Mails"
+routine_output: "Gesprochen am:"
+routine_out_auto: "Handy, wenn verbunden, sonst PC"
+routine_out_phone: "Handy"
+routine_out_pc: "PC"
+routine_greet: "„Guten Morgen“ / „Briefing“ / „Gute Nacht“ starten die Routinen"
+routine_night_title: "Gute Nacht macht:"
+routine_n_music: "Musik pausieren"
+routine_n_light: "Taschenlampe aus"
+routine_n_alarm: "Wecker prüfen"
+routine_n_tomorrow: "Termine morgen"
+routine_n_weather: "Wetter morgen"
+routine_test_morning: "Morgen-Briefing jetzt testen"
+routine_test_night: "Gute Nacht jetzt testen"
+lists_title: "Listen (Einkauf, To-do …)"
+lists_intro: "Sag „Setz Milch auf die Einkaufsliste“ oder „Was muss ich noch kaufen?“. Die Listen gelten für PC und Handy-Chat."
+selftest_run: "Selbsttest starten"
+activity_title: "Das hat Yume heute getan"
+activity_intro: "Jede Aktion, die Yume ausgeführt hat (Musik, Erinnerungen, Termine, Listen …). Einträge mit Pfeil ↶ lassen sich zurücknehmen. Du kannst auch sagen: „Mach das rückgängig“."
+activity_undo: "Ausgewählte rückgängig machen"
+leave_title: "Zeit loszufahren"
+commute_title: "Pünktlichkeits-Assistent: Wann muss ich los?"
+commute_home: "Heimadresse"
+commute_mode: "Unterwegs mit"
+commute_car: "Auto"
+commute_bike: "Fahrrad"
+commute_foot: "zu Fuß"
+commute_buffer: "Puffer"
+commute_on: "Sag mir, wann ich losfahren muss (Termine mit Ort)"
+journal_title: "Tagebuch"
+journal_intro: "Erzähl Yume von deinem Tag („Schreib ins Tagebuch: …“ oder abends einfach erzählen). Einträge der letzten Wochen:"
+mood_aware: "Stimmungs-Gespür: Yume bemerkt Müdigkeit, Stress oder Traurigkeit in deinen Worten und antwortet passend"
+kb_title: "Wissensdatenbank (deine Dokumente)"
+kb_intro: "Wähle Ordner mit deinen PDFs, Word-Dateien und Notizen. Yume liest sie einmal (lokal, nichts verlässt den PC) und kann dann Fragen wie „Was steht im Mietvertrag zur Kündigung?“ mit Dateiname und Seite beantworten. Neue und geänderte Dateien werden automatisch nachgelesen."
+kb_add: "Ordner hinzufügen …"
+kb_remove: "Auswahl entfernen"
+kb_index: "Dokumente jetzt einlesen"
+rain_alert: "Regen-Alarm am Handy, wenn ich unterwegs bin und es gleich zu regnen beginnt (braucht den Handy-Standort)"
+auto_title: "Hintergrund-Aufträge, Abläufe und Fähigkeiten"
+auto_intro: "Aufträge: Aufgaben, an denen Yume selbstständig arbeitet. Abläufe: Reihenfolgen, die du ihr per Sprache beigebracht hast („Merk dir das als Ablauf Feierabend …“). Fähigkeiten: kleine Programme, die Yume sich selbst geschrieben hat, nachdem du den Code freigegeben hast."
+auto_folder: "Fähigkeiten-Ordner öffnen"
+people_title: "Personen und Reisen"
+people_intro: "Geburtstage, Notizen und Geschenkideen („Anna hat am 12. Mai Geburtstag und mag keine Pilze“) sowie geplante Reisen. Yume erinnert dich an Geburtstage und nutzt alles in ihren Antworten."
+birthday_title: "Geburtstag"
+kb_semantic: "Suche nach Bedeutung (findet auch Passagen ohne gleiche Wörter; lädt einmalig ein Modell, ca. 470 MB)"
+pcwake_title: "Hey Yume am PC"
+pcwake_intro: "Yume hört im Hintergrund zu (auch bei geschlossenem Chat) und wartet auf dein Weckwort. Hört sie es, erscheint unten rechts eine kleine Karte mit ihrem 3D-Modell, du sprichst und sie antwortet. Alles wird auf diesem PC geprüft, nichts wird gespeichert. Nutzt Mikrofon und Spracherkennung (Whisper)."
+pcwake_on: "Auf das Weckwort hören"
+pcwake_phrase: "Weckwort"
+pcwake_seconds: "Wach bleiben nach dem letzten Satz"
+pcwake_vrm: "3D-Modell (VRM) in der Karte zeigen"
+pcwake_chime: "Kurzen Ton abspielen, wenn sie aufgewacht ist"
+pcwake_test: "Karte jetzt anzeigen (Test)"
+report_on: "Wochenrückblick jeden Sonntag um 18 Uhr (was ich getan habe, wie es dir ging, was ansteht)"
+voice_mood: "Stimm-Gespür (experimentell): Yume schätzt am Klang und Tempo deiner Stimme, wie es dir geht (nur Zahlen, keine Aufnahme wird gespeichert)"
+drafts_title: "Mail-Entwürfe"
+drafts_intro: "Yume schreibt Antworten als ENTWURF („Antworte auf die Mail von Anna und sag zu“). Sie schickt nie etwas ab: Öffne den Entwurf in deinem Mail-Programm und klicke auf Senden."
+drafts_open: "Im Mail-Programm öffnen"
+drafts_copy: "Text kopieren"
+presence_on: "Anwesenheit: merken, wenn ich gehe / nach Hause komme (Handy im Heimnetz verbunden) und meine Sätze ausführen"
+presence_leave: "Wenn ich gehe (ein Handy ist weg)"
+presence_all: "Wenn alle weg sind"
+presence_arrive: "Wenn jemand ankommt"
+presence_first: "Wenn der Erste ankommt"
+presence_ph: "z. B. Mach das Licht aus; pausiere die Musik   (mehrere Schritte mit ;)"

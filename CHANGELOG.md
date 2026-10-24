@@ -1,0 +1,22 @@
+# Änderungen
+
+Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
+
+## 3.0.0 Beta (in Arbeit)
+
+**Neu**
+- Android-App „Yume Companion“ (QR-Kopplung, Chat, Anrufe, Wake Word, 3D-Avatar, Handy-Steuerung, Wecker, Auto-/Wandmodus, Offline-Notfallmodus)
+- Yume LLM Server: zweiter PC als KI-Server (Sprache, Vision, Bilder, Werkzeuge)
+- Organizer: Kalender, Mail (lesen), Erinnerungen, Listen, Routinen, Pendeln, Personen, Wissensdatenbank, Dokumente, Skills, Eingang
+- „Hey Yume“ am PC, WebRTC-AEC3-Echoentfernung, Stimmungs- und Stimm-Gespür
+- Leistungs-Dashboard, Werkzeugprotokoll, Selbsttest, automatische Profil-Backups (`.yumepack`)
+- Neues Design („Yume Look“), deutsche Übersetzung, Darstellung mit Themen
+- Doku mit Bildern, GitHub-Anleitung, Demo-Inhalte und Werkzeuge zum Neu-Erzeugen der Bilder
+
+**Geändert**
+- Erststart aus Quelltext: `settings.json` entsteht aus `settings.template.json`
+- Vorlagen-Generator (`make_templates.py`) übernimmt keine Dashboard-Tokens und Geräte-IDs mehr
+- Build-Skripte und Tests arbeiten relativ zum Repository (keine festen Pfade)
+
+**Basis**
+- Aufbauend auf Soul of Waifu 2.5.x von jofizcd (GPL-3.0), siehe `NOTICE.md`.

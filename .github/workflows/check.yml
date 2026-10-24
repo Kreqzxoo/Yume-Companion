@@ -1,0 +1,19 @@
+name: Prüfung
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Python-Syntax aller Dateien
+        run: python -m compileall -q main.py app tools tests
+      - name: Upload-Prüfung (Geheimnisse, große Dateien)
+        shell: powershell
+        run: powershell -ExecutionPolicy Bypass -File tools\dev\check_upload.ps1 -UseGit

@@ -1,0 +1,26 @@
+﻿Yume Companion ist installiert – so geht es weiter
+
+1. PROGRAMM STARTEN
+Starte Yume Companion über die Desktop-Verknüpfung oder das Startmenü. Der erste Start dauert etwas länger (Sprach- und Gedächtnismodelle werden vorbereitet).
+
+2. KI-MODELL WÄHLEN
+In den Einstellungen wählst du, womit die KI antwortet:
+• Lokal auf diesem PC: Modelle-Hub → empfohlene Modelle für deine Grafikkarte laden (meist 3 bis 10 GB).
+• Cloud-KI: eigenen API-Schlüssel eintragen (OpenAI, Gemini, DeepSeek und andere).
+• KI-Server im Netzwerk: zum Beispiel "Yume LLM Server" auf einem zweiten PC, Adresse eintragen oder Netzwerk durchsuchen.
+
+3. STIMME UND SPRACHERKENNUNG
+Sprachausgabe (z. B. Qwen3-TTS, Edge-TTS) und Spracherkennung sind in den Einstellungen wählbar. Modelle werden beim ersten Gebrauch geladen. Eine eigene Stimme (RVC, Stimmklon) nur mit Material, an dem du die Rechte hast.
+
+4. HANDY-APP
+Einstellungen → Android-Connector: Server starten, "Firewall einrichten", die App-Datei (APK) speichern und den QR-Code mit der App scannen. Die App läuft im Heimnetz oder über deine eigene Domain.
+
+5. HILFE UND REPARATUR
+• Startmenü → "Komponenten installieren oder reparieren" wiederholt die Paket-Installation.
+• Protokolle: Ordner logs im Programmverzeichnis (installer.log, Programm-Logs).
+• Dein Profil sicherst du im Programm unter Backup (Dateiendung .yumepack).
+
+Viel Spaß mit deiner Begleiterin!
+
+Yume Companion – Kreqzxoo
+Basiert auf Soul of Waifu von jofizcd (GPL-3.0)

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="t d">
+  <title id="t">Zusammenspiel der Yume-Bausteine</title>
+  <desc id="d">Die Yume-Companion-PC-App steht in der Mitte. Das Handy verbindet sich per WLAN oder Domain. Der Yume LLM Server auf einem zweiten PC liefert Sprachmodell, Vision, Bilder und Werkzeugmodell. Cloud-Anbieter, Discord, Home Assistant und Spotify sind optionale Anbindungen.</desc>
+  <defs>
+    <style>
+      .bg{fill:#17111f}.box{fill:#251b36;stroke:#ff8fc7;stroke-width:1.5}.core{fill:#33224a;stroke:#ff8fc7;stroke-width:2.5}
+      .opt{fill:#1f1730;stroke:#b69cff;stroke-width:1.2;stroke-dasharray:5 4}
+      .t{font:600 16px Segoe UI,Arial,sans-serif;fill:#f3ecf7}.s{font:13px Segoe UI,Arial,sans-serif;fill:#c9bde0}.h{font:700 20px Segoe UI,Arial,sans-serif;fill:#ffc2e2}
+      .ln{stroke:#b69cff;stroke-width:2;fill:none}.ar{fill:#b69cff}
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ar"/></marker>
+  </defs>
+  <rect class="bg" width="960" height="560" rx="18"/>
+  <text x="480" y="38" text-anchor="middle" class="h">Yume Companion – die Bausteine</text>
+  <text x="480" y="75" text-anchor="middle" class="s">Alles läuft lokal auf deinen Geräten. Nach außen geht nur, was du selbst einrichtest.</text>
+
+  <rect class="core" x="330" y="190" width="300" height="170" rx="16"/>
+  <text x="480" y="225" text-anchor="middle" class="t">PC-App „Yume Companion“</text>
+  <text x="480" y="250" text-anchor="middle" class="s">Chat · Stimme · Avatare · Gedächtnis</text>
+  <text x="480" y="271" text-anchor="middle" class="s">Yume-Bühne · Desktop-Begleiter</text>
+  <text x="480" y="292" text-anchor="middle" class="s">Organizer · Werkzeuge · Webserver · Dashboard</text>
+  <text x="480" y="330" text-anchor="middle" class="s">Windows · Python · PyQt6</text>
+
+  <rect class="box" x="40" y="190" width="220" height="170" rx="16"/>
+  <text x="150" y="225" text-anchor="middle" class="t">Handy-App (Android)</text>
+  <text x="150" y="252" text-anchor="middle" class="s">Chat · Anruf · Wake Word</text>
+  <text x="150" y="273" text-anchor="middle" class="s">3D-Avatar · Handy-Steuerung</text>
+  <text x="150" y="294" text-anchor="middle" class="s">Wecker · Auto- und Wandmodus</text>
+  <text x="150" y="315" text-anchor="middle" class="s">Offline-Notfallmodus</text>
+
+  <rect class="box" x="700" y="190" width="220" height="170" rx="16"/>
+  <text x="810" y="225" text-anchor="middle" class="t">Yume LLM Server</text>
+  <text x="810" y="252" text-anchor="middle" class="s">zweiter PC (optional)</text>
+  <text x="810" y="273" text-anchor="middle" class="s">Sprache · Vision · Bilder</text>
+  <text x="810" y="294" text-anchor="middle" class="s">Werkzeugmodell</text>
+  <text x="810" y="315" text-anchor="middle" class="s">llama.cpp · Ports 8080–8083</text>
+
+  <path class="ln" d="M262 275 L328 275" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="295" y="262" text-anchor="middle" class="s">WLAN</text>
+  <path class="ln" d="M632 275 L698 275" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="665" y="262" text-anchor="middle" class="s">LAN</text>
+
+  <rect class="opt" x="60" y="430" width="170" height="70" rx="12"/><text x="145" y="460" text-anchor="middle" class="t">Cloud-KI</text><text x="145" y="482" text-anchor="middle" class="s">OpenAI · Claude · Gemini …</text>
+  <rect class="opt" x="260" y="430" width="170" height="70" rx="12"/><text x="345" y="460" text-anchor="middle" class="t">Discord</text><text x="345" y="482" text-anchor="middle" class="s">Charakter als Bot</text>
+  <rect class="opt" x="460" y="430" width="170" height="70" rx="12"/><text x="545" y="460" text-anchor="middle" class="t">Home Assistant</text><text x="545" y="482" text-anchor="middle" class="s">Smart Home</text>
+  <rect class="opt" x="660" y="430" width="200" height="70" rx="12"/><text x="760" y="460" text-anchor="middle" class="t">Spotify · Kalender · Mail</text><text x="760" y="482" text-anchor="middle" class="s">Organizer</text>
+  <path class="ln" d="M480 362 L480 428" marker-end="url(#a)" stroke-dasharray="6 5"/>
+  <text x="560" y="400" text-anchor="middle" class="s">optionale Anbindungen</text>
+</svg>
