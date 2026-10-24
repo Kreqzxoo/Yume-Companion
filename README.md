@@ -12,9 +12,11 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 [![Discord](https://img.shields.io/badge/Discord-Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/5RBgNMCPKC)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Unterst%C3%BCtzen-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/kreqzxoo)
 
+**Deutsch** · [English](README.en.md)
+
 **💬 [Komm auf unseren Discord-Server](https://discord.gg/5RBgNMCPKC)**: Fragen, Feedback, Charaktere und Ideen teilen.
 
-[Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [Dokumentation](docs/INDEX.md) · [English](#english-summary)
+[Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [Dokumentation](docs/INDEX.md) · [English](README.en.md)
 
 ![Yume Companion auf PC und Handy](docs/images/hero.png)
 
@@ -39,7 +41,7 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 * [Systemvoraussetzungen](#systemvoraussetzungen)
 * [Datenschutz](#datenschutz)
 * [Lizenz und Danksagung](#lizenz-und-danksagung)
-* [English summary](#english-summary)
+* [English summary](#english-summary-full-version-readmeenmd)
 
 ---
 
@@ -280,7 +282,7 @@ Einmalig oder monatlich über <https://ko-fi.com/kreqzxoo>. Auch Mitarbeit, Fehl
 
 ---
 
-## English summary
+## English summary (full version: [README.en.md](README.en.md))
 
 **Yume Companion** is a Windows desktop app (Python/PyQt6) for AI characters with memory, voice, avatars (expression images, Live2D, VRM 3D), a role-play stage with an AI game master, a desktop companion, an organizer (calendar, mail, lists, routines), and an Android companion app (Kotlin) that can chat, call, and control the phone. The separate **Yume LLM Server** turns a second PC into a llama.cpp server for language, vision, image and tool models.
 
