@@ -16,7 +16,7 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 
 **💬 [Join our Discord server](https://discord.gg/5RBgNMCPKC)**: ask questions, share feedback, characters and ideas.
 
-[Features](#features-in-detail) · [Which AIs are inside?](#which-ais-are-inside) · [Avatars](#avatars-images-live2d-vrm) · [Quick start](#quick-start) · [Documentation](#documentation) · [Support](#support-the-project)
+[Features](#features-in-detail) · [Which AIs are inside?](#which-ais-are-inside) · [Avatars](#avatars-images-live2d-vrm) · [Quick start](#quick-start) · [📖 Documentation online (German)](https://kreqzxoo.github.io/Yume-Companion/) · [Support](#support-the-project)
 
 ![Yume Companion on PC and phone](docs/images/hero.png)
 

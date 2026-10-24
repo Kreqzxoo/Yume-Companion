@@ -1,0 +1,61 @@
+/* Yume-Look für die Dokumentation (Docsify + docsify-themeable, dunkel, Violett/Rosa) */
+:root {
+  --theme-hue: 322;
+  --theme-saturation: 78%;
+  --theme-lightness: 70%;
+
+  --base-background-color: #120d1f;
+  --base-color: #e8e1f5;
+  --heading-color: #ffffff;
+  --link-color: #f58ac7;
+  --link-color--hover: #ffb6dd;
+
+  --sidebar-background: #1a1230;
+  --sidebar-border-color: rgba(190, 150, 255, .18);
+  --sidebar-name-color: #ffffff;
+  --sidebar-nav-link-color: #d9cff0;
+  --sidebar-nav-link-color--active: #ff9fd2;
+  --sidebar-nav-link-border-color--active: #ff9fd2;
+  --sidebar-width: 19rem;
+
+  --content-max-width: 62rem;
+
+  --blockquote-background: rgba(190, 150, 255, .08);
+  --blockquote-border-color: #b388ff;
+  --code-theme-background: #1d1535;
+  --pre-background: #1d1535;
+  --table-row-odd-background: rgba(190, 150, 255, .05);
+  --table-head-background: rgba(190, 150, 255, .14);
+  --table-border-color: rgba(190, 150, 255, .22);
+  --border-radius: 10px;
+}
+
+body { background: var(--base-background-color); }
+
+.markdown-section img {
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+.markdown-section h1 {
+  background: linear-gradient(90deg, #ffffff, #f58ac7 70%, #b388ff);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.markdown-section table { display: table; width: 100%; }
+.markdown-section blockquote { border-radius: 8px; }
+
+/* Cover */
+section.cover { background: radial-gradient(1200px 600px at 70% 10%, #3b2368 0%, #120d1f 60%) !important; }
+section.cover .cover-main > p:last-child a {
+  border-radius: 999px; border-color: #f58ac7; color: #f58ac7; margin-right: .5rem;
+}
+section.cover .cover-main > p:last-child a:first-child { background: #f58ac7; color: #1a1230; }
+section.cover h1 { font-size: 3rem; }
+section.cover blockquote > p { color: #d9cff0; }
+
+/* Sprungleiste und Suche */
+.sidebar .search input { border-radius: 8px; background: #120d1f; color: #e8e1f5; }
+.app-nav a { color: #d9cff0; }
+.app-nav a:hover { color: #ff9fd2; }
+
+/* Seitenwechsel unten */
+.docsify-pagination-container { border-top: 1px solid rgba(190, 150, 255, .18); }

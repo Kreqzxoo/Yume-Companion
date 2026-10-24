@@ -16,7 +16,7 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 
 **💬 [Komm auf unseren Discord-Server](https://discord.gg/5RBgNMCPKC)**: Fragen, Feedback, Charaktere und Ideen teilen.
 
-[Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [Dokumentation](docs/INDEX.md) · [English](README.en.md)
+[Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [📖 Dokumentation online](https://kreqzxoo.github.io/Yume-Companion/) · [English](README.en.md)
 
 ![Yume Companion auf PC und Handy](docs/images/hero.png)
 
@@ -231,7 +231,7 @@ Ausführlich: [Installation](docs/01-installation.md) · [Erste Schritte](docs/0
 
 ## Die Dokumentation
 
-Alles liegt in [`docs/`](docs/INDEX.md):
+Schön lesbar als Webseite: **<https://kreqzxoo.github.io/Yume-Companion/>** (mit Suche und Menü). Die Dateien liegen in [`docs/`](docs/INDEX.md):
 
 | Bereich | Anleitung |
 | --- | --- |
