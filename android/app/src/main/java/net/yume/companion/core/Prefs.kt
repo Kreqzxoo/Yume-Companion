@@ -50,7 +50,8 @@ object Prefs {
     var speakerStrict by I("speaker_strict", 50)      // accepted distance to the voice print x 100 (lower = stricter)
     var wakeLang by S("wake_lang", "")                // language of the wake word listener ("" = same as the speech recognition)
     fun wakeLanguage(): String = wakeLang.ifEmpty { language }
-    var language by S("language", "de")               // speech recognition / wake word language (de, en, ru, ...)
+    var language by S("language", Lang.defaultSpeechLanguage())   // speech recognition / wake word language (de, en, ru, ...); default = language of the phone
+    var uiLang by S("ui_lang", "auto")                // language of the app texts: auto (follow the phone) | de | en
 
     // ---- wake word
     var wakeEnabled by B("wake_enabled", false)       // switched on manually by the user
@@ -66,7 +67,7 @@ object Prefs {
 
     // ---- call / voice
     var bargeIn by S("barge_in", "voice")             // off | voice | word
-    var bargeWords by S("barge_words", "yume, stopp, stop, halt, warte")
+    var bargeWords by S("barge_words", "yume, stopp, stop, halt, warte, wait")
     var vadSensitivity by I("vad_sensitivity", 55)    // 0..100
     var ttsVolume by I("tts_volume", 100)             // 0..200 %: her voice (above 100 it is amplified)
     var silenceMs by I("silence_ms", 900)

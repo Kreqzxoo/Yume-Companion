@@ -3,17 +3,21 @@ package net.yume.companion
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import net.yume.companion.core.Lang
 import net.yume.companion.core.Prefs
+import net.yume.companion.core.tr
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
         Prefs.init(this)
+        Lang.load()
         CrashLog.install(this)
         if (Prefs.offlineLoading.isNotEmpty()) {            // the app died while an offline model was being loaded: do not try it again
             net.yume.companion.offline.OfflineModels.markBroken(Prefs.offlineLoading)
-            CrashLog.note("Absturz beim Laden des Offline-Modells „${Prefs.offlineLoading}“ (vermutlich zu wenig Arbeitsspeicher).")
+            CrashLog.note(tr("Absturz beim Laden des Offline-Modells „${Prefs.offlineLoading}“ (vermutlich zu wenig Arbeitsspeicher).",
+                "Crash while loading the offline model \"${Prefs.offlineLoading}\" (probably not enough memory)."))
             Prefs.sp.edit().putString("offline_loading", "").commit()
         }
         net.yume.companion.device.Spotify.init()
@@ -22,10 +26,10 @@ class App : Application() {
         net.yume.companion.device.Automations.start()
         net.yume.companion.voice.WakeVoice.watch()
         val nm = getSystemService(NotificationManager::class.java)
-        nm.createNotificationChannel(NotificationChannel("voice", "Zuhören & Anrufe", NotificationManager.IMPORTANCE_LOW))
-        nm.createNotificationChannel(NotificationChannel("link", "Verbindung zum PC", NotificationManager.IMPORTANCE_MIN))
-        nm.createNotificationChannel(NotificationChannel("confirm", "Rückfragen von Yume", NotificationManager.IMPORTANCE_HIGH))
-        nm.createNotificationChannel(NotificationChannel("info", "Hinweise", NotificationManager.IMPORTANCE_DEFAULT))
+        nm.createNotificationChannel(NotificationChannel("voice", tr("Zuhören & Anrufe", "Listening & calls"), NotificationManager.IMPORTANCE_LOW))
+        nm.createNotificationChannel(NotificationChannel("link", tr("Verbindung zum PC", "Connection to the PC"), NotificationManager.IMPORTANCE_MIN))
+        nm.createNotificationChannel(NotificationChannel("confirm", tr("Rückfragen von Yume", "Questions from Yume"), NotificationManager.IMPORTANCE_HIGH))
+        nm.createNotificationChannel(NotificationChannel("info", tr("Hinweise", "Notices"), NotificationManager.IMPORTANCE_DEFAULT))
     }
 
     companion object {

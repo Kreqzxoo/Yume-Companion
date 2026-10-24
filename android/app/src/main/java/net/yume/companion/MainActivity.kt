@@ -1,5 +1,7 @@
 package net.yume.companion
 
+import net.yume.companion.core.tr
+
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -89,7 +91,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-enum class Tab(val label: String) { HOME("Yume"), CALL("Anruf"), OFFLINE("Offline"), SETTINGS("Einstellungen") }
+enum class Tab(private val de: String, private val en: String) {
+    HOME("Yume", "Yume"), CALL("Anruf", "Call"), OFFLINE("Offline", "Offline"), SETTINGS("Einstellungen", "Settings");
+    val label: String get() = tr(de, en)
+}
 
 @Composable
 fun Root(pendingPair: String?, consumePair: () -> Unit, startCallFlag: Boolean, consumeCall: () -> Unit, withMic: (() -> Unit) -> Unit) {
@@ -140,7 +145,7 @@ fun Root(pendingPair: String?, consumePair: () -> Unit, startCallFlag: Boolean, 
         if (pickerSettings) {
             // settings opened from the start screen: a back button returns to the character choice
             Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).statusBarsPadding().navigationBarsPadding()) {
-                TextButton(onClick = { pickerSettings = false }) { Icon(Icons.Filled.ArrowBack, null); Spacer(Modifier.width(6.dp)); Text("Zurück zur Auswahl") }
+                TextButton(onClick = { pickerSettings = false }) { Icon(Icons.Filled.ArrowBack, null); Spacer(Modifier.width(6.dp)); Text(tr("Zurück zur Auswahl", "Back to selection")) }
                 Box(Modifier.weight(1f).fillMaxWidth()) { SettingsScreen(withMic = withMic, onUnpaired = { paired = false; pickerSettings = false }) }
             }
         } else {

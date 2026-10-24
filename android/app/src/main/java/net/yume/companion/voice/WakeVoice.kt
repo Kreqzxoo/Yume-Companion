@@ -1,5 +1,7 @@
 package net.yume.companion.voice
 
+import net.yume.companion.core.tr
+
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -27,7 +29,10 @@ import java.security.MessageDigest
  * is played, in its chosen take. Without any recording the phone's own voice says it.
  */
 object WakeVoice {
-    const val DEFAULT_PHRASES = "Ja, ich höre?\nJa?\nIch bin da.\nWas gibt's?"
+    private const val DEFAULT_PHRASES_DE = "Ja, ich höre?\nJa?\nIch bin da.\nWas gibt's?"
+    private const val DEFAULT_PHRASES_EN = "Yes, I'm listening?\nYes?\nI'm here.\nWhat's up?"
+    /** the default phrases in the language of the app (a saved list is used as it is) */
+    val DEFAULT_PHRASES: String get() = if (net.yume.companion.core.Lang.isEn) DEFAULT_PHRASES_EN else DEFAULT_PHRASES_DE
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val root get() = File(App.instance.filesDir, "wake_voice").also { it.mkdirs() }
 
@@ -109,7 +114,7 @@ object WakeVoice {
     /** "1.2 s · Qualität 100 %" (WAV) or the file size */
     fun describe(f: File): String {
         val q = f.nameWithoutExtension.substringAfterLast('_')
-        val quality = if (q.isNotEmpty() && q.all { it.isDigit() }) " · Qualität $q %" else if (q == "x") " · eigene Datei" else ""
+        val quality = if (q.isNotEmpty() && q.all { it.isDigit() }) tr(" · Qualität $q %", " · Quality $q %") else if (q == "x") tr(" · eigene Datei", " · own file") else ""
         val len = try {
             if (f.extension != "wav") "%.0f KB".format(f.length() / 1024.0) else {
                 val h = f.inputStream().use { i -> ByteArray(44).also { i.read(it) } }
@@ -141,18 +146,18 @@ object WakeVoice {
      */
     suspend fun generate(text: String, count: Int, onProgress: (done: Int) -> Unit = {}): Int = withContext(Dispatchers.IO) {
         val character = Prefs.character
-        if (character.isEmpty() || !HostLink.connected || Host.baseUrl.isEmpty()) { status = "Der PC ist nicht erreichbar."; return@withContext 0 }
+        if (character.isEmpty() || !HostLink.connected || Host.baseUrl.isEmpty()) { status = tr("Der PC ist nicht erreichbar.", "The PC is not reachable."); return@withContext 0 }
         busy = true
         var got = 0
         try {
             for (i in 1..count) {
-                status = "„$text“ – Aufnahme $i von $count wird am PC erzeugt (beste Qualität, mit Prüfung) …"
+                status = tr("„$text“ – Aufnahme $i von $count wird am PC erzeugt (beste Qualität, mit Prüfung) …", "“$text” – recording $i of $count is being created on the PC (best quality, with check) …")
                 val r = fetch(character, text)
-                if (r == null) { status = "Der PC konnte die Stimme nicht erzeugen (hat der Charakter dort eine Sprachausgabe?)"; break }
+                if (r == null) { status = tr("Der PC konnte die Stimme nicht erzeugen (hat der Charakter dort eine Sprachausgabe?)", "The PC could not generate the voice (does the character have speech output there?)"); break }
                 addTake(text, r.first, "wav", r.second.toString(), character)
                 got++; onProgress(got)
             }
-            if (got == count) status = "$got neue Aufnahme${if (got == 1) "" else "n"} für „$text“ – hör sie dir an und wähle eine."
+            if (got == count) status = tr("$got neue Aufnahme${if (got == 1) "" else "n"} für „$text“ – hör sie dir an und wähle eine.", "$got new recording${if (got == 1) "" else "s"} for “$text” – listen to them and choose one.")
         } finally { busy = false }
         got
     }

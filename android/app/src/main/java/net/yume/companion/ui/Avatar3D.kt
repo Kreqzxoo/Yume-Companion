@@ -1,5 +1,7 @@
 package net.yume.companion.ui
 
+import net.yume.companion.core.tr
+
 import android.annotation.SuppressLint
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
@@ -63,13 +65,13 @@ object VrmStore {
         if (downloaded(name)) return@withContext true
         val base = Host.baseUrl
         lastError = ""
-        if (base.isEmpty()) { lastError = "kein PC verbunden"; return@withContext false }
+        if (base.isEmpty()) { lastError = tr("kein PC verbunden", "no PC connected"); return@withContext false }
         try {
             val tmp = File(dir, File(name).name + ".part")
             Host.clientFor(base).newBuilder().readTimeout(java.time.Duration.ofSeconds(120)).build()
                 .newCall(Request.Builder().url("$base/api/avatar/model?name=" + enc(name)).header("X-Yume-Token", Prefs.token).build()).execute().use { r ->
                     if (!r.isSuccessful) {
-                        lastError = if (r.code == 404) "der PC hat dieses Modell nicht (Ordner assets/emotions/vrm)" else "PC antwortet mit Fehler ${r.code}"
+                        lastError = if (r.code == 404) tr("der PC hat dieses Modell nicht (Ordner assets/emotions/vrm)", "the PC does not have this model (folder assets/emotions/vrm)") else tr("PC antwortet mit Fehler ${r.code}", "PC answers with error ${r.code}")
                         return@withContext false
                     }
                     val total = r.body?.contentLength()?.coerceAtLeast(1) ?: 1
@@ -81,7 +83,7 @@ object VrmStore {
                 }
             file(name).delete()
             val ok = tmp.renameTo(file(name)) && downloaded(name)
-            if (!ok) { file(name).delete(); tmp.delete(); lastError = "Datei unvollständig oder kein VRM-Modell" }
+            if (!ok) { file(name).delete(); tmp.delete(); lastError = tr("Datei unvollständig oder kein VRM-Modell", "File incomplete or not a VRM model") }
             ok
         } catch (e: Exception) { lastError = e.message ?: e.javaClass.simpleName; false }
     }
@@ -264,21 +266,21 @@ fun VrmPickerDialog(character: String, onDismiss: () -> Unit, onChosen: () -> Un
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("3D-Modell für $character") },
+        title = { Text(tr("3D-Modell für $character", "3D model for $character")) },
         text = {
             Column {
-                Text("Das Modell kommt vom PC (Ordner assets\\emotions\\vrm), wird einmal geladen und läuft dann auf dem Handy – mit Mimik, Lippenbewegung und Idle-Bewegungen.", fontSize = 12.sp)
+                Text(tr("Das Modell kommt vom PC (Ordner assets\\emotions\\vrm), wird einmal geladen und läuft dann auf dem Handy – mit Mimik, Lippenbewegung und Idle-Bewegungen.", "The model comes from the PC (folder assets\\emotions\\vrm), is downloaded once and then runs on the phone – with facial expressions, lip movement and idle movements."), fontSize = 12.sp)
                 Spacer(Modifier.height(8.dp))
                 val list = (models ?: emptyList()).ifEmpty { offline }
                 if (models == null) CircularProgressIndicator()
-                if (models != null && list.isEmpty()) Text("Keine Modelle gefunden. Ist der PC erreichbar und liegt eine .vrm-Datei im Ordner assets\\emotions\\vrm?", color = MaterialTheme.colorScheme.error)
+                if (models != null && list.isEmpty()) Text(tr("Keine Modelle gefunden. Ist der PC erreichbar und liegt eine .vrm-Datei im Ordner assets\\emotions\\vrm?", "No models found. Is the PC reachable and is there a .vrm file in the folder assets\\emotions\\vrm?"), color = MaterialTheme.colorScheme.error)
                 LazyColumn(Modifier.heightIn(max = 300.dp)) {
                     items(list) { m ->
                         val sel = VrmStore.chosen(character) == m.name
                         Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                             Column(Modifier.weight(1f)) {
                                 Text(m.name.removeSuffix(".vrm"), color = if (sel) Pink else MaterialTheme.colorScheme.onSurface)
-                                Text("%.1f MB".format(m.size / 1_048_576.0) + (if (VrmStore.downloaded(m.name)) " · geladen" else "") + (if (m.name == hostCurrent) " · am PC gewählt" else ""), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                Text("%.1f MB".format(m.size / 1_048_576.0) + (if (VrmStore.downloaded(m.name)) tr(" · geladen", " · downloaded") else "") + (if (m.name == hostCurrent) tr(" · am PC gewählt", " · chosen on the PC") else ""), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                             val p = progress
                             if (p != null && p.first == m.name) LinearProgressIndicator(progress = { p.second }, Modifier.width(70.dp))
@@ -288,16 +290,16 @@ fun VrmPickerDialog(character: String, onDismiss: () -> Unit, onChosen: () -> Un
                                     progress = m.name to 0f
                                     val ok = VrmStore.download(m.name) { progress = m.name to it }
                                     progress = null
-                                    if (ok) { VrmStore.choose(character, m.name); onChosen() } else error = "Download fehlgeschlagen: " + VrmStore.lastError.ifEmpty { "PC erreichbar?" }
+                                    if (ok) { VrmStore.choose(character, m.name); onChosen() } else error = tr("Download fehlgeschlagen: ", "Download failed: ") + VrmStore.lastError.ifEmpty { tr("PC erreichbar?", "PC reachable?") }
                                 }
-                            }) { Text(if (sel) "Aktiv" else "Wählen") }
+                            }) { Text(if (sel) tr("Aktiv", "Active") else tr("Wählen", "Choose")) }
                         }
                     }
                 }
                 if (error.isNotEmpty()) Text(error, color = MaterialTheme.colorScheme.error)
             }
         },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Schließen") } },
-        dismissButton = { TextButton(onClick = { VrmStore.choose(character, VrmStore.NONE); onChosen() }) { Text("Nur Bild") } },
+        confirmButton = { TextButton(onClick = onDismiss) { Text(tr("Schließen", "Close")) } },
+        dismissButton = { TextButton(onClick = { VrmStore.choose(character, VrmStore.NONE); onChosen() }) { Text(tr("Nur Bild", "Picture only")) } },
     )
 }

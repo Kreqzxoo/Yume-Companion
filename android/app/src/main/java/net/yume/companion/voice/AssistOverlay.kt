@@ -1,5 +1,7 @@
 package net.yume.companion.voice
 
+import net.yume.companion.core.tr
+
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -71,7 +73,7 @@ private class PanelRoot(ctx: Context, private val onDismiss: () -> Unit) : Frame
 /**
  * Like the Google Assistant: when the wake word is heard while another app (or the home screen) is in front, a translucent panel slides up
  * from the bottom and shows that Yume is listening, what she understood and what she answers.
- * It stays until YOU close it: "Schließen", the back key, the home button or a tap outside of the panel. It does not listen all the time:
+ * It stays until YOU close it: tr("Schließen", "Close"), the back key, the home button or a tap outside of the panel. It does not listen all the time:
  * one question, one answer - then it waits for the wake word again or a tap on her picture / the microphone button.
  * Needs "display over other apps".
  */
@@ -146,10 +148,10 @@ object AssistOverlay {
         val idle = !call.active
         val phaseText = when {
             call.active -> when (call.phase) {
-                Phase.LISTENING -> "Ich höre zu …"; Phase.HEARING -> "…"; Phase.THINKING -> (net.yume.companion.ui.ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: "denkt nach …"); Phase.SPEAKING -> "spricht"; Phase.IDLE -> "Ich höre zu …"
+                Phase.LISTENING -> tr("Ich höre zu …", "I'm listening …"); Phase.HEARING -> "…"; Phase.THINKING -> (net.yume.companion.ui.ToolStatusRepo.current?.takeIf { it.state == "running" }?.label ?: tr("denkt nach …", "thinking …")); Phase.SPEAKING -> tr("spricht", "speaking"); Phase.IDLE -> tr("Ich höre zu …", "I'm listening …")
             }
-            seenActive -> "Tippe auf mich oder sag das Wake Word"
-            else -> "Ich höre zu …"
+            seenActive -> tr("Tippe auf mich oder sag das Wake Word", "Tap me or say the wake word")
+            else -> tr("Ich höre zu …", "I'm listening …")
         }
         val level by animateFloatAsState(if (call.active && call.phase == Phase.SPEAKING) 0.55f else call.level, tween(90), label = "level")
         fun listen() {
@@ -182,13 +184,13 @@ object AssistOverlay {
             }
             Spacer(Modifier.height(10.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                TextButton(onClick = { CallEngine.hangup(); AudioPlayer.stop(); PhoneTts.stop(); hide() }) { Text("Schließen", color = Color.White.copy(alpha = 0.8f)) }
+                TextButton(onClick = { CallEngine.hangup(); AudioPlayer.stop(); PhoneTts.stop(); hide() }) { Text(tr("Schließen", "Close"), color = Color.White.copy(alpha = 0.8f)) }
                 if (idle) Button(onClick = { listen() }) { Text("Sprechen") }
                 TextButton(onClick = {
                     val ctx = App.instance
                     ctx.startActivity(Intent(ctx, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP))
                     hide()
-                }) { Text("App öffnen", color = Pink) }
+                }) { Text(tr("App öffnen", "Open app"), color = Pink) }
             }
         }
     }

@@ -110,7 +110,7 @@ object ChatRepo {
         if (interp != null) {
             generating = true
             scope.launch {
-                val answer = try { withContext(Dispatchers.IO) { interp.run() } } catch (e: Exception) { "Das hat nicht geklappt: " + (e.message ?: "") }
+                val answer = try { withContext(Dispatchers.IO) { interp.run() } } catch (e: Exception) { tr("Das hat nicht geklappt: ", "That did not work: ") + (e.message ?: "") }
                 msgs.add(Msg(nextId(), false, "🌐 " + answer))
                 generating = false
             }
@@ -122,7 +122,7 @@ object ChatRepo {
             generating = true
             val cmd = net.yume.companion.device.QuickCommands.detect(t)!!
             scope.launch {
-                val answer = try { cmd.run() } catch (e: Exception) { "Das hat nicht geklappt: " + (e.message ?: "") }
+                val answer = try { cmd.run() } catch (e: Exception) { tr("Das hat nicht geklappt: ", "That did not work: ") + (e.message ?: "") }
                 msgs.add(Msg(nextId(), false, answer))
                 if (Prefs.chatVoice) net.yume.companion.voice.PhoneTts.speak(answer)
                 generating = false
@@ -136,7 +136,7 @@ object ChatRepo {
                 generating = false
             }
         } else {
-            msgs.add(Msg(nextId(), false, "(Der PC ist nicht erreichbar und der Offline-Modus ist nicht eingerichtet.)"))
+            msgs.add(Msg(nextId(), false, tr("(Der PC ist nicht erreichbar und der Offline-Modus ist nicht eingerichtet.)", "(The PC is not reachable and offline mode is not set up.)")))
         }
     }
 

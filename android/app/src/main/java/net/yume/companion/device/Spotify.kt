@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.content.Intent
 import android.net.Uri
 import android.util.Base64
@@ -55,7 +57,7 @@ object Spotify {
                 if (myRefresh.isEmpty() || myId != hostId || token() == null) {
                     Prefs.spotifyClientId = hostId
                     sp.edit().putString("spotify_refresh", hostRefresh).remove("spotify_access").remove("spotify_expires").apply()
-                    withContext(Dispatchers.Main) { connected = true; status = "Spotify-Anmeldung vom PC übernommen." }
+                    withContext(Dispatchers.Main) { connected = true; status = tr("Spotify-Anmeldung vom PC übernommen.", "Spotify login adopted from the PC.") }
                 }
             } else if (myRefresh.isNotEmpty() && myId.isNotEmpty()) {
                 Host.postJson("/api/spotify/credentials", JSONObject().put("client_id", myId).put("refresh_token", myRefresh))
@@ -85,21 +87,21 @@ object Spotify {
         scope.launch {
             val err = uri.getQueryParameter("error")
             val code = uri.getQueryParameter("code")
-            if (err != null || code == null) { status = "Anmeldung abgebrochen (${err ?: "kein Code"})."; return@launch }
+            if (err != null || code == null) { status = tr("Anmeldung abgebrochen (${err ?: "kein Code"}).", "Login cancelled (${err ?: "no code"})."); return@launch }
             if (uri.getQueryParameter("state") != sp.getString("spotify_state", null)) { status = "Anmeldung abgelehnt (falscher state)."; return@launch }
-            status = "Melde bei Spotify an …"
+            status = tr("Melde bei Spotify an …", "Signing in to Spotify …")
             val res = withContext(Dispatchers.IO) {
                 tokenCall(FormBody.Builder().add("grant_type", "authorization_code").add("code", code).add("redirect_uri", REDIRECT)
                     .add("client_id", Prefs.spotifyClientId.trim()).add("code_verifier", sp.getString("spotify_verifier", "").orEmpty()).build())
             }
-            status = if (res == null) "Spotify hat die Anmeldung nicht akzeptiert. Stimmt die Client-ID und ist „yume://spotify“ als Redirect-URI in deiner Spotify-App eingetragen?"
-            else "Mit Spotify verbunden."
+            status = if (res == null) tr("Spotify hat die Anmeldung nicht akzeptiert. Stimmt die Client-ID und ist „yume://spotify“ als Redirect-URI in deiner Spotify-App eingetragen?", "Spotify did not accept the login. Is the client ID correct and is \"yume://spotify\" entered as the redirect URI in your Spotify app?")
+            else tr("Mit Spotify verbunden.", "Connected to Spotify.")
         }
     }
 
     fun logout() {
         sp.edit().remove("spotify_refresh").remove("spotify_access").remove("spotify_expires").apply()
-        connected = false; status = "Von Spotify getrennt."
+        connected = false; status = tr("Von Spotify getrennt.", "Disconnected from Spotify.")
     }
 
     private fun tokenCall(form: FormBody): String? = try {
@@ -155,21 +157,21 @@ object Spotify {
     }
 
     private fun explain(r: Reply): String = when (r.code) {
-        401 -> "Spotify ist nicht verbunden (in den App-Einstellungen anmelden)."
-        403 -> "Spotify verweigert das – für die Fernsteuerung ist Spotify Premium nötig."
-        404 -> "Kein Spotify-Gerät gefunden. Spotify auf dem Handy öffnen und nochmal versuchen."
-        else -> "Spotify-Fehler ${r.code}."
+        401 -> tr("Spotify ist nicht verbunden (in den App-Einstellungen anmelden).", "Spotify is not connected (sign in under the app settings).")
+        403 -> tr("Spotify verweigert das – für die Fernsteuerung ist Spotify Premium nötig.", "Spotify refuses this – remote control needs Spotify Premium.")
+        404 -> tr("Kein Spotify-Gerät gefunden. Spotify auf dem Handy öffnen und nochmal versuchen.", "No Spotify device found. Open Spotify on the phone and try again.")
+        else -> tr("Spotify-Fehler ${r.code}.", "Spotify error ${r.code}.")
     }
 
     suspend fun play(query: String, kind: String): String = withContext(Dispatchers.IO) {
-        if (token() == null) return@withContext "Spotify ist nicht verbunden (in den App-Einstellungen anmelden)."
+        if (token() == null) return@withContext tr("Spotify ist nicht verbunden (in den App-Einstellungen anmelden).", "Spotify is not connected (sign in under the app settings).")
         val type = if (kind in listOf("track", "album", "playlist", "artist")) kind else "track"
         val s = api("GET", "/search?q=${enc(query)}&type=$type&limit=5")
         if (s.code != 200) return@withContext explain(s)
         val items = JSONObject(s.body).optJSONObject(type + "s")?.optJSONArray("items")
         var hit: JSONObject? = null
         if (items != null) for (i in 0 until items.length()) { val o = items.optJSONObject(i); if (o != null) { hit = o; break } }
-        val h = hit ?: return@withContext "Nichts zu „$query“ gefunden."
+        val h = hit ?: return@withContext tr("Nichts zu „$query“ gefunden.", "Nothing found for “$query”.")
         val uri = h.getString("uri")
         val title = h.optString("name") + (h.optJSONArray("artists")?.optJSONObject(0)?.optString("name")?.let { " – $it" } ?: "")
         val payload = if (type == "track") JSONObject().put("uris", org.json.JSONArray().put(uri)) else JSONObject().put("context_uri", uri)
@@ -178,16 +180,16 @@ object Spotify {
             val dev = deviceId() ?: return@withContext explain(r)
             r = api("PUT", "/me/player/play?device_id=${enc(dev)}", payload.toString())
         }
-        if (r.code in 200..204) "Spielt jetzt: $title" else explain(r)
+        if (r.code in 200..204) tr("Spielt jetzt: $title", "Now playing: $title") else explain(r)
     }
 
     suspend fun control(c: String): String = withContext(Dispatchers.IO) {
         val (method, path, said) = when (c) {
             "pause" -> Triple("PUT", "/me/player/pause", "pausiert")
-            "resume", "play" -> Triple("PUT", "/me/player/play", "läuft weiter")
-            "next" -> Triple("POST", "/me/player/next", "nächster Titel")
+            "resume", "play" -> Triple("PUT", "/me/player/play", tr("läuft weiter", "resumed"))
+            "next" -> Triple("POST", "/me/player/next", tr("nächster Titel", "next track"))
             "previous" -> Triple("POST", "/me/player/previous", "voriger Titel")
-            else -> return@withContext "Unbekannte Spotify-Steuerung: $c"
+            else -> return@withContext tr("Unbekannte Spotify-Steuerung: $c", "Unknown Spotify control: $c")
         }
         val r = api(method, path)
         if (r.code in 200..204) "Spotify: $said" else explain(r)
@@ -195,16 +197,16 @@ object Spotify {
 
     suspend fun volume(level: Int): String = withContext(Dispatchers.IO) {
         val r = api("PUT", "/me/player/volume?volume_percent=${level.coerceIn(0, 100)}")
-        if (r.code in 200..204) "Spotify-Lautstärke $level %" else explain(r)
+        if (r.code in 200..204) tr("Spotify-Lautstärke $level %", "Spotify volume $level %") else explain(r)
     }
 
     suspend fun now(): String = withContext(Dispatchers.IO) {
         val r = api("GET", "/me/player/currently-playing")
-        if (r.code == 204 || r.body.isEmpty()) return@withContext if (r.code == 401) explain(r) else "Gerade läuft nichts auf Spotify."
+        if (r.code == 204 || r.body.isEmpty()) return@withContext if (r.code == 401) explain(r) else tr("Gerade läuft nichts auf Spotify.", "Nothing is playing on Spotify right now.")
         if (r.code != 200) return@withContext explain(r)
         val j = JSONObject(r.body)
-        val item = j.optJSONObject("item") ?: return@withContext "Gerade läuft nichts auf Spotify."
-        (if (j.optBoolean("is_playing")) "Läuft: " else "Pausiert: ") + item.optString("name") +
+        val item = j.optJSONObject("item") ?: return@withContext tr("Gerade läuft nichts auf Spotify.", "Nothing is playing on Spotify right now.")
+        (if (j.optBoolean("is_playing")) tr("Läuft: ", "Playing: ") else tr("Pausiert: ", "Paused: ")) + item.optString("name") +
             (item.optJSONArray("artists")?.optJSONObject(0)?.optString("name")?.let { " – $it" } ?: "")
     }
 }

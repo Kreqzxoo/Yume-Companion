@@ -1,5 +1,7 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
@@ -61,10 +63,10 @@ object Automations {
         while (!HostLink.connected && waited < 40_000) { delay(2000); waited += 2000 }    // the PC needs a few seconds after arriving at home
         if (HostLink.connected) {
             HostLink.sendText(sentence)
-            return "An den PC geschickt: $sentence"
+            return tr("An den PC geschickt: $sentence", "Sent to the PC: $sentence")
         }
-        val cmd = QuickCommands.detect(sentence) ?: return "Der PC ist nicht erreichbar und das ist kein Schnellbefehl: $sentence"
-        val answer = try { cmd.run() } catch (e: Exception) { "Das hat nicht geklappt." }
+        val cmd = QuickCommands.detect(sentence) ?: return tr("Der PC ist nicht erreichbar und das ist kein Schnellbefehl: $sentence", "The PC is not reachable and this is not a quick command: $sentence")
+        val answer = try { cmd.run() } catch (e: Exception) { tr("Das hat nicht geklappt.", "That did not work.") }
         PhoneTts.speak(answer)
         return answer
     }

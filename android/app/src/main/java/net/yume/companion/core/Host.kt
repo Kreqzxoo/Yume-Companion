@@ -159,25 +159,25 @@ object Host {
     } catch (_: Exception) { null }
 
     private fun explain(kind: String, code: Int): String = when (code) {
-        403 -> "Der Code ist abgelaufen oder wurde schon benutzt (am PC einen neuen QR-Code erzeugen)."
-        429 -> "Zu viele Versuche. Bitte kurz warten."
-        521, 522, 523, 524 -> "Cloudflare erreicht den PC nicht (Fehler $code) – läuft der Cloudflare-Tunnel / Yume auf dem PC?"
-        530 -> "Die externe Domain ist bei Cloudflare nicht (mehr) eingerichtet (Fehler 530)."
-        502, 503, 504 -> "Der Server hinter der Domain antwortet nicht (Fehler $code)."
-        else -> "Fehler $code"
+        403 -> tr("Der Code ist abgelaufen oder wurde schon benutzt (am PC einen neuen QR-Code erzeugen).", "The code has expired or was already used (create a new QR code on the PC).")
+        429 -> tr("Zu viele Versuche. Bitte kurz warten.", "Too many attempts. Please wait a moment.")
+        521, 522, 523, 524 -> tr("Cloudflare erreicht den PC nicht (Fehler $code) – läuft der Cloudflare-Tunnel / Yume auf dem PC?", "Cloudflare cannot reach the PC (error $code) – are the Cloudflare tunnel and Yume running on the PC?")
+        530 -> tr("Die externe Domain ist bei Cloudflare nicht (mehr) eingerichtet (Fehler 530).", "The external domain is not (or no longer) set up at Cloudflare (error 530).")
+        502, 503, 504 -> tr("Der Server hinter der Domain antwortet nicht (Fehler $code).", "The server behind the domain does not answer (error $code).")
+        else -> tr("Fehler $code", "Error $code")
     }
 
     private fun explain(e: Exception): String = when (e) {
         is java.net.SocketTimeoutException, is java.net.ConnectException ->
-            "keine Antwort – Firewall am PC blockiert (Port freigeben) oder Handy nicht im selben Netz"
-        is java.net.UnknownHostException -> "Adresse nicht auffindbar"
+            tr("keine Antwort – Firewall am PC blockiert (Port freigeben) oder Handy nicht im selben Netz", "no answer – firewall on the PC blocks it (open the port) or the phone is not in the same network")
+        is java.net.UnknownHostException -> tr("Adresse nicht auffindbar", "Address not found")
         else -> e.message ?: e.javaClass.simpleName
     }
 
     /** Exchanges the one-time code of the QR for this phone's own revocable token. Tries the local address first, then the external domain. */
     suspend fun pair(info: PairInfo, deviceName: String, deviceId: String): Result<JSONObject> = withContext(Dispatchers.IO) {
-        val candidates = listOf("Heimnetz" to info.local, "Extern" to info.external).map { it.first to normalize(it.second) }.filter { it.second.isNotEmpty() }
-        if (candidates.isEmpty()) return@withContext Result.failure(Exception("Im QR-Code steht keine Adresse. Bitte am PC einen neuen Code erzeugen."))
+        val candidates = listOf(tr("Heimnetz", "Home network") to info.local, tr("Extern", "External") to info.external).map { it.first to normalize(it.second) }.filter { it.second.isNotEmpty() }
+        if (candidates.isEmpty()) return@withContext Result.failure(Exception(tr("Im QR-Code steht keine Adresse. Bitte am PC einen neuen Code erzeugen.", "The QR code contains no address. Please generate a new code on the PC.")))
         val problems = ArrayList<String>()
         for ((kind, base) in candidates) {
             try {

@@ -1,0 +1,59 @@
+name: Android-Release
+
+# Baut die APK mit dem eigenen Signaturschlüssel und hängt sie an ein Release.
+# Einmalig einrichten (Repo → Settings → Secrets and variables → Actions):
+#   YUME_KEYSTORE_BASE64   der Schlüssel als Base64  (PowerShell: [Convert]::ToBase64String([IO.File]::ReadAllBytes("yume.jks")))
+#   YUME_KEYSTORE_PASSWORD Passwort des Schlüsselspeichers (und Schlüssels)
+#   YUME_KEY_ALIAS         Alias (Standard: yume)
+# Schlüssel erzeugen:  keytool -genkeypair -v -keystore yume.jks -alias yume -keyalg RSA -keysize 4096 -validity 10000
+# Den Schlüssel NIE ins Repo legen und sichern – ohne ihn gibt es keine Updates über dieselbe App-Signatur.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release-Tag, an das die APK gehängt wird (z. B. v3.0.0-beta11)"
+        required: true
+  release:
+    types: [published]
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.13"
+      - name: Schlüssel bereitstellen
+        env:
+          KEYSTORE_B64: ${{ secrets.YUME_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then echo "Secret YUME_KEYSTORE_BASE64 fehlt" >&2; exit 1; fi
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/yume.jks"
+      - name: Unit-Tests
+        run: gradle --no-daemon :app:testDebugUnitTest
+      - name: Signierte APK bauen
+        env:
+          YUME_KEYSTORE: ${{ runner.temp }}/yume.jks
+          YUME_KEYSTORE_PASSWORD: ${{ secrets.YUME_KEYSTORE_PASSWORD }}
+          YUME_KEY_ALIAS: ${{ secrets.YUME_KEY_ALIAS }}
+        run: gradle --no-daemon :app:assembleRelease
+      - name: APK umbenennen und Prüfsumme erzeugen
+        run: |
+          cp app/build/outputs/apk/release/app-release.apk Yume-Companion.apk
+          sha256sum Yume-Companion.apk > Yume-Companion.apk.sha256
+      - name: An das Release hängen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: gh release upload "$TAG" Yume-Companion.apk Yume-Companion.apk.sha256 --clobber --repo "$GITHUB_REPOSITORY"

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Yume Companion</string>
+    <string name="a11y_description">Erlaubt Yume, auf Wunsch den Bildschirm zu lesen und Apps zu bedienen (tippen, scrollen, Text eingeben). Nur aktiv, wenn dein Yume-PC verbunden ist und die Handy-Steuerung eingeschaltet ist.</string>
+    <string name="tile_label">Yume zuhören</string>
+</resources>
