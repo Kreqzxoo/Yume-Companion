@@ -122,6 +122,9 @@ The *Settings* page is divided into sections.
 
 ![Connection: Wake-on-LAN](../images/android/einstellungen_verbindung.png)
 
+### App language
+The app comes in **German and English**. The default is **Automatic**: a German phone shows German, every other phone English. Set it permanently under *Settings → App language*. The language applies to all menus, messages, the phone commands (e.g. "turn the flashlight on", "set a timer for 10 minutes", "interpreter French") and the default phrases of the wake word.
+
 ### Speech & wake word
 The wake word ("Hey Yume") listens in the background **offline** (Vosk) without an account.
 

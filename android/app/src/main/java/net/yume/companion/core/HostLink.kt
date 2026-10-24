@@ -77,7 +77,7 @@ object HostLink {
             _where.value = Host.where
             if (base == null) {
                 _state.value = Link.OFFLINE
-                _detail.value = "PC nicht erreichbar"
+                _detail.value = tr("PC nicht erreichbar", "PC not reachable")
                 if (Prefs.wolEnabled && Prefs.wolAuto && attempt % 4 == 0) WakeOnLan.wake()
                 attempt++
                 val wait = CompletableDeferred<Unit>(); kick = wait
@@ -99,7 +99,7 @@ object HostLink {
                     override fun onMessage(webSocket: WebSocket, text: String) { handle(webSocket, text) }
                     override fun onClosed(webSocket: WebSocket, code: Int, reason: String) { closed.complete(Unit) }
                     override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-                        if (response?.code == 1008 || response?.code == 403) _detail.value = "Zugriff entzogen – bitte neu koppeln"
+                        if (response?.code == 1008 || response?.code == 403) _detail.value = tr("Zugriff entzogen – bitte neu koppeln", "Access revoked – please pair again")
                         closed.complete(Unit)
                     }
                 })

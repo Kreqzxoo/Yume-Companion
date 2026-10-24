@@ -1,6 +1,9 @@
 package net.yume.companion.device
 
+import net.yume.companion.core.tr
+
 import net.yume.companion.core.Host
+import net.yume.companion.core.Lang
 import net.yume.companion.core.Prefs
 import net.yume.companion.voice.PhoneTts
 import org.json.JSONObject
@@ -28,18 +31,24 @@ object Interpreter {
     )
     private val STEM = LANGS.keys.associateBy { it.removeSuffix("isch") }          // "englisch" -> "engl": "ins Englische", "auf Englisch"
 
+    /** English names ("french", "dutch") -> the key of LANGS */
+    private val EN_NAMES = LANGS.entries.associate { it.value.first.lowercase(Locale.ENGLISH) to it.key }
+
     fun languageIn(text: String): String? {
         val t = text.lowercase(Locale.GERMAN)
-        return LANGS.keys.firstOrNull { t.contains(it) } ?: STEM.entries.firstOrNull { t.contains(it.key) && it.key.length >= 4 }?.value
+        LANGS.keys.firstOrNull { t.contains(it) }?.let { return it }
+        STEM.entries.firstOrNull { t.contains(it.key) && it.key.length >= 4 }?.value?.let { return it }
+        return EN_NAMES.entries.firstOrNull { Regex("\\b" + it.key + "\\b").containsMatchIn(t) }?.value
     }
 
     fun start(langKey: String): String {
-        val (name, tag, label) = LANGS[langKey] ?: return "Diese Sprache kenne ich nicht."
+        val (name, tag, label) = LANGS[langKey] ?: return tr("Diese Sprache kenne ich nicht.", "I do not know this language.")
         targetName = name; locale = Locale.forLanguageTag(tag); active = true
-        return "Dolmetscher an: alles, was du sagst, übersage ich auf $label. Zum Beenden sag „Dolmetscher aus“."
+        return if (Lang.isEn) "Interpreter on: everything you say, I will say in $name. To end it, say “interpreter off”."
+        else "Dolmetscher an: alles, was du sagst, übersage ich auf $label. Zum Beenden sag „Dolmetscher aus“."
     }
 
-    fun stop(): String { active = false; return "Dolmetscher aus." }
+    fun stop(): String { active = false; return tr("Dolmetscher aus.", "Interpreter off.") }
 
     /** translated text (null when the PC cannot be reached) */
     fun translate(text: String): String? {
@@ -49,7 +58,7 @@ object Interpreter {
 
     /** translates, speaks the translation in the target language and returns it for the screen */
     suspend fun run(text: String): String {
-        val out = translate(text) ?: return "Die Übersetzung braucht den PC – er ist gerade nicht erreichbar."
+        val out = translate(text) ?: return tr("Die Übersetzung braucht den PC – er ist gerade nicht erreichbar.", "Translation needs the PC – it is not reachable right now.")
         PhoneTts.speakIn(locale, out)
         return out
     }

@@ -1,5 +1,7 @@
 package net.yume.companion.voice
 
+import net.yume.companion.core.tr
+
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.AudioFocusRequest
@@ -237,7 +239,7 @@ object VoskStore {
     fun installed(lang: String) = File(dir(lang), "am").exists() || File(dir(lang), "conf").exists() || File(dir(lang), "mfcc.conf").exists()
 
     suspend fun download(lang: String, progress: (Float) -> Unit): Result<Unit> = withContext(Dispatchers.IO) {
-        val name = urls[lang] ?: return@withContext Result.failure(Exception("Sprache nicht unterstützt"))
+        val name = urls[lang] ?: return@withContext Result.failure(Exception(tr("Sprache nicht unterstützt", "Language not supported")))
         try {
             val target = dir(lang)
             val tmp = File(target.parentFile, "$lang.tmp"); tmp.deleteRecursively(); tmp.mkdirs()

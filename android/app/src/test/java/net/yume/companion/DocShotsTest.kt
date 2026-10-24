@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [34], qualifiers = "w411dp-h891dp-xxhdpi")
 class DocShotsTest {
+    @get:org.junit.Rule val phone = PhoneLocale(if (System.getenv("YUME_LANG") == "en") java.util.Locale.ENGLISH else java.util.Locale.GERMAN)
     @get:Rule val rule = createAndroidComposeRule<ComponentActivity>()
     private val out = File(System.getenv("YUME_SHOTS") ?: "build/doc-shots").also { it.mkdirs() }
 

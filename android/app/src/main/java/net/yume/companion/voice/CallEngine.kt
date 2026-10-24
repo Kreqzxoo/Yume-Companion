@@ -1,5 +1,7 @@
 package net.yume.companion.voice
 
+import net.yume.companion.core.tr
+
 import android.content.Context
 import android.media.AudioFormat
 import android.media.AudioManager
@@ -86,8 +88,8 @@ object CallEngine {
         val minBuf = AudioRecord.getMinBufferSize(RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT)
         val rec = try {
             AudioRecord(MediaRecorder.AudioSource.VOICE_COMMUNICATION, RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, maxOf(minBuf, FRAME * 2 * 16))
-        } catch (e: SecurityException) { update { it.copy(error = "Mikrofon-Berechtigung fehlt") }; wantCall = false; return@coroutineScope }
-        if (rec.state != AudioRecord.STATE_INITIALIZED) { update { it.copy(error = "Mikrofon nicht verfügbar") }; rec.release(); wantCall = false; return@coroutineScope }
+        } catch (e: SecurityException) { update { it.copy(error = tr("Mikrofon-Berechtigung fehlt", "Microphone permission missing")) }; wantCall = false; return@coroutineScope }
+        if (rec.state != AudioRecord.STATE_INITIALIZED) { update { it.copy(error = tr("Mikrofon nicht verfügbar", "Microphone not available")) }; rec.release(); wantCall = false; return@coroutineScope }
 
         var aec: AcousticEchoCanceler? = null
         var ns: NoiseSuppressor? = null
@@ -278,14 +280,14 @@ object CallEngine {
             val text = Host.sendSpeech(wav(pcm), Prefs.character, Prefs.language, net.yume.companion.device.VideoCall.snapshot(), who)
             if (text == null) {
                 // the PC vanished in the middle of the call: continue offline if possible
-                if (!offlineTurn(pcm)) { update { it.copy(error = "Verbindung zum PC verloren") }; setPhase(Phase.LISTENING) }
+                if (!offlineTurn(pcm)) { update { it.copy(error = tr("Verbindung zum PC verloren", "Connection to the PC lost")) }; setPhase(Phase.LISTENING) }
                 return
             }
             update { it.copy(heard = text, error = "") }
             if (text.isBlank() || text.length <= 2) { setPhase(Phase.LISTENING); return }
             if (WakeMatch.containsAny(text, Prefs.hangupWordList())) { wantCall = false; return }
         } else if (!offlineTurn(pcm)) {
-            update { it.copy(error = "PC nicht erreichbar und der Offline-Modus ist nicht eingerichtet") }
+            update { it.copy(error = tr("PC nicht erreichbar und der Offline-Modus ist nicht eingerichtet", "PC not reachable and offline mode is not set up")) }
             setPhase(Phase.LISTENING)
         }
     }
@@ -295,7 +297,7 @@ object CallEngine {
     private suspend fun quickTurn(text: String): Boolean {
         val cmd = net.yume.companion.device.QuickCommands.detect(text) ?: return false
         update { it.copy(heard = text, offline = true) }
-        val answer = try { cmd.run() } catch (e: Exception) { "Das hat nicht geklappt." }
+        val answer = try { cmd.run() } catch (e: Exception) { tr("Das hat nicht geklappt.", "That did not work.") }
         update { it.copy(reply = answer) }
         replyEndedAt = 0; replyStarted = false
         PhoneTts.onDone = { replyEndedAt = System.currentTimeMillis() - 1000 }
