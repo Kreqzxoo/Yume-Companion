@@ -23,7 +23,6 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 </div>
 
 > **Status:** 3.0.0 **Beta**. Vieles funktioniert, manches ist noch rau. Fehler bitte als [Issue](../../issues) melden.
-> **Herkunft:** Yume Companion ist eine stark erweiterte, veränderte Fassung von [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) von *jofizcd* (GPL-3.0). Der Original-Autor bleibt genannt, siehe [NOTICE.md](NOTICE.md). Dieses Projekt ist **nicht** das offizielle Soul of Waifu.
 
 ---
 
@@ -274,6 +273,8 @@ Yume Companion ist kostenlos und Open Source. Wenn dir das Projekt gefällt, hil
 Einmalig oder monatlich über <https://ko-fi.com/kreqzxoo>. Auch Mitarbeit, Fehlermeldungen, Charaktere und ein Stern auf GitHub helfen. Danke! 💜
 
 ## Lizenz und Danksagung
+
+> **Herkunft:** Yume Companion ist eine stark erweiterte, veränderte Fassung von [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) von *jofizcd* (GPL-3.0). Der Original-Autor bleibt genannt, siehe [NOTICE.md](NOTICE.md). Dieses Projekt ist **nicht** das offizielle Soul of Waifu.
 
 * Lizenz: **GNU General Public License v3.0** (siehe [LICENSE](LICENSE)). Der Quelltext darf unter diesen Bedingungen genutzt, verändert und weitergegeben werden.
 * Original: **Soul of Waifu** von jofizcd – <https://github.com/jofizcd/Soul-of-Waifu>, Dokumentation: <https://jofizcd.github.io/soul-of-waifu-site/docs/>.

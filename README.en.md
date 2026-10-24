@@ -23,7 +23,6 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 </div>
 
 > **Status:** 3.0.0 **beta**. A lot works, some parts are still rough. Please report bugs as an [issue](../../issues).
-> **Origin:** Yume Companion is a heavily extended, modified version of [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) by *jofizcd* (GPL-3.0). The original author stays credited, see [NOTICE.md](NOTICE.md). This project is **not** the official Soul of Waifu.
 > **Language:** The program itself comes with German, English and Russian translations. The detailed manual is available in English in [`docs/en/`](docs/en/README.md) (every chapter has screenshots) and as a website (language switch at the top). Only the publishing guide, license list and Ko-fi tiers are German-only.
 
 ---
@@ -202,6 +201,8 @@ Yume Companion is free and open source. If you like it, your support pays for ti
 One-time or monthly via <https://ko-fi.com/kreqzxoo>. Contributions, bug reports, characters and a star on GitHub help as well. Thank you! 💜
 
 ## License and credits
+
+> **Origin:** Yume Companion is a heavily extended, modified version of [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) by *jofizcd* (GPL-3.0). The original author stays credited, see [NOTICE.md](NOTICE.md). This project is **not** the official Soul of Waifu.
 
 * License: **GNU General Public License v3.0** (see [LICENSE](LICENSE)). The source code may be used, modified and redistributed under these terms.
 * Original: **Soul of Waifu** by jofizcd – <https://github.com/jofizcd/Soul-of-Waifu>.
