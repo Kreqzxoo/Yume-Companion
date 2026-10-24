@@ -9,6 +9,9 @@ Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Roll
 ![Version](https://img.shields.io/badge/Version-3.0.0%20BETA-purple)
 ![Plattform](https://img.shields.io/badge/Windows%20%7C%20Android-lightgrey)
 ![KI lokal oder Cloud](https://img.shields.io/badge/KI-lokal%20oder%20Cloud-blueviolet)
+[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/5RBgNMCPKC)
+
+**💬 [Komm auf unseren Discord-Server](https://discord.gg/5RBgNMCPKC)**: Fragen, Feedback, Charaktere und Ideen teilen.
 
 [Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [Dokumentation](docs/INDEX.md) · [English](#english-summary)
 
@@ -253,6 +256,11 @@ Alles liegt in [`docs/`](docs/INDEX.md):
 * Lokale Modelle senden nichts ins Internet. Mit Cloud-Anbietern (OpenAI, Anthropic, Gemini …) gehen die Chat-Texte an diesen Anbieter.
 * Die App holt aus dem Netz nur, was du nutzt: Modelle von Hugging Face, Charakterkarten aus der Galerie, Wetter (Open-Meteo), Orte und Routen (OpenStreetMap), Spotify, und Update-Infos von GitHub.
 * Weitere Hinweise: [Backup, Updates, Sicherheit](docs/14-backup-updates-sicherheit.md).
+
+## Community und Hilfe
+
+* **Discord:** <https://discord.gg/5RBgNMCPKC>. Hier bekommst du schnelle Hilfe, kannst Charaktere und Avatare zeigen und Wünsche äußern.
+* **Fehler und Funktionswünsche:** als [Issue](../../issues) auf GitHub.
 
 ## Lizenz und Danksagung
 

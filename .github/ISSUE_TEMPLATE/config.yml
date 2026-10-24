@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Discord-Community
+    url: https://discord.gg/5RBgNMCPKC
+    about: Fragen, Hilfe und Austausch mit anderen Nutzern.
   - name: Das Original-Projekt (Soul of Waifu)
     url: https://github.com/jofizcd/Soul-of-Waifu
     about: Fehler im ursprünglichen Soul of Waifu bitte beim Original melden.
