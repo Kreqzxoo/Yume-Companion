@@ -124,7 +124,11 @@ Tipp: Reagiert die App beim Laden eines Live2D- oder VRM-Modells nicht sofort, k
 Weist jedem der 28 Gefühle eine Körperanimationsgruppe zu; **Standard wiederherstellen** und **Zuordnung speichern**.
 
 ### Eigene Inhalte und Rechte
-Dieses Repository enthält **keine** fremden Avatare. Bilder der Demo-Charaktere sind selbst gezeichnet. Wenn du Modelle von anderen nutzt, beachte deren Lizenz (Angabe von Quelle, kommerzielle Nutzung, Veränderung). Die Cubism-Komponenten von Live2D stehen unter einer eigenen Lizenz.
+Dieses Repository enthält nur frei weitergebbare Avatare: selbst gezeichnete Ausdrucksbilder der Demo-Charaktere und zwei **VRoid-Beispielmodelle** (`Anime Girl.vrm`, `Anime Man.vrm` vom pixiv VRoid Project, VRM Public License 1.0, siehe [NOTICE](../NOTICE.md)). Die Demo-Charaktere Mika und Kai nutzen sie:
+
+![Chat mit VRM-Avatar](images/pc/chat_vrm_mika.png)
+
+Die 28 Körperanimationen zu den Gefühlen (`app/utils/emotions/vrm/expressions/*.fbx`) sind **nicht** im Repository (vermutlich Mixamo-Material, das man nicht weitergeben darf). Ohne sie steht das Modell in der T-Pose; eigene Animationen mit den Gefühlsnamen als Dateinamen (`neutral.fbx`, `joy.fbx` …) legst du in diesen Ordner. Live2D-Modelle liegen hier nicht bei. Wenn du Modelle von anderen nutzt, beachte deren Lizenz (Angabe von Quelle, kommerzielle Nutzung, Veränderung). Die Cubism-Komponenten von Live2D stehen unter einer eigenen Lizenz.
 
 ## 5.6 Umgebungsgeräusche und Hintergründe
 

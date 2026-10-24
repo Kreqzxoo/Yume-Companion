@@ -277,6 +277,20 @@ async def run():
             await snap_dialogs(tag, lambda o=objname: click(o), delay=1500)
             await wait(400)
 
+    if WHAT in ("vrm", "alle"):
+        main.setCurrentIndex(names.index("main_characters_page"))
+        await wait(800)
+        for who, tag in (("Mika", "chat_vrm_mika"), ("Kai", "chat_vrm_kai")):
+            try:
+                await sig.open_chat(who)
+            except Exception as exc:  # noqa: BLE001
+                print("open_chat failed", exc, flush=True)
+                continue
+            await wait(14000)  # das 3D-Modell braucht einen Moment (WebGL)
+            await snap(tag)
+            main.setCurrentIndex(names.index("main_characters_page"))
+            await wait(1500)
+
     if WHAT in ("buehne", "alle"):
         idx = names.index("soul_stage_page")
         main.setCurrentIndex(idx)

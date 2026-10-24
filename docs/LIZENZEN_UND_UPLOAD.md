@@ -83,7 +83,7 @@ Apache-2.0-Software darf in GPL-3.0-Projekten verwendet werden.
 | Datei / Ordner | Grund |
 |---|---|
 | `assets/emotions/vrm/1648710486258542243.vrm` (Zero Two) | Modell von **Sayurii** (VRoid Hub), Lizenz laut Datei: "Other", **kommerzielle Nutzung nicht erlaubt**, Namensnennung nötig, Veränderung nicht erlaubt (die Weitergabe ist nach dem VRoid-Hub-Link erlaubt, aber nur mit Bedingungen). Charakter ist urheberrechtlich geschützt (Darling in the FranXX). **Nicht hochladen.** |
-| `Anime Girl.vrm`, `Anime Man.vrm` | Herkunft und Lizenz in der Datei nicht angegeben. Nur hochladen, wenn du die Rechte kennst. |
+| `Anime Girl.vrm`, `Anime Man.vrm` | VRoid-Studio-Beispielavatare „AvatarSample_Y/Z“ des **pixiv VRoid Project** (VRM Public License 1.0): Weitergabe und Veränderung erlaubt, Namensnennung nicht nötig. Liegen im Repo und sind in `NOTICE.md` genannt (Lizenz steht in den Metadaten der Dateien). |
 | `assets/emotions/live2d/Hiyori` | Live2D-**Beispielmodell** (Free Material License von Live2D): Weitergabe nur nach deren Bedingungen. Das Original liefert es nicht im Repo. Nicht hochladen. |
 | `assets/rvc_models/zerotwo/*` und `assets/voice_refs/*` | Eine nachgebaute **Stimme einer realen Synchronsprecherin** (und Ausschnitte aus Serien-Audio). Urheber- und Persönlichkeitsrechte. **Nicht hochladen, nicht weitergeben.** |
 | `RVC Zero Two/Mp4` (Serienfolgen) | Urheberrechtlich geschützt. Niemals hochladen. |

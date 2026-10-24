@@ -61,6 +61,9 @@ assets/emotions/images/*
 *.gguf
 *.fbx
 *.moc3
+# Ausnahme: zwei VRoid-Beispielmodelle (pixiv, Weitergabe erlaubt, siehe NOTICE.md)
+!assets/emotions/vrm/Anime Girl.vrm
+!assets/emotions/vrm/Anime Man.vrm
 
 # ==== gebaute Dateien: als GitHub-Release anhängen, nicht in den Quelltext =========================
 *.exe

@@ -33,3 +33,7 @@ Modified in 2026 (summary, not complete):
 See `docs/LIZENZEN_UND_UPLOAD.md` for the list of components, their licences and what must not be uploaded.
 The sample characters (Yume, Mika, Kai), their expression images and the screenshots in `docs/images` were created for this project
 with fictional data and may be used under the same licence as the project.
+
+The 3D sample models `assets/emotions/vrm/Anime Girl.vrm` ("AvatarSample_Y") and `Anime Man.vrm` ("AvatarSample_Z") are VRoid
+Studio sample avatars by the pixiv VRoid Project (yomox9), published under the VRM Public License 1.0
+(<https://vrm.dev/licenses/1.0/>), which allows redistribution and modification; a credit is not required but given here.

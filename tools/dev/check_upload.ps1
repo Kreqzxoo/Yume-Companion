@@ -33,7 +33,7 @@ $forbiddenExt = '.gguf', '.pth', '.index', '.vrm', '.fbx', '.moc3', '.exe', '.ap
 foreach ($f in $files) {
     $name = [IO.Path]::GetFileName($f); $ext = [IO.Path]::GetExtension($f).ToLower()
     $isTemplate = $f -match '\\installer_build\\templates\\'                      # leere Vorlagen des Release-Werkzeugs
-    $isSilero = $f -match '\\speech-to-text\\silero-vad\\'                        # MIT-lizenziertes VAD-Modell (klein), liegt auch im Original
+    $isSilero = $f -match '\\speech-to-text\\silero-vad\\' -or $f -match '\\assets\\emotions\\vrm\\Anime (Girl|Man)\.vrm$'   # Silero-VAD (MIT) und die zwei VRoid-Beispielmodelle (Weitergabe erlaubt)
     if (-not $isTemplate -and ($forbiddenNames -contains $name)) { Bad 'PRIVAT' $f; continue }
     if (-not $isSilero -and ($forbiddenExt -contains $ext)) { Bad 'DATEITYP' $f "($ext)"; continue }
     if ($f -match '\\(Backups|logs)\\' -and $name -ne '.gitkeep') { Bad 'PRIVAT' $f }
