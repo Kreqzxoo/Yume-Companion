@@ -21,28 +21,29 @@
       nameLink: '#/',
       repo: 'Kreqzxoo/Yume-Companion',
       homepage: 'INDEX.md',
+      relativePath: true,
       loadSidebar: true,
       loadNavbar: true,
-      coverpage: true,
+      coverpage: ['/', '/en/'],
       subMaxLevel: 2,
       auto2top: true,
       maxLevel: 3,
       notFoundPage: true,
       search: {
-        placeholder: 'Suchen …',
-        noData: 'Nichts gefunden.',
+        placeholder: { '/en/': 'Search …', '/': 'Suchen …' },
+        noData: { '/en/': 'Nothing found.', '/': 'Nichts gefunden.' },
         depth: 3,
         paths: 'auto'
       },
       pagination: {
-        previousText: 'Zurück',
-        nextText: 'Weiter',
+        previousText: '← Zurück · Back',
+        nextText: 'Weiter · Next →',
         crossChapter: true
       },
       copyCode: {
-        buttonText: 'Kopieren',
-        errorText: 'Fehler',
-        successText: 'Kopiert'
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
       },
       plugins: [
         function (hook) {
@@ -64,6 +65,16 @@
                 a.setAttribute('rel', 'noopener');
               }
             });
+            // Sprachumschalter: führt zur gleichen Seite in der anderen Sprache
+            var route = location.hash.replace(/^#\/?/, '').split('?')[0];
+            var isEn = /^en(\/|$)/.test(route);
+            var page = isEn ? route.replace(/^en\/?/, '') : route;
+            if (/^(README|INDEX)?$/.test(page)) page = '';
+            document.querySelectorAll('.app-nav a').forEach(function (a) {
+              if (/English/.test(a.textContent)) a.setAttribute('href', '#/en/' + page);
+              if (/Deutsch/.test(a.textContent)) a.setAttribute('href', '#/' + page);
+            });
+            document.documentElement.setAttribute('lang', isEn ? 'en' : 'de');
             // zur Sprungmarke (?id=...) scrollen; die Bilder laden nach, deshalb mehrere Versuche
             var q = location.hash.match(/[?&]id=([^&]+)/);
             if (q) {
@@ -78,11 +89,23 @@
     // Startseite: „Dokumentation lesen“ scrollt zum Inhalt unter dem Titelbild
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('section.cover a');
-      if (a && /Dokumentation lesen/.test(a.textContent)) {
+      if (a && /Dokumentation lesen|Read the documentation/.test(a.textContent)) {
         e.preventDefault();
         var target = document.querySelector('.content') || document.querySelector('.markdown-section');
         if (target) target.scrollIntoView({ block: 'start' });
       }
+    }, true);
+
+    // Sprachumschalter in der Navigationsleiste: springt zur gleichen Seite in der anderen Sprache
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('.app-nav a');
+      if (!a || !/English|Deutsch/.test(a.textContent)) return;
+      var route = location.hash.replace(/^#\/?/, '').split('?')[0];
+      var isEn = /^en(\/|$)/.test(route);
+      var page = isEn ? route.replace(/^en\/?/, '') : route;
+      if (/^(README|INDEX)?$/.test(page)) page = '';
+      e.preventDefault();
+      location.hash = (isEn ? '#/' : '#/en/') + page;
     }, true);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>

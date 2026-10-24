@@ -73,7 +73,7 @@ Das **Yume Release Tool** (`updater\Yume Release Tool.bat`) baut aus deinem **Ar
 
 Voraussetzungen: **Inno Setup 6** (das Tool bietet die Installation per `winget` an) und ein Arbeitsordner **mit** installierter Umgebung `app\data\envs\sow` (also ein normal installiertes Programm, nicht das nackte Repository). Das Tool setzt keine Pfade voraus: Quelle und Ausgabeordner wählst du im Fenster.
 
-Tipp: Der Arbeitsordner sollte **sauber** bleiben (nicht starten, bevor du baust), sonst landen Chats und Logs im Setup. Die Vorlagen und die Prüfung fangen das ab, ersetzen aber keinen Blick auf `check_upload.ps1`.
+Tipp: Der Arbeitsordner sollte **sauber** bleiben (nicht starten, bevor du baust), sonst landen Chats und Logs im Setup. Die Vorlagen und die Prüfung fangen das ab, ersetzen aber keinen Blick auf `check_upload.ps1`. Prüfe außerdem **private Dateien in `app/configuration`** (Sicherungskopien von Charakteren) und fremde Assets (Hintergründe, Emoji-Bilder, Stimmen), bevor du baust.
 
 > **Hinweis zu den Vorlagen:** `templates\make_templates.py` erzeugt die Vorlagen aus deinem Arbeitsordner. Es setzt persönliche Werte, Geräte, **Tokens und Geräte-IDs** zurück. (In dieser Fassung wurden `dashboard_token` und `android_host_id` ergänzt; frühere Setups trugen sonst dasselbe Dashboard-Token in jeder Installation.)
 
