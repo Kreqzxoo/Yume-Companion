@@ -16,7 +16,7 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 
 **💬 [Join our Discord server](https://discord.gg/5RBgNMCPKC)**: ask questions, share feedback, characters and ideas.
 
-[Features](#features-in-detail) · [Which AIs are inside?](#which-ais-are-inside) · [Avatars](#avatars-images-live2d-vrm) · [Quick start](#quick-start) · [📖 Documentation online (German)](https://kreqzxoo.github.io/Yume-Companion/) · [Support](#support-the-project)
+[Features](#features-in-detail) · [Which AIs are inside?](#which-ais-are-inside) · [Avatars](#avatars-images-live2d-vrm) · [Quick start](#quick-start) · [📖 Documentation online](https://kreqzxoo.github.io/Yume-Companion/#/en/) · [Support](#support-the-project)
 
 ![Yume Companion on PC and phone](docs/images/hero.png)
 
@@ -24,7 +24,7 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 
 > **Status:** 3.0.0 **beta**. A lot works, some parts are still rough. Please report bugs as an [issue](../../issues).
 > **Origin:** Yume Companion is a heavily extended, modified version of [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) by *jofizcd* (GPL-3.0). The original author stays credited, see [NOTICE.md](NOTICE.md). This project is **not** the official Soul of Waifu.
-> **Language:** The program itself comes with German, English and Russian translations. The detailed manual in [`docs/`](docs/INDEX.md) is written in **German** (every chapter has screenshots; your browser's translation works well).
+> **Language:** The program itself comes with German, English and Russian translations. The detailed manual is available in English in [`docs/en/`](docs/en/README.md) (every chapter has screenshots) and as a website (language switch at the top). Only the publishing guide, license list and Ko-fi tiers are German-only.
 
 ---
 
@@ -156,20 +156,20 @@ Chat in your browser (also from your phone on the same Wi-Fi) and a dashboard wi
 4. Demo characters can be created with `tools/demo/make_demo_content.py`, or create your own under *Create character*.
 5. **Phone:** install `Yume-Companion.apk` (Android 9+; allow installation from unknown sources, the APK is debug-signed), then on the PC *Settings → Android Connector* → start the web server → scan the QR code.
 
-Build from source: [docs/16-entwicklung.md](docs/16-entwicklung.md) (German) and `tools\setup_from_source.bat`.
+Build from source: [docs/16-entwicklung.md](docs/en/16-entwicklung.md) and `tools\setup_from_source.bat`.
 
 ## Documentation
 
-All chapters (in German, with screenshots) are in [`docs/`](docs/INDEX.md): installation, every feature, troubleshooting, development and the guide for publishing on GitHub.
+All chapters (with screenshots) are in [`docs/`](docs/en/README.md): installation, every feature, troubleshooting, development and the guide for publishing on GitHub.
 
 | Area | Chapter |
 | --- | --- |
-| Start | [Installation](docs/01-installation.md) · [First steps](docs/02-erste-schritte.md) |
-| Characters and AI | [Chat and characters](docs/03-chat-und-charaktere.md) · [Language models](docs/04-sprachmodelle.md) · [Voice and avatars](docs/05-stimme-und-avatare.md) · [Memory](docs/06-gedaechtnis.md) |
-| Experiences | [Yume Stage](docs/07-yume-buehne.md) · [Desktop companion](docs/08-desktop-begleiter.md) |
-| Tools | [Tools and integrations](docs/09-werkzeuge-und-integrationen.md) · [Organizer](docs/10-organizer.md) |
-| Phone and server | [Android app](docs/11-android-app.md) · [Yume LLM Server](docs/12-llm-server.md) · [Web and dashboard](docs/13-web-und-dashboard.md) |
-| Operation | [Backup, updates, security](docs/14-backup-updates-sicherheit.md) · [Development](docs/16-entwicklung.md) |
+| Start | [Installation](docs/en/01-installation.md) · [First steps](docs/en/02-erste-schritte.md) |
+| Characters and AI | [Chat and characters](docs/en/03-chat-und-charaktere.md) · [Language models](docs/en/04-sprachmodelle.md) · [Voice and avatars](docs/en/05-stimme-und-avatare.md) · [Memory](docs/en/06-gedaechtnis.md) |
+| Experiences | [Yume Stage](docs/en/07-yume-buehne.md) · [Desktop companion](docs/en/08-desktop-begleiter.md) |
+| Tools | [Tools and integrations](docs/en/09-werkzeuge-und-integrationen.md) · [Organizer](docs/en/10-organizer.md) |
+| Phone and server | [Android app](docs/en/11-android-app.md) · [Yume LLM Server](docs/en/12-llm-server.md) · [Web and dashboard](docs/en/13-web-und-dashboard.md) |
+| Operation | [Backup, updates, security](docs/en/14-backup-updates-sicherheit.md) · [Development](docs/en/16-entwicklung.md) |
 
 ## System requirements
 
@@ -186,7 +186,7 @@ All chapters (in German, with screenshots) are in [`docs/`](docs/INDEX.md): inst
 * Characters, chats, memory, settings and organizer data stay on your PC. Passwords (mail, Spotify) are stored encrypted with Windows data protection.
 * Local models send nothing to the internet. With cloud providers (OpenAI, Anthropic, Gemini …) your chat text goes to that provider.
 * The app only fetches what you use: models from Hugging Face, character cards from the gallery, weather (Open-Meteo), places and routes (OpenStreetMap), Spotify, and update information from GitHub.
-* More: [Backup, updates, security](docs/14-backup-updates-sicherheit.md) (German).
+* More: [Backup, updates, security](docs/en/14-backup-updates-sicherheit.md).
 
 ## Community and help
 

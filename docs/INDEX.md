@@ -1,5 +1,7 @@
 # Dokumentation – Inhaltsverzeichnis
 
+🇬🇧 **[English version of this documentation](en/README.md)** (alle Kapitel, 01–16).
+
 Alle Bilder in dieser Dokumentation stammen aus der echten App und sind mit **erfundenen Demo-Daten** (Charaktere Yume, Mika und Kai) aufgenommen. Echte Namen, Schlüssel, Adressen und Chats sind nicht zu sehen.
 
 ## Einstieg

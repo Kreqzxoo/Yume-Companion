@@ -1,3 +1,4 @@
+* [🇬🇧 English](#/en/)
 * [⬇️ Download](https://github.com/Kreqzxoo/Yume-Companion/releases)
 * [💬 Discord](https://discord.gg/5RBgNMCPKC)
 * [☕ Unterstützen](https://ko-fi.com/kreqzxoo)

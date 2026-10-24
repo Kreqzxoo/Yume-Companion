@@ -231,7 +231,7 @@ Ausführlich: [Installation](docs/01-installation.md) · [Erste Schritte](docs/0
 
 ## Die Dokumentation
 
-Schön lesbar als Webseite: **<https://kreqzxoo.github.io/Yume-Companion/>** (mit Suche und Menü). Die Dateien liegen in [`docs/`](docs/INDEX.md):
+Schön lesbar als Webseite: **<https://kreqzxoo.github.io/Yume-Companion/>** (mit Suche, Menü und Umschalter Deutsch/English). Die Dateien liegen in [`docs/`](docs/INDEX.md):
 
 | Bereich | Anleitung |
 | --- | --- |
@@ -288,6 +288,6 @@ Einmalig oder monatlich über <https://ko-fi.com/kreqzxoo>. Auch Mitarbeit, Fehl
 
 **AI stack:** local GGUF models via llama.cpp (CUDA/Vulkan/HIP/SYCL) or cloud providers (OpenAI, Anthropic, Gemini, DeepSeek, Mistral, OpenRouter, Grok, Qwen, Z.AI, Player2); six TTS engines (Qwen3-TTS, XTTSv2, Kokoro, Silero, Edge, ElevenLabs) plus RVC; Faster-Whisper speech input with echo cancellation; a 28-emotion classifier driving avatars; vision, tool and image models.
 
-It is a heavily modified fork of [Soul of Waifu](https://github.com/jofizcd/Soul-of-Waifu) by jofizcd (GPL-3.0) and is licensed under **GPL-3.0** as well. The documentation in `docs/` is written in German, with screenshots of every screen.
+It is a heavily modified fork of [Soul of Waifu](https://github.com/jofizcd/Soul-of-Waifu) by jofizcd (GPL-3.0) and is licensed under **GPL-3.0** as well. The documentation is available in German (`docs/`) and English (`docs/en/`), with screenshots of every screen, and as a website with a language switch: https://kreqzxoo.github.io/Yume-Companion/
 
 **Quick start:** download the latest setup from [Releases](../../releases), run it, start the app, pick a model (cloud API key or a local GGUF model from the *Modelle* page), create a character and chat. Build from source: see [docs/16-entwicklung.md](docs/16-entwicklung.md).
