@@ -1,0 +1,3 @@
+Die Schriften in diesem Ordner (Comfortaa, Inter Tight) stehen unter der SIL Open Font License 1.1.
+Lizenztext und Urheber: https://openfontlicense.org und https://fonts.google.com/ (Comfortaa: Johan Aakerlund, Inter Tight: The Inter Project Authors).
+Die Schriften duerfen mit der Software weitergegeben werden, aber nicht einzeln verkauft werden.

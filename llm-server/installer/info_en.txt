@@ -1,0 +1,12 @@
+﻿Yume LLM Server turns this PC into the AI server for Yume Companion.
+
+How it works:
+ 1. After the installation the program checks your hardware (graphics card, memory).
+ 2. It automatically installs the matching engine (llama.cpp) and everything it needs.
+ 3. You pick a recommended language model and optionally a vision model and download it with one click.
+ 4. "Start server" - done. Enter the shown address in Yume Companion (or search the network).
+
+Notes:
+ - An internet connection is needed for the engine and the models (download from GitHub and Hugging Face).
+ - The installer opens ports 8080-8082 in the Windows firewall for private and domain networks.
+ - Models and engine live in %LOCALAPPDATA%\YumeLLMServer and can be removed together with the program when uninstalling.

@@ -1,0 +1,19 @@
+{
+    "schema": 1,
+    "app_name": "Yume Companion",
+    "banner_text": "Yume Companion",
+    "short_name": "YC",
+    "author_name": "Kreqzxoo",
+    "author_url": "",
+    "app_icon_path": "assets/custom_branding/app_icon_path.png",
+    "logo_path": "assets/custom_branding/logo_path.png",
+    "sidebar_logo_path": "assets/custom_branding/sidebar_logo_path.png",
+    "additional_credits": "Yume Companion ist eine veränderte, eigenständig weiterentwickelte Fassung von Soul of Waifu (Copyright jofizcd, GPL-3.0, https://github.com/jofizcd/Soul-of-Waifu).\nDieses Programm ist freie Software unter der GNU General Public License v3.0 und kommt ohne jede Gewährleistung.",
+    "website_url": "",
+    "docs_url": "",
+    "support_url": "",
+    "discord_url": "",
+    "github_url": "https://github.com/Kreqzxoo/Yume-Companion",
+    "update_repo": "Kreqzxoo/Yume-Companion",
+    "youtube_url": ""
+}

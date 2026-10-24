@@ -1,0 +1,36 @@
+﻿Welcome to Yume Companion
+
+Yume Companion is an AI companion for your PC: chat, voice, a 3D / Live2D avatar and a phone app.
+Developed by Kreqzxoo. Based on the open-source project "Soul of Waifu" by jofizcd.
+
+Please read before installing:
+
+DISK SPACE AND DURATION
+• After installation the program uses about 15.5 GB (without AI models): roughly 4.5 GB of program files and 8 to 11 GB of Python packages (PyTorch and others) that the setup downloads from the internet.
+• AI models (language model, voice, vision, image generation) are NOT included. You download them later inside the program; depending on your choice that is usually 5 to 30 GB more. Plan for at least 40 GB of free space.
+• Duration: copying takes 2 to 5 minutes, then loading the components takes 10 to 40 minutes depending on your connection (longer on a slow line). The progress is shown in the setup window; no console window opens. Please do not close the window meanwhile.
+
+SYSTEM REQUIREMENTS
+• Windows 10 or 11, 64-bit, internet connection for the installation.
+• Recommended: 16 GB RAM (at least 8 GB) and, for local AI models, an NVIDIA graphics card with 6 GB or more video memory. Without a suitable graphics card much of it still works, but considerably slower. If you use cloud AI with your own API key or an AI server in your network, an ordinary PC is enough.
+• Installation folder: not inside OneDrive (files are written constantly), short path (for example C:\Yume). Without administrator rights not into "Program Files".
+
+WHAT THE SETUP DOES
+• Copies the program into the installation folder, creates Start menu and (optionally) desktop shortcuts and downloads the components (see above).
+• Optional: start with Windows (one entry for your user, removable at any time).
+• Your own data (characters, chats, settings, models) is never overwritten by updates or repairs.
+• Uninstall: Start menu → "Remove Yume Companion". It asks whether your personal data should be deleted as well.
+• You can skip the components at the end and install them later from the Start menu ("Install or repair components"). The program does not start without them.
+
+NETWORK, FIREWALL, ANTIVIRUS
+• These addresses must be reachable for the download: pypi.org, files.pythonhosted.org, download.pytorch.org, huggingface.co and *.hf.co, github.com. DNS filters (e.g. AdGuard) and some virus scanners block them or slow the download down.
+• The phone app connects to a local web server of the program (default port 8000). Your Windows firewall or virus scanner must allow this access in your home network (in the program: Android connector → set up firewall).
+
+PRIVACY
+• Chats, characters, memory and settings stay on your PC.
+• Data only leaves the PC when you use online services yourself (for example cloud AI with your own key, ElevenLabs, Microsoft's Edge speech output or Discord).
+
+CREDITS
+• Yume Companion – development and adaptation: Kreqzxoo
+• Base: Soul of Waifu – Copyright jofizcd, GPL-3.0 (github.com/jofizcd/Soul-of-Waifu)
+• With the help of many open-source projects, among them Qt/PyQt6, PyTorch, llama.cpp, Qwen3-TTS, Faster-Whisper, Vosk, three.js and three-vrm. All licences are on the next page and in the program folder (LICENSE, NOTICE.md, docs\LIZENZEN_UND_UPLOAD.md).

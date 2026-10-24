@@ -1,0 +1,2321 @@
+program_title: Yume Companion
+soul_of_waifu_system_title: Yume System
+local_llm_route_label: Место выполнения Local LLM
+local_llm_route_local: Этот ПК (локальный llama.cpp)
+local_llm_route_remote: Удалённый ПК (Ollama / llama.cpp)
+local_llm_route_changed_title: Маршрутизация LLM изменена
+local_llm_route_changed_remote: Персонажи с провайдером Local LLM теперь будут использовать настроенный удалённый сервер.
+  Выберите Remote LLM в настройках провайдера, чтобы настроить и проверить подключение.
+remote_llm_model_label: Модель удалённой LLM
+remote_llm_model_placeholder: Точный ID модели из /v1/models
+remote_llm_help: 'Удалённая LLM использует совместимый с OpenAI API. Примеры: Ollama http://HOST:11434/v1, llama.cpp
+  http://HOST:8080/v1. Сервер должен принимать подключения по локальной сети; разрешайте доступ только доверенным устройствам.'
+remote_llm_test_button: Проверить подключение к Remote LLM
+remote_llm_api_token_label: API-токен (необязательно)
+remote_llm_missing_url: Сначала укажите URL удалённого сервера, затем проверьте подключение.
+remote_llm_model_not_listed: 'Сервер ответил, но модель ''{model}'' не найдена в списке. Доступные ID: {models}'
+remote_llm_connected: 'Подключение успешно. Модели: {models}'
+remote_llm_connection_failed: 'Не удалось обратиться к серверу. Проверьте URL, API-токен, работу сервера и межсетевой
+  экран. Подробности: {details}'
+main_button: ' Главное'
+main_button_2: Главный Хаб
+create_character_button: ' Создать Персонажа'
+characters_gateway_button: ' Врата Персонажей'
+models_hub_button: ' Хаб Моделей'
+rp_editors_button: ' Редакторы RP'
+options_button: ' Настройки'
+local_model_state_offline: МОДЕЛЬ ОФФЛАЙН
+local_model_state_connecting: ЗАГРУЗКА МОДЕЛИ...
+local_model_state_generating: ГЕНЕРАЦИЯ...
+local_model_state_online: МОДЕЛЬ ГОТОВА
+no_characters_advice: Вы еще не добавили ни одного персонажа. Нажмите на кнопку и создайте его.
+create_character_button_2: ' Создать персонажа'
+no_characters_description: 'Прежде чем приступить к общению с персонажами, уделите немного времени настройке программы
+  в соответствии с вашими предпочтениями.
+
+  Как только будете готовы, можете переходить к созданию уникального персонажа и общению с ним.'
+welcome_label: Добро пожаловать в Yume Companion, User
+add_character_title: Информация о Персонаже
+more_btn_tooltip: Информация о персонаже
+call_btn_text: Позвонить
+voice_btn_text: Настройки Озвучки
+expressions_btn_text: Настройки Визуализации
+delete_btn_text: Удалить Персонажа
+background_changer_title: Фон Чата
+background_changer_label_1: Выберите фон для чата
+background_changer_default_btn: По умолчанию
+btn_check_settings: Основные Настройки
+btn_check_identity: Личность / Характер
+btn_check_scenario: Сценарий / Приветствие
+btn_check_examples: Примеры / Примечание
+btn_check_chats: Управление чатами / Экспорт
+btn_general_info_text: Общая информация
+btn_identity_text: Личность
+btn_scenario_text: Сценарий
+btn_examples_text: Примеры
+btn_creator_notes_text: Примечание создателя
+greeting_morning_1: Доброе утро, {user}. Самое время погрузиться в новое приключение.
+greeting_morning_2: Утречко, {user}! Твои персонажи уже ждут тебя.
+greeting_morning_3: Просыпайся, {user}. Давай загрузим память и начнем этот день.
+greeting_morning_4: С добрым утром, {user}! Готовы продолжить наше виртуальное путешествие?
+greeting_morning_5: Доброе утро, {user}. Интерфейс готов, а души проснулись.
+greeting_morning_6: А вот и утро. Твои спутники уже открыли глаза, {user}.
+greeting_morning_7: Солнце заглядывает в окно, а в Yume Companion начинается новый день. С добрым утром, {user}!
+greeting_afternoon_1: Добрый день, {user}. Yume Companion готова к работе.
+greeting_afternoon_2: Как прошло утро, {user}? Давай навестим твоих спутников.
+greeting_afternoon_3: Привет, {user}. Хочешь ненадолго сбежать от реальности? Твои вайфу здесь.
+greeting_afternoon_4: Добрый день, {user}. Портал в виртуальный мир открыт и ждёт тебя.
+greeting_afternoon_5: С возвращением, {user}. Давай напишем еще одну главу нашей истории.
+greeting_afternoon_6: Очередной шаг в нашей общей истории. Как проходит твой день, {user}?
+greeting_afternoon_7: Солнце в зените, {user}. Самое время отвлечься от забот и заглянуть к старым друзьям.
+greeting_evening_1: Добрый вечер, {user}. Время устроиться поуютнее и поболтать с любимым спутником.
+greeting_evening_2: Добрый вечер, {user}. Не хочешь снова погрузиться в Yume Stage?
+greeting_evening_3: С возвращением, {user}. Идеальное время для неторопливой глубокой беседы.
+greeting_evening_4: Уютного вечера, {user}. Твоим спутникам есть чем поделиться с тобой.
+greeting_evening_5: Вечер добрый, {user}. Давай посмотрим, какие мысли сегодня были записаны в дневник.
+greeting_evening_6: Теплые сумерки и чашка чая. Твои вайфу соскучились по тебе за этот день, {user}.
+greeting_evening_7: Дневная суета позади. Расслабься, {user}, твоя личная вселенная готова раскрыть свои тайны.
+greeting_night_1: Всё еще бодрствуешь, {user}? Не переживай, цифровые души никогда не спят.
+greeting_night_2: Ночной сеанс, {user}? Yume Companion здесь, чтобы составить тебе компанию в эти тихие часы.
+greeting_night_3: Тихий ночной воздух... Самое время для полуночного чата, {user}?
+greeting_night_4: Весь мир спит, но персонажи продолжают жить. Добро пожаловать, {user}.
+greeting_night_5: Поздняя ночь, {user}. Давай устроим откровенный разговор по душам.
+greeting_night_6: Полумрак, тишина и свет экрана. Время для самых сокровенных историй, {user}.
+greeting_night_7: Звёзды сияют только для нас. Хочешь заглянуть в самые глубокие уголки сознания вайфу, {user}?
+choose_ai_provider_title: Выбор провайдера ИИ
+choose_ai_provider_subtitle: Выберите модель для генерации ответов
+gateway_add_to_list: Добавить
+provider_name_local: Local LLM
+provider_name_openai: Open AI
+provider_name_anthropic: Anthropic
+provider_name_gemini: Google Gemini
+provider_name_deepseek: DeepSeek
+provider_name_grok: Grok
+provider_name_qwen: Qwen
+provider_name_zai: Z.AI
+provider_name_mistral: Mistral AI
+provider_name_openrouter: OpenRouter
+provider_name_player2: Player2
+provider_desc_local: Запуск моделей полностью офлайн с максимальной приватностью и без цензуры
+provider_desc_openai: Передовое качество и надежность генерации для текстовых ролевых игр
+provider_desc_anthropic: Лучший в своем классе литературный слог, последовательность характера и эмоциональная глубина
+provider_desc_gemini: Огромное контекстное окно (1M+ токенов) — идеально для длинных историй и многотомных саг
+provider_desc_deepseek: Сверхпродуктивная и экономичная модель с лучшим соотношением цены и качества генерации
+provider_desc_grok: Меньше цензуры, больше остроумия и креативности — отлично для свободных ролевых игр
+provider_desc_qwen: Мощные многоязычные рассуждения и отличные повествовательные способности
+provider_desc_zai: Быстрая, связная речь и превосходное художественное повествование — сильная альтернатива Claude
+provider_desc_mistral: Высокопроизводительные открытые модели с превосходным балансом скорости и качества
+provider_desc_openrouter: Доступ к сотням лучших мировых моделей в одном месте — ультимативный агрегатор
+provider_desc_player2: Бесплатный доступ к языковым моделям через приложение Player2. API-ключ не нужен — просто держите
+  приложение Player2 запущенным.
+import_character_card_button: Импорт Карточки Персонажа
+export_character_card_button: Экспорт Карточки Персонажа
+clean_character_card_button: Очистить Все Поля
+preview_prompt_button: Промпт
+character_building_label: Создание персонажа
+character_image_building_label: Аватар персонажа
+character_name_building_label: Имя персонажа
+placeholder_character_name: Придумайте имя для вашего персонажа
+character_description_building_label: Описание персонажа
+placeholder_character_description: Используется для того, чтобы рассказать ИИ всё самое важное о персонаже — кто он такой,
+  как себя ведёт, какие у него особенности и характер, что помогает ИИ лучше понимать и воссоздавать поведение персонажа
+  при общении
+character_personality_building_label: Личность персонажа
+placeholder_character_personality: Используется для описания характера и личных качеств персонажа — каким он является
+  на самом деле, какие у него ценности, привычки, манеры и особенности поведения
+scenario: Сценарий
+placeholder_scenario: Задает контекст разговора с персонажем
+first_message_building_label: Первое сообщение
+placeholder_first_message: Первое сообщение имеет ключевое значение, поскольку задаёт тон, стиль и манеру общения персонажа,
+  что помогает ИИ сразу вжиться в роль
+example_messages_title: Примерные сообщения
+placeholder_example_messages: Описывает, как должен говорить персонаж в настоящем чате через примерный диалог. Перед
+  каждым примером необходимо вставить макрос <START>
+alternate_greetings_label: Альтернативные приветствия
+placeholder_alternate_greetings: Напишите разные варианты начальных сообщений персонажа. Вы можете добавить столько альтернативных
+  приветствий, сколько захотите. Перед каждым из них необходимо вставить макрос <GREETING>
+creator_notes_label: Заметки создателя
+placeholder_creator_notes: Любые дополнительные заметки о карточке персонажа
+card_version_label: Версия карточки персонажа
+placeholder_card_version: Версия созданной карточки персонажа
+user_persona_building_label: Персона
+system_prompt_building_label: Пресет Системного Промпта
+lorebook_building_label: Лорбук
+character_creator_desc_custom_variable: Настройте пользовательские переменные состояния (например, доверие, золото или
+  инвентарь), которые персонаж сможет динамически отслеживать во время сеанса в одиночном чате.
+character_creator_btn_add_custom_variable: + Добавить Новую Переменную
+var_editor_id_label: ID ПЕРЕМЕННОЙ
+var_editor_id_placeholder: напр., trust
+var_editor_name_label: ОТОБРАЖАЕМОЕ ИМЯ
+var_editor_name_placeholder: напр., Доверие
+var_editor_type_label: ТИП ДАННЫХ
+var_editor_icon_label: HUD ИКОНКА
+var_editor_min_label: МИН. ЗНАЧЕНИЕ
+var_editor_max_label: МАКС. ЗНАЧЕНИЕ
+var_editor_default_label: ЗНАЧЕНИЕ ПО УМОЛЧАНИЮ
+var_editor_default_placeholder: напр., 90, True или предмет1
+var_editor_preset_label: 'ЗАГРУЗИТЬ ПРЕСЕТ:'
+var_editor_apply_preset_btn: Применить
+var_preset_confirm_title: Применение пресета
+var_editor_save_preset_btn: Сохранить Пресет
+var_editor_delete_preset_btn: Удалить Пресет
+var_preset_confirm_msg: Применение этого пресета перезапишет и очистит все ваши текущие кастомные переменные. Вы хотите
+  продолжить?
+var_preset_custom: Пользовательский (Нет)
+var_preset_romance: Романтика и отношения (Привязанность и Доверие)
+var_preset_rpg: RPG Приключение (HP, Мана, Золото и Инвентарь)
+var_preset_survival: Тамагочи (Сытость, Энергия и Настроение)
+var_preset_horror: Выживание в хорроре (Рассудок, Паника и Фонарик)
+var_preset_detective: Детективный допрос (Подозрение и Улики)
+var_preset_yandere: 'Аниме: Яндере-одержимость (Одержимость и Рассудок)'
+var_preset_shonen: 'Аниме: Сёнен сражение (Энергия, Воля и Демон)'
+var_preset_maid: 'Аниме: Горничная и Господин (Верность, Неуклюжесть и Дерзость)'
+var_preset_chuuni: 'Аниме: Синдром восьмиклассника (Иллюзии и Смущение)'
+var_preset_tsundere: 'Аниме: Классическая Цундере (Цун и Дере)'
+var_preset_kuudere: 'Аниме: Молчаливая Кудере (Сдерживание и Близость)'
+var_preset_dandere: 'Аниме: Застенчивая Дандере (Скромность и Привязанность)'
+var_preset_himedere: 'Аниме: Избалованная Химедере (Капризы и Ранимость)'
+var_editor_prompt_label: ШАБЛОН СИСТЕМНОГО ПРОМПТА
+var_editor_prompt_placeholder: 'напр., [Доверие: {value}/100]'
+var_editor_del_btn: X
+create_character_button_3: Создать Персонажа
+total_tokens_label: 'Всего токенов: 0'
+search_placeholder: Поиск
+navigation_lbl: НАВИГАЦИЯ
+character_creator_item_general_info: Основная Информация
+character_creator_item_personality: Личность и Сценарий
+character_creator_item_dialogues: Диалоги
+character_creator_item_advanced: Доп. Настройки и Лор
+character_creator_item_export: Инструменты и Экспорт
+character_creator_title_general_info: Основная Информация
+character_creator_title_personality: Личность и Сценарий
+character_creator_title_dialogues: Диалоги и Первые Сообщения
+character_creator_title_advanced: Дополнительные Настройки и Лор
+character_creator_title_custom_variable: Переменные и Состояние
+character_creator_title_export: Инструменты и Экспорт
+models_hub_gguf_error: GGUF-модели не найдены.
+models_hub_my_models: ' Мои модели'
+models_hub_popular: ' Популярное'
+models_hub_recommendations: Рекомендации
+model_widget_delete: 'Вы действительно хотите удалить:'
+model_widget_delete_2: Это действие нельзя будет отменить.
+button_set_default: ' Назначить основным'
+button_launch_server: Запустить модель
+button_disable_server: Отключить модель
+button_delete_model: Удалить
+models_hub_no_models: Директория с локальными языковыми моделями пуста
+button_download_model: ' Скачать модель'
+models_hub_author: Автор -
+models_hub_downloads: Скачиваний -
+models_hub_compatibility: 'Совместимость: '
+models_hub_open_folder_btn: ' Открыть Папку'
+models_hub_change_folder_btn: ' Изменить Расположение'
+download_model_title: Загрузка модели
+select_quant_title: Выберите уровень квантования
+available_files_text: 'Доступные файлы для репозитория:'
+quant_recommendation_text: Рекомендуется скачивать файлы с припиской 'Q4_K_M' или 'Q5_K_M' для лучшего баланса скорости
+  и качества.
+status_ready_download: Готово для загрузки.
+status_init_download: Инициализация загрузки...
+status_cancelling: Отмена загрузки и удаление кэша...
+status_download_complete: Загрузка завершена!
+btn_download_model: ' Скачать'
+btn_stop_download: Остановить
+btn_stopping: Остановка...
+btn_downloaded: ' Скачано ✓'
+btn_try_again: ' Повторить'
+error_title: Ошибка загрузки
+error_download_failed: 'Не удалось скачать файл {filename}:
+
+
+  {error_msg}'
+network_error: 'Ошибка сети: '
+system_error: 'Системная ошибка: '
+time_h: ч
+time_m: м
+time_s: с
+time_left: осталось
+rp_editors_title: Редакторы ролевой игры
+rp_editors_subtitle: Создавайте персонажей, управляйте сценами в Yume Stage, настраивайте лор, персоны и системные промпты
+rp_card_character_editor_title: Редактор Персонажа
+rp_card_character_editor_desc: Начните создавать своих уникальных персонажей с личностями, предысторией и шаблонами диалогов.
+rp_card_soul_stage_title: Yume Stage
+rp_card_soul_stage_desc: Вступите в интерактивное приключение с персонажами вместе с ИИ-Режиссёром.
+rp_card_lorebook_title: Лорбуки
+rp_card_lorebook_desc: Создавайте локации, правила, фракции и глобальные события для ваших сценариев.
+rp_card_personas_title: Персоны
+rp_card_personas_desc: Управляйте своими персонами, назначайте им аватары и описания.
+rp_card_prompts_title: Системные промпты
+rp_card_prompts_desc: Настраивайте инструкции и очередь подачи данных о персонаже для ИИ.
+rp_card_discord_bot_title: Discord Gateway
+rp_card_discord_bot_desc: Подключите своих персонажей к клиенту Discord и общайтесь с ними вне программы.
+rp_card_image_gen_title: Генерация Изображения
+rp_card_image_gen_desc: Настройте работу генерации изображений для ваших персонажей и приключений с ними.
+conversation_provider_title: Провайдер LLM
+api_configuration_title: Настройки API
+user_profile_title: Профиль пользователя
+localization_title: Локализация и перевод
+audio_devices_title: Аудиоустройства
+hardware_spec_title: Характеристики оборудования
+llm_settings_title: Настройки языковой модели
+memory_and_offloading_title: Память и выгрузка
+generation_params_title: Параметры генерации
+global_editors_title: Редакторы
+visualizations_title: Визуализация (Live2D / VRM)
+sub_modules_title: Подмодули
+options_sidebar_title: НАСТРОЙКИ
+label_base_url: Базовый URL
+label_mistral_model: Модель Mistral
+gpu_layers_text: Слои GPU
+context_size_text: Размер контекста
+temperature_label: Температура
+top_p_label: Top P
+repeat_penalty_label: Штраф за повтор
+max_tokens_label: Длина ответа (токены)
+configuration_tab: Конфигурация
+conversation_method_title: Метод общения
+conversation_method_label: Метод общения
+conversation_method_item_cai: Character AI
+conversation_method_item_mistralai: Mistral AI
+conversation_method_item_openai: Open AI
+conversation_method_item_openrouter: OpenRouter
+api_label: Токен API
+placeholder_api_value: Значение API токена
+placeholder_mistral_model_endpoint: Введите эндпоинт модели Мистрал
+openrouter_models_label: Модель
+placeholder_base_url: URL пользовательского эндпоинта (Опционально)
+placeholder_base_api: API токен (Опционально)
+user_building_title: Персона
+choose_your_name_label: Имя вашей персоны
+choose_your_description_label: Описание вашей персоны
+placeholder_user_name: Ваше имя
+placeholder_user_description: Ваша личность
+choose_your_avatar_label: Выберите аватар
+system_tab: Система
+language_title: Язык
+program_language_label: Язык программы
+program_language_item_en: Английский
+program_language_item_ru: Русский
+devices_title: Устройства
+input_device_label: Устройство ввода
+output_device_label: Устройство вывода
+translator_title: Переводчик
+choose_translator_label: Выберите переводчик
+translator_item_none: Нет
+translator_item_google: Google
+translator_item_yandex: Yandex
+target_language_label: Целевой язык
+target_language_item_ru: Русский
+translator_mode_item_both: Оба
+translator_mode_item_user: Пользователь
+translator_mode_item_character: Персонаж
+mode_translator_label: Метод перевода
+computer_specs_title: Характеристики ПК
+no_gpu: Видеокарта не обнаружена
+section_app_interface: ИНТЕРФЕЙС ПРОГРАММЫ
+section_message_translation: ПЕРЕВОД ТЕКСТА
+section_audio_channels: АУДИО I/O КАНАЛЫ
+section_system_resources: ХАРАКТЕРИСТИКИ СИСТЕМЫ
+local_llm_tab: Настройки LLM
+llm_options_label: Сервер с локальной LLM
+llm_title: Настройки локальной LLM
+llm_hw_title: Оборудование и Бэкенд
+llm_format_title: Шаблоны и Форматирование
+llm_gen_title: Базовые параметры генерации
+llm_adv_title: Продвинутый Local LLM Сэмплинг
+choose_llm_device_label: Вычислительное ядро
+enable_mlock_checkbox: MLock
+enable_flash_attention_checkbox: Flash Attention
+chat_template_label: Шаблон чата
+chat_template_auto: Auto
+stop_strings_label: Стоп-строки
+stop_strings_placeholder: 'Например: \nUser:, </s>, <|eot_id|>'
+reasoning_mode_checkbox: Режим размышлений
+no_mmap_checkbox: No MMAP
+max_tokens_text: Длина ответа (токены)
+temperature_text: Температура
+freq_penalty_text: Штраф за частоту
+pres_penalty_text: Штраф за присутствие
+min_p_text: Min-P
+top_p_text: Top-P
+dyn_temp_min_text: Мин. динам. темп.
+dyn_temp_max_text: Макс. динам. темп.
+xtc_prob_text: Вероятность XTC
+xtc_thresh_text: Порог XTC
+dry_mult_text: Множитель DRY
+dry_base_text: База DRY
+dry_length_text: Допуск длины DRY
+enable_adv_sampling_text: Включить Продвинутый Сэмплинг
+enable_adv_sampling_tooltip: Если эта опция отключена, используются стандартные настройки генерации с первой панели.
+  Расширенные настройки игнорируются.
+kv_cache_label: Тип KV Кэша
+batch_size_text: Размер Batch Prompt
+cpu_threads_text: Потоки CPU
+custom_args_label: Кастомные Аргументы
+section_hw_tuning: ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ И ПАМЯТИ
+section_response_control: УПРАВЛЕНИЕ ОТВЕТОМ
+section_creativity: КРЕАТИВНОСТЬ И СЭМПЛИНГ
+section_penalties: ШТРАФЫ ЗА ПОВТОРЫ
+section_core_samplers: ОСНОВНЫЕ СЭМПЛЕРЫ
+section_dyn_temp: ДИНАМИЧЕСКАЯ ТЕМПЕРАТУРА
+section_xtc: XTC (АНТИ-КЛИШЕ)
+section_dry: DRY (АНТИ-ЦИКЛ)
+section_prompt_structure: СТРУКТУРА ПРОМПТА И СИНТАКСИС
+section_inference_engine: ДВИЖОК ВЫВОДА
+llama_cpp_updater: Обновления LLAMA CPP
+checking_current_build: 'Текущий: Проверяем...'
+lbl_target_tr: 'Выбран:'
+lbl_release_notes_tr: Соединение с GitHub API...
+rollback_btn: Откатиться
+rollback_btn_tooltip: Вернуть предыдущую версию, которая была ДО обновления.
+update_now_btn: Обновить
+no_release_notes: Описание изменений отсутствует.
+current_ver_label: 'Текущая:'
+github_error: Ошибка подключения к GitHub
+conn_failed: Ошибка соединения.
+version_title: Версия
+status_up_to_date: У вас установлена актуальная версия!
+btn_reinstall: Переустановить
+status_no_binary: Совместимый билд не найден.
+status_restoring: Восстановление бэкапа...
+btn_done: Завершить
+update_btn: Обновления
+update_engine_tooltip: Скачайте и установите последние версии llama.cpp для выбранного бэкенда.
+updater_subtitle: ДВИЖОК БЭКЕНДА
+tools_tab: Инструменты и MCP
+tools_native_title: Нативные возможности ИИ
+section_tool_calling: РАЗРЕШЕНИЯ ВЫЗОВА ИНСТРУМЕНТОВ
+enable_tool_calling_text: Включить вызов инструментов
+enable_tool_calling_tooltip: Позволяет ИИ нативно выполнять Python-функции во время генерации.
+tool_web_title: WebSearchTool
+tool_web_desc: Поиск в сети через скрытый API DuckDuckGo для получения актуальных фактов, погоды или новостей в реальном
+  времени.
+tool_browse_web_title: BrowserAgentTool [Playwright]
+tool_browse_web_desc: Автономный веб-серфинг через Chromium. Читает чистый текст страниц, нажимает кнопки, заполняет
+  формы и скачивает файлы в песочницу.
+tool_gui_action_title: GUIActionTool [Computer Use]
+tool_gui_action_desc: 'Прямое управление интерфейсом ОС: перемещение курсора, клики мыши, ввод текста, скроллинг окон
+  и нажатие горячих клавиш (Ctrl+S, Enter и др.).'
+tool_execute_code_title: ExecuteCodeTool [Code Interpreter]
+tool_execute_code_desc: Написание и запуск скриптов на Python и PowerShell в изолированной локальной песочнице для вычислений,
+  обработки файлов и парсинга.
+tool_file_organizer_title: FileOrganizerTool [Workspace Manager]
+tool_file_organizer_desc: Просмотр содержимого рабочего стола и папок (ярлыки .lnk, папки, файлы), поиск файлов и автоматическая
+  сортировка файлов по категориям.
+tool_planner_title: TaskPlannerTool [Иерархический планировщик]
+tool_planner_desc: Разбивает сложные составные задачи пользователя на упорядоченные цепочки вызовов инструментов и последовательно
+  выполняет их.
+tool_app_control_title: AppControlTool
+tool_app_control_desc: 'Управление приложениями и ярлыками: запуск программ, открытие системных папок/Корзины, фокус
+  окон или завершение процессов.'
+tool_env_snapshot_title: SystemVitalsMonitorTool [Hardware Watchdog]
+tool_env_snapshot_desc: Мониторинг железа в реальном времени и фоновый вотчдог, предупреждающий о низком заряде батареи,
+  перегреве GPU или завершении загрузок.
+tool_hardware_specs_title: GetHardwareSpecsTool
+tool_hardware_specs_desc: Получение подробных характеристик ПК (CPU, RAM, GPU, VRAM, накопители) для оценки совместимости
+  с играми и локальными нейросетями.
+tool_read_clipboard_title: ClipboardReaderTool
+tool_read_clipboard_desc: Чтение текущего текстового содержимого системного буфера обмена для анализа и ответов на вопросы.
+tool_url_title: OpenURLTool
+tool_url_desc: Открытие ссылок и веб-сайтов (например, YouTube или GitHub) в браузере по умолчанию по вашей просьбе.
+tool_sysinfo_title: GetSystemInfoTool
+tool_sysinfo_desc: Получение точного системного времени, даты и дня недели для ориентации спутника в текущем расписании.
+tool_media_title: MediaControlTool
+tool_media_desc: Управление системным воспроизведением медиа на ПК (пауза, плей, переключение треков в Spotify, YouTube
+  или плеере).
+tool_vision_title: TakeScreenshotTool [Зрение]
+tool_vision_desc: Анализ происходящего на экране. Делает быстрый снимок и отправляет его мультимодальной нейросети. Очень
+  ресурсоёмко!
+mcp_title: Model Context Protocol (MCP)
+section_mcp_settings: ВНЕШНИЕ СЕРВЕРЫ MCP
+mcp_description: Подключение внешних серверов MCP (таких как SearXNG, GitHub и др.) без написания нативных плагинов на
+  Python. Можно использовать вместе с встроенными инструментами Yume Companion.
+enable_mcp_text: Включить прокси-интеграцию MCP
+mcp_url_label: URL сервера MCP
+mcp_url_placeholder: например, http://127.0.0.1:8000
+sc_approval_title: ⚠️ Компаньон запрашивает действие
+sc_approval_action: Действие
+sc_approval_allow: ✓ Разрешить
+sc_approval_deny: ✕ Отклонить
+sow_system_tab: Yume Companion Модули
+sow_system_title: Yume System
+enable_sow_system_checkbox: Модуль Yume System
+enable_ambient_checkbox: Модуль звукового эмбиента
+enable_soul_memory: Модуль Yume Memory
+enable_summary_checkbox: Модуль Авто-Суммаризации
+settings_summary_interval: 'Интервал (сообщения):'
+sow_system_modules_title: Модули
+section_render_engine: ДВИЖОК РЕНДЕРА
+section_environment_background: ЗАДНИЙ ФОН МОДЕЛИ
+section_ambient_audio: ЭМБИЕНТ АУДИО
+section_cognitive_architecture: КОГНИТИВНАЯ АРХИТЕКТУРА
+section_web_server: ВЕБ ИНТЕРФЕЙС СЕРВЕР
+web_server_card_title: Локальный Веб Сервер
+soul_memory_mode_label: 'Режим Yume Memory:'
+soul_memory_batch_label: 'Кол-во сообщений (0 = Вручную):'
+web_server_status_stopped: 'Статус: Остановлено'
+web_server_start_btn: Запустить Сервер
+web_server_stop_btn: Остановить Сервер
+web_browser_open_btn: Открыть в браузере
+web_browser_copy_mobile_btn: Скопировать портативную ссылку
+web_browser_copied_btn: Скопировано! 📋
+web_server_starting_lbl: 'Статус: В процессе запуска...'
+web_server_starting_lbl_2: 'Статус: Работает по адресу http://127.0.0.1:8000'
+web_server_error: 'Статус: Порт 8000 занят или возникла ошибка'
+live2d_mode_label: Режим работы
+live2d_mode_with_gui: Yume System
+live2d_mode_without_gui: Yume Desktop Companion
+choose_model_fps: FPS модели
+model_fps_30: 30 FPS
+model_fps_60: 60 FPS
+model_fps_120: 120 FPS
+choose_model_background: Фон модели
+model_background_1: Цвет
+model_background_2: Свое изображение
+choose_model_background_color: Цвет фона
+model_background_color_1: Черный
+model_background_color_2: Глубокий Синий
+model_background_color_3: Бордовый
+model_background_color_4: Темно-Зеленый
+model_background_color_5: Бархатный Пурпурный
+model_background_color_6: Теплый Угольно-Серый
+choose_model_background_image: Изображение фона
+personas_button: ' Редактор Персон'
+personas_editor_title: Редактор Персон
+personas_editor_choose_avatar: Выбрать Изображение
+personas_editor_default_btn: Выбрать Персону
+personas_editor_delete_btn: Удалить
+personas_editor_name: Имя персоны
+personas_editor_description: Описание персоны
+personas_editor_close: Закрыть
+personas_editor_add: Добавить
+personas_editor_save: Сохранить Изменения
+personas_editor_error: Имя персоны не может быть пустым.
+personas_editor_create_new: Создать Новую Персону
+personas_editor_create_btn: Создать Персону
+personas_editor_name_placeholder: E.g. Великий Герой
+personas_editor_description_placeholder: Опишите роль, характер и предысторию своей персоны...
+personas_editor_default_persona: (Основная Персона)
+personas_editor_confirm_delete: Подтвердите Удаление
+personas_editor_confirm_delete_text: 'Вы уверены, что хотите удалить персону '
+personas_editor_library: БИБЛИОТЕКА ПЕРСОН
+personas_editor_default_badge: ОСНОВНАЯ
+personas_editor_avatar_hint: 'Рекомендуемый размер: 256x256 px'
+system_prompt_button: ' Редактор Промпта'
+system_prompt_editor_title: Редактор Системного Промпта
+system_prompt_editor_system_prompt: Системный промпт
+system_prompt_editor_system_prompt_edit: Напишите здесь системный промпт
+system_prompt_editor_order: Порядок подачи компонентов LLM
+system_prompt_editor_default_btn: По умолчанию
+system_prompt_editor_presets: Пресеты
+system_prompt_editor_new_preset: Новый пресет
+system_prompt_editor_save_preset: Сохранить пресет
+system_prompt_editor_delete_preset: Удалить пресет
+system_prompt_editor_delete_preset_title: Удаление пресета
+system_prompt_editor_delete_preset_first: 'Вы действительно хотите удалить пресет:'
+system_prompt_editor_delete_preset_second: Это действие нельзя отменить.
+system_prompt_editor_preset_name: 'Введите название пресета:'
+system_prompt_editor_header_title: РЕДАКТОР СИСТЕМНЫХ ПРОМПТОВ
+system_prompt_editor_subtitle: КОНСТРУКТЫ И ПРЕСЕТЫ
+system_prompt_editor_text_label: СИСТЕМНАЯ ДИРЕКТИВА (PROMPT)
+system_prompt_editor_component_label: ПОРЯДОК КОНСТРУКТОВ (Перетаскивайте для изменения)
+system_prompt_editor_panel_title: ПАНЕЛЬ УПРАВЛЕНИЯ ПРЕСЕТАМИ
+preset_saved_successfully: Пресет успешно сохранен.
+lorebook_editor_title: Редактор Лорбука
+lorebook_editor_select: 'Текущий лорбук:'
+lorebook_editor_btn_create: Создать новый лорбук
+lorebook_editor_options: Опции лорбука (Импорт/Экспорт/Удаление)
+lorebook_editor_edit_description: Изменить описание
+lorebook_editor_import_lorebook: Импорт JSON
+lorebook_editor_export_lorebook: Экспорт JSON
+lorebook_editor_delete_lorebook: Удалить лорбук
+lorebook_editor_delete_lorebook_confirm: Удалить {name}?
+lorebook_editor_search: Поиск записей...
+lorebook_editor_add_entry: + Добавить новую запись
+lorebook_editor_depth: 'Глубина сканирования:'
+lorebook_editor_entry_name: Название записи
+lorebook_editor_entry_description: напр. Имя персонажа, Локация, Событие
+lorebook_editor_trigger: Метод активации
+lorebook_editor_keywords: Ключевые слова
+lorebook_editor_keywords_example: маг, магия, заклинание
+lorebook_editor_exclude_keywords: Исключающие слова
+lorebook_editor_exclude_keywords_example: человек, физика (предотвращает активацию при наличии)
+lorebook_editor_start_msg: Начальное сообщение
+lorebook_editor_end_msg: Конечное сообщение
+lorebook_editor_hint: Активируется строго в этом диапазоне номеров сообщений.
+lorebook_editor_content_title: Содержание / Инструкция
+lorebook_editor_content_hint: Текст, вставляемый в промпт при активации...
+lorebook_editor_timed_title: Расширенные и временные эффекты
+lorebook_editor_sticky: Длительность
+lorebook_editor_sticky_hint: Остается активным в течение N сообщений после срабатывания.
+lorebook_editor_cooldown: Перезарядка
+lorebook_editor_cooldown_hint: Не может сработать повторно в течение N сообщений.
+lorebook_editor_suffix: ' сообщ.'
+lorebook_editor_delay: Задержка
+lorebook_editor_delay_hint: Не сработает, пока в чате не наберется N сообщений.
+lorebook_editor_probability: Вероятность
+lorebook_editor_probability_hint: Шанс срабатывания при выполнении условий.
+lorebook_editor_delete_entry: Удалить запись
+lorebook_editor_save: Сохранить все изменения
+lorebook_editor_main_hint: Выберите запись для редактирования или создайте новую
+lorebook_editor_delete: Удалить
+lorebook_editor_delete_question: Удалить запись?
+lorebook_editor_new_lorebook: Новый лорбук
+lorebook_editor_lorebook_name: 'Название:'
+lorebook_editor_edit_description_title: Изменить описание лорбука
+lorebook_editor_edit_description_label: 'Описание для {name}:'
+lorebook_editor_edit_description_updated: Описание для лорбука {name} обновлено.
+lorebook_editor_export_success: Экспорт завершен
+lorebook_editor_export_success_desc: Лорбук успешно сохранен.
+lorebook_editor_export_error: Ошибка экспорта
+lorebook_editor_import_success: Импорт завершен
+lorebook_editor_import_success_desc: Лорбук '{new_name}' импортирован ({count} записей).
+lorebook_editor_import_error: Ошибка импорта
+lorebook_editor_import_error_desc: 'Не удалось обработать лорбук: {error}'
+lorebook_editor_saved: Сохранено
+lorebook_editor_saved_desc: Лорбуки успешно сохранены.
+lorebook_editor_scan_depth: 'Дальность Сканирования:'
+lorebook_editor_rename_lorebook: Переименовать Лорбук
+lorebook_editor_rename_label: 'Новое название для ''{name}'':'
+lorebook_editor_rename_error_title: Ошибка
+lorebook_editor_rename_error_exists: Лорбук с таким именем уже существует.
+lorebook_engine_title: Движок Лорбуков
+lorebook_library_label: БИБЛИОТЕКА
+lorebook_rename_btn: Переименовать
+lorebook_filter_placeholder: Фильтр записей...
+lorebook_entries_count: '{total} записей'
+lorebook_entries_shown: '{shown} из {total} записей'
+lorebook_empty_state: Выберите запись или создайте новую, чтобы начать редактирование.
+lorebook_entry_name_placeholder: Название записи...
+lorebook_trigger_type_label: ТИП ТРИГГЕРА
+lorebook_injection_label: ИНЪЕКЦИЯ
+lorebook_trigger_config_label: КОНФИГУРАЦИЯ ТРИГГЕРА
+lorebook_content_label: СОДЕРЖАНИЕ ЛОРА / ТЕКСТ СЦЕНАРИЯ
+lorebook_sticky_label: ДЛИТЕЛЬНОСТЬ
+lorebook_cooldown_label: ПЕРЕЗАРЯДКА
+lorebook_delay_label: ЗАДЕРЖКА
+lorebook_probability_label: ВЕРОЯТНОСТЬ
+lorebook_apply_changes_btn: ПРИМЕНИТЬ
+lorebook_include_keywords_label: ВКЛЮЧИТЬ КЛЮЧЕВЫЕ СЛОВА (через запятую)
+lorebook_include_keywords_placeholder: дракон, древний, огонь...
+lorebook_exclude_keywords_label: ИСКЛЮЧИТЬ КЛЮЧЕВЫЕ СЛОВА (через запятую)
+lorebook_exclude_keywords_placeholder: слова-исключения...
+lorebook_semantic_label: ОПИСАНИЕ СЦЕНЫ ДЛЯ СЕМАНТИЧЕСКОГО ПОИСКА ИИ
+lorebook_semantic_placeholder: Опишите сцену или ситуацию, чтобы ИИ мог её распознать...
+lorebook_always_on_hint: Всегда активно — внедряется в каждое окно контекста на каждом ходу.
+lorebook_random_hint: Срабатывает случайно на каждом ходу, регулируется настройкой вероятности ниже.
+lorebook_parent_uid_label: UID РОДИТЕЛЬСКОЙ ЗАПИСИ (-1 = любая)
+lorebook_chain_delay_label: ЗАДЕРЖКА ЦЕПОЧКИ (сообщений после родителя)
+lorebook_first_msg_label: ПЕРВОЕ СООБЩЕНИЕ (включительно)
+lorebook_last_msg_label: ПОСЛЕДНЕЕ СООБЩЕНИЕ (включительно)
+lorebook_any_value: любой (-1)
+lorebook_delete_entry_confirm: Удалить эту запись? Это действие нельзя отменить.
+lorebook_delete_lb_confirm: Удалить «{name}» и все входящие в него записи?
+lorebook_export_success_toast: «{name}» успешно сохранён на диск.
+lorebook_injection_passive: Пассивная
+lorebook_injection_active: Активная
+lorebook_depth_suffix: сообщений
+lorebook_editor_suffix_entries: записей
+lorebook_trig_keyword: Ключевые слова
+lorebook_trig_semantic: Семантика
+lorebook_trig_always_on: Всегда активно
+lorebook_trig_random: Случайно
+lorebook_trig_chain: Цепочка
+lorebook_trig_scenario: Сценарий
+lorebook_trig_title_keyword: ПОИСК ПО КЛЮЧЕВЫМ СЛОВАМ
+lorebook_trig_title_semantic: СЕМАНТИЧЕСКАЯ СИТУАЦИЯ
+lorebook_trig_title_always_on: ВСЕГДА АКТИВНО
+lorebook_trig_title_random: СЛУЧАЙНЫЙ ТРИГГЕР
+lorebook_trig_title_chain: ЗАВИСИМОСТЬ ЦЕПОЧКИ
+lorebook_trig_title_scenario: ДИАПАЗОН СЦЕНАРИЯ
+lorebook_selector_title: Выбор Лорбуков
+lorebook_selector_search: Поиск лорбуков...
+lorebook_selector_apply: Применить Лорбуки
+import_lorebook_title: Импортировать Лорбук?
+import_lorebook_text: Эта карта содержит встроенный лорбук '{book_name}'. Хотите добавить её в список?
+import_lorebook_added_text: Лорбук '{final_name}' был успешно добавлен.
+appearance_wtheme_default: Серый
+appearance_wtheme_obsidian: Обсидиан
+appearance_wtheme_graphite: Графит
+appearance_wtheme_nord: Северная
+appearance_wtheme_oceanic: Океанская
+appearance_wtheme_midnight: Полуночная
+appearance_wtheme_synthwave: Синтвейв
+appearance_wtheme_royal: Королевская
+appearance_wtheme_rose: Розовая
+appearance_wtheme_forest: Лесная
+appearance_wtheme_coffee: Кофейная
+appearance_wtheme_amber: Янтарная
+appearance_wtheme_slate: Грифельная
+appearance_wtheme_dracula: Вампирская
+appearance_wtheme_cyberpunk: Киберпанк
+appearance_wtheme_tokyo_night: Токийская ночь
+appearance_preset_default: Серый
+appearance_preset_nord: Север
+appearance_preset_dracula: Вампир
+appearance_preset_onedark: Тёмная
+appearance_preset_material: Материал
+appearance_preset_sakura: Сакура
+appearance_preset_abyss: Бездна
+appearance_preset_midnight: Полночь
+appearance_preset_emerald: Изумруд
+appearance_preset_crimson: Пунцовый
+appearance_color_white: Белый
+appearance_color_soft: Мягкий
+appearance_color_dimmed: Тусклый
+appearance_color_warm_gray: Дымчатый
+appearance_color_cool_gray: Свинец
+appearance_color_cream: Кремовый
+appearance_color_arctic: Арктика
+appearance_color_lavender: Лаванда
+appearance_color_sage: Шалфей
+appearance_color_amber: Янтарь
+appearance_color_gold: Золото
+appearance_color_coral: Коралл
+appearance_color_sky: Небо
+appearance_color_lilac: Сирень
+appearance_color_sakura: Сакура
+appearance_color_muted: Тусклый
+appearance_color_gray: Серый
+appearance_color_nord_green: Тайга
+appearance_color_dracula_orange: Оранжевый
+appearance_color_rose: Роза
+appearance_color_dim: Тусклый
+appearance_color_blue: Синий
+appearance_color_green: Зелёный
+appearance_color_dark: Тёмный
+appearance_color_darker: Очень тёмный
+appearance_color_slate: Грифельный
+appearance_color_forest: Лесной
+appearance_color_warm: Тёплый
+appearance_color_standard: Стандартный
+appearance_color_bright: Яркий
+appearance_color_cool: Холодный
+appearance_color_accent: Акцентный
+appearance_tooltip_custom: Свой Цвет
+appearance_lbl_custom: Свой
+appearance_dlg_user_bubble: Цвет фона сообщения (пользователь)
+appearance_dlg_char_bubble: Цвет фона сообщения (персонаж)
+appearance_dlg_pick_color: Выбрать цвет
+appearance_header_theme: Тема
+appearance_header_text_color: Цвет текста
+appearance_header_quotes: Кавычки
+appearance_header_italic: Курсив
+appearance_lbl_corner_radius: Скругление углов
+appearance_lbl_bubble_opacity: Прозрачность фона
+appearance_lbl_font_size: Размер шрифта
+appearance_lbl_max_width: Максимальная ширина
+appearance_btn_reset: Сбросить
+appearance_btn_save: Сохранить
+appearance_header_preview: Предпросмотр
+appearance_header_window_theme: Тема интерфейса
+appearance_header_ui: Интерфейс (Сайдбар и кнопки)
+appearance_header_ui_accent: Акцент (Активный пункт меню)
+appearance_header_ui_hover: Наведение (Фон кнопки)
+appearance_header_ui_text: Цвет текста кнопок
+appearance_tab_name: Внешний вид
+author_notes_header_title: РЕДАКТОР АВТОРСКИХ ЗАМЕТОК
+author_notes_subtitle: ГЛОБАЛЬНЫЕ ДИРЕКТИВЫ ПОВЕДЕНИЯ
+author_notes_hint: Эти инструкции динамически добавляются в контекст чата. Используйте их, чтобы направить поведение
+  персонажа, закрепить определённый стиль письма или установить глобальные цели сценария.
+author_notes_input_label: ТЕКСТ ДИРЕКТИВ
+author_notes_editor_cancel: ОТМЕНА
+author_notes_editor_save: СОХРАНИТЬ
+author_notes_editor_placeholder: Введите свои инструкции или подсказки для персонажа здесь...
+summary_editor_title: Редактор памяти сюжета
+summary_editor_heading: Память сюжета
+summary_editor_covered_history: 'История в контексте: сообщения 1-{last_seq}'
+summary_editor_current_memory_text: Текущий текст памяти (результат, добавляемый в контекст)
+summary_editor_memory_empty: Память пуста...
+summary_editor_sum_instructions: Инструкции для обобщения (как ИИ должен сжимать сюжет)
+summary_editor_instruction_placeholder: Введите инструкции для ИИ...
+summary_editor_clear: Очистить память
+summary_editor_generate: Сгенерировать выжимку
+summary_editor_tooltip: Использует инструкции для быстрого обобщения последних сообщений.
+summary_editor_save: Сохранить изменения
+summary_editor_clear_title: Очистить память?
+summary_editor_clear_text: Вы уверены, что хотите удалить текущую выжимку чата?
+summary_editor_update_text: Сигнал обновления отправлен. Память скоро обновится согласно новым инструкциям.
+summary_editor_generating: Идёт генерация...
+model_generate_summary: Генерируется выжимка...
+summary_editor_header_title: РЕДАКТОР СУММАРИЗАЦИИ
+summary_editor_subtitle: АРХИВАЦИЯ И СЖАТИЕ
+summary_editor_covered_badge: 'История: 1-{last_seq}'
+summary_editor_current_memory_label: ТЕКУЩИЙ АРХИВ ПАМЯТИ
+summary_editor_prompt_label: ДИРЕКТИВЫ СЖАТИЯ (ПРОМПТ)
+summary_editor_saved_toast: Память и директивы успешно сохранены.
+character_name_chat: Имя персонажа
+write_user_message_placeholder: Введите сообщение для персонажа...
+typingIndicator_text: Размышляет
+model_generate_text: Генерируется текст...
+user_message_textEdit: Введите сообщение от имени {user_name}
+user_message_textEdit_default: Напишите свое сообщение как Пользователь
+input_placeholder: Управляйте историей или обратитесь к кому-то...
+tts_selector_title: Выбор Text-To-Speech
+tts_selector_title_2: Озвучка персонажа
+tts_selector_title_label: Выберите метод Text-To-Speech
+tts_selector_save_button: Сохранить выбор
+tts_selector_save_information: Озвучка была сохранена
+tts_selector_save_information_error: Вы не выбрали голос персонажу!
+tts_selector_select_button: Выбрать голос
+tts_selector_elevenlabs: Конфигурация ElevenLabs
+tts_selector_elevenlabs_2: Введите ElevenLabs API-токен
+tts_selector_elevenlabs_3: Введите Voice ID из ElevenLabs
+tts_selector_elevenlabs_lbl_1: ELEVENLABS API КЛЮЧ
+tts_selector_xttsv2: Конфигурация XTTSv2
+tts_selector_xttsv2_male: Male
+tts_selector_xttsv2_female: Female
+tts_selector_xttsv2_calm_female: Female Calm
+tts_selector_xttsv2_lbl_1: ВЫБЕРИТЕ ГОЛОС ОЗВУЧКИ
+tts_selector_enable_rvc: Включить RVC
+tts_selector_invalid_rvc: Неверная директория RVC
+tts_selector_no_folders: Не найдены папки
+tts_selector_no_folder: Нет папок
+tts_selector_rvc_no_folder: RVC активирован, но не выбрана папка
+tts_selector_no_pth: Нет PTH файла
+tts_selector_no_pth_in_folder: 'Не найден .pth файл: '
+tts_selector_edge: Конфигурация Edge TTS
+tts_selector_edge_tts_lbl_1: ЯЗЫК
+tts_selector_edge_tts_lbl_2: ГОЛОС ОЗВУЧКИ
+tts_selector_error: Ошибка ввода
+tts_selector_error_2: Пожалуйста, введите корректное имя голоса.
+tts_selector_error_3: Нет голосов
+tts_selector_error_4: Голоса с указанным именем не найдены.
+tts_selector_error_5: Ошибка получения данных.
+tts_selector_error_6: 'Не удалось получить голоса: '
+tts_selector_kokoro: Конфигурация Kokoro TTS
+tts_selector_kokoro_lbl_1: ВЫБЕРИТЕ ОЗВУЧКУ KOKORO
+tts_selector_silero: Конфигурация Silero RU
+tts_selector_silero_lbl_1: ВЫБЕРИТЕ РУССКУЮ ОЗВУЧКУ
+tts_selector_qwen3: Конфигурация Qwen 3 TTS
+tts_selector_qwen3_lbl_1: РАЗМЕР МОДЕЛИ
+tts_selector_qwen3_lbl_2: ЯЗЫК
+tts_selector_qwen3_lbl_device: УСТРОЙСТВО ВЫЧИСЛЕНИЙ
+tts_qwen_mode: РЕЖИМ ГЕНЕРАЦИИ
+tts_selector_qwen3_lbl_3: ВЫБЕРИТЕ ГОЛОС ИЗ СПИСКА
+tts_selector_qwen3_lbl_4: ОПИШИТЕ ГОЛОС НА АНГЛИЙСКОМ (ПРОМПТ)
+tts_selector_qwen3_lbl_5: ПРИМЕР АУДИОФАЙЛА (.WAV)
+tts_selector_qwen3_lbl_6: Не выбрано ни одного примерного аудио
+tts_selector_qwen3_lbl_7: Правила к стилю (опционально)
+tts_selector_qwen3_lbl_ref_text: ТЕКСТ ИЗ АУДИОФАЙЛА (РЕКОМЕНДУЕТСЯ)
+tts_selector_qwen3_lbl_ref_placeholder_text: Точные слова, произнесённые в исходном аудиофайле (повышает качество клонирования)...
+expressions_selector_title: Выбор выражения
+expressions_selector_choose_method: Выбор метода выражения
+expressions_selector_nothing: Кромешная пустота
+expressions_selector_save_button: Сохранить выбор
+expressions_selector_mode_saved_title: Метод выражения сохранён
+expressions_selector_mode_saved_body: Метод выражения успешно сохранён
+expressions_selector_select_folder: Выберите папку с эмоциями
+expressions_selector_no_folders: Папок не найдено
+expressions_selector_invalid_directory: Недопустимая директория для выражений
+expressions_selector_folder_saved_title: Директория с выражениями сохранена
+expressions_selector_foler_saved_body: Директория с выражениями успешно сохранена
+expressions_selector_select_folder_live2d: Выберите директорию с моделью Live2D
+expressions_selector_live2d_folder_saved_title: Директория с Live2D моделью сохранена
+expressions_selector_live2d_folder_saved_body: Live2D директория успешно сохранена
+expressions_selector_select_file_vrm: Выберите файл с VRM
+expressions_vrm_selector_no_files: No VRM files found
+expressions_vrm_selector_invalid_directory: Неверная директория VRM файлов
+expressions_selector_vrm_file_saved_title: VRM файл сохранен
+expressions_selector_vrm_file_saved_body: VRM файл успешно сохранен
+visual_engine_menu_title: МЕТОД ВИЗУАЛИЗАЦИИ
+expressions_selector_nothing_desc: Отключите расширенную визуализацию. Будет отображаться только аватарка персонажа.
+motion_mapper_title: Выбор анимаций Live2D
+motion_mapper_desc: Присвойте каждой из 28 эмоций определённую группу анимации модели Live2D.
+reset_def_btn: Сбросить
+save_mapping_btn: Сохранить
+characters_gateway_trending: В тренде
+characters_gateway_query: 'Ваш поисковый запрос: '
+characters_gateway_tab_title: Карточки Персонажей
+characters_gateway_cai_add: Добавить в список
+gw_preview_type_lorebook: КНИГА ЗНАНИЙ
+gw_preview_type_scene: СЦЕНАРИЙ СЦЕНЫ
+gw_preview_loading: 'Установка безопасного канала связи...
+
+  Получение метаданных ассета...'
+gw_preview_btn_close: Закрыть
+gw_preview_btn_import: Импортировать
+gw_preview_error: '⚠️  Ошибка подключения к базе данных
+
+  Не удалось получить информацию об ассете:
+
+  {error}'
+gw_preview_lorebook_summary: 'База данных содержит {count} когнитивных правил:'
+gw_preview_unnamed: Безымянная запись
+gw_preview_trigger: Триггер
+gw_preview_keys: Ключи
+gw_preview_header_context: КОНТЕКСТ МИРА И СЦЕНАРИЙ
+gw_preview_header_narration: ВВОДНАЯ РЕЧЬ РАССКАЗЧИКА
+gw_preview_header_style: СТИЛЬ РАССКАЗЧИКА
+gw_preview_tone: Тон
+gw_preview_time: Время
+gw_card_author_prefix: от {author}
+gw_card_entries: '📖  Записей: {count}'
+gw_card_location: 📍  {location}
+gw_card_add_lorebook: Добавить
+gw_card_add_scene: Добавить
+chat_edit_message: Редактировать сообщение
+chat_save_message: Сохранить
+chat_delete_message: Удалить
+chat_edit_message_2: Редактировать
+chat_continue_message: Продолжить с этого сообщения
+chat_regenerate_message: Перегенерировать
+msg_action_translate: Перевести
+msg_action_generate_image: Сгенерировать Изображение
+creator_info_button: Заметки автора
+creator_info_window_title: Заметки автора
+creator_info_title: 'Заголовок от автора:'
+creator_info_close_button: Закрыть
+export_card_button: Экспортировать персонажа
+character_edit_settings: 'Настройки Персонажа: '
+character_edit_description: 'Описание персонажа:'
+character_edit_description_placeholder_1: Введите описание персонажа...
+character_edit_description_placeholder_2: Описание персонажа
+character_edit_personality: 'Личность Персонажа:'
+character_edit_personality_placeholder: Введите черты характера персонажа...
+character_edit_first_message: 'Первое сообщение персонажа:'
+character_edit_first_message_placeholder: Введите первое сообщение персонажа...
+character_edit_save_button: Сохранить
+character_edit_edit_title: Редактирование текста
+character_edit_saved: Сохранено
+character_edit_cancel: Закрыть
+character_edit_saved_2: Изменения были успешно сохранены
+character_edit_saved_error: Ошибка сохранения
+character_edit_saved_error_2: Персонаж не был найден в конфигурационном файле.
+character_edit_start_new_dialogue: Создать новый чат
+character_edit_start_new_dialogue_sure: Вы уверены, что хотите начать новый чат?
+character_edit_start_new_dialogue_success: Новый чат успешно создан
+character_settings_engine: НАСТРОЙКИ ПЕРСОНАЖА
+character_settings_subtitle: МЕТАДАННЫЕ И ПРОМПТЫ
+character_settings_name_label: ИМЯ ПЕРСОНАЖА
+character_settings_nav_label: КОНФИГУРАЦИЯ
+character_settings_new_chat_btn: НОВЫЙ ЧАТ
+character_settings_save_btn: СОХРАНИТЬ ИЗМЕНЕНИЯ
+character_settings_close_btn: ЗАКРЫТЬ
+character_card_label: Карточка персонажа
+export_card_dialog_title: Экспортировать карточку персонажа
+chat_manager_label: Управление историей чатов
+character_edit_conv_method: Метод общения
+character_edit_persona: Персона пользователя
+character_edit_prompt_preset: Пресет системного промпта
+character_edit_lorebooks: Лорбуки
+character_settings_none: Нет
+character_settings_selected_count: 'Выбрано: {count}'
+invalid_sowchat_file: Файл должен иметь расширение .sowchat
+import_chat_mismatch_title: Конфликт импорта чатов
+import_chat_mismatch: Этот чат был создан для {exported_from}, но вы пытается добавить его {character_name}. Все равно
+  продолжить?
+import_chat_conflict: Чат с ID {chat_id} уже существует. Хотели бы вы перезаписать его? При нажатии на 'Нет' будет создан
+  новый чат.
+import_chat_conflict_title: Ошибка импорта чата
+new_chat_title: Новый чат
+new_chat_prompt: 'Введите название чата:'
+duplicate_character_error_title: Дублирование имени
+duplicate_character_error: Персонаж с таким именем уже существует. К имени персонажа будет добавлен номер.
+rename_chat_button: ''
+delete_chat_button: ''
+export_chat_button: ''
+import_chat_button: ''
+btn_duplicate_character: Дублировать
+new_folder_btn: Новая папка
+folder_create_title: Новая папка
+folder_create_subtitle: Сгруппируйте своих персонажей в отдельную папку
+folder_name_label: 'Название папки:'
+folder_name_placeholder: Введите название...
+folder_select_chars_label: 'Выберите персонажей:'
+folder_create_btn: Создать папку
+folder_create_btn_with_count: Создать папку ({group_count})
+folder_created: Папка создана!
+folder_name_empty: Введите название папки
+folder_name_exists: Папка с таким именем уже есть
+folder_editor_title: Редактировать папку
+folder_members_label: 'Персонажи в папке:'
+folder_add_char: Добавить персонажа
+folder_remove_char: Убрать выбранного
+folder_add_char_title: Добавить персонажа
+folder_add_char_prompt: 'Выберите:'
+folder_drag_tip: Перетащите для сортировки
+folder_save_btn: Сохранить
+folder_saved: Папка сохранена!
+folder_delete_btn: Удалить папку
+folder_delete_confirm_title: Удалить папку
+folder_delete_confirm_msg: Удалить эту папку?
+folder_delete_detail: Персонажи вернутся в основной список.
+folder_characters_label: персонажей
+folder_edit_btn: Редактировать
+move_to_folder_btn: Переместить в папку
+remove_from_folder: Убрать из папки
+no_folders_title: Нет папок
+no_folders_prompt: Папок пока нет. Создать?
+folder_select_hint: Нажмите, чтобы выбрать
+selected_label: выбрано
+drag_and_drop_overlay: 'Перетащите карточку в формате .png или .json прямо сюда,
+
+  чтобы импортировать в Yume Companion'
+image_gen_editor_title: Настройки генерации изображений
+image_gen_enable: Включить генерацию изображений
+image_gen_grp_connection: Подключение
+image_gen_provider: 'Провайдер:'
+image_gen_api_url: 'URL API (только локальный):'
+image_gen_grp_prompts: Внедрение промптов
+image_gen_prefix: 'Префикс промпт (добавляется всегда):'
+image_gen_negative: 'Негативный промпт:'
+image_gen_grp_dimensions: Параметры генерации
+image_gen_width: 'Ширина:'
+image_gen_height: 'Высота:'
+image_gen_steps: 'Шаги:'
+image_gen_warning: '⚠ Внимание: Одновременная работа локальной LLM и локальной генерации изображений требует большого
+  объема VRAM. Вы можете столкнуться с ошибками нехватки памяти (Out-of-Memory), если вашей видеокарте не хватит мощности.'
+image_gen_save: Сохранить && Закрыть
+image_gen_subtitle: ЛОКАЛЬНАЯ И ОБЛАЧНАЯ ДИФФУЗИЯ
+image_gen_api_key_placeholder: Введите API-ключ здесь...
+discord_gateway_title: Discord Gateway
+discord_info: Введите токен вашего Discord-бота, чтобы подключить текущего активного персонажа к Discord. Бот будет отвечать
+  на сообщения на серверах, к которым у него есть доступ.
+discord_status_stopped: ОСТАНОВЛЕН
+discord_status_running: ЗАПУЩЕН
+discord_start_btn: Запустить бота
+discord_stop_btn: Остановить бота
+discord_gateway_header: DISCORD GATEWAY
+discord_gateway_subtitle: ИНТЕГРАЦИЯ БОТА
+discord_token_label: ТОКЕН БОТА
+discord_gateway_status: 'Текущий статус:'
+soul_memory_title: Yume Memory Archive
+soul_memory_subtitle: Агент Yume Memory анализирует диалоги и обновляет базу данных в фоне. Вы можете редактировать факты
+  вручную.
+soul_memory_placeholder: Содержимое файла памяти появится здесь...
+soul_memory_tab_db: База данных
+soul_memory_tab_user: Профиль Пользователя
+soul_memory_tab_diary: Дневник
+soul_memory_tab_logs: Журнал самоисцеления
+soul_memory_btn_save: Сохранить изменения
+soul_memory_btn_delete: Удалить файл
+soul_memory_btn_refresh: ' Обновить'
+soul_memory_btn_open: ' Открыть папку .soul'
+soul_memory_btn_edit: Редактировать
+soul_memory_btn_preview: Предпросмотр
+soul_memory_save_success: Успешно сохранено
+soul_memory_save_error: Ошибка сохранения
+soul_memory_del_title: Подтверждение удаления
+soul_memory_del_text: Вы уверены, что хотите навсегда удалить этот файл памяти?
+soul_memory_del_success: Файл удален
+soul_memory_del_error: Ошибка удаления
+soul_memory_logs_empty: Журнал пуст. Пообщайтесь с персонажем, чтобы запустить анализ памяти.
+soul_stage_title: Yume Stage
+new_scene: ＋ Новая сцена
+search_scenes: Поиск сцен...
+no_scenes: 'Сцен пока нет.
+
+  Нажмите  ＋ Новая сцена  чтобы начать историю.'
+export_scene: Экспорт
+import_scene: Импорт
+export_all: Экспорт всех
+import_file: Импорт сцены
+play: Играть
+edit: Редакт.
+delete: Удалить
+new_adventure: Новое приключение
+no_description: Описание отсутствует.
+export_title: Экспорт сцены
+import_title: Импорт сцены
+export_success: Сцена успешно экспортирована!
+import_success: Сцена успешно импортирована!
+import_error: Не удалось импортировать сцену. Неверный формат файла.
+select_file: Выберите файл сцены
+folder_select_scenes_label: 'Сцены внутри папки:'
+delete_folder: Удалить папку
+folder_select_scenes_title: 'Редактирование папки: '
+back: ← Назад
+edit_scene: Редактировать сцену
+save_launch: Сохранить и запустить  ▶
+save_changes: Сохранить изменения
+section_identity: I.  ИДЕНТИФИИКАЦИЯ СЦЕНЫ
+section_world: II.  МИР И ОКРУЖЕНИЕ
+section_opening: III.  НАЧАЛО ИСТОРИИ
+section_party: IV.  УЧАСТНИКИ ПАТИ
+section_engine: V.  НАСТРОЙКИ ДВИЖКА
+title: Название  *
+short_description: Краткое описание
+world_context: Контекст мира / Сценарий  *
+world_context_hint: Внедряется в каждый AI-промпт как базовая истина.
+starting_location: Начальная локация
+time_of_day: Время суток
+gm_tone: Тон ГМ
+starting_background: Начальный фон
+starting_background_hint: Планировщик может менять это динамически во время сцены.
+starting_ambient: Начальный эмбиент
+starting_ambient_hint: Фоновый аудио для этой сцены. Планировщик может переключать его динамически.
+opening_narration: Открывающая речь  *
+opening_narration_hint: Первые слова Рассказчика — помещает игрока в сцену.
+first_message: Первое сообщение персонажа  (опционально)
+select_characters: Выберите персонажей для этой сцены
+no_characters: Персонажи не найдены.
+conversation_method: Метод общения
+user_persona: Персона пользователя
+user_persona_hint: Имя и аватар, отображаемые в чате для ваших сообщений.
+lorebook: Лорбук  (опционально)
+title_placeholder: напр. Обсидиановая Цитадель
+desc_placeholder: Краткое описание для списка
+world_placeholder: Лор, текущее напряжение, правила магии или физики...
+location_placeholder: напр. Таверна Золотой Дракон
+opening_placeholder: Дождь бьёт по брусчатке, когда вы толкаете тяжёлую железную дверь...
+first_msg_placeholder: Опциональное приветствие от первого участника пати.
+morning: Утро
+day: День
+evening: Вечер
+night: Ночь
+epic_fantasy: Эпическое фэнтези
+slice_of_life: Повседневность
+mystery_noir: Мистика и Нуар
+romance: Романтика
+horror: Ужасы
+comedy: Комедия
+sci_fi: Научная фантастика
+narrator_style: Стиль Рассказчика
+narrator_style_hint: Определяет конкретный стиль изложения, авторский голос или темп повествования.
+narrator: ⬡  РАССКАЗЧИК
+party_prefix: ✦
+interactive_narrative: Интерактивный нарратив
+memory: ⊕ Память
+intervene: ⚡ Вмешаться
+continue_session: Продолжить
+new_session: Новая сессия
+cancel: Отмена
+narrator_image_generating: ⬡  ГЕНЕРАЦИЯ ИЗОБРАЖЕНИЯ СЦЕНЫ...
+narrator_image_done: ⬡  ИЗОБРАЖЕНИЕ СЦЕНЫ
+plot_wish_dialog_title: Продолжить сюжет
+plot_wish_label: Что должно произойти дальше? (Опциональные подсказки для ИИ)
+plot_wish_placeholder: напр. Снаружи раздается взрыв или кто-то стучит в дверь...
+plot_wish_continue_btn: Продолжить сюжет
+ss_setup_dialog_title: Yume Stage — Настройка пати
+ss_setup_header: ⬡ Yume Stage
+ss_setup_sub: Выберите персонажей для пати. <b>{name}</b> добавлен автоматически.
+ss_setup_btn_launch: ⬡ Запустить Yume Stage
+ss_activated_msg: '<i>Yume Stage активирован.</i><br><i>Пати: {party}</i><br><i>Опишите действие — история начнётся.</i>'
+ss_deactivated_msg: <i>Yume Stage завершён. Обычный режим восстановлен.</i>
+ss_error: ОШИБКА
+error_header: ⚠ ОШИБКА
+error_generation_header: ⚠ ОШИБКА ГЕНЕРАЦИИ
+error_generation_failed: Не удалось сгенерировать изображение.
+scene_has_entries: 'Эта сцена содержит {} сохранённых записей.
+
+  Продолжить или начать новую сессию?'
+delete_scene_title: Удалить сцену
+delete_scene_confirm: Навсегда удалить эту сцену и всю её историю?
+delete_scene_detail: '"{title}" · {count} сохранённых сообщений будет потеряно.'
+open_scene_title: Yume Stage — Открыть сцену
+open_scene_has_history: Эта сцена содержит сохранённую историю
+open_scene_continue_desc: Загрузить {count} сообщ. и продолжить
+open_scene_new_desc: Начать заново — история будет очищена
+memory_select_title: Yume Memory — Выбор персонажа
+memory_select_query: Чьи воспоминания вы хотите просмотреть?
+inventory: Инвентарь
+inventory_full_title: Инвентарь — Yume Stage
+inventory_empty: Ваш инвентарь пуст.
+items_count: 'Предметов: {count}'
+category_weapons: Оружие
+category_consumables: Расходники
+category_tools: Инструменты
+category_valuables: Ценности
+category_quest_items: Квестовые предметы
+category_other: Прочее
+btn_use: Исп.
+btn_drop: Выбр.
+tooltip_drop: Выбросить предмет
+tooltip_open_inventory: Открыть полный инвентарь
+tooltip_use_item: 'Использовать: {item}'
+more_items: ещё +{count}
+choice_hint_none: ВЫБЕРИТЕ ДЕЙСТВИЕ — ИЛИ НАПИШИТЕ СВОЁ
+choice_hint_encounter: РЕАГИРУЙТЕ НА УГРОЗУ — ИЛИ НАПИШИТЕ СВОЁ
+choice_hint_discovery: ЧТО ВЫ СДЕЛАЕТЕ? — ИЛИ НАПИШИТЕ СВОЁ
+choice_hint_visitor: КАК ВЫ ОТВЕТИТЕ? — ИЛИ НАПИШИТЕ СВОЁ
+choice_hint_twist: ВАШ ХОД — ИЛИ НАПИШИТЕ СВОЁ
+choice_hint_romance: ВЫБЕРИТЕ ОТВЕТ — ИЛИ НАПИШИТЕ СВОЁ
+world_state_title: Состояние мира — Yume Stage
+tab_scene: Сцена
+tab_facts: Ключевые факты
+tab_inventory: Инвентарь
+tab_status: Статус
+tab_resources: Ресурсы
+tab_lore: Карты Лора
+tab_campaign: Доска Кампаний
+tab_npcs: Активные NPC
+section_environment: Настройка окружения
+section_memory: Память мира
+section_player_items: Предметы игрока
+section_player_conditions: Состояние игрока
+section_npcs: Персонажи на сцене
+field_location: Локация
+field_time: Время суток
+field_atmosphere: Контекст мира
+field_facts_hint: 'Формат: "ключ: значение" (по одному на строку)'
+field_inventory_hint: Один предмет на строку
+field_status_hint: Одно состояние на строку
+field_status_effects: Эффекты Состояния
+hint_npc_readonly: NPC, созданные движком (только чтение)
+no_active_npcs: В этой сцене нет активных NPC
+btn_apply_changes: Применить
+unknown: Неизвестно
+tooltip_soul_memory: Yume Memory
+tooltip_world_state: Состояние мира
+tooltip_continue_plot: Продолжить сюжет
+tooltip_intervene: Вмешаться (остановить ход ИИ)
+ss_menu_copy: Копировать
+ss_menu_edit: Редактировать сообщение
+ss_menu_translate_ru: Перевести → Русский
+ss_menu_translate_en: Перевести → Английский
+ss_menu_regenerate: Перегенерировать ход
+ss_menu_delete: Удалить сообщение
+ss_edit_msg_dialog_title: Редактирование сообщения — Yume Stage
+ss_edit_msg_title: РЕДАКТИРОВАНИЕ СООБЩЕНИЯ ИГРОКА
+ss_edit_msg_sub: Сохранение обновит текст, отмотает состояние мира и переиграет сюжетный ход.
+ss_edit_msg_save_btn: Сохранить и переиграть ход
+event_encounter: СТОЛКНОВЕНИЕ
+event_discovery: ОТКРЫТИЕ
+event_visitor: ПОСЕТИТЕЛЬ
+event_twist: ПОВОРОТ СЮЖЕТА
+event_moment: МОМЕНТ
+soul_stage_mode_title: 'Yume Stage: Оркестрация сюжета'
+soul_stage_narrator_name: Рассказчик
+soul_stage_active_actors: Сейчас на сцене
+soul_stage_backstage: За кулисами / Ростер
+soul_stage_btn_interrupt: Вмешаться в разговор
+soul_stage_btn_spawn: Призвать NPC
+soul_stage_wait_user: Ожидание действий игрока...
+soul_stage_log_spawn: 'Рассказчик призвал нового персонажа: '
+soul_stage_log_remove: 'Персонаж покинул сцену: '
+llm_error_title: Нет локальной LLM
+llm_error_body: Выберите локальную LLM в Хабе Моделей.
+voice_error_title: Нет озвучки
+voice_error_body: Назначьте озвучку персонажу перед тем, как начать звонок.
+sow_system_status_speak: Говорите...
+sow_system_status_stop: Начать разговор
+no_gui_error_title: Некорректный выбор отображения персонажа
+no_gui_error_body: Выберите Live2D или VRM модель для работы режима без интерфейса.
+persona_error_title: Измените персону
+persona_error_body: Выбрана несуществующая персона, пожалуйста, измените её.
+add_character_text_1: был успешно добавлен!
+add_character_text_2: Теперь вы можете взаимодействовать с персонажем через список персонажей
+add_character_text_3: При добавлении персонажа произошла ошибка.
+add_character_text_4: Попробуйте ещё раз.
+add_character_error: Назначьте имя и первое сообщение вашему персонажу.
+add_character_title_error: Ошибка добавления персонажа
+delete_message_1: Удалить Персонажа
+delete_message_2: 'Вы уверены, что хотите удалить '
+welcome_message: 'Добро пожаловать в Yume Companion, '
+create_character_title: Выбор метода общения
+create_character_title_2: Выбор метода общения
+create_character_select_button: Выбрать
+radio_mistral_ai: ' Mistral AI'
+radio_open_ai: ' Open AI или Open AI-like'
+radio_openrouter: ' OpenRouter'
+radio_local_llm: ' Локальный LLM'
+model_loading_step_1: ИНИЦИАЛИЗАЦИЯ...
+model_loading_step_2: АНАЛИЗ GGUF...
+model_loading_step_3: ЗАГРУЗКА ТЕНЗОРОВ...
+model_loading_step_4: ВЫДЕЛЕНИЕ ПАМЯТИ...
+model_loading_step_5: ФИНАЛИЗАЦИЯ...
+model_loading_step_6: МОДЕЛЬ ЗАГРУЖЕНА
+update_available_title: Обновление Доступно
+update_available_body: 'Доступна новая версия: '
+update_available_info: Вы хотите обновить программу?
+update_current_version: 'Текущая версия: v3.0.0 BETA'
+update_available_close: Закрыть
+update_available_link: Перейти на GitHub
+language_changed_title: Требуется перезагрузка
+language_changed_body: Программа должна быть перезапущена, чтобы изменения вступили в силу.
+language_changed_question: Вы хотите перезапустить программу сейчас?
+language_changed_yes: Да
+language_changed_no: Нет
+about_program: О Yume Companion
+about_program_title: О Yume Companion
+about_program_description: <b>Yume Companion</b> — это бесплатная десктопная программа с открытым исходным кодом, в которой
+  ИИ-персонажи действительно помнят, развиваются и живут внутри программы или вне её на рабочем столе. Создайте или импортируйте
+  персонажа один раз и взаимодействуйте с ним сквозь три взаимосвязанных измерения:<br><br>• 💬 <b>Интерактивный текстовый
+  и голосовой чат:</b> Живой диалог 1-на-1 с анимированными Live2D/VRM аватарами, потоковой озвучкой, адаптивным HUD
+  статусов, прикреплением файлов и использованием инструментов.<br><br>• 🎲 <b>Ролевой движок Yume Stage:</b> Настольные
+  текстовые RPG под управлением ИИ-Мастера Игры с отслеживанием состояния мира, инвентаря и динамическими NPC.<br><br>•
+  🖥️ <b>Спутник Yume Desktop Companion:</b> Автономный персонаж на рабочем столе с нейрогормональной моделью настроения, зрением,
+  чтением буфера и вызовом инструментов.<br><br>Все измерения объединены модулем <b>Yume Memory</b> — когнитивной памятью
+  с эмоциональной эволюцией, личным дневником и авто-исправлением противоречий. Работает 100% локально и приватно на
+  вашем ПК через GGUF (CUDA, Vulkan, HIP, SYCL) без фильтров и подписок, с поддержкой облачных API, Discord и локального
+  веб-клиента.
+support_btn: Поддержать
+creator_label: Разработал
+simple_version_label: Версия
+version_label: Yume Companion v3.0.0 BETA
+nsfw_checkbox: NSFW
+value: 'Значение: '
+duplicate_title: Персонаж дублирован
+character_edit_title: Настройки персонажа
+add_character_error_title: Ошибка создания
+system_error_title: Ошибка системы
+new_chat_toast_title: Чат
+toast_folder_title: Управление папками
+toast_folder_error_title: Ошибка папки
+soul_memory_no_chat: Откройте чат с персонажем.
+soul_memory_empty: История чата пустая.
+soul_memory_manual_start: Началось ручное обновление памяти...
+soul_memory_manual_completed: Ручное обновление памяти было успешно завершено...
+soul_memory_manual_error: Ошибка обновления памяти.
+soul_memory_manual_cancelled: Обновление памяти отменено.
+soul_memory_provider_error: Провайдер '{provider}' не найден.
+toast_voice_settings_title: Настройки озвучки
+toast_search_title: Поиск озвучки
+toast_connection_error_title: Ошибка подключения
+toast_visual_settings_title: Настройки визуализации
+toast_llm_error_title: Ошибка конфигурации
+toast_translate_error_title: Ошибка перевода
+toast_image_gen_title: Генерация изображения
+toast_image_gen_prompt_error: Не удалось сгенерировать промпт для изображения.
+toast_image_gen_creating: Генерация изображения...
+toast_image_gen_failed: Не удалось сгенерировать изображение.
+toast_message_editor_title: Редактирование сообщения
+toast_character_editor_title: Редактор персонажа
+toast_call_system_title: Голосовой режим
+toast_profile_error_title: Ошибка персоны
+toast_companion_error_title: Ошибка режима компаньона
+toast_persona_exist: Персона с таким именем уже существует
+toast_success: Успех
+toast_saved_successfully: Успешно сохранено
+soul_memory_tooltip: '<b>🧠 Yume Memory</b><br><br>
+
+  Превратите своего персонажа из обычного ИИ в живую цифровую личность с <b>непрерывной бесконечной памятью</b>. Это
+  когнитивное ядро всей экосистемы Yume Companion.<br><br>
+
+  Вместо того чтобы полагаться на несовершенный поиск по тексту, Yume Memory использует продвинутую <b>многоагентную
+  архитектуру</b>:<br>
+
+  • <b>Двухконтурный индекс:</b> Изолирует внутренний мир и психологию персонажа (<i>MEMORY.md</i>) от профиля пользователя
+  и метаданных отношений (<i>USER.md</i>). Это предотвращает «размытие ролей» и оптимизирует кэширование промптов (Prompt
+  Caching).<br>
+
+  • <b>Архивариус и Дневники:</b> Фоновые агенты автоматически формируют сжатые тематические статьи о мире и пишут глубокие
+  <i>личные эмоциональные дневники от первого лица</i> о вашем общении.<br>
+
+  • <b>Самоисцеление и угасание:</b> Система самостоятельно обнаруживает и устраняет логические противоречия в памяти,
+  а также плавно и естественно сглаживает неактивные эмоции со временем.<br><br>
+
+  Результат? Никакого раздувания контекста мусором и абсолютная стабильность личности. Где бы вы ни находились — в приключении
+  Yume Stage или в уютной обстановке с компаньоном на рабочем столе — <b>ваш персонаж вспомнит всё</b>.'
+sm_mode_full: Полная Синхронизация
+sm_mode_soul_link: Связь Души
+sm_mode_mind_spark: Искра Разума
+sm_mode_reflection_flow: Поток Рефлексии
+sm_mode_full_tooltip: '<b>🌌 Полная Синхронизация</b><br><br>
+
+  Полная когнитивная связь. Активирован каждый аспект персонажа:<br><br>
+
+  • <b>Психологический индекс:</b> Отслеживание настроения в реальном времени.<br>
+
+  • <b>Темы лора:</b> Глубокая проработка мира и фактов персонажа.<br>
+
+  • <b>Дневники:</b> Эмоциональные размышления от первого лица.<br><br>
+
+  <i>Максимальное погружение. Требует мощной системы или API.</i>'
+sm_mode_soul_link_tooltip: '<b>🔗 Связь Души</b><br><br>
+
+  Фокус на личности и чувствах.<br><br>
+
+  • Обновляет индекс <b>MEMORY.md</b>, чтобы сохранять настроение и цели персонажа.<br>
+
+  • <b>Агент-Дневник</b> записывает его мысли о вас в файл дневника.<br><br>
+
+  <b>Что отключено:</b> Система не тратит ресурсы на создание или обновление энциклопедии (Топиков).<br><br>
+
+  <i>Лучший выбор для: Поддержания глубокой связи без лишней нагрузки на ПК.</i>'
+sm_mode_mind_spark_tooltip: '<b>⚡ Искра Разума</b><br><br>
+
+  Тактическая память для максимальной скорости.<br><br>
+
+  • Обновляет <b>ТОЛЬКО</b> психологический индекс <b>MEMORY.md</b>.<br><br>
+
+  Гарантирует, что персонаж помнит, кто он, что чувствует и чего хочет прямо сейчас.<br><br>
+
+  <b>Что отключено:</b> Дневники и записи о мире не генерируются.<br><br>
+
+  <i>Лучший выбор для: Слабых систем или динамичного экшен-РП.</i>'
+sm_mode_reflection_flow_tooltip: '<b>📓 Поток Рефлексии</b><br><br>
+
+  Эмоциональный лог с около-нулевым влиянием на скорость диалога.<br><br>
+
+  • Активен только <b>Агент-Дневник</b>.<br><br>
+
+  Персонаж не меняет свое состояние "в моменте", но подводит эмоциональный итог общения с вами.<br><br>
+
+  <b>Что отключено:</b> Никаких правок в индексе или лоре.<br><br>
+
+  <i>Лучший выбор для: Максимальной плавности чата при сохранении истории чувств.</i>'
+ambient_sound_tooltip: "<b>\U0001F3B5 Модуль Эмбиента</b><br><br>\n\nЭта функция добавляет <b>атмосферное звуковое сопровождение</b>\
+  \ при входе в чат с персонажем.<br><br>\nПосле включения вы можете выбрать подходящий <b>эмбиент</b> — фоновую музыку\
+  \ или звуки, которые создадут нужное настроение: \nбудь то шумный ветер, стук каплей дождя или уютный треск костра.<br><br>\n\
+  \n<b>Пример:</b><br>\nЕсли вы общаетесь с персонажем в <i>Таверне</i>, \nвы можете выбрать эмбиент с <i>звуками шумной\
+  \ толпы и веселой мелодией</i>, \nчтобы погрузиться в атмосферу заведения и усилить эмоциональную связь с персонажем."
+sow_system_tooltip: '<b>✨ Yume System</b><br><br>
+
+  Это <b>расширенный режим</b> работы программы, который раскроет <b>весь потенциал</b> вашего общения с персонажами.<br><br>
+
+  Вы сможете:<br>
+
+  • Назначать персонажам аватары — статичные или гиф-изображения, анимированные модели Live2D или объёмные VRM-модели;<br>
+
+  • Звонить персонажам — общаться через микрофон в специальном интерфейсе, сделанном специально под этот режим;<br>
+
+  • Подключать дополнительные модули: умную память, эмбиент, переводчик и многие другие.'
+personas_button_tooltip: <b>Открывает редактор персон</b><br><br>Позволяет вам создавать, редактировать, выбирать и удалять
+  персоны - информацию о пользователях, которые будут взаимодействовать с персонажами.
+system_prompt_button_tooltip: "Здесь вы можете <b>отредактировать системный промпт для языковой модели</b> — то, как\
+  \ она должна вести себя при общении с вами.<br><br>\n\nВы можете:<br>\n• <b>Редактировать текст промпта</b> — менять\
+  \ стиль, добавлять особенности поведения.<br>\n• <b>Менять порядок компонентов</b> — управлять приоритетом информации.<br><br>\n\
+  \n<b>Как влияет порядок на ответы персонажа?</b><br>\nМодель помнит лучше то, что указано <b>ближе к концу</b> промпта.<br>\n\
+  Если вы хотите, чтобы персонаж чаще ссылался на лор, поставьте лорбук в конец.<br>\nЕсли важнее его личность — переместите\
+  \ профиль персонажа вниз.<br><br>\n\n\U0001F4A1 <i>Используйте редактор, чтобы сделать персонажа таким, каким вы хотите.\
+  \ \nМеняйте порядок и текст промпта, экспериментируйте!</i>"
+lorebook_editor_button_tooltip: '<b>Редактор лорбуков</b><br><br>
+
+  Лорбук — это <b>справочник</b>, который помогает персонажу помнить важные события, термины, места и персонажей.<br><br>
+
+  Когда вы упоминаете что-то из лорбука, программа <b>автоматически подключает нужную информацию</b> к запросу — и персонаж
+  отвечает как будто действительно это знает.<br><br>
+
+
+  <b>Что можно делать:</b><br>
+
+  • <b>Создавать и удалять лорбуки</b>.<br>
+
+  • <b>Добавлять записи</b> — каждый блок информации: место, персонаж, событие, термин.<br>
+
+  • <b>Редактировать ключевые слова</b> — что должно "включать" запись.<br>
+
+  • <b>Выбирать глубину сканирования</b> — сколько последних сообщений анализировать на совпадения.<br><br>
+
+
+  <b>Пример:</b><br>
+
+  Вы добавляете запись:<br>
+
+  • <i>Текст:</i> «Yume Companion - это программа, которая позволяет общаться с ИИ.»<br>
+
+  • <i>Ключевые слова:</i> Yume Companion, ИИ<br>
+
+  Когда вы скажете: <i>«Что такое Yume Companion?»</i> — Персонаж вспомнит и ответит с информацией об этой записи.'
+gpu_layers_tooltip: '<b>Загрузка слоев в GPU</b><br><br>
+
+  Позволяет <b>контролировать, какая часть модели</b> обрабатывается видеокартой (VRAM), а какая — процессором (RAM).<br><br>
+
+  Чем больше слоев в видеокарте, тем быстрее генерация, но тем выше требования к памяти.<br><br>
+
+  💡 <i>Особенно полезно для больших моделей (от 13B). Если у вас мощная видеокарта, выкручивайте на максимум.</i>'
+context_size_tooltip: '<b>Контекстное окно</b><br><br>
+
+  Это максимальное количество токенов, которое модель может обработать за раз (её рабочая память). Включает историю чата,
+  авторские заметки и записи из lorebook.<br><br>
+
+  Выберите максимальное значение для неограниченного контекста (API) или для автоматического определения максимального
+  доступного окна контекста для вашей локальной языковой модели.<br><br>
+
+  Большее контекстное окно позволяет персонажу <b>помнить больше</b>, но значительно увеличивает потребление VRAM.<br><br>
+
+  💡 <i>Уменьшите это значение на слабых ПК. Для долгосрочной памяти лучше держите включённым модуль «Yume Memory», а
+  не выкручивайте контекст на максимум.</i>'
+mlock_tooltip: '<b>MLock (Блокировка памяти)</b><br><br>
+
+  Эта функция <b>предотвращает выгрузку языковой модели</b> из оперативной памяти (RAM) в файл подкачки на диске.<br><br>
+
+  Когда опция включена, модель остается полностью загруженной в памяти, что гарантирует <b>максимально быстрый отклик</b>
+  без микрофризов при генерации каждого нового сообщения.<br><br>
+
+  💡 <i>Рекомендуется включать только при наличии достаточного объема ОЗУ, так как эта память будет постоянно заблокирована
+  системой. На ПК с малым объемом памяти лучше оставить отключенной.</i>'
+no_mmap_tooltip: '<b>Режим No MMAP (Прямая загрузка в ОЗУ)</b><br><br>
+
+  По умолчанию модели загружаются с использованием отображения в память (<b>mmap</b>), что означает, что части модели
+  считываются с диска по требованию прямо во время генерации.<br><br>
+
+  Включение этой опции заставляет систему <b>полностью загружать модель в оперативную память (RAM)</b> заранее.<br>
+
+  Это немного увеличивает время начальной загрузки и потребление RAM, но предотвращает микрозависания и задержки во время
+  генерации текста.<br><br>
+
+  💡 <i>Настоятельно рекомендуется, если у вас достаточно системной памяти. Отключите на ПК с малым объемом RAM, чтобы
+  избежать аварийного завершения из-за нехватки памяти.</i>'
+reasoning_mode_tooltip: '<b>Режим размышлений (Thinking Mode)</b><br><br>
+
+  Создан для мыслящих моделей вроде <i>DeepSeek-R1</i> или <i>QwQ</i>, которые генерируют внутренние рассуждения перед
+  ответом.<br><br>
+
+  При включении интерфейс прячет теги <code>&lt;think&gt;</code> в красивый блок и <b>запрещает голосовому движку (TTS)
+  читать мысли вслух</b>.<br><br>
+
+  💡 <i>Оставьте выключенным для обычных моделей (Llama-3, Mistral, обычный Qwen).</i>'
+flashattention_tooltip: '<b>Flash Attention</b><br><br>
+
+  Новейшая технология, <b>ускоряющая генерацию</b> и <b>снижающая потребление VRAM</b> при обработке длинных чатов.<br><br>
+
+  Оптимизирует вычисления внутри нейросети на больших размерах контекста (4K, 8K и выше).<br><br>
+
+  💡 <i>Настоятельно рекомендуется всегда держать включенным.</i>'
+max_tokens_tooltip: '<b>Макс. длина ответа</b><br><br>
+
+  Ограничивает <b>максимальное количество слов</b>, которое может написать персонаж за один раз.<br><br>
+
+  💡 <i>Слишком длинные ответы забивают контекст. Оптимально: 300–500 токенов.</i>'
+reasoning_effort_tooltip: '<b>Объем рассуждений</b><br><br>
+
+  Управляет объемом внутренних рассуждений, которые могут выполнять языковые модели перед ответом.<br>
+
+  Применяется к моделям OpenAI o-series/GPT-5, Claude extended thinking, Gemini, Grok, DeepSeek, Qwen и GLM.'
+custom_args_tooltip: '<b>Пользовательские аргументы</b><br><br>
+
+  Позволяет передавать дополнительные аргументы командной строки напрямую локальному LLM-серверу (llama.cpp).<br><br>
+
+  Это предназначено для опытных пользователей, которые хотят точно настроить специфические параметры движка (например,
+  масштабирование RoPE или параметры кэширования), не представленные в графическом интерфейсе.<br><br>
+
+  💡 <i>Используйте с осторожностью. Неверные флаги могут привести к сбою сервера или переопределить настройки интерфейса.
+  Пример: <b>--rope-freq-base 10000</b></i>'
+chat_template_tooltip: '<b>Шаблон чата (Chat Template)</b><br><br>
+
+  Определяет, в каком формате ваш текст отправляется нейросети. Разные ИИ обучены на разных форматах.<br><br>
+
+  Если шаблон не совпадает с моделью, бот начнет галлюцинировать или выводить спецсимволы (например, <code>&lt;|im_end|&gt;</code>).<br><br>
+
+  💡 <i>''Auto'' берет шаблон прямо из GGUF файла. Если модель ведет себя странно, выберите вручную ''ChatML'' или ''Llama-3''.</i>'
+stop_strings_tooltip: '<b>Стоп-строки (Stop Strings)</b><br><br>
+
+  Список слов или тегов, при появлении которых ИИ <b>немедленно прекращает генерацию</b>.<br><br>
+
+  Это важнейший инструмент, чтобы запретить ИИ говорить или действовать за вас (например, генерировать <code>\nUser:</code>
+  и отвечать на свои же вопросы).<br><br>
+
+  💡 <i>Перечисляйте через запятую. Пример: <code>\nUser:, &lt;/s&gt;, &lt;|eot_id|&gt;</code></i>'
+temperature_tooltip: '<b>Температура (Креативность)</b><br><br>
+
+  Контролирует базовый уровень хаоса в ответах.<br><br>
+
+  • <b>Низкая (0.1–0.5):</b> Логично и предсказуемо. Скучно для ролевых игр.<br>
+
+  • <b>Высокая (0.8–1.5):</b> Очень креативно, эмоционально и непредсказуемо.<br><br>
+
+  💡 <i>Рекомендуется: 0.8–1.0. При высоких значениях обязательно используйте <b>Min-P</b> для защиты от бреда.</i>'
+freq_penalty_tooltip: '<b>Штраф за частоту (Frequency Penalty)</b><br><br>
+
+  Штрафует слова в зависимости от того, <b>сколько раз они уже встречались</b> в тексте.<br><br>
+
+  Заставляет ИИ использовать богатый словарный запас и искать синонимы, а не повторять одни и те же прилагательные.<br><br>
+
+  💡 <i>Слишком высокие значения ломают грамматику. Оптимально: 0.0 - 0.5.</i>'
+pres_penalty_tooltip: '<b>Штраф за присутствие (Presence Penalty)</b><br><br>
+
+  Накладывает штраф на слово, если оно встретилось <b>хотя бы один раз</b>.<br><br>
+
+  В отличие от штрафа за частоту, это заставляет ИИ <b>менять тему разговора</b> и вводить новые концепции, не давая
+  диалогу застрять в одной точке.<br><br>
+
+  💡 <i>При высоких значениях ИИ будет хаотично прыгать по темам. Оптимально: 0.0 - 0.4.</i>'
+min_p_tooltip: '<b>Min-P (Умное отсечение)</b><br><br>
+
+  Новый золотой стандарт RolePlay. Динамически отсекает мусорные слова на основе вероятности самого лучшего слова.<br><br>
+
+  Если ИИ уверен в ответе, Min-P безжалостно режет бред. Если ИИ нужно проявить фантазию, барьер снижается, впуская красивые
+  синонимы.<br><br>
+
+  💡 <i>Замена Top-P. Установите Top-P на 1.0, а Min-P на <b>0.05 - 0.10</b> для идеальной логики при высокой Температуре.</i>'
+top_p_tooltip: '<b>Top-P</b><br><br>
+
+  Старый метод сэмплинга, ограничивающий выбор слов суммарным процентом вероятности.<br><br>
+
+  💡 <i>Если вы используете <b>Min-P</b>, обязательно отключите Top-P, установив его на <b>1.0</b>.</i>'
+dyn_temp_min_tooltip: '<b>Динамическая Температура</b><br><br>
+
+  Вместо фиксированного значения, температура плавает между Мин. и Макс. границами в зависимости от уверенности ИИ.<br><br>
+
+  Описывая факты, температура падает для логики. Описывая эмоции, температура взлетает для креатива.'
+dyn_temp_max_tooltip: '<b>Динамическая Температура</b><br><br>
+
+  Вместо фиксированного значения, температура плавает между Мин. и Макс. границами в зависимости от уверенности ИИ.<br><br>
+
+  Описывая факты, температура падает для логики. Описывая эмоции, температура взлетает для креатива.'
+xtc_prob_tooltip: '<b>XTC (Удаление банальностей)</b><br><br>
+
+  Революция для RP. Принудительно <b>удаляет самые очевидные и клишированные слова</b> из вариантов выбора ИИ.<br><br>
+
+  Устали от фраз <i>"мурашки пробежали по спине"</i> или <i>"хищная ухмылка"</i>? XTC заставит модель искать уникальные,
+  литературные альтернативы.<br><br>
+
+  💡 <i><b>Вероятность:</b> Шанс срабатывания алгоритма (Оптимально 0.3 - 0.5).</i>'
+xtc_thresh_tooltip: '<b>Порог XTC (Threshold)</b><br><br>
+
+  Определяет, насколько "популярным" (вероятным) должно быть слово, чтобы алгоритм XTC имел право его удалить.<br><br>
+
+  💡 <i>Оптимально: 0.1 (Удаляются только слова с вероятностью выше 10%).</i>'
+dry_mult_tooltip: '<b>DRY (Множитель)</b><br><br>
+
+  В отличие от старых алгоритмов, DRY (Don''t Repeat Yourself) распознает и штрафует <b>повторения целых предложений
+  и структур</b>.<br><br>
+
+  Если Вайфу постоянно начинает сообщения фразой <i>"Я вздыхаю и смотрю на тебя"</i>, DRY сломает этот паттерн и заставит
+  ее действовать иначе.<br><br>
+
+  💡 <i><b>Множитель:</b> Сила штрафа (Оптимально 0.8).</i>'
+dry_base_tooltip: '<b>DRY База</b><br><br>
+
+  Базовый коэффициент масштабирования алгоритма. Определяет, насколько агрессивно растет штраф от длины повторяющейся
+  фразы.<br><br>
+
+  💡 <i>Оптимально: 1.75</i>'
+dry_length_tooltip: '<b>Допуск длины DRY</b><br><br>
+
+  Количество токенов (слов/слогов), которым разрешено повторяться до того, как сработает штраф DRY.<br><br>
+
+  💡 <i>Оптимально: 2 (Чтобы не штрафовать короткие связки типа "Я есть" или "И тут").</i>'
+kv_cache_tooltip: Квантизируйте Context Cache, чтобы сэкономить значительный объем видеопамяти при работе с длинными
+  контекстами.
+batch_size_tooltip: 'Количество токенов, обрабатываемых одновременно при оценке промпта.<br><br>
+
+  Значение 512 является безопасным. Чем выше значение, тем быстрее загрузка и тем больше требуется VRAM.'
+cpu_threads_tooltip: '0 = Автоматически.<br><br>
+
+  Укажите количество физических ядер процессора для обеспечения оптимальной скорости инференса на процессоре.'
+cpu_moe_layers_tooltip: 0 = Отключено. Количество слоев «Mixture of Experts» (MoE), размещаемых в оперативной памяти
+  (CPU RAM). Крайне важно для работы с моделями архитектуры MoE.
+auto_summary_tooltip: Этот параметр позволит вам назначать количество сообщений, после которых будет происходить генерация
+  краткой сводки вашего чата.
+attach_file_tooltip: Прикрепите к сообщению изображение или документ.
+tooltip_create_character: Создать нового персонажа
+tooltip_import_character: Импортировать карточку персонажа
+tooltip_new_folder: Создать новую папку
+sc_menu_quick_actions: ⚡ Быстрые действия
+sc_menu_vision: 📸 Посмотри на мой экран (Зрение)
+sc_menu_clipboard: 📋 Прочитай буфер обмена (Анализ)
+sc_menu_mind: 🧠 О чем ты думаешь?
+sc_menu_mic_on: Включить микрофон
+sc_menu_mic_off: Выключить микрофон
+sc_menu_pet: 🤚 Погладить
+sc_menu_play_animation: 🎭 Воспроизвести анимацию
+sc_menu_motions: эмоций
+sc_menu_click_through_on: '👁‍🗨 Прохождение кликов: ВКЛ'
+sc_menu_click_through_off: '👁‍🗨 Прохождение кликов: ВЫКЛ'
+sc_menu_aot_on: '📌 Поверх всех окон: ВКЛ'
+sc_menu_aot_off: '📌 Поверх всех окон: ВЫКЛ'
+sc_menu_eye_on: '👁 Отслеживание глаз: ВКЛ'
+sc_menu_eye_off: '👁 Отслеживание глаз: ВЫКЛ'
+sc_menu_react_on: '💬 Реакции на окна: ВКЛ'
+sc_menu_react_off: '💬 Реакции на окна: ВЫКЛ'
+sc_menu_sub_on: '📝 Субтитры: ВКЛ'
+sc_menu_sub_off: '📝 Субтитры: ВЫКЛ'
+sc_menu_settings: ⚙️ Настройки Компаньона
+sc_menu_proactive: 🗓 Интервал инициативы
+sc_menu_sleep: 😴 Сон через
+sc_menu_speed: 👁 Скорость взгляда
+sc_menu_speed_slow: Медленно
+sc_menu_speed_normal: Нормально
+sc_menu_speed_fast: Быстро
+sc_menu_size: 📐 Размер модели
+sc_menu_size_small: Маленький (200 × 300)
+sc_menu_size_medium: Средний (400 × 600)
+sc_menu_size_large: Большой (600 × 900)
+sc_menu_hud: 📊 Показать HUD гормонов
+sc_menu_center: 📍 Отцентрировать
+sc_menu_reset: 🔄 Сбросить размер
+sc_menu_hide: ❌ Скрыть компаньона
+sc_menu_min_3: 3 минуты
+sc_menu_min_5: 5 минут
+sc_menu_min_10: 10 минут
+sc_menu_min_15: 15 минут
+sc_menu_min_30: 30 минут
+sc_menu_min_60: 60 минут
+tts_notice_title: 💡 Информация перед первым запуском озвучки
+tts_notice_first_run_text: 'Обратите внимание: перед первым использованием голосовых движков <b>XTTSv2</b>, <b>Kokoro</b>,
+  <b>Silero</b> или <b>Qwen 3 TTS</b> программа автоматически скачает необходимые файлы и веса выбранной нейросети. Вы
+  можете увидеть прогресс загрузки модели в консоли.<br><br>После завершения первой загрузки вы сможете свободно и мгновенно
+  использовать озвучку без повторных скачиваний.'
+models_hub_recommendations_banner: ⭐ Список локальных языковых моделей, тщательно отобранный и проверенный разработчиком
+  программы. Данные основаны на совместимости Q4 кванта модели.
+models_hub_popular_banner: 🔥 Список актуальных и популярных на данный момент GGUF-моделей из репозиториев сайта HuggingFace.
+world_lorebook_gateway: Лорбуки
+soul_stage_scenarios: Сцены Yume Stage
+lorebooks_soul_stage_page: Лорбуки (Опционально)
+max_actor_depth: Акторов за Ход
+max_actor_depth_hint: Как много членов команды и NPC могут говорить за один ход (1-6, по умолчанию 3).
+dice_rolls: Броски Кубиков
+dice_rolls_hint: Позволяет Мастеру Игры назначать проверки с использованием d20/2d6/3d6 при выполнении рискованных или
+  состязательных действий.
+dice_rolls_enable: 🎲 Включить броски кубиков
+mode_say: 💬 Разговор
+mode_do: ⚔ Действие
+mode_think: 💭 Размышление
+mode_director: 🎬 Мастер Игры
+mode_tooltip: '«Разговор»: произнести вслух · «Действие»: совершить действие · «Размышление»: про себя · «Мастер Игры»:
+  замечание для ведущего, не относящееся к персонажу (способствует развитию сюжета, не произносится вами)'
+target_next_label: 'Далее:'
+target_tooltip: Самостоятельно выбирайте, кто будет говорить следующим, вместо того чтобы оставлять это решение ведущему.
+target_auto: Автоматически
+whisper_label: Шёпот
+whisper_tooltip: Если этот флажок установлен, ваше сообщение станет конфиденциальной информацией, доступной только выбранному
+  персонажу — остальные члены группы не будут об этом знать.
+section_resources: Ресурсы и Скиллы
+field_resources: Ресурсы
+field_resources_hint: 'Формат: «имя: текущее/максимальное» (по одному в строке)'
+field_skills: Скиллы
+field_skills_hint: 'Формат: «навык: модификатор» (от -5 до +10, по одному в строке)'
+section_lore: Лор Кампании
+hint_lore_format: По одной карточке на блок, разделенных пустой строкой. Карточки вставляются в сюжет только тогда, когда
+  в сцене появляются их триггеры.
+section_campaign: Доска Кампании
+field_objectives: Цели
+field_objectives_hint: 'Формат: «название | текущее/максимальное | статус | описание» (статус: активен/завершен/неудача)'
+field_clocks: Тайминги
+field_clocks_hint: 'Формат: «название | текущее/максимальное | описание»'
+website_btn: Сайт проекта
+docs_btn: Документация
+lock_background: 🔒 Заблокировать фон (запретить автосмену)
+lock_background_hint: 'Когда включено, фоновое изображение остаётся фиксированным и НЕ меняется<br>
+
+  автоматически во время сцены — даже если локация изменилась.'
+disable_ambient: 🔇 Отключить фоновый звук (играть в тишине)
+disable_ambient_hint: 'Когда включено, фоновый звук во время сцены не воспроизводится.<br>
+
+  Полезно, если нужна тишина во время игры.'
+ai_asst_window_title: ИИ-помощник создания персонажа
+ai_asst_header_title: ИИ-помощник создания персонажа
+ai_asst_header_subtitle: Ответьте на несколько вопросов — остальное сделает нейросеть
+ai_asst_close_tooltip: Закрыть
+ai_asst_stepper_title: ШАГИ
+ai_asst_step_indicator: Шаг {n} из {total}
+ai_asst_btn_back: ←  Назад
+ai_asst_btn_back_tooltip: Вернуться к предыдущему шагу
+ai_asst_btn_next: Далее  →
+ai_asst_btn_next_tooltip: Перейти к следующему шагу
+ai_asst_btn_done: Готово
+ai_asst_step_1: Концепция
+ai_asst_step_2: Характер и голос
+ai_asst_step_3: Внешность и предыстория
+ai_asst_step_4: Отношения с вами
+ai_asst_step_5: Детали и ограничения
+ai_asst_step_6: Генератор
+ai_asst_concept_card_title: Кто ваш персонаж?
+ai_asst_concept_card_subtitle: Опишите в свободной форме главную идею — остальное можно уточнить ниже.
+ai_asst_concept_field_label: Краткая идея персонажа
+ai_asst_concept_field_tooltip: Обязательно для заполнения. ИИ использует это как затравку для всех остальных полей.
+ai_asst_concept_field_placeholder: 'Например: «Бывшая наёмница-эльфийка, уставшая от войны, теперь держит таверну на
+  границе королевств и скрывает тёмное прошлое»…'
+ai_asst_genre_card_title: Сеттинг / жанр
+ai_asst_genre_card_subtitle: Выберите один или несколько — или добавьте свой
+ai_asst_genre_fantasy: Фэнтези
+ai_asst_genre_scifi: Sci-Fi
+ai_asst_genre_modern: Современность
+ai_asst_genre_historical: Историческое
+ai_asst_genre_anime: Аниме/манга
+ai_asst_genre_postapoc: Постапокалипсис
+ai_asst_genre_cyberpunk: Киберпанк
+ai_asst_genre_horror: Хоррор
+ai_asst_genre_sliceoflife: Повседневность
+ai_asst_role_card_title: Роль персонажа
+ai_asst_role_card_subtitle: Какое место персонаж занимает в истории?
+ai_asst_role_companion: Компаньон/спутник
+ai_asst_role_mentor: Наставник
+ai_asst_role_antagonist: Антагонист
+ai_asst_role_love: Романтический интерес
+ai_asst_role_rival: Соперник
+ai_asst_role_assistant: Помощник/ассистент
+ai_asst_role_stranger: Загадочный незнакомец
+ai_asst_role_friend: Друг
+ai_asst_traits_card_title: Черты характера
+ai_asst_traits_card_subtitle: Выберите несколько или добавьте свои
+ai_asst_trait_kind: Добрый
+ai_asst_trait_tsundere: Цундэрэ
+ai_asst_trait_sarcastic: Саркастичный
+ai_asst_trait_shy: Застенчивый
+ai_asst_trait_confident: Уверенный
+ai_asst_trait_cold: Холодный
+ai_asst_trait_playful: Игривый
+ai_asst_trait_serious: Серьёзный
+ai_asst_trait_chaotic: Хаотичный
+ai_asst_trait_loyal: Преданный
+ai_asst_trait_manipulative: Манипулятивный
+ai_asst_trait_naive: Наивный
+ai_asst_trait_wise: Мудрый
+ai_asst_trait_energetic: Энергичный
+ai_asst_trait_calm: Спокойный
+ai_asst_trait_caring: Заботливый
+ai_asst_speech_card_title: Манера речи
+ai_asst_speech_card_subtitle: Как персонаж разговаривает?
+ai_asst_speech_formal: Формальная
+ai_asst_speech_slang: Разговорная/сленг
+ai_asst_speech_poetic: Поэтичная
+ai_asst_speech_direct: Прямолинейная
+ai_asst_speech_teasing: Игривая/поддразнивающая
+ai_asst_speech_archaic: Архаичная
+ai_asst_speech_accent: С акцентом/особенностями речи
+ai_asst_speech_emoji: С эмодзи
+ai_asst_motive_card_title: Внутренний мотив
+ai_asst_motive_card_subtitle: Что движет персонажем? Страх, цель, тайна…
+ai_asst_motive_placeholder: 'Например: «Боится снова кого-то потерять, поэтому держит людей на расстоянии»…'
+ai_asst_bg_skip_hint: Этот шаг необязателен — можно пропустить, и ИИ придумает детали сам.
+ai_asst_age_card_title: Возраст и вид/раса
+ai_asst_age_placeholder: 'Например: «24 года, человек» или «неизвестно, древняя вампирша»'
+ai_asst_appearance_card_title: Внешность
+ai_asst_appearance_card_subtitle: Ключевые детали — остальное додумает ИИ
+ai_asst_appearance_placeholder: Цвет волос/глаз, телосложение, стиль одежды, отличительные приметы…
+ai_asst_backstory_card_title: Предыстория
+ai_asst_backstory_placeholder: Ключевые события прошлого, которые сформировали персонажа…
+ai_asst_rel_card_title: Кем персонаж приходится вам?
+ai_asst_rel_card_subtitle: Выберите вариант, лучше всего описывающий динамику
+ai_asst_rel_stranger: Незнакомец
+ai_asst_rel_friend: Друг
+ai_asst_rel_partner: Романтический партнёр
+ai_asst_rel_family: Член семьи
+ai_asst_rel_enemy: Соперник/враг
+ai_asst_rel_mentor: Наставник/ученик
+ai_asst_rel_boss: Начальник/подчинённый
+ai_asst_rel_chance: Случайная встреча
+ai_asst_meeting_card_title: Как происходит первая встреча?
+ai_asst_meeting_card_subtitle: Это станет основой поля «Сценарий» и первого сообщения
+ai_asst_meeting_placeholder: 'Например: «{{user}} заходит в таверну поздним вечером, персонаж как раз закрывается»…'
+ai_asst_tone_card_title: Тон истории
+ai_asst_tone_light: Лёгкий/дружелюбный
+ai_asst_tone_romance: Романтика (без откровенных сцен)
+ai_asst_tone_drama: Драма/мрачные темы
+ai_asst_tone_comedy: Комедия
+ai_asst_tone_adventure: Приключения/экшн
+ai_asst_tone_mystery: Тайна/детектив
+ai_asst_extra_card_title: Что ещё обязательно нужно учесть?
+ai_asst_extra_card_subtitle: Особые фразы, лор, отсылки, ограничения — всё, что важно для точности
+ai_asst_extra_placeholder: Свободный текст…
+ai_asst_fields_card_title: Какие поля заполнять?
+ai_asst_fields_card_subtitle: Отметьте только то, что должен сгенерировать ИИ. Остальные поля останутся нетронутыми.
+ai_asst_btn_select_all: Выбрать всё
+ai_asst_btn_select_none: Снять всё
+ai_asst_mode_card_title: Режим применения
+ai_asst_mode_tooltip: Выберите, как сгенерированные значения применяются к редактору.
+ai_asst_mode_overwrite: Перезаписать выбранные поля полностью
+ai_asst_mode_empty: Заполнять только пустые поля (не трогать уже введённое)
+ai_asst_field_name_label: Имя персонажа
+ai_asst_field_name_hint: Короткое звучное имя персонажа (и, если уместно, фамилия/прозвище). Только само имя, без пояснений.
+ai_asst_field_description_label: Описание
+ai_asst_field_description_hint: 'Связное описание персонажа от третьего лица: кто это, внешность, род занятий, ключевые
+  черты биографии. 3-6 предложений, без воды и мета-комментариев.'
+ai_asst_field_personality_label: Личность (характер)
+ai_asst_field_personality_hint: 'Компактная выжимка характера персонажа: ключевые черты, привычки, манера речи, триггеры
+  и слабости. Можно списком через запятую или короткими фразами.'
+ai_asst_field_scenario_label: Сценарий (обстановка)
+ai_asst_field_scenario_hint: Описание текущей ситуации/места/контекста, в котором начинается ролевая игра между персонажем
+  и {{user}}. 2-4 предложения.
+ai_asst_field_first_message_label: Первое сообщение
+ai_asst_field_first_message_hint: Первая реплика персонажа, адресованная {{user}}, от первого лица, в характере персонажа.
+  Действия оформляй в *звёздочках*, реплики — обычным текстом. Атмосферно, живо, без спойлеров о будущем сюжете.
+ai_asst_field_alt_greetings_label: Альтернативные приветствия
+ai_asst_field_alt_greetings_hint: Список из 2-3 АЛЬТЕРНАТИВНЫХ первых сообщений (другие завязки/настроения), в том же
+  стиле, что и основное первое сообщение. Верни как массив строк JSON.
+ai_asst_field_example_messages_label: Примеры диалогов
+ai_asst_field_example_messages_hint: '1-2 коротких примера обмена репликами между {{user}} и персонажем, демонстрирующих
+  стиль речи персонажа. Формат:
+
+  {{user}}: ...
+
+  {{char}}: ...
+
+  (пустая строка)
+
+  {{user}}: ...
+
+  {{char}}: ...'
+ai_asst_field_creator_notes_label: Заметки автора
+ai_asst_field_creator_notes_hint: 'Краткая служебная заметка для того, кто будет использовать карточку: жанр, теги, рекомендации
+  по использованию. 1-3 предложения.'
+ai_asst_provider_card_title: Языковая модель (провайдер)
+ai_asst_provider_card_subtitle: Будет использован тот же провайдер, что настроен в приложении
+ai_asst_provider_tooltip: Нажмите, чтобы выбрать этого провайдера для генерации.
+ai_asst_btn_generate: ✨  Сгенерировать карточку
+ai_asst_btn_generate_tooltip: Отправить собранные ответы выбранному провайдеру и сгенерировать поля карточки.
+ai_asst_stream_card_title: Ответ модели
+ai_asst_review_card_title: Проверьте и примените
+ai_asst_review_card_subtitle: Можно отредактировать текст вручную перед применением. Снятая галочка исключает поле из
+  применения.
+ai_asst_btn_regen: Перегенерировать
+ai_asst_btn_regen_tooltip: Перегенерировать только это поле, оставив остальные как утверждённый контекст.
+ai_asst_btn_apply: Применить в редактор
+ai_asst_btn_apply_tooltip: Применить отмеченные поля к редактору персонажа и закрыть диалог.
+ai_asst_status_no_token: ⚠ Для «{provider}» не задан API-токен. Настройте его в Options → API, затем вернитесь сюда.
+ai_asst_status_no_fields: ⚠ Выберите хотя бы одно поле для генерации на предыдущем шаге.
+ai_asst_err_provider: 'Ошибка: не удалось получить провайдера. Проверьте настройки в Options.'
+ai_asst_err_generation: '[Ошибка генерации: {error}]'
+ai_asst_err_parse: '
+
+
+  [Не удалось разобрать ответ модели как JSON или Markdown. Попробуйте другого провайдера или упростите запрос.]'
+ai_asst_custom_placeholder: Свой вариант… (Enter, чтобы добавить)
+ai_asst_custom_tooltip: Введите значение и нажмите Enter — оно станет чипом, который можно переключать.
+ai_asst_prompt_system: Ты — опытный сценарист и гейм-дизайнер, помогающий пользователю программы для ролевых ИИ-чатов
+  составить карточку вымышленного персонажа. Ты работаешь ТОЛЬКО с художественным вымыслом. Отвечай СТРОГО валидным JSON
+  без каких-либо пояснений, преамбул, markdown-оберток ``` и комментариев — только сам JSON-объект. Пиши на том же языке,
+  на котором даны ответы пользователя (по умолчанию — русский). Используй плейсхолдер {{user}} для обращения к пользователю
+  и {{char}} при необходимости сослаться на самого персонажа в примерах диалога.
+ai_asst_prompt_user_header: 'Вот информация о персонаже, собранная от пользователя через анкету:
+
+  '
+ai_asst_prompt_field_keys_header: '
+
+  Сгенерируй JSON со СЛЕДУЮЩИМИ ключами (и только ими):'
+ai_asst_prompt_user_footer: '
+
+  Верни ровно один JSON-объект с этими ключами. Никакого текста до или после JSON. Не оставляй поля пустыми — если данных
+  не хватает, придумай логично вытекающие детали, согласованные с уже указанной информацией.'
+ai_asst_prompt_l_concept: Основная идея
+ai_asst_prompt_l_genre: Сеттинг/жанр
+ai_asst_prompt_l_role: Роль персонажа
+ai_asst_prompt_l_traits: Черты характера
+ai_asst_prompt_l_speech: Манера речи
+ai_asst_prompt_l_motive: Внутренний мотив/страх/цель
+ai_asst_prompt_l_age: Возраст/вид
+ai_asst_prompt_l_appearance: Внешность
+ai_asst_prompt_l_backstory: Предыстория
+ai_asst_prompt_l_relationship: Отношение к {{user}}
+ai_asst_prompt_l_meeting: Обстоятельства знакомства
+ai_asst_prompt_l_tone: Тон истории
+ai_asst_prompt_l_extra: Дополнительные пожелания/ограничения
+ai_asst_prompt_l_array: массив строк
+ai_asst_prompt_l_string: строка
+ai_asst_prompt_refine_addition: '
+
+
+  Уже утверждённые части карточки (для согласованности, не переписывай их):
+
+  '
+sc_menu_scratchpad: 🧠  Мысли ScratchPad
+sc_menu_text_bar_hover: 💬  Текстовый чат (При наведении)
+sc_menu_text_bar_on: 💬  Текстовый чат (ВКЛ)
+sc_menu_text_bar_off: 💬  Текстовый чат (ВЫКЛ)
+sc_hud_hormones_title: Эндокринный и гормональный баланс
+sc_hud_oxytocin: 🧪 Окситоцин (Любовь)
+sc_hud_dopamine: ⚡ Дофамин (Фокус)
+sc_hud_cortisol: 🔥 Кортизол (Стресс)
+sc_hud_energy: 🔋 Энергия (Бодрость)
+sc_hud_scratchpad_title: 🧠 Внутренние мысли компаньона (ScratchPad)
+sc_input_placeholder: Напишите ваше сообщение...
+no_folders_prompt_scenes: Папок сцен пока нет. Создать?
+create: Создать
+new_folder: 📁 Новая папка
+lobby_folders_section: ПАПКИ СЦЕН
+lobby_scenes_section: СЦЕНЫ
+folder_scenes_label: сцен
+folder_create_title_scene: Создать папку для сцен
+folder_delete_detail_scenes: Сцены вернутся в общий список лобби.
+party_member_selected: 'Выбрано: {n}'
+soul_stage_no_party_error: В сцене нет участников группы! Добавьте хотя бы одного персонажа перед запуском.
+tab_arcs: Сюжетные арки
+tab_relationships: Отношения
+tab_character_states: Состояния героев
+section_arcs: Сюжетные арки
+hint_arcs_format: Здесь вы управляете доступом к веткам сюжета. Арка в статусе "locked" не существует для персонажей
+  — никто не упомянет её. Переведите в "available", когда игрок найдёт нужную зацепку, или в "active", когда она началась.
+  "trigger" — это заметка для ГМ о триггере разблокировки (персонажам не видна).
+section_relationships: Отношения
+hint_relationships_format: Как персонаж воспринимает другого (чаще всего отношение к ИГРОКУ, но можно задать между любыми
+  героями). Внедряется прямо в системный промпт персонажа. Симпатия от -100 (вражда) до 100 (преданность). "role" — текущий
+  статус/титул цели в глазах субъекта.
+field_relationships: Отношения
+field_relationships_hint: 'Формат: "субъект -> цель | симпатия(-100..100) | роль/титул | тег1, тег2"'
+section_character_states: Состояния персонажей
+hint_overlays_format: Личное развивающееся состояние персонажа — текущая роль, титул и важные факты (верность, тайна,
+  внутренний конфликт). Передаётся прямо в промпт персонажа отдельно от статичной карточки.
+export_md_no_scene: Нет активной сцены для экспорта.
+export_md_failed: Не удалось сформировать экспорт сцены.
+export_md_dialog_title: Экспорт сцены в Markdown
+export_md_write_failed: Не удалось записать файл — проверьте путь и права доступа.
+export_md_success: Сцена успешно экспортирована в Markdown.
+call_mode_dialog_title: Выбор режима звонка
+call_mode_dialog_subtitle: Вы можете переключать режим в любой момент — это не меняет ваши глобальные настройки.
+call_mode_sow_title: Yume System
+call_mode_sow_desc: Режим звонка с интерактивной моделью и голосовым чатом.
+call_mode_companion_title: Yume Desktop Companion
+call_mode_companion_desc: Персонаж-компаньон поверх всех окон прямо на вашем рабочем столе.
+call_mode_dialog_cancel: Отмена
+call_mode_dialog_confirm: Начать звонок
+confirm: Подтвердить
+var_preset_empty_title: Пусто
+var_preset_empty_msg: Нет переменных для сохранения.
+var_preset_save_title: Сохранить пресет
+var_preset_save_label: 'Введите название пресета:'
+var_preset_save_placeholder: Мой кастомный пресет
+var_preset_overwrite_title: Перезапись пресета
+var_preset_overwrite_msg: Пресет с именем '{name}' уже существует. Перезаписать?
+var_preset_saved_title: Сохранено
+var_preset_saved_msg: Пресет '{name}' успешно сохранён.
+var_preset_not_found_title: Не найдено
+var_preset_not_found_msg: Удалять можно только пользовательские пресеты.
+var_preset_delete_title: Удаление пресета
+var_preset_delete_msg: Удалить пресет '{preset_name}'?
+var_preset_deleted_title: Удалено
+var_preset_deleted_msg: Пресет '{preset_name}' успешно удалён.
+reasoning_effort_text: Объем рассуждений
+reasoning_effort_none: Выкл
+reasoning_effort_low: Низкие
+reasoning_effort_medium: Средние
+reasoning_effort_high: Высокие
+tts_rules_title: Правила озвучки (TTS)
+section_tts_voicing_mode: РЕЖИМ ОЗВУЧИВАНИЯ ТЕКСТА
+tts_voicing_mode_label: Режим озвучки
+tts_custom_regex_label: Кастомный Regex (Группа 1)
+tts_custom_regex_placeholder: напр., \*(.*?)\* для озвучки только текста в звёздочках
+custom_args_placeholder: напр., --rope-freq-base 10000 --temp 0.8
+web_server_starting_btn: Запуск...
+web_server_running_status: 'Статус: Работает по адресу http://127.0.0.1:8000'
+checkbox_auto_translate_new_messages: Автоматически переводить новые сообщения
+auto_translate_new_messages_tooltip: 'Если включено, каждое новое сообщение персонажа переводится автоматически.
+
+  Если выключено, текст остаётся на исходном языке с возможностью
+
+  ручного перевода через меню реплики.'
+delete_model: Удалить модель
+toggle_tools_tooltip: Разрешить персонажу вызывать инструменты (поиск в сети, время, плеер) при ответе
+toast_tools_title: Инструменты
+toast_tools_enabled: 'Персонаж теперь может использовать инструменты при ответе: {tool_list}'
+toast_tools_disabled: Использование инструментов отключено.
+tool_using_label: использует {tool}...
+thinking_process_label: ПРОЦЕСС РАЗМЫШЛЕНИЯ
+thinking_hide_hint: скрыть
+thinking_show_hint: показать
+toast_attach_title: Вложения
+toast_attach_limit: Вы можете прикрепить до {limit} файлов к одному сообщению.
+attach_file_dialog_title: Прикрепить файлы к сообщению
+toast_attach_too_large: Файл '{filename}' превышает {size} МБ и был пропущен.
+toast_tts_replay_title: Голосовое сообщение
+toast_tts_replay_missing: Нет сохранённой озвучки для этого сообщения.
+replay_voice_tooltip: Воспроизвести озвучку
+msg_action_replay_voice: Воспроизвести озвучку
+preview_prompt_title: Предпросмотр сырого промпта
+preview_prompt_desc: 'Примерно так языковая модель видит карточку персонажа перед генерацией ответа:'
+toast_ai_assistant_title: ИИ-Помощник
+toast_ai_assistant_applied: 'Успешно заполнено полей: {applied_count}!'
+duplicate_success: Персонаж продублирован как '{new_name}'
+default_chat_name: Основной чат
+rename_chat_title: Переименовать чат
+rename_chat_prompt: 'Введите новое название чата:'
+chat_renamed_success: Чат переименован в '{new_name}'.
+imported_suffix: Импортировано
+edit_save_error: Не удалось сохранить отредактированное сообщение!
+translate_error: Ошибка перевода
+force_memory_tooltip: Обновить Yume Memory вручную прямо сейчас
+image_gen_api_key: 'API Ключ:'
+image_gen_started: Анализ сцены и создание кинематографичного промпта...
+image_gen_placeholder: 🖼 Генерация изображения...
+image_gen_failed: ⚠ Ошибка генерации изображения
+retry_button: Повторить
+generated_image_title: Сгенерированное изображение
+save_image_as: Сохранить изображение как...
+regenerate_image: Перегенерировать изображение
+show_in_folder: Показать в папке
+visual_engine_nothing: Отключено
+visual_engine_images: Изображения эмоций
+visual_engine_live2d: Live2D модель
+visual_engine_vrm: VRM 3D модель
+live2d_motion_mapper_btn: Назначить анимации на эмоции
+folder_no_chars_available: Нет доступных персонажей для добавления
+folder_empty: В этой папке пока нет персонажей
+about_tagline: ДВИЖОК РОЛЕВЫХ ИГР С ИИ
+author_notes_title: Заметки автора
+author_notes_saved_body: Заметки автора успешно сохранены.
+summary_editor_no_new_msg: Нет новых сообщений для суммаризации.
+appearance_preview_text_1: Она смотрит на тебя,
+appearance_preview_text_2: медленно прищуривая глаза.
+appearance_preview_text_3: Значит... ты ничего не помнишь?
+appearance_preview_text_4: Я помню достаточно.
+program_language_item_de: Немецкий
+tts_qwen_advanced_title: РАСШИРЕННАЯ ГЕНЕРАЦИЯ И СЕГМЕНТАЦИЯ
+tts_qwen_gpu_label: Видеокарта для TTS
+tts_qwen_tokens_label: Максимум новых токенов
+tts_qwen_temperature_label: Температура
+tts_qwen_top_p_label: Top-p
+tts_qwen_chunk_chars_label: Максимум символов в сегменте TTS
+tts_qwen_pause_label: Пауза между сегментами TTS
+tts_qwen_end_silence_label: Тишина в конце каждого сегмента
+tts_qwen_advanced_hint: Если голос обрывается в конце, попробуйте уменьшить сегменты текста, немного увеличить лимит
+  токенов и добавить 100–250 мс тишины в конце. После изменения перезапустите генерацию голоса.
+voice_anti_echo_half_duplex: Антиэхо / полудуплекс (микрофон выключен, пока приложение говорит)
+voice_wake_word_help: Ключевая фраза определяется в расшифровке Whisper; это не отдельная постоянно слушающая модель
+  активации.
+tts_qwen_gpu: Видеокарта для TTS
+tts_qwen_max_tokens: Максимум новых токенов
+tts_qwen_temperature: Температура
+tts_qwen_top_p: Top-p
+tts_qwen_chunk_size: Максимум символов в сегменте TTS
+tts_qwen_pause: Пауза между сегментами TTS
+tts_qwen_end_silence: Тишина в конце каждого сегмента
+tts_qwen_chunk_hint: Если голос обрывается в конце, попробуйте уменьшить сегменты текста, немного увеличить лимит токенов
+  и добавить 100–250 мс тишины в конце. После изменения перезапустите генерацию голоса.
+
+# Integration hub and conversational controls added in the Yume Companion enhancement.
+settings_system_ui: Система и интерфейс
+settings_api_providers: API и провайдеры
+settings_local_llm: Языковая модель и API
+settings_tool_calling_mcp: Вызовы инструментов и MCP
+settings_home_assistant: Home Assistant
+settings_tools_plugins: Инструменты и плагины
+settings_ai_services: ИИ-сервисы
+settings_conversation_audio: Диалог и аудио
+settings_sow_modules: Модули SoW
+settings_appearance: Внешний вид
+ha_card_title: Home Assistant — умный дом
+ha_intro: Подключите Yume Companion к Home Assistant в домашней сети. Доступ необязателен; вызовы сервисов требуют явно разрешённых
+  сущностей.
+ha_enable: Включить Home Assistant
+ha_url_label: URL Home Assistant
+ha_token_label: Долгосрочный токен доступа
+ha_token_placeholder: Токен хранится локально
+ha_allow_control: Разрешить вызовы сервисов (только разрешённые сущности)
+ha_entities_label: Разрешённые сущности для управления (по одной в строке)
+ha_safety_note: Запросы состояния работают без разрешения управления. Для управления нужен явный список
+  разрешённых сущностей. Замки, сигнализация и произвольные скрипты недоступны. При
+  использовании облачной LLM результаты инструментов могут передаваться этому провайдеру.
+ha_test_button: Проверить соединение
+ha_not_tested: Ещё не проверено
+tool_hub_title: Инструменты и плагины
+tool_hub_intro: Выберите инструменты, доступные ассистенту в чате. Интеграции подключаются модулями; произвольные команды
+  оболочки недоступны.
+chat_tools_enabled_label: Разрешить использование инструментов в чате
+tool_pref_web_search: Разрешить поиск в интернете
+tool_pref_open_url: Разрешить открытие сайтов в браузере
+tool_pref_system_info: Разрешить системную информацию, дату и время
+tool_pref_clipboard: Разрешить чтение буфера обмена
+tool_pref_launch_program: Разрешить запуск разрешённых программ Windows
+tool_allowed_programs_label: Программы, которые Yume может запускать (выберите из установленных)
+tool_hub_security_note: "Для запуска программ требуется подтверждение. Модель не может выполнять произвольные команды и аргументы; разрешены только существующие .exe или .lnk из списка. Результаты инструментов могут передаваться выбранному провайдеру LLM. Не включайте чтение буфера обмена при наличии там конфиденциального текста; для приватных данных предпочтительна доверенная локальная LLM."
+ai_services_title: ИИ-сервисы и назначение GPU
+ai_services_intro: Управляйте распределением вычислений централизованно. Whisper и Qwen TTS работают на этом компьютере; локальный
+  llama.cpp использует выбранные GPU. Для удалённой LLM GPU настраивается на удалённом ПК.
+ai_route_local: Этот ПК — локальный llama.cpp
+ai_route_remote: Удалённый ПК — Ollama / llama.cpp
+ai_primary_llm_route: Место выполнения LLM
+ai_device_cuda: GPU CUDA
+ai_device_cpu: ЦП
+ai_whisper_device: Устройство Whisper
+ai_whisper_gpu: GPU для Whisper
+ai_qwen_gpu: GPU по умолчанию для Qwen TTS
+ai_llm_gpu_indices: Индексы GPU для локальной LLM (через запятую)
+ai_gpu_note: Индексы GPU относятся к нумерации внутри процесса. После изменений может потребоваться перезапуск локального
+  сервера LLM или голосового режима.
+ai_refresh_gpu: Обновить список GPU
+ai_gpu_not_checked: Обнаружение GPU ещё не запускалось
+ai_no_cuda_gpu: GPU CUDA не обнаружен
+ai_detected_gpus: 'Обнаружено GPU CUDA: {count}'
+ai_no_gpus_detected: GPU CUDA не обнаружен. Режим CPU доступен, если поддерживается бэкендом.
+dialogue_style_title: Диалог и эмоции
+dialogue_style_intro: Эти подсказки дополняют характер персонажа, но не заменяют его. Они влияют на новые ответы; параметры
+  аудио загружаются при запуске голосового режима.
+natural_dialogue_enabled: Включить более естественный диалог
+emotion_continuity_enabled: Сохранять эмоциональную последовательность между ответами
+avoid_repetition_enabled: Избегать повторяющихся приветствий и шаблонных фраз
+dialogue_style_balanced: Естественный / сбалансированный
+dialogue_style_warm: Тёплый и личный
+dialogue_style_concise: Короткий и прямой
+dialogue_style_casual: Непринуждённый и спонтанный
+dialogue_style_label: Стиль общения
+emotion_intensity_label: Интенсивность эмоций
+audio_behavior_title: Голосовой ввод, ключевое слово и защита от эха
+wake_word_enabled_label: Включить ключевое слово
+wake_word_phrase_label: Фразы активации (через запятую)
+wake_word_timeout_label: Оставаться активным после ключевого слова
+anti_echo_half_duplex: 'Полудуплекс: не слушать во время воспроизведения'
+anti_echo_off: Выкл.
+anti_echo_mode_label: Режим защиты от эха
+anti_echo_tail_label: Задержка защиты после воспроизведения
+voice_silence_label: Пауза до завершения распознавания речи
+voice_preroll_label: Предзапись аудио для сохранения первых звуков
+
+  Для прерывания во время воспроизведения нужен аудиотракт с поддержкой AEC.
+ha_enabled_notice: Home Assistant включён. Чтобы ассистент мог пользоваться им в чате, необходимо также включить инструменты.
+ha_testing: Проверка соединения…
+ha_connected: 'Подключено: {message}'
+ha_test_success: Соединение успешно.
+ha_connection_failed: 'Ошибка соединения: {details}'
+program_launch_confirm_title: Подтвердить запуск программы
+program_launch_confirm_body: 'Запустить это приложение?
+
+
+  {name}
+
+  {path}'
+
+# Audio segment tuning and integration status.
+tts_chunk_max_chars_label: Максимальная длина текста сегмента TTS
+tts_chunk_pause_label: Пауза между сегментами TTS
+lipsync_smoothing_label: Сглаживать синхронизацию губ
+tool_registry_status: 'Активные инструменты: {tools}'
+ai_remote_settings_button: "Настроить удалённую LLM в разделе API и провайдеры"
+ai_render_gpu_note: "Рендеринг Live2D/VRM использует графические настройки Windows и не может независимо назначаться здесь как CUDA-процесс."
+mcp_confirm_calls_label: "Запрашивать подтверждение перед каждым внешним вызовом MCP"
+mcp_call_confirm_title: "Подтвердить внешнее действие MCP"
+mcp_call_confirm_body: "Настроенный MCP-сервер хочет выполнить этот инструмент. Продолжайте, только если доверяете серверу.\n\nИнструмент: {tool}\nАргументы:\n{args}"
+mcp_test_connection_button: "Проверить подключение MCP"
+mcp_connection_not_tested: "Подключение ещё не проверялось"
+mcp_connection_testing: "Проверка подключения MCP…"
+mcp_invalid_url: "Введите полный HTTP(S)-адрес MCP-сервера."
+mcp_connection_failed_detail: "Сервер не завершил рукопожатие MCP."
+mcp_no_tools: "Инструменты не объявлены"
+mcp_connection_success: "Подключено — инструментов: {count}: {tools}"
+mcp_connection_failed: "Ошибка подключения: {details}"
+# Version 2.5.3 – Android Connector server control
+android_webserver_status: "Веб-сервер: проверка состояния …"
+android_webserver_status_prefix: "Веб-сервер: "
+android_webserver_start: "Запустить веб-сервер"
+android_webserver_stop: "Остановить веб-сервер"
+
+# Audio echo feature availability (v2.5.3)
+aec_noise_suppression_label: "Дополнительное шумоподавление AEC (недоступно)"
+aec_library_ready: "Процессор AEC3 не интегрирован; доступен полудуплексный режим."
+aec_library_missing: "Процессор AEC3 не интегрирован; используется полудуплексный режим."
+audio_echo_note: "WebRTC AEC3 использует фактически воспроизводимый звук как эталон и может принимать речь во время воспроизведения. Для этого должны успешно пройти тест AEC3 и работать опорный аудиопоток; иначе используется полудуплексный режим."
+
+# WebRTC AEC3 (v2.5.3 AEC repair)
+anti_echo_aec: "WebRTC AEC3 (полнодуплексное подавление эха)"
+aec_delay_label: "Задержка опорного сигнала AEC"
+aec_controls_disabled_hint: "Настройки AEC3 доступны после успешной проверки расширения WebRTC."
+aec_not_implemented: ""
+aec_install_button: "Проверить / установить WebRTC AEC3"
+aec_recheck_button: "Повторно проверить AEC3"
+aec_status_checking: "Проверка WebRTC AEC3 при запуске …"
+aec_status_ready: "WebRTC AEC3 готов. Доступно полнодуплексное подавление эха."
+aec_status_missing: "WebRTC AEC3 отсутствует или не запускается. До исправления используется полудуплексный режим."
+aec_status_installing: "Установка WebRTC AEC3 — подождите …"
+aec_install_title: "WebRTC AEC3"
+aec_install_prompt: "Пакет WebRTC AEC3 отсутствует или не работает. Установить/восстановить его сейчас в том Python-окружении, которое использует Yume Companion? Требуется доступ в интернет."
+aec_install_success: "WebRTC AEC3 установлен и успешно инициализирован."
+aec_install_restart_note: "Перезапустите голосовой режим; если потребуется, перезапустите Yume Companion."
+aec_install_failure: "Не удалось установить или инициализировать AEC3. Приложение продолжит работу в полудуплексном режиме."
+aec_delay_help: "Задержка между эталонным сигналом динамика и эхом в микрофоне."
+aec_ns_help: "Включает шумоподавление WebRTC вместе с акустическим эхоподавлением."
+# Backup and restore (v2.5.3)
+settings_backup_restore: "Резервное копирование и восстановление"
+backup_restore_title: "Создание / импорт резервной копии"
+backup_restore_intro: "Создайте переносимую резервную копию Yume Companion или импортируйте старую копию, включая версию 2.5.1. Перед восстановлением автоматически создаётся страховочная копия."
+backup_include_assets: "Включить пользовательские голоса, модели и ресурсы (может занять много места)"
+backup_include_assets_tooltip: "Если включено, добавляются дополнительные папки моделей и голосов. Большие локальные модели могут увеличить ZIP до нескольких гигабайт."
+backup_create_button: "Создать ZIP-копию…"
+backup_import_button: "Импортировать / восстановить копию…"
+backup_import_folder_button: "Импортировать старую папку копии…"
+backup_sensitive_warning: "Резервные копии содержат API-ключи и личные данные персонажей/чатов. Храните ZIP в безопасном месте. Восстановление заменяет соответствующие файлы конфигурации, но не удаляет другие файлы."
+backup_status_idle: "Резервные действия ещё не выполнялись."
+backup_create_dialog_title: "Создать резервную копию Yume Companion"
+backup_created_title: "Копия создана"
+backup_created_message: "Резервная копия успешно создана. Она содержит API-токены и личные данные персонажей — храните её конфиденциально.\n\n{path}\n\nФайлов: {count}"
+backup_created_status: "Копия создана: {path} ({count} файлов)"
+backup_import_dialog_title: "Импортировать резервную копию Yume Companion"
+backup_import_folder_dialog_title: "Выберите старую папку резервной копии"
+backup_restore_confirm_title: "Подтверждение восстановления"
+backup_restore_confirm_message: "Импортировать копию версии {version}, содержащую {count} поддерживаемых файлов?\n\nСоответствующие настройки, API-токены и данные персонажей/чатов будут заменены. Сначала будет создана страховочная копия текущей установки. Поддерживаются старые копии v2.5.1. После восстановления перезапустите Yume Companion."
+backup_restore_done_title: "Резервная копия восстановлена"
+backup_restore_done_message: "Импорт завершён.\n\nВосстановлено файлов: {count}\nВерсия копии: {version}\n\nАвтоматическая копия прежнего состояния:\n{backup}\n\nПерезапустите Yume Companion, чтобы настройки и персонажи загрузились заново."
+backup_restored_status: "Восстановлено {count} файлов из копии версии {version}."
+backup_error_title: "Ошибка резервного копирования"
+
+ambient_default_track_label: 'Трек по умолчанию:'
+ambient_default_volume_label: 'Громкость по умолчанию:'
+audio_hud_title: 'Фоновый звук'
+audio_hud_track_label: 'ЗВУКОВАЯ АТМОСФЕРА'
+audio_hud_volume_label: 'ГРОМКОСТЬ'
+open_ambient_folder_btn: 'Открыть папку эмбиента (Добавьте своё аудио)'
+reload_ambient_tooltip: 'Обновить список аудиодорожек'
+settings_updates: 'Обновления'
+updates_title: 'Обновления'
+updates_intro: 'Проверяет репозиторий GitHub на наличие новой версии. Ничего не скачивается и не устанавливается автоматически.'
+updates_current_version: 'Установленная версия: {version}'
+updates_repo_label: 'Репозиторий GitHub (владелец/имя):'
+updates_check_button: 'Проверить обновления'
+updates_open_release_button: 'Открыть страницу релиза'
+updates_status_idle: 'Проверка ещё не выполнялась.'
+updates_checking: 'Проверка GitHub...'
+updates_not_configured: 'Репозиторий GitHub ещё не указан.'
+updates_invalid_repo: 'Неверный репозиторий. Используйте формат владелец/репозиторий.'
+updates_repo_not_found: 'Репозиторий не найден (или приватный).'
+updates_no_releases: 'В репозитории пока нет релизов или тегов.'
+updates_rate_limited: 'Достигнут лимит GitHub. Повторите позже.'
+updates_network_error: 'Не удаётся подключиться к GitHub.'
+updates_error: 'Ошибка проверки обновлений: {error}'
+updates_available: 'Доступна новая версия: {remote} (установлена: {local}).'
+updates_up_to_date: 'У вас последняя версия (установлена: {local}, последняя: {remote}).'
+edit_personas: "Управление персонами..."
+jump_to_bottom_tooltip: "Перейти к последнему сообщению"
+switch_persona_tooltip: "Сменить персону"
+next_variant_tooltip: "Следующий вариант ответа"
+prev_variant_tooltip: "Предыдущий вариант ответа"
+llm_reset_confirm_button: "Сбросить"
+llm_reset_confirm_text: "Основные параметры генерации будут возвращены к значениям по умолчанию.\nПресеты не пострадают."
+llm_reset_confirm_title: "Сбросить настройки?"
+llm_reset_defaults: "Сброс"
+llm_reset_defaults_tooltip: "Вернуть основные параметры генерации (температуру, top-p, размер контекста,\nmax tokens, штрафы) к значениям по умолчанию."
+llm_reset_done_text: "Параметры генерации возвращены к значениям по умолчанию."
+llm_preset_applied: "Пресет «{name}» применён."
+llm_preset_created: "Пресет «{name}» сохранён."
+llm_preset_delete: "Удалить"
+llm_preset_delete_confirm: "Вы уверены, что хотите удалить пресет «{name}»?"
+llm_preset_delete_title: "Удаление пресета"
+llm_preset_delete_tooltip: "Удалить выбранный пресет"
+llm_preset_empty: "Пресеты ещё не сохранены"
+llm_preset_label: "ПРЕСЕТ"
+llm_preset_placeholder: "например, Dense 8B RP, MoE 30B Fast..."
+llm_preset_rename: "Переименовать"
+llm_preset_rename_prompt: "Новое название:"
+llm_preset_rename_title: "Переименование пресета"
+llm_preset_rename_tooltip: "Переименовать выбранный пресет"
+llm_preset_save: "Сохранить"
+llm_preset_save_as: "Новый пресет"
+llm_preset_save_as_prompt: "Название пресета:"
+llm_preset_save_as_title: "Сохранение нового пресета"
+llm_preset_save_as_tooltip: "Сохранить текущие настройки как новый пресет"
+llm_preset_save_tooltip: "Перезаписать выбранный пресет текущими настройками"
+llm_preset_tooltip: "Сохраняйте и переключайтесь между полными снепшотами настроек генерации и сэмплинга — удобно для переключения между пресетом для dense-модели и пресетом для MoE-модели без повторного ввода."
+llm_preset_updated: "Пресет «{name}» обновлён."
+tts_mode_voice_everything: "Озвучивать всё"
+tts_mode_voice_quotes: "Только цитаты"
+tts_mode_ignore_asterisks: "Пропускать текст в звёздочках"
+tts_mode_voice_outside_quotes: "Всё, кроме цитат"
+tts_mode_custom_regex: "Свой Regex"
+translator_item_ai: "ИИ-переводчик (текущая модель)"
+settings_group_general: Общие
+settings_group_ai: ИИ и модели
+settings_group_voice: Голос и аудио
+settings_group_extras: Расширения и устройства
+settings_search_placeholder: Поиск настроек ...
+settings_sakura_effect: Эффект сакуры
+appearance_wtheme_yume_sakura: Юме Сакура
+appearance_wtheme_yume_moon: Юме Лунный свет
+pair_title: "Подключение телефона (Yume Companion для Android)"
+pair_hint: "1. Установите APK на телефон (кнопка «Сохранить APK»).  2. Откройте приложение → «Подключить по QR-коду».  3. Отсканируйте этот код. Код действует несколько минут и только один раз – он постоянно обновляется. После этого телефон получает собственный ключ, который можно отозвать в любой момент. Приложение само определяет, подключаться ли через домашнюю сеть (локальный адрес) или в пути (внешний домен, если указан)."
+pair_new: "Создать новый QR-код"
+pair_apk: "Сохранить APK для телефона …"
+pair_copy: "Копировать ссылку подключения (вместо QR)"
+pair_devices: "ПОДКЛЮЧЁННЫЕ УСТРОЙСТВА"
+pair_revoke: "Удалить выбранное устройство (отозвать доступ)"
+pair_revoke_ask: "Действительно удалить это устройство? Его придётся подключить заново."
+pair_phone_control: "ИИ может управлять телефоном (открывать приложения, читать экран, звонить …)"
+pair_call_mute: "Во время звонков: голос только на телефоне, динамики ПК выключены"
+pair_server_off: "⚠ Веб-сервер не запущен – нажмите справа «Запустить веб-сервер», иначе телефон не сможет подключиться."
+pair_local: "Локально: {u}"
+pair_remote: "Внешний: {u}"
+pair_remote_empty: "– (пусто, можно указать в любой момент)"
+pair_valid: "Код действует ещё {s} с – обновляется автоматически"
+pair_last_seen: "был в сети"
+apk_missing: "APK не найден в папке программы (tools\u0007ndroid\\Yume-Companion.apk). Её можно собрать с помощью папки «Yume Android» (build-apk.bat)."
+apk_dialog: "Сохранить APK (затем перенесите на телефон и установите)"
+apk_saved: "APK сохранён: {p}\nУстановите на телефон (разрешите установку из неизвестных источников), затем «Подключить по QR-коду»."
+pair_fw_button: "Разрешить телефону доступ через брандмауэр Windows …"
+pair_fw_missing: "⚠ Брандмауэр Windows, вероятно, блокирует подключения с телефона (порт {p}). Нажмите справа «Разрешить телефону доступ через брандмауэр Windows»."
+pair_fw_failed: "Правило брандмауэра не создано (запрос администратора отменён?)."
+android_autostart: "Запускать Android Connector (веб-сервер) вместе с программой"
+pair_contact: "Последний контакт с телефона: {ip} ({s} с назад)"
+pair_no_contact: "Пока нет контакта с телефона – если ничего не приходит, причина в сети (изоляция Wi-Fi / гостевая сеть / VPN на телефоне)."
+netllm_auto_check: "Автоматически искать LLM-серверы в сети (при запуске и регулярно) и уведомлять"
+netllm_auto_minutes: "мин"
+netllm_auto_every: "каждые"
+netllm_auto_more: "… и ещё {n}"
+netllm_auto_found_title: "В сети найден LLM-сервер"
+netllm_auto_found_hint: "Выберите в разделе «Языковая модель» → «Другой ПК»."
+vrm_gestures_label: "Небольшие жесты в покое (потрогать голову, поправить волосы, потянуться …)"
+android_speech_only: "Отправлять на телефон только речь (текст в кавычках) – без *действий* и описаний"
+llm_plain_text_label: "Генерировать только обычную речь (без кавычек, *действий* и описаний)"
+llm_plain_text_hint: "ИИ отвечает только тем, что говорит персонаж, – коротко и без повествования. Генерируется гораздо меньше текста, ответ приходит быстрее. Действует для всех персонажей."
+stt_language_label: "Язык распознавания речи"
+stt_language_tooltip: "Фиксированный язык надёжнее, чем «Автоматически», особенно для коротких фраз."
+stt_language_auto: "Определять автоматически"

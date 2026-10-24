@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sessionService="net.yume.companion.voice.YumeSessionService"
+    android:recognitionService="net.yume.companion.voice.YumeRecognitionService"
+    android:settingsActivity="net.yume.companion.MainActivity"
+    android:supportsAssist="true"
+    android:supportsLaunchVoiceAssistFromKeyguard="true" />

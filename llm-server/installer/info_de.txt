@@ -1,0 +1,12 @@
+﻿Yume LLM Server macht diesen PC zum KI-Server für Yume Companion.
+
+So funktioniert es:
+ 1. Nach der Installation prüft das Programm deine Hardware (Grafikkarte, Speicher).
+ 2. Es installiert automatisch die passende Engine (llama.cpp) und alles, was dafür nötig ist.
+ 3. Du wählst ein empfohlenes Sprachmodell und optional ein Vision-Modell und lädst es mit einem Klick herunter.
+ 4. „Server starten“ – fertig. In Yume Companion trägst du die angezeigte Adresse ein (oder durchsuchst das Netzwerk).
+
+Hinweise:
+ - Für Engine und Modelle wird eine Internetverbindung benötigt (Download von GitHub und Hugging Face).
+ - Der Installer gibt die Ports 8080–8082 in der Windows-Firewall für Heim- und Domänennetze frei.
+ - Modelle und Engine liegen im Ordner %LOCALAPPDATA%\YumeLLMServer und lassen sich beim Deinstallieren mit entfernen.

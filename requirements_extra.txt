@@ -1,0 +1,3 @@
+# Packages added after the last full installer (installed by the Update setup into app\data\envs\sow).
+# One package per line, e.g.  somepackage==1.2.3
+qrcode
