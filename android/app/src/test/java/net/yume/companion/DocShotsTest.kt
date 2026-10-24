@@ -18,6 +18,14 @@ import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.io.File
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * Bilder fuer die Dokumentation (docs/images/android): rendert die echten Bildschirme ohne Handy.
@@ -124,6 +132,29 @@ class DocShotsTest {
         shot("09_im_gespraech")
     }
 
+    /** Assistenten-Fenster ueber dem Startbildschirm (der Startbildschirm ist nachgebaut, die Platte ist das echte Fenster) */
+    @Test fun assistHome() {
+        demoPrefs(false); UiFlags.animations = false
+        val ui = net.yume.companion.voice.CallEngine::class.java.getDeclaredField("_ui").also { it.isAccessible = true }
+        @Suppress("UNCHECKED_CAST")
+        (ui.get(net.yume.companion.voice.CallEngine) as kotlinx.coroutines.flow.MutableStateFlow<net.yume.companion.voice.CallUi>).value =
+            net.yume.companion.voice.CallUi(active = true, phase = net.yume.companion.voice.Phase.LISTENING, level = 0.6f,
+                heard = "Yume, wie wird das Wetter morgen?", reply = "Morgen wird es sonnig, bis zu 21 Grad. Soll ich dich vor dem Regen am Wochenende erinnern?")
+        rule.setContent {
+            YumeTheme {
+                androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.fillMaxSize()) {
+                    MockHomeScreen()
+                    androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.align(androidx.compose.ui.Alignment.BottomCenter)) {
+                        net.yume.companion.voice.AssistOverlay.Panel()
+                    }
+                }
+            }
+        }
+        rule.mainClock.advanceTimeBy(300)
+        shot("13_assistent_startbildschirm")
+        (ui.get(net.yume.companion.voice.CallEngine) as kotlinx.coroutines.flow.MutableStateFlow<net.yume.companion.voice.CallUi>).value = net.yume.companion.voice.CallUi()   // Zustand fuer die anderen Tests zuruecksetzen
+    }
+
     @Test fun kiosk() {
         demoPrefs(false); UiFlags.animations = false
         rule.setContent { YumeTheme { net.yume.companion.ui.KioskScreen({ it() }) } }
@@ -143,5 +174,29 @@ class DocShotsTest {
         rule.setContent { YumeTheme { net.yume.companion.ui.MicTestDialog({}) } }
         rule.mainClock.advanceTimeBy(300)
         shot("12_mikrofontest")
+    }
+}
+
+/** Nachgebauter Startbildschirm mit neutralen Platzhalter-Symbolen (keine echten App-Logos) */
+@androidx.compose.runtime.Composable
+private fun MockHomeScreen() {
+    androidx.compose.foundation.layout.Column(
+        androidx.compose.ui.Modifier.fillMaxSize()
+            .background(androidx.compose.ui.graphics.Brush.verticalGradient(listOf(androidx.compose.ui.graphics.Color(0xFF3B2A6B), androidx.compose.ui.graphics.Color(0xFF14102A))))
+            .padding(horizontal = 24.dp, vertical = 48.dp),
+    ) {
+        androidx.compose.material3.Text("09:41", color = androidx.compose.ui.graphics.Color.White, fontSize = 64.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.Light)
+        androidx.compose.material3.Text("Freitag, 24. Oktober", color = androidx.compose.ui.graphics.Color.White.copy(alpha = 0.8f), fontSize = 16.sp)
+        androidx.compose.foundation.layout.Spacer(androidx.compose.ui.Modifier.height(48.dp))
+        val colors = listOf(0xFFE57373, 0xFF64B5F6, 0xFF81C784, 0xFFFFB74D, 0xFFBA68C8, 0xFF4DB6AC, 0xFFF06292, 0xFF9575CD)
+        repeat(3) { row ->
+            androidx.compose.foundation.layout.Row(androidx.compose.ui.Modifier.fillMaxWidth().padding(bottom = 28.dp), horizontalArrangement = androidx.compose.foundation.layout.Arrangement.SpaceBetween) {
+                repeat(4) { col ->
+                    androidx.compose.foundation.layout.Box(
+                        androidx.compose.ui.Modifier.size(60.dp).background(androidx.compose.ui.graphics.Color(colors[(row * 4 + col) % colors.size]).copy(alpha = 0.85f), androidx.compose.foundation.shape.RoundedCornerShape(16.dp)),
+                    )
+                }
+            }
+        }
     }
 }

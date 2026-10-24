@@ -50,12 +50,12 @@ Yume Companion ist eine Windows-Anwendung, in der KI-Charaktere sich an dich eri
 | 💬 **Chat und Sprache** | Text- und Sprachchat, Anrufe mit Wake Word, Datei- und Bildanhänge, Lorebooks, Personas, Werkzeuge |
 | 🧠 **Gedächtnis** | Fakten, Gefühle, Benutzerprofil und Tagebuch, mit 4 Modi und automatischen Zusammenfassungen |
 | 🎭 **Avatare** | Ausdrucksbilder, **Live2D**, **3D-VRM**; 28 Gefühle steuern Mimik und Bewegung |
-| 🗣️ **Stimme** | 6 Sprach-Engines (lokal und Cloud), RVC-Stimmumwandlung, Spracherkennung mit Echo-Schutz |
+| 🗣️ **Stimme** | 6 Sprach-Engines (lokal und Cloud), RVC-Stimmumwandlung, Spracherkennung mit Echo-Schutz (Halbduplex oder Vollduplex per WebRTC AEC3) |
 | 🎲 **Yume-Bühne** | Textabenteuer mit KI-Spielleiter, Würfelproben, Inventar, Nebenfiguren, mehreren Charakteren |
 | 🖥️ **Desktop-Begleiter** | Figur auf dem Desktop mit Stimmungsmodell, Bildschirm-Sicht und Schnellaktionen |
 | 📅 **Organizer** | Kalender, Mail (nur lesen), Erinnerungen, Listen, Morgen-Briefing, Pendelzeit, Geburtstage, Wissensbasis, Briefe und Rechnungen |
 | 🛠️ **Werkzeuge** | Websuche, Browser-Agent, PC-Steuerung, Code, Dateien, MCP, Home Assistant, Spotify, Discord, Bildgenerierung |
-| 📱 **Android-App** | Chat, Anrufe, 3D-Avatar, Handy-Steuerung durch die KI, Wecker, Auto- und Wandmodus, Offline-Notfallmodus |
+| 📱 **Android-App** | **Ersetzt den Google Assistant** (Standard-Assistent, Wake Word auf dem Startbildschirm), Chat, Anrufe, 3D-Avatar, Handy-Steuerung durch die KI, Wecker, Auto- und Wandmodus, Offline-Notfallmodus |
 | 🖧 **Yume LLM Server** | macht einen zweiten PC zum KI-Server für Sprache, Vision, Bilder und Werkzeuge |
 | 🌐 **Web** | Webclient im Browser und Dashboard mit Live-Werten (CPU, GPU, Tokens/s, Kontext) |
 
@@ -70,7 +70,7 @@ Yume Companion bündelt mehrere KI-Modelle, die jeweils lokal oder auf einem and
 | **Vision** (Bilder verstehen) | Kleines separates Vision-Modell, z. B. Qwen2.5-VL 3B; auch für „Bildschirm ansehen“ | lokal · anderer PC |
 | **Sprachausgabe (TTS)** | **Qwen3-TTS**, **XTTSv2**, **Kokoro**, **Silero**, **Edge TTS**, **ElevenLabs** | lokal · Cloud |
 | **Stimmumwandlung** | **RVC** | lokal |
-| **Spracheingabe (STT)** | **Faster-Whisper** mit Silero-VAD, Wake Word, Echo-Entfernung (WebRTC AEC3) | lokal |
+| **Spracheingabe (STT)** | **Faster-Whisper** mit Silero-VAD, Wake Word, Echo-Schutz: Halbduplex oder Vollduplex-Echoentfernung (WebRTC AEC3) | lokal |
 | **Gefühlserkennung** | Klassifikator mit **28 Gefühlen**, steuert Mimik und Bewegung der Avatare | lokal |
 | **Gedächtnis** | Zweisprachiges Embedding-Modell (e5, Deutsch/Englisch) plus Agent, der Fakten und Tagebuch pflegt | lokal |
 | **Werkzeug-Modelle** | Qwen3 4B / 8B / 14B und Qwen2.5-Coder 7B für Browser-Agent, Planung und Code | lokal · anderer PC |
@@ -163,9 +163,17 @@ Kalender, Mail (nur lesen), Erinnerungen, Listen, Morgen-Briefing, Pendelzeit, G
 ### 📱 Android-App
 Chat und Anrufe mit Wake Word, 3D-Avatar, Handy-Steuerung durch die KI (Apps bedienen, Anrufe, Kontakte, Kamera …, jedes Recht einzeln abschaltbar), Wecker, Auto- und Wandmodus sowie ein Offline-Notfallmodus mit lokalem Modell.
 
+**Ersetzt den Google Assistant:** Yume lässt sich als Standard-Assistent einrichten. Home-Taste gedrückt halten oder von der Ecke wischen öffnet sie. Sagst du das Wake Word, während der Startbildschirm oder eine andere App vorne ist, schiebt sich ein halbtransparentes Assistenten-Fenster von unten herauf, zeigt was sie verstanden hat und spricht die Antwort. Mit „Nur auf meine Stimme reagieren“ (wie Voice Match) hört sie nur auf dich.
+
+| Assistent auf dem Startbildschirm | Gespräch mit Wake Word und Anruf |
+| --- | --- |
+| ![Assistenten-Fenster über dem Startbildschirm](docs/images/android/13_assistent_startbildschirm.png) | ![Anruf](docs/images/android/09_im_gespraech.png) |
+
 ![Android-App](docs/images/galerie_android.png)
 
-→ [Android-App](docs/11-android-app.md)
+**Echo-Schutz (Vollduplex):** Am PC stehen *Aus*, *Halbduplex* und *WebRTC AEC3 (Vollduplex-Echoentfernung)* zur Wahl, auf dem Handy die *Echo-Unterdrückung* mit Telefon-Audiopfad. Mit Vollduplex kannst du der KI ins Wort fallen. Details: [Echo-Schutz im Detail](docs/05-stimme-und-avatare.md#echo-schutz-anti-echo-im-detail).
+
+→ [Android-App](docs/11-android-app.md) · [Assistent einrichten](docs/11-android-app.md#115-ersatz-für-den-google-assistant)
 
 ### 🖧 Yume LLM Server
 Ein kleines Windows-Programm macht einen zweiten PC zum KI-Server: Sprachmodell, Vision, Bildgenerierung und Werkzeug-Modell auf eigenen Ports, mit Installer und Modellempfehlung passend zur Hardware.
