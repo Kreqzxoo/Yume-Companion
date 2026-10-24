@@ -2,6 +2,17 @@
 
 Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
+## 3.0.0 Beta 11 (Android-App 1.1.0)
+
+**Neu**
+- Android-App auf Deutsch und Englisch (Einstellung *App-Sprache*, automatisch nach Handy-Sprache), inklusive englischer Sprachbefehle und Dolmetscher
+- Android-App wird mit eigenem Signaturschlüssel gebaut (GitHub-Action `android-release.yml`)
+- CI prüft jetzt auch die Android-App (Tests, Debug-APK) und die Doku
+- `updater/Make Clean Build Source.ps1`: sauberer Quellordner für Releases mit Leck-Prüfung
+
+**Hinweis**
+- Die APK ist jetzt mit einem neuen Schlüssel signiert: die alte Beta-APK vorher deinstallieren (Einstellungen der App gehen dabei verloren, danach neu koppeln).
+
 ## 3.0.0 Beta (in Arbeit)
 
 **Neu**
