@@ -97,7 +97,13 @@ Die Ausdrucksauswahl in der App und die Beispiel-Ausdrücke der Demo-Charaktere:
 | --- | --- | --- |
 | ![Bilder](docs/images/pc/dialog_ausdruecke_bilder.png) | ![Live2D](docs/images/pc/dialog_ausdruecke_live2d.png) | ![VRM](docs/images/pc/dialog_ausdruecke_vrm.png) |
 
-> Live2D- und VRM-Modelle gehören ihren Urhebern und liegen deshalb **nicht** in diesem Repository. Eigene oder frei lizenzierte Modelle legst du in `assets/emotions/live2d/` bzw. `assets/emotions/vrm/` ab. Siehe [Kapitel 05](docs/05-stimme-und-avatare.md#55-avatare).
+So sieht ein **VRM-3D-Avatar** im Chat aus. Mitgeliefert sind zwei freie VRoid-Beispielmodelle (pixiv, Weitergabe erlaubt), die den Demo-Charakteren Mika und Kai zugewiesen sind:
+
+| Mika (VRM „Anime Girl“) | Kai (VRM „Anime Man“) |
+| --- | --- |
+| ![Chat mit VRM-Avatar Mika](docs/images/pc/chat_vrm_mika.png) | ![Chat mit VRM-Avatar Kai](docs/images/pc/chat_vrm_kai.png) |
+
+> Die zwei VRM-Beispielmodelle liegen in `assets/emotions/vrm/` (Lizenz siehe [NOTICE.md](NOTICE.md)). Live2D-Modelle und weitere VRM-Modelle gehören ihren Urhebern und sind **nicht** im Repository: Eigene oder frei lizenzierte Modelle legst du in `assets/emotions/live2d/` bzw. `assets/emotions/vrm/` ab. Siehe [Kapitel 05](docs/05-stimme-und-avatare.md#55-avatare).
 
 ## Funktionen im Detail
 

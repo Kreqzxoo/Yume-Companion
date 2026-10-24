@@ -50,7 +50,7 @@ def load(rel, width=None, height=None):
 def hero():
     w, h = 2040, 900
     canvas = gradient(w, h).convert("RGBA")
-    pc = rounded(load("pc/chat_yume.png", width=1220), 18)
+    pc = rounded(load("pc/chat_vrm_mika.png", width=1220), 18)
     shadow_paste(canvas, pc, (40, 120))
     ph1 = rounded(load("android/04_chat_verbunden.png", height=680), 36)
     ph2 = rounded(load("android/09_im_gespraech.png", height=740), 36)
@@ -80,8 +80,8 @@ def gallery(name, files, cols, cell_w):
 if __name__ == "__main__":
     hero()
     gallery("galerie_pc.png", [
-        "pc/seite_1_main_characters.png", "pc/chat_gedaechtnis.png",
-        "pc/buehne_uebersicht.png", "pc/optionen_02_llm.png",
+        "pc/chat_vrm_mika.png", "pc/chat_yume.png",
+        "pc/buehne_uebersicht.png", "pc/chat_vrm_kai.png",
         "web/dashboard_oben.png", "pc/optionen_18_organizer.png",
     ], cols=2, cell_w=900)
     gallery("galerie_android.png", [

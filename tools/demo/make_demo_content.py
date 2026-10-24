@@ -127,6 +127,8 @@ def draw_face(path, hair, eyes, skin=(255, 228, 214), outfit=(120, 120, 200), em
     im.save(path)
 
 
+VRM_SAMPLES = {"Mika": "Anime Girl.vrm", "Kai": "Anime Man.vrm"}
+
 CHARACTERS = [
     {
         "name": "Yume",
@@ -193,6 +195,12 @@ def main():
             data = cfg.load_configuration()
             data["character_list"][c["name"]]["current_sow_system_mode"] = "Expressions Images"
             cfg.save_configuration_edit(data)
+        vrm = VRM_SAMPLES.get(c["name"])  # 3D-Avatar: die zwei VRoid-Beispielmodelle aus assets/emotions/vrm
+        if vrm and os.path.exists(os.path.join("assets", "emotions", "vrm", vrm)):
+            data = cfg.load_configuration()
+            data["character_list"][c["name"]]["current_sow_system_mode"] = "VRM"
+            data["character_list"][c["name"]]["vrm_model_file"] = os.path.join(os.getcwd(), "assets", "emotions", "vrm", vrm)
+            cfg.save_configuration_edit(data)
 
     # Kurzes Beispielgespraech fuer Yume (nur fuer Screenshots / Demo)
     import uuid
@@ -204,6 +212,15 @@ def main():
     ]
     for is_user, text in talk:
         cfg.add_message_to_config("Yume", "Du" if is_user else "Yume", is_user, text, str(uuid.uuid4()))
+
+    talk_mika = [
+        (True, "Hi Mika! Welches Spiel zocken wir heute Abend?"),
+        (False, "*grinst* Ich dachte an Kart-Rennen! Aber Vorsicht, ich bin heute in Topform und habe Snacks als Doping."),
+        (True, "Challenge accepted. Wer verliert, holt die Getränke."),
+        (False, "Abgemacht! Ich fange schon mal an, die Strecke auszusuchen. Regenbogenpfad, oder wagst du dich an den Vulkan?"),
+    ]
+    for is_user, text in talk_mika:
+        cfg.add_message_to_config("Mika", "Du" if is_user else "Mika", is_user, text, str(uuid.uuid4()))
 
 
 def demo_extras():
