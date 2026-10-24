@@ -44,6 +44,7 @@ Alle Bilder in dieser Dokumentation stammen aus der echten App und sind mit **er
 | --- | --- |
 | [GitHub-Anleitung](GITHUB_ANLEITUNG.md) | Schritt für Schritt vom PC auf GitHub, inklusive Release und Update-Prüfung |
 | [Lizenzen und Upload](LIZENZEN_UND_UPLOAD.md) | Lizenz der Teile, verwendete Software, was nicht hochgeladen werden darf |
+| [Ko-fi-Stufen und Discord-Rollen](KOFI_UNTERSTUETZER.md) | Unterstützer-Stufen mit Mehrwert, Texte, Discord-Rollen automatisch vergeben |
 | [Release-Vorlage](RELEASE_VORLAGE.md) | Text für die Release-Seite |
 
 ## Herkunft der Basis-Funktionen
