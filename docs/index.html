@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Yume Companion – Dokumentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Dokumentation von Yume Companion: KI-Begleiterin für Windows und Android mit Gedächtnis, Stimme, 3D-Avatar, Rollenspiel-Bühne und Handy-Assistent.">
+  <meta name="theme-color" content="#120d1f">
+  <meta property="og:title" content="Yume Companion – Dokumentation">
+  <meta property="og:description" content="KI-Begleiterin für Windows und Android: lokal, privat, mit Gedächtnis, Stimme und 3D-Avatar.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Kreqzxoo/Yume-Companion/main/docs/images/hero.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0.9.0/dist/css/theme-simple-dark.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <div id="app">Dokumentation wird geladen …</div>
+  <script>
+    window.$docsify = {
+      name: 'Yume Companion',
+      nameLink: '#/',
+      repo: 'Kreqzxoo/Yume-Companion',
+      homepage: 'INDEX.md',
+      loadSidebar: true,
+      loadNavbar: true,
+      coverpage: true,
+      subMaxLevel: 2,
+      auto2top: true,
+      maxLevel: 3,
+      notFoundPage: true,
+      search: {
+        placeholder: 'Suchen …',
+        noData: 'Nichts gefunden.',
+        depth: 3,
+        paths: 'auto'
+      },
+      pagination: {
+        previousText: 'Zurück',
+        nextText: 'Weiter',
+        crossChapter: true
+      },
+      copyCode: {
+        buttonText: 'Kopieren',
+        errorText: 'Fehler',
+        successText: 'Kopiert'
+      },
+      plugins: [
+        function (hook) {
+          // Docsify setzt vor Überschriften-IDs, die mit einer Ziffer beginnen, einen Unterstrich.
+          // Sprungmarken wie ...md#117-einstellungen werden deshalb vor dem Rendern auf #_117-... umgeschrieben.
+          hook.beforeEach(function (md) {
+            return md.replace(/\]\(([^)#\s]*)#(\d[^)\s]*)\)/g, ']($1#_$2)');
+          });
+          // Links aus dem docs-Ordner heraus (z. B. ../NOTICE.md) zeigen auf GitHub
+          hook.doneEach(function () {
+            document.querySelectorAll('.markdown-section a').forEach(function (a) {
+              var h = a.getAttribute('href') || '';
+              var m = h.match(/^#\/\.\.\/(.+?)(\?id=.*)?$/);
+              if (m) {
+                var path = m[1];
+                if (!/\.[a-z]+$/i.test(path)) path += '.md';
+                a.setAttribute('href', 'https://github.com/Kreqzxoo/Yume-Companion/blob/main/' + path);
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'noopener');
+              }
+            });
+            // zur Sprungmarke (?id=...) scrollen; die Bilder laden nach, deshalb mehrere Versuche
+            var q = location.hash.match(/[?&]id=([^&]+)/);
+            if (q) {
+              var el = document.getElementById(decodeURIComponent(q[1]));
+              if (el) [200, 900, 2200].forEach(function (ms) { setTimeout(function () { el.scrollIntoView(); }, ms); });
+            }
+          });
+        }
+      ]
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2.10.1/dist/docsify-pagination.min.js"></script>
+</body>
+</html>
