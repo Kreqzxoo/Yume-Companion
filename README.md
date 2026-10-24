@@ -1,10 +1,20 @@
+<div align="center">
+
 # Yume Companion
 
-**Deine KI-Begleiterin für Windows und Android.** Chatten, telefonieren, Avatare, Gedächtnis, Rollenspiel-Bühne, Organizer und Smart-Home-Steuerung – lokal auf deinem PC, mit eigenen oder Cloud-Sprachmodellen.
+**Deine KI-Begleiterin für Windows und Android**
+Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Rollenspiel-Bühne · Organizer · Handy-Steuerung
 
-[English summary below](#english-summary)
+[![Lizenz: GPL-3.0](https://img.shields.io/badge/Lizenz-GPL--3.0-pink.svg)](LICENSE)
+![Version](https://img.shields.io/badge/Version-3.0.0%20BETA-purple)
+![Plattform](https://img.shields.io/badge/Windows%20%7C%20Android-lightgrey)
+![KI lokal oder Cloud](https://img.shields.io/badge/KI-lokal%20oder%20Cloud-blueviolet)
 
-![Yume Companion – Chat](docs/images/pc/chat_yume.png)
+[Funktionen](#funktionen-im-detail) · [Welche KIs stecken drin?](#welche-kis-stecken-drin) · [Avatare](#avatare-bild-live2d-vrm) · [Schnellstart](#schnellstart) · [Dokumentation](docs/INDEX.md) · [English](#english-summary)
+
+![Yume Companion auf PC und Handy](docs/images/hero.png)
+
+</div>
 
 > **Status:** 3.0.0 **Beta**. Vieles funktioniert, manches ist noch rau. Fehler bitte als [Issue](../../issues) melden.
 > **Herkunft:** Yume Companion ist eine stark erweiterte, veränderte Fassung von [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) von *jofizcd* (GPL-3.0). Der Original-Autor bleibt genannt, siehe [NOTICE.md](NOTICE.md). Dieses Projekt ist **nicht** das offizielle Soul of Waifu.
@@ -14,9 +24,13 @@
 ## Inhalt
 
 * [Was ist Yume Companion?](#was-ist-yume-companion)
+* [Auf einen Blick](#auf-einen-blick)
+* [Welche KIs stecken drin?](#welche-kis-stecken-drin)
+* [Avatare: Bild, Live2D, VRM](#avatare-bild-live2d-vrm)
+* [Funktionen im Detail](#funktionen-im-detail)
+* [Galerie](#galerie)
 * [Die Bausteine](#die-bausteine)
 * [Schnellstart](#schnellstart)
-* [Funktionen im Überblick](#funktionen-im-überblick)
 * [Die Dokumentation](#die-dokumentation)
 * [Systemvoraussetzungen](#systemvoraussetzungen)
 * [Datenschutz](#datenschutz)
@@ -27,15 +41,149 @@
 
 ## Was ist Yume Companion?
 
-Yume Companion ist eine Windows-Anwendung, in der KI-Charaktere sich an dich erinnern und über mehrere Wege erreichbar sind:
+Yume Companion ist eine Windows-Anwendung, in der KI-Charaktere sich an dich erinnern, auf dich reagieren und überall erreichbar sind: im Chat am PC, als Figur auf deinem Desktop, per Anruf und Chat auf dem Handy, im Rollenspiel und als Assistentin für deinen Alltag. Alles läuft wahlweise **100 % lokal und privat** auf deinem Rechner oder mit Cloud-Modellen deiner Wahl.
 
-* 💬 **Text- und Sprachchat** mit Charakteren: Avatare als Bilder, Live2D oder 3D (VRM), Stimme per Sprachsynthese, Spracheingabe, Lorebooks, Werkzeuge.
-* 🧠 **Gedächtnis** („Yume-Gedächtnis“): Der Charakter merkt sich Fakten, Gefühle und führt ein Tagebuch.
-* 🎲 **Yume-Bühne**: Textabenteuer mit KI-Spielleiter, Würfelproben, Inventar, Nebenfiguren und mehreren Charakteren.
-* 🖥️ **Desktop-Begleiter**: Eine Figur auf deinem Desktop mit Stimmungsmodell, Bildschirm-Sicht und Werkzeugen.
-* 📅 **Organizer**: Kalender, Mails (nur lesen), Erinnerungen, Listen, Morgen-Briefing, Pendelzeit, Geburtstage, Wissensdatenbank, Briefe und Rechnungen.
-* 📱 **Android-App**: Chat, Anrufe mit Wake Word, 3D-Avatar, Handy-Steuerung durch die KI, Wecker, Auto- und Wandmodus, Offline-Notfallmodus.
-* 🖧 **Yume LLM Server**: macht einen zweiten PC zum KI-Server für Sprache, Bilder, Vision und Werkzeuge.
+## Auf einen Blick
+
+| | |
+| --- | --- |
+| 💬 **Chat und Sprache** | Text- und Sprachchat, Anrufe mit Wake Word, Datei- und Bildanhänge, Lorebooks, Personas, Werkzeuge |
+| 🧠 **Gedächtnis** | Fakten, Gefühle, Benutzerprofil und Tagebuch, mit 4 Modi und automatischen Zusammenfassungen |
+| 🎭 **Avatare** | Ausdrucksbilder, **Live2D**, **3D-VRM**; 28 Gefühle steuern Mimik und Bewegung |
+| 🗣️ **Stimme** | 6 Sprach-Engines (lokal und Cloud), RVC-Stimmumwandlung, Spracherkennung mit Echo-Schutz |
+| 🎲 **Yume-Bühne** | Textabenteuer mit KI-Spielleiter, Würfelproben, Inventar, Nebenfiguren, mehreren Charakteren |
+| 🖥️ **Desktop-Begleiter** | Figur auf dem Desktop mit Stimmungsmodell, Bildschirm-Sicht und Schnellaktionen |
+| 📅 **Organizer** | Kalender, Mail (nur lesen), Erinnerungen, Listen, Morgen-Briefing, Pendelzeit, Geburtstage, Wissensbasis, Briefe und Rechnungen |
+| 🛠️ **Werkzeuge** | Websuche, Browser-Agent, PC-Steuerung, Code, Dateien, MCP, Home Assistant, Spotify, Discord, Bildgenerierung |
+| 📱 **Android-App** | Chat, Anrufe, 3D-Avatar, Handy-Steuerung durch die KI, Wecker, Auto- und Wandmodus, Offline-Notfallmodus |
+| 🖧 **Yume LLM Server** | macht einen zweiten PC zum KI-Server für Sprache, Vision, Bilder und Werkzeuge |
+| 🌐 **Web** | Webclient im Browser und Dashboard mit Live-Werten (CPU, GPU, Tokens/s, Kontext) |
+
+## Welche KIs stecken drin?
+
+Yume Companion bündelt mehrere KI-Modelle, die jeweils lokal oder auf einem anderen PC laufen können. Das Sprachmodell lässt sich auch durch einen Cloud-Anbieter ersetzen.
+
+| Aufgabe | Was verwendet wird | Wo es läuft |
+| --- | --- | --- |
+| **Sprachmodell** (die „Persönlichkeit“) | Beliebige GGUF-Modelle über **llama.cpp** (CUDA, Vulkan, HIP, SYCL oder CPU), Ollama oder ein eigener OpenAI-kompatibler Endpunkt | lokal · anderer PC · Cloud |
+| **Cloud-Anbieter** | OpenAI, Anthropic, Google Gemini, DeepSeek, Mistral, OpenRouter, Grok, Qwen, Z.AI, Player2 | Cloud |
+| **Vision** (Bilder verstehen) | Kleines separates Vision-Modell, z. B. Qwen2.5-VL 3B; auch für „Bildschirm ansehen“ | lokal · anderer PC |
+| **Sprachausgabe (TTS)** | **Qwen3-TTS**, **XTTSv2**, **Kokoro**, **Silero**, **Edge TTS**, **ElevenLabs** | lokal · Cloud |
+| **Stimmumwandlung** | **RVC** | lokal |
+| **Spracheingabe (STT)** | **Faster-Whisper** mit Silero-VAD, Wake Word, Echo-Entfernung (WebRTC AEC3) | lokal |
+| **Gefühlserkennung** | Klassifikator mit **28 Gefühlen**, steuert Mimik und Bewegung der Avatare | lokal |
+| **Gedächtnis** | Zweisprachiges Embedding-Modell (e5, Deutsch/Englisch) plus Agent, der Fakten und Tagebuch pflegt | lokal |
+| **Werkzeug-Modelle** | Qwen3 4B / 8B / 14B und Qwen2.5-Coder 7B für Browser-Agent, Planung und Code | lokal · anderer PC |
+| **Bildgenerierung** | Automatic1111, ComfyUI, NovelAI, DALL-E 3, FLUX; im LLM-Server auch stable-diffusion.cpp | lokal · anderer PC · Cloud |
+
+Details: [Sprachmodelle](docs/04-sprachmodelle.md) · [Stimme und Avatare](docs/05-stimme-und-avatare.md) · [Werkzeuge](docs/09-werkzeuge-und-integrationen.md)
+
+## Avatare: Bild, Live2D, VRM
+
+Jeder Charakter kann auf vier Arten dargestellt werden. Ein Klassifikator liest jede Antwort und ordnet sie einem von **28 Gefühlen** zu, der Avatar reagiert darauf.
+
+| Art | Beschreibung |
+| --- | --- |
+| **Ausdrucksbilder** | Eine Datei pro Gefühl (PNG, JPG, GIF). Leichteste Variante, kaum Last für CPU und GPU |
+| **Live2D** | `.moc3`-Modelle mit Blinzeln, Posen, Lippensynchronisation; jedem Gefühl lässt sich eine Bewegung zuordnen |
+| **VRM (3D)** | Freie 3D-Modelle, z. B. aus VRoid Studio oder VRoid Hub, mit Haar- und Kleiderphysik, Mimik und Blickkontakt |
+| **Keine** | Nur die Charakterkarte |
+
+Die Ausdrucksauswahl in der App und die Beispiel-Ausdrücke der Demo-Charaktere:
+
+![Ausdrucksauswahl](docs/images/pc/dialog_ausdruecke.png)
+
+| Ausdrucksbilder | Live2D-Modell | VRM-3D-Modell |
+| --- | --- | --- |
+| ![Bilder](docs/images/pc/dialog_ausdruecke_bilder.png) | ![Live2D](docs/images/pc/dialog_ausdruecke_live2d.png) | ![VRM](docs/images/pc/dialog_ausdruecke_vrm.png) |
+
+> Live2D- und VRM-Modelle gehören ihren Urhebern und liegen deshalb **nicht** in diesem Repository. Eigene oder frei lizenzierte Modelle legst du in `assets/emotions/live2d/` bzw. `assets/emotions/vrm/` ab. Siehe [Kapitel 05](docs/05-stimme-und-avatare.md#55-avatare).
+
+## Funktionen im Detail
+
+### 💬 Chat und Charaktere
+Chat mit Nachrichten-Menü (bearbeiten, neu generieren, übersetzen, Bild erzeugen, Sprachnachricht), Autorennotizen, Hintergründe, Personas, System-Prompts und Lorebooks. Charaktere lassen sich per Editor oder KI-Assistent erstellen, als Karten importieren und exportieren.
+
+![Chat mit Yume](docs/images/pc/chat_yume.png)
+
+| Charakter-Editor mit KI-Assistent | Lorebook | Personas |
+| --- | --- | --- |
+| ![KI-Assistent](docs/images/pc/dialog_ki_assistent.png) | ![Lorebook](docs/images/pc/dialog_lorebook.png) | ![Personas](docs/images/pc/dialog_personas.png) |
+
+→ [Chat und Charaktere](docs/03-chat-und-charaktere.md)
+
+### 🧠 Gedächtnis
+Der Charakter merkt sich Fakten über dich, seine eigene Entwicklung und führt ein Tagebuch. Vier Modi von „volle Synchronisation“ bis „nur Tagebuch“ passen sich der Leistung deines PCs an. Du kannst alles ansehen und von Hand korrigieren.
+
+![Gedächtnis-Archiv](docs/images/pc/dialog_gedaechtnis.png)
+
+→ [Gedächtnis](docs/06-gedaechtnis.md)
+
+### 🗣️ Stimme, Anrufe und Spracheingabe
+Sechs Sprach-Engines pro Charakter wählbar, dazu Stimmumwandlung (RVC), Anrufmodus, Wake Word und Echo-Schutz, damit du der KI ins Wort fallen kannst.
+
+![Charakterstimme](docs/images/pc/dialog_stimme.png)
+
+→ [Stimme und Avatare](docs/05-stimme-und-avatare.md)
+
+### 🎲 Yume-Bühne: Rollenspiel mit KI-Spielleiter
+Szenen mit mehreren Charakteren, Weltzustand, Würfelproben, Inventar und dynamischen Nebenfiguren, wie ein Pen-and-Paper-Abend mit einer KI als Spielleiter.
+
+![Yume-Bühne](docs/images/pc/buehne_uebersicht.png)
+
+→ [Yume-Bühne](docs/07-yume-buehne.md)
+
+### 🖥️ Desktop-Begleiter
+Eine eigenständige Figur auf deinem Desktop mit Stimmungsmodell (neurohormonell), Bildschirm-Sicht, Zwischenablage-Lesen und Werkzeugaufrufen. Über Schnellaktionen am Charakter steuerst du sie.
+
+![Schnellaktionen am Charakter](docs/images/pc/kachel_aktionen.png)
+
+→ [Desktop-Begleiter](docs/08-desktop-begleiter.md)
+
+### 🛠️ Werkzeuge und Integrationen
+Die KI kann Werkzeuge selbst aufrufen: Websuche, Browser-Agent, PC-Steuerung, Code, Dateien, eigene MCP-Server, Home Assistant, Spotify und Discord. Jede Berechtigung schaltest du einzeln frei.
+
+![Werkzeuge](docs/images/pc/optionen_04_tools.png)
+
+→ [Werkzeuge und Integrationen](docs/09-werkzeuge-und-integrationen.md)
+
+### 📅 Organizer
+Kalender, Mail (nur lesen), Erinnerungen, Listen, Morgen-Briefing, Pendelzeit, Geburtstage, Wissensbasis, Briefe und Rechnungen. Passwörter werden mit der Windows-Datenschutz-Funktion verschlüsselt.
+
+![Organizer](docs/images/pc/optionen_18_organizer.png)
+
+→ [Organizer](docs/10-organizer.md)
+
+### 📱 Android-App
+Chat und Anrufe mit Wake Word, 3D-Avatar, Handy-Steuerung durch die KI (Apps bedienen, Anrufe, Kontakte, Kamera …, jedes Recht einzeln abschaltbar), Wecker, Auto- und Wandmodus sowie ein Offline-Notfallmodus mit lokalem Modell.
+
+![Android-App](docs/images/galerie_android.png)
+
+→ [Android-App](docs/11-android-app.md)
+
+### 🖧 Yume LLM Server
+Ein kleines Windows-Programm macht einen zweiten PC zum KI-Server: Sprachmodell, Vision, Bildgenerierung und Werkzeug-Modell auf eigenen Ports, mit Installer und Modellempfehlung passend zur Hardware.
+
+| Sprache | Vision | Bilder |
+| --- | --- | --- |
+| ![Sprache](docs/images/llm-server/01_sprache.png) | ![Vision](docs/images/llm-server/02_vision.png) | ![Bilder](docs/images/llm-server/03_bilder.png) |
+
+→ [Yume LLM Server](docs/12-llm-server.md)
+
+### 🌐 Webclient und Dashboard
+Chatten per Browser (auch vom Handy im selben WLAN) und ein Dashboard mit CPU, RAM, GPU, Tokens pro Sekunde und Kontextauslastung.
+
+| Webclient am Handy | Dashboard |
+| --- | --- |
+| ![Webclient](docs/images/web/webclient_handy.png) | ![Dashboard](docs/images/web/dashboard_oben.png) |
+
+→ [Web und Dashboard](docs/13-web-und-dashboard.md)
+
+## Galerie
+
+![Galerie PC-App](docs/images/galerie_pc.png)
+
+Alle Screens mit Erklärung findest du in der [Dokumentation](docs/INDEX.md).
 
 ## Die Bausteine
 
@@ -59,28 +207,21 @@ Yume Companion ist eine Windows-Anwendung, in der KI-Charaktere sich an dich eri
    * **Lokal:** *Modelle* → ein Modell (z. B. Qwen3 8B, Quantisierung Q4_K_M) herunterladen → **Modell laden**.
 4. Beispiel-Charaktere erzeugst du mit `tools/demo/make_demo_content.py` oder legst eigene unter *Charakter erstellen* an.
 
-Ausführlich: [Installation](docs/01-installation.md) · [Erste Schritte](docs/02-erste-schritte.md)
-
-## Funktionen im Überblick
-
-| Bereich | Was du bekommst | Anleitung |
-| --- | --- | --- |
-| **Charaktere** | Editor, KI-Assistent, Karten importieren/exportieren, Ordner, Galerie, Personas, System-Prompts, Lorebooks, Variablen | [Charaktere und Chat](docs/03-chat-und-charaktere.md) |
-| **Sprachmodelle** | Lokal (llama.cpp), Remote-PC, 10+ Cloud-Anbieter, Modell-Hub, Presets, Sampling | [Sprachmodelle](docs/04-sprachmodelle.md) |
-| **Stimme und Avatare** | 6 Sprach-Engines, RVC, Spracheingabe, Wake Word, Echo-Entfernung, Bilder/Live2D/VRM | [Stimme und Avatare](docs/05-stimme-und-avatare.md) |
-| **Gedächtnis** | 4 Modi, Archiv, Tagebuch, automatische Zusammenfassungen | [Gedächtnis](docs/06-gedaechtnis.md) |
-| **Yume-Bühne** | KI-Spielleiter, Würfel, Inventar, Kampagnen, Nebenfiguren | [Yume-Bühne](docs/07-yume-buehne.md) |
-| **Desktop-Begleiter** | Schwebende Figur, Hormon-Modell, Schnellaktionen | [Desktop-Begleiter](docs/08-desktop-begleiter.md) |
-| **Werkzeuge** | Websuche, Browser-Agent, PC-Steuerung, Code, Dateien, MCP, Home Assistant, Spotify, Discord, Bildgenerierung | [Werkzeuge und Integrationen](docs/09-werkzeuge-und-integrationen.md) |
-| **Organizer** | Kalender, Mail, Listen, Routinen, Pendeln, Personen, Wissensbasis, Dokumente, Skills | [Organizer](docs/10-organizer.md) |
-| **Android** | Chat, Anruf, Wake Word, 3D-Avatar, Handy-Steuerung, Wecker, Modi | [Android-App](docs/11-android-app.md) |
-| **LLM-Server** | Zweiter PC als KI-Server | [Yume LLM Server](docs/12-llm-server.md) |
-| **Web** | Webclient, Dashboard, Schnittstellen | [Web und Dashboard](docs/13-web-und-dashboard.md) |
-| **Sicherheit** | Backups, Updates, Berechtigungen, Datenschutz | [Backup, Updates, Sicherheit](docs/14-backup-updates-sicherheit.md) |
+Ausführlich: [Installation](docs/01-installation.md) · [Erste Schritte](docs/02-erste-schritte.md). Aus dem Quelltext bauen: [Entwicklung](docs/16-entwicklung.md).
 
 ## Die Dokumentation
 
-Alles liegt in [`docs/`](docs/INDEX.md): Installation, alle Funktionen mit Bildern, Fehlerbehebung, Entwicklung und die [**Anleitung zum Veröffentlichen auf GitHub**](docs/GITHUB_ANLEITUNG.md).
+Alles liegt in [`docs/`](docs/INDEX.md):
+
+| Bereich | Anleitung |
+| --- | --- |
+| Einstieg | [Installation](docs/01-installation.md) · [Erste Schritte](docs/02-erste-schritte.md) |
+| Charaktere und KI | [Chat und Charaktere](docs/03-chat-und-charaktere.md) · [Sprachmodelle](docs/04-sprachmodelle.md) · [Stimme und Avatare](docs/05-stimme-und-avatare.md) · [Gedächtnis](docs/06-gedaechtnis.md) |
+| Erlebnisse | [Yume-Bühne](docs/07-yume-buehne.md) · [Desktop-Begleiter](docs/08-desktop-begleiter.md) |
+| Werkzeuge | [Werkzeuge und Integrationen](docs/09-werkzeuge-und-integrationen.md) · [Organizer](docs/10-organizer.md) |
+| Handy und Server | [Android-App](docs/11-android-app.md) · [Yume LLM Server](docs/12-llm-server.md) · [Web und Dashboard](docs/13-web-und-dashboard.md) |
+| Betrieb | [Backup, Updates, Sicherheit](docs/14-backup-updates-sicherheit.md) · [Entwicklung](docs/16-entwicklung.md) |
+| Veröffentlichen | [Anleitung für GitHub](docs/GITHUB_ANLEITUNG.md) · [Lizenzen](docs/LIZENZEN_UND_UPLOAD.md) |
 
 ## Systemvoraussetzungen
 
@@ -110,7 +251,9 @@ Alles liegt in [`docs/`](docs/INDEX.md): Installation, alle Funktionen mit Bilde
 
 ## English summary
 
-**Yume Companion** is a Windows desktop app (Python/PyQt6) for AI characters with memory, voice, avatars (images, Live2D, VRM), a role-play stage with an AI game master, a desktop companion, an organizer (calendar, mail, lists, routines), and an Android companion app (Kotlin) that can chat, call, and control the phone. The separate **Yume LLM Server** turns a second PC into a llama.cpp server for language, vision, image and tool models.
+**Yume Companion** is a Windows desktop app (Python/PyQt6) for AI characters with memory, voice, avatars (expression images, Live2D, VRM 3D), a role-play stage with an AI game master, a desktop companion, an organizer (calendar, mail, lists, routines), and an Android companion app (Kotlin) that can chat, call, and control the phone. The separate **Yume LLM Server** turns a second PC into a llama.cpp server for language, vision, image and tool models.
+
+**AI stack:** local GGUF models via llama.cpp (CUDA/Vulkan/HIP/SYCL) or cloud providers (OpenAI, Anthropic, Gemini, DeepSeek, Mistral, OpenRouter, Grok, Qwen, Z.AI, Player2); six TTS engines (Qwen3-TTS, XTTSv2, Kokoro, Silero, Edge, ElevenLabs) plus RVC; Faster-Whisper speech input with echo cancellation; a 28-emotion classifier driving avatars; vision, tool and image models.
 
 It is a heavily modified fork of [Soul of Waifu](https://github.com/jofizcd/Soul-of-Waifu) by jofizcd (GPL-3.0) and is licensed under **GPL-3.0** as well. The documentation in `docs/` is written in German, with screenshots of every screen.
 
