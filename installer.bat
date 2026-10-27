@@ -17,6 +17,10 @@ set "PIP_TIMEOUT=120"
 set "PIP_RETRIES=10"
 set "PIP_RESUME_RETRIES=20"
 set "PIP_DISABLE_PIP_VERSION_CHECK=1"
+rem Version limits (constraints.txt): the newest releases of some packages (pandas 3.1, librosa 1.0, contourpy 1.4 ...) need NumPy 2, but the
+rem packages that come with the program (faiss, rvc_python, fairseq) are built for NumPy 1.26 and then fail with
+rem "numpy.core.multiarray failed to import". With the limits pip picks versions that work with NumPy 1.26.4.
+if exist "%~dp0constraints.txt" set "PIP_CONSTRAINT=%~dp0constraints.txt"
 >"%LOG%" echo %BRAND_NAME% v2.5.3 installer log %DATE% %TIME%
 
 rem Unattended mode (used by the Windows setup): installer.bat /auto cuda|cpu [flash]
@@ -165,6 +169,9 @@ if not "%choice%"=="1" (
 )
 
 echo [8/8] Final checks...
+rem Safety net: if any package still replaced NumPy by version 2, put 1.26.4 back (faiss / RVC would not start otherwise)
+python -c "import numpy,sys; sys.exit(0 if numpy.__version__.startswith('1.26') else 1)" || python -m pip install --no-cache-dir --force-reinstall --no-deps numpy==1.26.4
+python -c "import numpy, faiss; print('NumPy', numpy.__version__, '+ faiss OK')" || set "FAILED=!FAILED! [numpy-faiss-import-test]"
 python -m pip check
 python -c "import torch, numpy, transformers, PyQt6; print('Core imports OK')"
 if errorlevel 1 set "FAILED=!FAILED! [core-import-test]"
