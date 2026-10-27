@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Kreqzxoo. All rights reserved. Proprietary software - see LICENSE in the android folder.
 // Idle micro-gestures for VRM models: small, slow, human things - tucking hair behind the ear, a hand at the cheek, a deep breath,
 // shifting weight, a little head tilt ... Pure rotation overlay on the *normalized* humanoid bones (same axes for every VRM),
 // blended on top of whatever the animation clip is doing.
