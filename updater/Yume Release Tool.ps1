@@ -449,7 +449,7 @@ function Start-Doctor {
     $doctorTimer.Start()
 }
 function Stop-Leftovers {
-    $dirs = @($StageDir, (Join-Path $env:USERPROFILE 'YumeVerify'))
+    $dirs = @($StageDir, (Join-Path $env:USERPROFILE 'Yume Verify'))
     foreach ($proc in Get-Process -ErrorAction SilentlyContinue) {
         try {
             $path = $proc.Path
@@ -458,7 +458,7 @@ function Stop-Leftovers {
         } catch {}
     }
 }
-function Remove-Dirs { foreach ($d in @($StageDir, (Join-Path $env:USERPROFILE 'YumeVerify'))) { if (Test-Path $d) { & cmd.exe /c rd /s /q "`"$d`"" | Out-Null; Log-App "[Fix] geloescht: $d" } } }
+function Remove-Dirs { foreach ($d in @($StageDir, (Join-Path $env:USERPROFILE 'Yume Verify'))) { if (Test-Path $d) { & cmd.exe /c rd /s /q "`"$d`"" | Out-Null; Log-App "[Fix] geloescht: $d" } } }
 function Apply-Fix($id) {
     switch ($id) {
         'retry' { }

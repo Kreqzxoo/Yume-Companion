@@ -8,6 +8,7 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 - Update-Programm: **Herunterladen und installieren**. Die App findet das neueste Release (auch Betas), lädt das Setup herunter, prüft die SHA-256-Prüfsumme und startet es; bei jeder Abweichung wird nichts installiert. Auch beim Programmstart erscheint der Hinweis mit diesem Knopf.
 
 **Behoben**
+- **Setup beta12 brach bei jedem Installationspfad mit Leerzeichen ab** (zum Beispiel `C:\Users\Name\Desktop\Yume Companion`): pip bekam die Datei `constraints.txt` über die Umgebungsvariable `PIP_CONSTRAINT`, die an jedem Leerzeichen getrennt wird („Could not open constraint file“), PyTorch wurde nicht installiert und das Programm startete nicht. Der Installer übergibt die Datei jetzt mit `-c` in Anführungszeichen. Die Test-Installation des Release-Werkzeugs läuft jetzt in einem Pfad mit Leerzeichen (`Yume Verify`).
 - Der Start-Hinweis auf neue Versionen verglich mit der festen Zahl `v3.0.0` und fragte nur das neueste *stabile* Release ab (alle unsere Releases sind Pre-Releases): er erschien nie bzw. hätte nach dem Update nicht aufgehört. Jetzt zählt die installierte `VERSION.txt`.
 
 ## 3.0.0 Beta 12 (Setup)
