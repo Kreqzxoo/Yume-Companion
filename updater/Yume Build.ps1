@@ -307,7 +307,7 @@ if ($VerifyInstall -or $VerifySmoke -or $VerifyAI) {
             $testExe = Get-ChildItem $testOut -Filter *.exe -ErrorAction SilentlyContinue | Select-Object -First 1
             if ($tc -ne 0 -or -not $testExe) { Say 'FEHLER: Test-Setup konnte nicht gebaut werden.'; $problems++ }
             else {
-                $installDir = Join-Path $env:USERPROFILE 'YumeVerify'
+                $installDir = Join-Path $env:USERPROFILE 'Yume Verify'
                 if (Test-Path $installDir) { & cmd.exe /c rd /s /q "`"$installDir`"" | Out-Null }
                 Say "  Installiere still nach $installDir ..."
                 $depsArg = if ($VerifyDeps -and $Mode -eq 'Full') { @('/INSTALLDEPS=1', '/TORCH=cpu', '/FLASH=0') } else { @('/INSTALLDEPS=0') }

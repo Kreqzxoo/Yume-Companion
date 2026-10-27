@@ -20,7 +20,10 @@ set "PIP_DISABLE_PIP_VERSION_CHECK=1"
 rem Version limits (constraints.txt): the newest releases of some packages (pandas 3.1, librosa 1.0, contourpy 1.4 ...) need NumPy 2, but the
 rem packages that come with the program (faiss, rvc_python, fairseq) are built for NumPy 1.26 and then fail with
 rem "numpy.core.multiarray failed to import". With the limits pip picks versions that work with NumPy 1.26.4.
-if exist "%~dp0constraints.txt" set "PIP_CONSTRAINT=%~dp0constraints.txt"
+
+rem (a PIP_CONSTRAINT variable would be split at every space of the install path, so the file is passed with -c and quotes; !PIPC! also survives "(x86)" in a path)
+set "PIPC="
+if exist "%~dp0constraints.txt" set PIPC=-c "%~dp0constraints.txt"
 >"%LOG%" echo %BRAND_NAME% v2.5.3 installer log %DATE% %TIME%
 
 rem Unattended mode (used by the Windows setup): installer.bat /auto cuda|cpu [flash]
@@ -86,10 +89,10 @@ set "TORCH_TRIES=0"
 set /a TORCH_TRIES+=1
 if "%choice%"=="1" (
     echo Installing PyTorch with CUDA support... ^(attempt !TORCH_TRIES! of 4^)
-    python -m pip install --no-cache-dir torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
+    python -m pip install --no-cache-dir !PIPC! torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
 ) else if "%choice%"=="2" (
     echo Installing PyTorch CPU... ^(attempt !TORCH_TRIES! of 4^)
-    python -m pip install --no-cache-dir torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+    python -m pip install --no-cache-dir !PIPC! torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
 ) else (
     echo Invalid choice.
     pause
@@ -149,7 +152,7 @@ call :pipi pyworld torchcrepe uvicorn omegaconf==2.3.0
 call :pipi --force-reinstall torchcodec==0.10.0
 
 echo [6/8] Installing WebRTC AEC3 (echo cancellation, optional)...
-python -m pip install --no-cache-dir pywebrtc-audio==0.2.0
+python -m pip install --no-cache-dir !PIPC! pywebrtc-audio==0.2.0
 if errorlevel 1 (
     set "OPTIONAL_FAILED=!OPTIONAL_FAILED! [WebRTC-AEC3: SoW falls back to half-duplex echo protection]"
     echo pywebrtc-audio failed>>"%LOG%"
@@ -211,7 +214,7 @@ exit /b 0
 
 :pipi
 rem Installs the given pip arguments; records failures instead of silently continuing.
-python -m pip install --no-cache-dir %*
+python -m pip install --no-cache-dir !PIPC! %*
 if errorlevel 1 (
     set "FAILED=!FAILED! [%*]"
     echo pip failed: %* >>"%LOG%"
