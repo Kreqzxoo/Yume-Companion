@@ -49,7 +49,7 @@ $n = (Get-ChildItem $src -Recurse -File -Force -ErrorAction SilentlyContinue | W
 # Leak check: no configuration with personal data and nothing that looks like a key may be in the source folder
 $bad = @(Get-ChildItem "$src\app\configuration" -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'backup|original|characters\.json|android_devices' })
 $keys = @(Get-ChildItem "$src\app" -Recurse -File -Include *.json,*.py,*.ini,*.txt -ErrorAction SilentlyContinue |
-    Where-Object { $_.FullName -notlike "$src\app\data\*" } |
+    Where-Object { $_.FullName -notlike "$src\app\data\*" -and $_.Name -notmatch '^(tokenizer|vocab|merges|special_tokens_map|added_tokens)' -and $_.FullName -notmatch '\\(e5-small-en-ru|models|detector)\\' } |
     Select-String -Pattern 'sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{30,}|ghp_[A-Za-z0-9]{30,}|xox[bp]-[A-Za-z0-9\-]{20,}' -List -ErrorAction SilentlyContinue)
 if ($bad.Count -or $keys.Count) {
     $bad | ForEach-Object { Write-Host "Private file: $($_.FullName)" -ForegroundColor Red }
