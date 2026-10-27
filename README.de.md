@@ -5,7 +5,9 @@
 **Deine KI-Begleiterin für Windows und Android**
 Chatten · Telefonieren · Avatare (Bild, Live2D, 3D-VRM) · Gedächtnis · Rollenspiel-Bühne · Organizer · Handy-Steuerung
 
-[![Lizenz: GPL-3.0](https://img.shields.io/badge/Lizenz-GPL--3.0-pink.svg)](LICENSE)
+[![Lizenz: GPL-3.0 (PC-App)](https://img.shields.io/badge/PC--App-GPL--3.0-pink.svg)](LICENSE)
+![Stars](https://img.shields.io/github/stars/Kreqzxoo/Yume-Companion?style=flat&color=ff8fc7)
+[![Release](https://img.shields.io/github/v/release/Kreqzxoo/Yume-Companion?include_prereleases&label=Release&color=b48cff)](https://github.com/Kreqzxoo/Yume-Companion/releases)
 ![Version](https://img.shields.io/badge/Version-3.0.0%20BETA-purple)
 ![Plattform](https://img.shields.io/badge/Windows%20%7C%20Android-lightgrey)
 ![KI lokal oder Cloud](https://img.shields.io/badge/KI-lokal%20oder%20Cloud-blueviolet)
