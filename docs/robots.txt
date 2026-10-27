@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kreqzxoo.github.io/Yume-Companion/sitemap.xml
