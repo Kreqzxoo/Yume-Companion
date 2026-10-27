@@ -37,19 +37,20 @@ def sanitize(route):
 with sync_playwright() as p:
     b = p.chromium.launch()
     # Webclient wie auf dem Handy
-    ctx = b.new_context(color_scheme="dark", viewport={"width": 412, "height": 915}, device_scale_factor=2, is_mobile=True)
+    LOCALE = "en-US" if os.environ.get("YUME_LANG") == "en" else "de-DE"
+    ctx = b.new_context(locale=LOCALE, color_scheme="dark", viewport={"width": 412, "height": 915}, device_scale_factor=2, is_mobile=True)
     page = ctx.new_page()
     page.goto(f"http://127.0.0.1:8000/?token={token}")
     page.wait_for_timeout(5000)
     page.screenshot(path=os.path.join(out, "webclient_handy.png"))
     # Webclient am PC
-    ctx2 = b.new_context(color_scheme="dark", viewport={"width": 1280, "height": 800})
+    ctx2 = b.new_context(locale=LOCALE, color_scheme="dark", viewport={"width": 1280, "height": 800})
     page2 = ctx2.new_page()
     page2.goto(f"http://127.0.0.1:8000/?token={token}")
     page2.wait_for_timeout(5000)
     page2.screenshot(path=os.path.join(out, "webclient_pc.png"))
     # Dashboard
-    ctx3 = b.new_context(color_scheme="dark", viewport={"width": 1400, "height": 1000})
+    ctx3 = b.new_context(locale=LOCALE, color_scheme="dark", viewport={"width": 1400, "height": 1000})
     page3 = ctx3.new_page()
     page3.route("**/api/**", sanitize)
     page3.goto("http://127.0.0.1:8765/?token=demo-token")

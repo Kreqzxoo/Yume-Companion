@@ -4,7 +4,7 @@
 
 **Settings → Backup & Restore.** The **profile backup** saves your whole profile in **one file** (`.yumepack`).
 
-![Profile backup](../images/pc/optionen_12_backup_restore.png)
+![Profile backup](../images/en/pc/optionen_12_backup_restore.png)
 
 | Option | Content |
 | --- | --- |
@@ -29,7 +29,7 @@
 ### Checking
 **Settings → Updates:** enter the GitHub repository as `owner/name` (or the full URL), **Check for updates**. The app compares the installed version (`VERSION.txt`, currently `3.0.0 BETA`) with the newest release or tag and reports *New version available* with **Open release page**. **Nothing is downloaded or installed automatically.**
 
-![Updates](../images/pc/optionen_13_updates.png)
+![Updates](../images/en/pc/optionen_13_updates.png)
 
 Possible messages: *Repository not found (or private)*, *The repository has no releases or tags yet*, *GitHub limit reached*, *GitHub not reachable*.
 

@@ -6,7 +6,7 @@ This chapter explains what the AI may **do** on the PC (tools) and all connectio
 
 **Settings → Tool calls & MCP.** With **Enable native tool calls** the AI may execute functions during an answer. Every capability has its own switch:
 
-![Tool calls, models, log, MCP](../images/pc/optionen_04_tools_voll.png)
+![Tool calls, models, log, MCP](../images/en/pc/optionen_04_tools_voll.png)
 
 | Tool | What it can do |
 | --- | --- |
@@ -41,7 +41,7 @@ Another PC (e.g. tab *Tools* of the [Yume LLM Server](12-llm-server.md), port 80
 
 **Settings → Tools & plugins** determines what the AI may use in the **chat**.
 
-![Tools and plugins](../images/pc/optionen_06_tool_hub.png)
+![Tools and plugins](../images/en/pc/optionen_06_tool_hub.png)
 
 * **Enable tool use in chat** (main switch), then individually: web search, open web pages (only `http://` and `https://`, never local files), system information, read clipboard (off by default, sensitive), **start approved Windows programs**.
 * **Programs Yume may start:** The app searches installed programs (Start menu, desktop, App Paths). You tick the allowed ones, can **rescan** or add an `.exe`/`.lnk` with **Add program …**. **Every program start must be confirmed**; the AI can execute neither free commands nor arguments.
@@ -56,7 +56,7 @@ At the bottom of the tools page: **Enable MCP proxy integration**, enter the **M
 
 **Settings → Home Assistant.** Yume can query states and control (only approved) devices.
 
-![Home Assistant](../images/pc/optionen_05_home_assistant.png)
+![Home Assistant](../images/en/pc/optionen_05_home_assistant.png)
 
 1. **Enable Home Assistant**, enter the **Home Assistant URL** (reachable from the PC, e.g. `http://192.168.1.20:8123`). If HA runs in a Docker container, use the address and published port of the host, not the internal Docker address.
 2. In HA create a **long-lived access token** (profile → security) and enter it here (stored locally).
@@ -69,7 +69,7 @@ Approved services: lights, switches, helpers, fans, scenes, climate, covers and 
 
 **Settings → Spotify** (PC and phone share **one** login).
 
-![Spotify](../images/pc/optionen_17_spotify.png)
+![Spotify](../images/en/pc/optionen_17_spotify.png)
 
 1. Create an app in the **Spotify developer portal**.
 2. Enter the displayed **redirect URI (PC)** (e.g. `http://127.0.0.1:8898/callback`) there, and for the phone additionally `yume://spotify`.
@@ -81,7 +81,7 @@ Approved services: lights, switches, helpers, fans, scenes, climate, covers and 
 
 **Workshop → Discord gateway** connects the **currently active character** to a Discord bot. The bot answers messages on servers it has access to and can describe images and GIFs with the vision model.
 
-![Discord gateway](../images/pc/werkstatt_discord.png)
+![Discord gateway](../images/en/pc/werkstatt_discord.png)
 
 1. In the Discord developer portal create an application and a bot, copy the **bot token** and turn on the necessary *intents*.
 2. Paste the token into the field → **Start bot**. Status: *STOPPED / RUNNING*.
@@ -94,7 +94,7 @@ The token is stored only in `api.json` on your PC. Observe the Discord terms of 
 
 **Settings → Image generation** (and Workshop → Image generation). Creates images for the current scene via *message menu → Generate image* and for scene images of the Yume Stage.
 
-![Image generation](../images/pc/optionen_16_image_gen.png)
+![Image generation](../images/en/pc/optionen_16_image_gen.png)
 
 * **Service:** *Automatic1111*, *ComfyUI* (also your own workflow), *NovelAI*, *DALL-E 3* or *FLUX* (API). For cloud services enter the key.
 * **Where does the image AI run?** *On this PC*, or *on another PC in the network* (IP address, port, **Test connection**, **Search network for image servers**, choose **model on the server**). The **Yume LLM Server** installs an image engine with recommended anime models for this (port 8082).
@@ -112,7 +112,7 @@ The token is stored only in `api.json` on your PC. Observe the Discord terms of 
 
 **Settings → Appearance** adjusts the look, with a **live preview** of a chat bubble:
 
-![Appearance](../images/pc/optionen_11_appearance.png)
+![Appearance](../images/en/pc/optionen_11_appearance.png)
 
 * **Design** of the chat bubbles (Yume Sakura, Default, Nord, Dracula, One Dark, Material, Sakura, Abyss, Midnight, Emerald, Purple and custom color).
 * **Text color**, **quotation marks**, **italics** (10 presets each plus custom color).

@@ -38,6 +38,8 @@ import androidx.compose.ui.unit.sp
 class DocShotsTest {
     @get:org.junit.Rule val phone = PhoneLocale(if (System.getenv("YUME_LANG") == "en") java.util.Locale.ENGLISH else java.util.Locale.GERMAN)
     @get:Rule val rule = createAndroidComposeRule<ComponentActivity>()
+    private val en = System.getenv("YUME_LANG") == "en"
+    private fun t(de: String, enText: String) = if (en) enText else de
     private val out = File(System.getenv("YUME_SHOTS") ?: "build/doc-shots").also { it.mkdirs() }
 
     private fun shot(name: String, height: Int = 2340) {
@@ -81,36 +83,39 @@ class DocShotsTest {
         @Suppress("UNCHECKED_CAST")
         (f.get(net.yume.companion.core.HostLink) as kotlinx.coroutines.flow.MutableStateFlow<net.yume.companion.core.Link>).value = net.yume.companion.core.Link.CONNECTED
         net.yume.companion.core.Host.baseUrl = "http://192.168.1.50:8000"
-        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("1", false, "Hallo! *winkt dir zu* Wie war dein Tag?"))
-        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("2", true, "Gut, danke! Setz bitte Milch auf die Einkaufsliste."))
-        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("3", false, "Erledigt: Milch steht auf der Einkaufsliste."))
+        net.yume.companion.core.ChatRepo.msgs.clear()
+        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("1", false, t("Hallo! *winkt dir zu* Wie war dein Tag?", "Hi! *waves at you* How was your day?")))
+        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("2", true, t("Gut, danke! Setz bitte Milch auf die Einkaufsliste.", "Good, thanks! Please put milk on the shopping list.")))
+        net.yume.companion.core.ChatRepo.msgs.add(net.yume.companion.core.Msg("3", false, t("Erledigt: Milch steht auf der Einkaufsliste.", "Done: milk is on the shopping list.")))
         demoPrefs(false); root()
         shot("04_chat_verbunden")
     }
 
     @Test fun tabs() {
         demoPrefs(false); root()
-        rule.onNodeWithText("Anruf").performClick(); shot("05_anruf_start")
+        rule.onNodeWithText(t("Anruf", "Call")).performClick(); shot("05_anruf_start")
         rule.onNodeWithText("Offline").performClick(); shot("06_offline_notfallmodus")
-        rule.onNodeWithText("Einstellungen").performClick(); shot("07_einstellungen")
+        rule.onNodeWithText(t("Einstellungen", "Settings")).performClick(); shot("07_einstellungen")
     }
 
     /** Scrollt die lange Einstellungsseite Abschnitt fuer Abschnitt durch. */
     @Test fun settingsSections() {
         demoPrefs(false); root()
-        rule.onNodeWithText("Einstellungen").performClick()
+        rule.onNodeWithText(t("Einstellungen", "Settings")).performClick()
         val sections = listOf(
-            "Sprache & Wake Word" to "07a_einstellungen_wake_word",
-            "Gespräch" to "07b_einstellungen_gespraech",
-            "Handy-Steuerung durch die KI" to "07c_einstellungen_handy_steuerung",
-            "Als Anrufschutz-App festlegen" to "07d_einstellungen_anrufschutz",
-            "Automatisierung" to "07e_einstellungen_automatisierung",
+            t("Verbindung", "Connection") to "07l_einstellungen_verbindung",
+            t("Sicherheits-PIN (optional)", "Security PIN (optional)") to "07m_einstellungen_pin_screenshot",
+            t("Sprache & Wake Word", "Speech & wake word") to "07a_einstellungen_wake_word",
+            t("Gespräch", "Conversation") to "07b_einstellungen_gespraech",
+            t("Handy-Steuerung durch die KI", "Phone control by the AI") to "07c_einstellungen_handy_steuerung",
+            t("Als Anrufschutz-App festlegen", "Set as call protection app") to "07d_einstellungen_anrufschutz",
+            t("Automatisierung", "Automation") to "07e_einstellungen_automatisierung",
             "Spotify" to "07f_einstellungen_spotify",
-            "Auto-Modus" to "07g_einstellungen_auto_modus",
-            "Berechtigungen" to "07h_einstellungen_berechtigungen",
-            "Charaktere & Start" to "07i_einstellungen_charaktere",
-            "Hintergrund & Avatar" to "07j_einstellungen_avatar",
-            "Zurücksetzen" to "07k_einstellungen_zuruecksetzen",
+            t("Auto-Modus", "Car mode") to "07g_einstellungen_auto_modus",
+            t("Berechtigungen", "Permissions") to "07h_einstellungen_berechtigungen",
+            t("Charaktere & Start", "Characters & start") to "07i_einstellungen_charaktere",
+            t("Hintergrund & Avatar", "Background & avatar") to "07j_einstellungen_avatar",
+            t("Zurücksetzen", "Reset") to "07k_einstellungen_zuruecksetzen",
         )
         for ((title, file) in sections) {
             try {
@@ -126,7 +131,7 @@ class DocShotsTest {
             YumeTheme {
                 net.yume.companion.ui.CallScreen(
                     net.yume.companion.voice.CallUi(active = true, phase = net.yume.companion.voice.Phase.LISTENING, seconds = 42,
-                        heard = "Wie wird das Wetter morgen?", reply = "Morgen wird es sonnig, bis zu 21 Grad."), false)
+                        heard = t("Wie wird das Wetter morgen?", "What will the weather be like tomorrow?"), reply = t("Morgen wird es sonnig, bis zu 21 Grad.", "Tomorrow will be sunny, up to 21 degrees.")), false)
             }
         }
         rule.mainClock.advanceTimeBy(300)
@@ -140,7 +145,7 @@ class DocShotsTest {
         @Suppress("UNCHECKED_CAST")
         (ui.get(net.yume.companion.voice.CallEngine) as kotlinx.coroutines.flow.MutableStateFlow<net.yume.companion.voice.CallUi>).value =
             net.yume.companion.voice.CallUi(active = true, phase = net.yume.companion.voice.Phase.LISTENING, level = 0.6f,
-                heard = "Yume, wie wird das Wetter morgen?", reply = "Morgen wird es sonnig, bis zu 21 Grad. Soll ich dich vor dem Regen am Wochenende erinnern?")
+                heard = t("Yume, wie wird das Wetter morgen?", "Yume, what will the weather be like tomorrow?"), reply = t("Morgen wird es sonnig, bis zu 21 Grad. Soll ich dich vor dem Regen am Wochenende erinnern?", "Tomorrow will be sunny, up to 21 degrees. Shall I remind you about the rain at the weekend?"))
         rule.setContent {
             YumeTheme {
                 androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.fillMaxSize()) {
@@ -187,7 +192,7 @@ private fun MockHomeScreen() {
             .padding(horizontal = 24.dp, vertical = 48.dp),
     ) {
         androidx.compose.material3.Text("09:41", color = androidx.compose.ui.graphics.Color.White, fontSize = 64.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.Light)
-        androidx.compose.material3.Text("Freitag, 24. Oktober", color = androidx.compose.ui.graphics.Color.White.copy(alpha = 0.8f), fontSize = 16.sp)
+        androidx.compose.material3.Text((if (System.getenv("YUME_LANG") == "en") "Friday, October 24" else "Freitag, 24. Oktober"), color = androidx.compose.ui.graphics.Color.White.copy(alpha = 0.8f), fontSize = 16.sp)
         androidx.compose.foundation.layout.Spacer(androidx.compose.ui.Modifier.height(48.dp))
         val colors = listOf(0xFFE57373, 0xFF64B5F6, 0xFF81C784, 0xFFFFB74D, 0xFFBA68C8, 0xFF4DB6AC, 0xFFF06292, 0xFF9575CD)
         repeat(3) { row ->

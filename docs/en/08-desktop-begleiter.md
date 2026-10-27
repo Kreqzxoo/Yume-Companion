@@ -2,7 +2,7 @@
 
 The **desktop companion** is your character **on the desktop**: borderless, always visible (if you want), with its own mood that reacts to the screen and to what you do. It is not a chat window but a housemate who can say something on its own.
 
-![Figure and right-click menu](../images/diagramme/companion-menue.svg)
+![Figure and right-click menu](../images/en/diagramme/companion-menue.svg)
 
 > The drawing shows the layout schematically (labels in German). The figure itself appears with your image, Live2D or VRM model.
 

@@ -6,7 +6,7 @@ This chapter explains everything about characters: creating, importing, configur
 
 **Workshop** in the sidebar collects the tools for creating:
 
-![Workshop](../images/pc/seite_7_rp_editors.png)
+![Workshop](../images/en/pc/seite_7_rp_editors.png)
 
 | Card | What for |
 | --- | --- |
@@ -33,7 +33,7 @@ This chapter explains everything about characters: creating, importing, configur
 
 Placeholders in texts: `{{user}}` (your persona name) and `{{char}}` (the character name).
 
-![Character editor](../images/pc/seite_2_create_character.png)
+![Character editor](../images/en/pc/seite_2_create_character.png)
 
 ### Conversation method (provider per character)
 Every character has its own provider: *Local LLM*, *Remote LLM*, *OpenAI*, *Anthropic*, *Google Gemini*, *DeepSeek*, *Grok*, *Qwen*, *Z.AI*, *Mistral AI*, *OpenRouter* or *Player2*. That way Yume can run locally and Kai through a cloud API. Details and credentials: [Chapter 04](04-sprachmodelle.md).
@@ -41,7 +41,7 @@ Every character has its own provider: *Local LLM*, *Remote LLM*, *OpenAI*, *Anth
 ### AI assistant
 In the editor, **AI character assistant** opens a questionnaire in six steps: *Basic idea → Character and voice → Appearance and background → Relationships → Details and limits → Generator*. You choose genre (fantasy, sci-fi, anime, cyberpunk, everyday life …), role (companion, mentor, rival, assistant …), traits (friendly, tsundere, shy, loyal …), speaking style, relationship to you and the mood of the story. Then you decide **which fields** the AI should write and whether existing content is overwritten or only empty fields are filled. After generating you check and edit the text, can **regenerate** individual fields and finish with **Apply to editor**. The assistant uses the provider set up in the program (without access a hint appears).
 
-![AI character assistant](../images/pc/dialog_ki_assistent.png)
+![AI character assistant](../images/en/pc/dialog_ki_assistent.png)
 
 ## 3.3 Importing and exporting character cards
 
@@ -53,7 +53,7 @@ In the editor, **AI character assistant** opens a questionnaire in six steps: *B
 
 **Character gallery** searches public content in four tabs: **Yume Gateway** (community character cards), **Chub AI Hub** (cards from chub.ai), **World knowledge collections** (lorebooks) and **Stage scenarios** (scenes for the [Yume Stage](07-yume-buehne.md)). At the top are the search and "Trending"; each card has a preview; **Import into the system** or **Add to list / library / stages** takes it over. The **NSFW switch** at the top right decides whether adult content is shown. Check its state before opening the gallery for the first time.
 
-![Character gallery](../images/pc/seite_galerie.png)
+![Character gallery](../images/en/pc/seite_galerie.png)
 
 > The gallery needs internet. Content comes from third parties; check cards before you use them.
 
@@ -63,19 +63,19 @@ In the editor, **AI character assistant** opens a questionnaire in six steps: *B
 * **Search:** the search field filters characters by name.
 * **Tile actions:** clicking the tile opens the chat. Hover over it and icons appear: **Folder** (move into a folder), **⋯** (character information), **Phone** (call), **Microphone** (voice settings), **Trash** (delete). The **screen icon** at the bottom right opens the *facial expressions* (avatar selection).
 
-![Tile with mouse pointer](../images/pc/kachel_aktionen.png)
+![Tile with mouse pointer](../images/en/pc/kachel_aktionen.png)
 
 ## 3.6 Personas, system prompts, lorebooks, author notes
 
 ### Personas (Workshop → Personas)
 A persona describes **you**: name, description, picture (256×256 recommended). You can create several, set one as **default** and quickly **switch** in the chat with the persona icon at the bottom.
 
-![Persona editor](../images/pc/dialog_personas.png)
+![Persona editor](../images/en/pc/dialog_personas.png)
 
 ### System prompts (Workshop → System prompts)
 The system prompt tells the model how to behave. The editor has three parts: the **prompt text**, the **order of the building blocks** (drag to sort: the model usually pays more attention to content at the end, so put important personality last) and the **template controls** (new template, save, delete, *default*). You choose the template per character.
 
-![System prompt editor](../images/pc/dialog_systemprompt.png)
+![System prompt editor](../images/en/pc/dialog_systemprompt.png)
 
 ### Lorebooks (Workshop → Lorebooks)
 A lorebook is a reference book: when you mention a keyword, the app inserts the matching entry into the prompt automatically. The **lorebook engine** has:
@@ -85,12 +85,12 @@ A lorebook is a reference book: when you mention a keyword, the app inserts the 
 * **Insertion:** *Passive* or *Active*.
 * **Timed effects:** *Sticky* (stays active for N messages), *cooldown*, *delay*, *probability*.
 
-![Lorebook engine with the example "Yume World"](../images/pc/dialog_lorebook.png)
+![Lorebook engine with the example "Yume World"](../images/en/pc/dialog_lorebook.png)
 
 ### Author notes
 Global narrative guidelines that are inserted dynamically into the context (e.g. writing style or rules). In the chat via the notes icon at the top right.
 
-![Author's notes](../images/pc/chat_autorennotizen.png)
+![Author's notes](../images/en/pc/chat_autorennotizen.png)
 
 ## 3.7 Variables and HUD
 
@@ -98,7 +98,7 @@ With **Add custom variable** you define values the character tracks during the c
 
 ## 3.8 The chat in detail
 
-![Chat with Yume](../images/pc/chat_yume.png)
+![Chat with Yume](../images/en/pc/chat_yume.png)
 
 ### Header bar
 * **Name, title and token counter**: usage of the context window.
@@ -106,7 +106,7 @@ With **Add custom variable** you define values the character tracks during the c
 * **Chat background:** choose a picture for the chat.
 * **Author's notes · Summary · Memory · More** (see below).
 
-![Choose chat background](../images/pc/chat_hintergrund.png)
+![Choose chat background](../images/en/pc/chat_hintergrund.png)
 
 ### Messages
 The **⋯** menu of each message:
@@ -135,7 +135,7 @@ When tools are used, the chat shows "uses *tool* …" and, with reasoning models
 ### More: character settings
 The **⋯** icon opens the character settings with the sections *Identity, Scenario, Examples, Creator's notes* as well as **Start new chat**, **Save changes** and the chat management.
 
-![Character settings](../images/pc/chat_mehr.png)
+![Character settings](../images/en/pc/chat_mehr.png)
 
 ### Chat management
 Every character can have several **chats**: create, rename, delete, **export** and **import** (file format `.sowchat`). When importing a chat from another character the app asks; with the same chat ID you choose *overwrite* or *create new*.
@@ -143,7 +143,7 @@ Every character can have several **chats**: create, rename, delete, **export** a
 ### Summary (story memory)
 Long chats are condensed automatically so that the context window does not overflow. In the **story memory editor** you see the current memory text, whether it reaches up to message N, edit the **instruction** for the summary and can **summarize now** or **clear** the memory. More in [Chapter 06](06-gedaechtnis.md).
 
-![Story memory](../images/pc/chat_zusammenfassung.png)
+![Story memory](../images/en/pc/chat_zusammenfassung.png)
 
 ### Quick persona switch and shortcuts
 The *Switch persona* menu shows all personas. The arrow at the bottom right jumps to the newest message.

@@ -18,7 +18,7 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 
 [Features](#features-in-detail) · [Which AIs are inside?](#which-ais-are-inside) · [Avatars](#avatars-images-live2d-vrm) · [Quick start](#quick-start) · [📖 Documentation online](https://kreqzxoo.github.io/Yume-Companion/#/en/) · [Support](#support-the-project)
 
-![Yume Companion on PC and phone](docs/images/hero.png)
+![Yume Companion on PC and phone](docs/images/en/hero.png)
 
 </div>
 
@@ -79,7 +79,7 @@ A **VRM 3D avatar** in the chat. Two free VRoid sample models (pixiv, redistribu
 
 | Mika (VRM "Anime Girl") | Kai (VRM "Anime Man") |
 | --- | --- |
-| ![Chat with VRM avatar Mika](docs/images/pc/chat_vrm_mika.png) | ![Chat with VRM avatar Kai](docs/images/pc/chat_vrm_kai.png) |
+| ![Chat with VRM avatar Mika](docs/images/en/pc/chat_vrm_mika.png) | ![Chat with VRM avatar Kai](docs/images/en/pc/chat_vrm_kai.png) |
 
 > The two VRM sample models are in `assets/emotions/vrm/` (license see [NOTICE.md](NOTICE.md)). Live2D models and other VRM models belong to their creators and are **not** in the repository: put your own or freely licensed models into `assets/emotions/live2d/` or `assets/emotions/vrm/`.
 
@@ -88,24 +88,24 @@ A **VRM 3D avatar** in the chat. Two free VRoid sample models (pixiv, redistribu
 ### 💬 Chat and characters
 Chat with message menu (edit, regenerate, translate, create image, voice message), author's notes, backgrounds, personas, system prompts and lorebooks. Characters can be created with the editor or the AI assistant, imported and exported as cards.
 
-![Chat with Yume](docs/images/pc/chat_yume.png)
+![Chat with Yume](docs/images/en/pc/chat_yume.png)
 
 ### 🧠 Memory
 The character remembers facts about you and its own development, and keeps a diary. Four modes, from "full sync" to "diary only", adapt to the power of your PC. You can view and correct everything by hand.
 
-![Memory archive](docs/images/pc/dialog_gedaechtnis.png)
+![Memory archive](docs/images/en/pc/dialog_gedaechtnis.png)
 
 ### 🗣️ Voice, calls and speech input
 Six speech engines selectable per character, plus voice conversion (RVC), call mode, wake word and echo protection so you can interrupt the AI.
 
 **Echo protection:** *Off*, *Half duplex* (the microphone is muted while the character speaks) or *WebRTC AEC3 (full-duplex echo cancellation)* where the microphone stays open and you can talk over the AI. On the phone the *Echo suppression* switch uses Android's call audio path and the device's echo canceller.
 
-![Character voice](docs/images/pc/dialog_stimme.png)
+![Character voice](docs/images/en/pc/dialog_stimme.png)
 
 ### 🎲 Yume Stage: role-play with an AI game master
 Scenes with several characters, world state, dice checks, inventory and dynamic side characters, like a pen-and-paper evening with an AI as game master.
 
-![Yume Stage](docs/images/pc/buehne_uebersicht.png)
+![Yume Stage](docs/images/en/pc/buehne_uebersicht.png)
 
 ### 🖥️ Desktop companion
 An independent figure on your desktop with a (neurohormonal) mood model, screen vision, clipboard reading and tool calls.
@@ -113,37 +113,37 @@ An independent figure on your desktop with a (neurohormonal) mood model, screen 
 ### 🛠️ Tools and integrations
 The AI can call tools itself: web search, browser agent, PC control, code, files, your own MCP servers, Home Assistant, Spotify and Discord. You enable each permission individually.
 
-![Tools](docs/images/pc/optionen_04_tools.png)
+![Tools](docs/images/en/pc/optionen_04_tools.png)
 
 ### 📅 Organizer
 Calendar, mail (read only), reminders, lists, morning briefing, commute time, birthdays, knowledge base, letters and invoices. Passwords are stored encrypted with Windows data protection.
 
-![Organizer](docs/images/pc/optionen_18_organizer.png)
+![Organizer](docs/images/en/pc/optionen_18_organizer.png)
 
 ### 📱 Android app
 **Replaces the Google Assistant:** set Yume as your default assistant. Long-press the home button or swipe from the corner to open her. When you say the wake word while the home screen or another app is in front, a translucent assistant panel slides up from the bottom, shows what she understood and speaks the answer. With "Only react to my voice" (like Voice Match) she only listens to you.
 
 | Assistant on the home screen | Conversation with wake word and call |
 | --- | --- |
-| ![Assistant panel over the home screen](docs/images/android/13_assistent_startbildschirm.png) | ![Call](docs/images/android/09_im_gespraech.png) |
+| ![Assistant panel over the home screen](docs/images/en/android/13_assistent_startbildschirm.png) | ![Call](docs/images/en/android/09_im_gespraech.png) |
 
 More: chat and calls, 3D avatar, phone control by the AI (open and operate apps, calls, contacts, camera … every permission can be switched off), alarm clock, car and wall modes, and an offline emergency mode with a local model.
 
-![Android app](docs/images/galerie_android.png)
+![Android app](docs/images/en/galerie_android.png)
 
 ### 🖧 Yume LLM Server
 A small Windows program turns a second PC into an AI server: language model, vision, image generation and tool model on their own ports, with installer and model recommendations for your hardware.
 
 | Speech | Vision | Images |
 | --- | --- | --- |
-| ![Speech](docs/images/llm-server/01_sprache.png) | ![Vision](docs/images/llm-server/02_vision.png) | ![Images](docs/images/llm-server/03_bilder.png) |
+| ![Speech](docs/images/en/llm-server/01_sprache.png) | ![Vision](docs/images/en/llm-server/02_vision.png) | ![Images](docs/images/en/llm-server/03_bilder.png) |
 
 ### 🌐 Web client and dashboard
 Chat in your browser (also from your phone on the same Wi-Fi) and a dashboard with CPU, RAM, GPU, tokens per second and context usage.
 
 | Web client on the phone | Dashboard |
 | --- | --- |
-| ![Web client](docs/images/web/webclient_handy.png) | ![Dashboard](docs/images/web/dashboard_oben.png) |
+| ![Web client](docs/images/en/web/webclient_handy.png) | ![Dashboard](docs/images/en/web/dashboard_oben.png) |
 
 ## Quick start
 

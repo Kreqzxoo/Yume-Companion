@@ -14,7 +14,7 @@ The language model ("LLM") writes your characters' answers. Yume Companion can r
 
 The page is divided into cards (top to bottom):
 
-![Language model & APIs, whole page](../images/pc/optionen_02_llm_voll.png)
+![Language model & APIs, whole page](../images/en/pc/optionen_02_llm_voll.png)
 
 ### Provider (local or cloud API)
 Choose the **provider** and enter credentials: API key (for Mistral/OpenAI/OpenRouter/Anthropic/Gemini/DeepSeek/Grok/Qwen/Z.AI), optionally a **custom endpoint URL** (for OpenAI-compatible services) and the **model**. The keys are stored only in `app/configuration/api.json` on your PC. With **Player2** you need no key, only the opened Player2 app.
@@ -90,7 +90,7 @@ Enable with **Enable advanced sampling**; otherwise the normal parameters apply.
 
 Sidebar → **Models**:
 
-![Model hub](../images/pc/seite_6_modelshub.png)
+![Model hub](../images/en/pc/seite_6_modelshub.png)
 
 * **Recommended:** curated list with a compatibility rating for your hardware (based on Q4).
 * **Popular:** currently popular GGUF models from Hugging Face.
@@ -102,7 +102,7 @@ Sidebar → **Models**:
 
 **Settings → Vision AI.** A small, separate vision model describes images (chat attachments, Discord images). That way pure text models can work with images, too.
 
-![Vision AI](../images/pc/optionen_03_vision.png)
+![Vision AI](../images/en/pc/optionen_03_vision.png)
 
 * **Enable plugin**; mode *Only if the chat model cannot understand images* (default) or *Always*.
 * Choose the **vision model** and **download and install** it (e.g. Qwen2.5-VL 3B) or specify your own GGUF with its *mmproj* file.
@@ -115,7 +115,7 @@ Sidebar → **Models**:
 
 **Settings → AI services** distributes the computing work centrally:
 
-![AI services](../images/pc/optionen_07_ai_services.png)
+![AI services](../images/en/pc/optionen_07_ai_services.png)
 
 * **LLM execution target:** *This PC – local llama.cpp* or *Remote PC – Ollama / llama.cpp*; **Set up remote PC** jumps to the network card.
 * **Whisper device** (CPU or CUDA GPU) and **GPU**: speech recognition.
@@ -141,7 +141,7 @@ A second, small model can **decide which tool is needed with which arguments** w
 * **Conversation style:** natural/balanced, warm and personal, short and direct, relaxed and spontaneous.
 * **Emotional expressiveness:** 0–100 %.
 
-![Conversation and audio](../images/pc/optionen_08_conversation_audio.png)
+![Conversation and audio](../images/en/pc/optionen_08_conversation_audio.png)
 
 ## 4.8 Error messages in plain language
 

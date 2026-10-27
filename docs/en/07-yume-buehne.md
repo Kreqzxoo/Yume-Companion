@@ -2,7 +2,7 @@
 
 The **Yume Stage** is a text adventure engine: an AI acts as **game master** (narrator) and guides several characters through a story, with dice checks, inventory, event cards and side characters. It works like a pen-and-paper role-playing game on the PC.
 
-![Overview of the scenes](../images/pc/buehne_uebersicht.png)
+![Overview of the scenes](../images/en/pc/buehne_uebersicht.png)
 
 ## 7.1 Managing scenes
 
@@ -22,7 +22,7 @@ Folders group scenes ("scene folders"). The scene gallery of the character galle
 
 **New scene** opens the scene editor with five sections:
 
-![Scene editor](../images/pc/buehne_szene_bearbeiten_voll.png)
+![Scene editor](../images/en/pc/buehne_szene_bearbeiten_voll.png)
 
 | Section | Fields |
 | --- | --- |

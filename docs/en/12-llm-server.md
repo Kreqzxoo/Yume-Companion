@@ -2,7 +2,7 @@
 
 The **Yume LLM Server** turns a **second PC** (or a strong spare computer in the house) into an **AI server** for Yume Companion. On this PC the language model, vision model, image AI and a tool model run; your main PC stays free for the program, voice and avatars.
 
-![Main window: language models](../images/llm-server/01_sprache.png)
+![Main window: language models](../images/en/llm-server/01_sprache.png)
 
 The program is a small Windows application (C#, needs only the .NET Framework 4 that ships with Windows, about 300 KB; it downloads the engines when needed). Source code: `llm-server/src/YumeLlmServer.cs`. The interface is German or English (depending on the Windows language).
 
@@ -36,8 +36,8 @@ Each tab lists **models** with size and "needs about X GB of memory". The rating
 
 *Show only fitting models* / *Show models that are too large (N)* filters the list. Per model: **Download** (with progress and cancel), afterwards **Select**, **● Active**, **Delete**. The files are in `%LOCALAPPDATA%\YumeLLMServer\models` (button *Open model folder*).
 
-![Vision tab](../images/llm-server/02_vision.png)
-![Images tab](../images/llm-server/03_bilder.png)
+![Vision tab](../images/en/llm-server/02_vision.png)
+![Images tab](../images/en/llm-server/03_bilder.png)
 
 **Model catalog (selection):**
 
@@ -52,7 +52,7 @@ Both servers (language + vision) run **at the same time**: with little graphics 
 
 ## 12.3 Settings
 
-![Settings](../images/llm-server/04_einstellungen.png)
+![Settings](../images/en/llm-server/04_einstellungen.png)
 
 | Area | Setting | Meaning |
 | --- | --- | --- |

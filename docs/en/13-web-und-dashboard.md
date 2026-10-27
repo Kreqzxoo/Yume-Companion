@@ -6,7 +6,7 @@ Yume Companion has two built-in web pages: the **web client** (chat in the brows
 
 The **local web server** belongs to the Android Connector (see [Chapter 11](11-android-app.md)). You start it under **Settings → Yume modules → Web interface server → Start server** or under *Android Connector*. With **Open in browser** (on the PC) or **Copy mobile link** (for the phone) you open it. The link contains the **access token**.
 
-![Web client in the phone browser](../images/web/webclient_handy.png)
+![Web client in the phone browser](../images/en/web/webclient_handy.png)
 
 The web client offers:
 
@@ -15,7 +15,7 @@ The web client offers:
 * **Speech input** (microphone button): the recording is recognized on the PC with Whisper.
 * **Avatar** with **Live2D animations** (emotions and movements) and the character's background.
 
-![Web client on the PC](../images/web/webclient_pc.png)
+![Web client on the PC](../images/en/web/webclient_pc.png)
 
 > The web client is the web interface of the original (Soul of Waifu), extended with the phone connection. The complete, native phone interface is the [Android app](11-android-app.md).
 
@@ -29,7 +29,7 @@ The web client offers:
 
 **Settings → Dashboard.** A separate web page with CPU, RAM, GPU, processes, services and the latest log lines. **It is read-only and shows neither chats nor API keys.**
 
-![Dashboard settings](../images/pc/optionen_14_dashboard.png)
+![Dashboard settings](../images/en/pc/optionen_14_dashboard.png)
 
 | Setting | Meaning |
 | --- | --- |
@@ -39,7 +39,7 @@ The web client offers:
 | **Start dashboard / Open in browser / Copy link / New access token** | Operation |
 | **Alarms** | Warnings when **graphics memory** (from 92 %), **RAM** (from 90 %), **context** (from 85 %), **GPU temperature** (from 85 °C) or **CPU** (from 95 %) become critical, or when AI/speech output/recognition become slow or disk space runs low. They appear in the dashboard and optionally as a small **message in the app** |
 
-![The dashboard](../images/web/dashboard_voll.png)
+![The dashboard](../images/en/web/dashboard_voll.png)
 
 ### What the dashboard shows
 

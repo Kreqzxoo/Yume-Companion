@@ -4,7 +4,7 @@ From an empty program to your first conversation in ten minutes.
 
 ## 2.1 The interface
 
-![Start page with the three sample characters](../images/pc/seite_1_main_characters.png)
+![Start page with the three sample characters](../images/en/pc/seite_1_main_characters.png)
 
 **Sidebar on the left** (top to bottom):
 
@@ -21,7 +21,7 @@ From an empty program to your first conversation in ten minutes.
 
 Clicking ⓘ opens the About dialog with the version, a short description of the three areas, the license note (GPL-3.0, based on Soul of Waifu) and the author name:
 
-![About dialog](../images/pc/dialog_ueber.png)
+![About dialog](../images/en/pc/dialog_ueber.png)
 
 **Bar at the top of the start page:** greeting with your persona name, three icons (create character · import character card · new folder) and the character search field. You can also simply **drag a `.png` or `.json` card into the window** to import it.
 
@@ -37,7 +37,7 @@ Without a language model no character can answer. Two ways:
 3. Enter the **API key** (stored only locally in `api.json`) and, if needed, the model name.
 4. Later, in the **character**, choose the same provider as the *conversation method* (see 2.3).
 
-![Language model and provider](../images/pc/optionen_02_llm.png)
+![Language model and provider](../images/en/pc/optionen_02_llm.png)
 
 > **Privacy:** With cloud providers your messages go to that provider. This also applies to tool results (e.g. mails that were read), which are sent along as context.
 
@@ -47,7 +47,7 @@ Without a language model no character can answer. Two ways:
 3. **Download** → choose the quantization → wait.
 4. In **My models** start the model with **Load model**. The display at the top left changes to *MODEL LOADING … → MODEL READY*.
 
-![Model hub](../images/pc/seite_6_modelshub.png)
+![Model hub](../images/en/pc/seite_6_modelshub.png)
 
 If you have a **second PC** as a server: [Chapter 12 (Yume LLM Server)](12-llm-server.md).
 
@@ -55,7 +55,7 @@ If you have a **second PC** as a server: [Chapter 12 (Yume LLM Server)](12-llm-s
 
 **Home → "Create character" icon** or **Workshop → Character editor**.
 
-![Create character](../images/pc/seite_2_create_character.png)
+![Create character](../images/en/pc/seite_2_create_character.png)
 
 Required at minimum: **Name** and **First message**. For good results also add a description and personality. Or let the **AI assistant** write the fields (see [Chapter 03](03-chat-und-charaktere.md#ai-assistant)). Then choose the provider under **Conversation method** (e.g. *Local LLM*, *Remote LLM* or a cloud service) and click **Create character**.
 
@@ -68,7 +68,7 @@ Alternatively:
 
 Click the character's tile. The chat opens:
 
-![Chat with Yume](../images/pc/chat_yume.png)
+![Chat with Yume](../images/en/pc/chat_yume.png)
 
 | Area | Meaning |
 | --- | --- |
@@ -85,6 +85,6 @@ Continue: [03 Characters and Chat](03-chat-und-charaktere.md) · [05 Voice and A
 
 **Settings → System & user interface → Program language** (English, Russian, German). After the change the program asks for a restart.
 
-![System and user interface](../images/pc/optionen_00_system.png)
+![System and user interface](../images/en/pc/optionen_00_system.png)
 
 On the same page: **Message translation** (Google/Yandex, target language, mode "both / user message / character message"), **audio devices** (input/output) and **text-to-speech rules** (speech output mode, e.g. "Read quotes only" or your own regular expression). At the bottom your PC data (RAM, graphics card) is shown, which the app uses for its recommendations.

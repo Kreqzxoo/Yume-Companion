@@ -19,6 +19,12 @@ import sys
 ROOT = os.environ.get("YUME_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "docs", "images", "pc")
 WHAT = sys.argv[2] if len(sys.argv) > 2 else "alle"
+EN = os.environ.get("YUME_LANG") == "en"   # English interface (settings.json: program_language 0) for the English docs
+
+
+def T(de, en):
+    return en if EN else de
+
 os.makedirs(OUT, exist_ok=True)
 os.chdir(ROOT)
 sys.path.insert(0, ROOT)
@@ -251,7 +257,7 @@ async def run():
             ("dialog_stimme", lambda: sig.open_voice_menu("Yume"),
              [("ElevenLabs", "elevenlabs"), ("XTTSv2", "xtts"), ("Edge TTS", "edge"), ("Kokoro", "kokoro"), ("Silero (RU)", "silero"), ("Qwen-3 TTS", "qwen3")]),
             ("dialog_ausdruecke", lambda: sig.open_expressions_menu("Yume"),
-             [("Ausdrucksbilder", "bilder"), ("Live2D-Modell", "live2d"), ("VRM-3D-Modell", "vrm")]),
+             [(T("Ausdrucksbilder", "Expressions Images"), "bilder"), (T("Live2D-Modell", "Live2D Model"), "live2d"), (T("VRM-3D-Modell", "VRM 3D Model"), "vrm")]),
             ("dialog_gedaechtnis", sig.open_soul_memory_viewer, None),
             ("dialog_bildgenerierung", sig.open_image_gen_settings, None),
         ):
@@ -286,7 +292,7 @@ async def run():
             except Exception as exc:  # noqa: BLE001
                 print("open_chat failed", exc, flush=True)
                 continue
-            await wait(14000)  # das 3D-Modell braucht einen Moment (WebGL)
+            await wait(int(os.environ.get("YUME_VRM_WAIT", "14000")))  # das 3D-Modell braucht einen Moment (WebGL)
             await snap(tag)
             main.setCurrentIndex(names.index("main_characters_page"))
             await wait(1500)
@@ -298,7 +304,7 @@ async def run():
         await snap("buehne_uebersicht")
         page = main.widget(idx)
         for b in page.findChildren(QtWidgets.QAbstractButton):
-            if b.isVisible() and "neue szene" in b.text().lower():
+            if b.isVisible() and T("neue szene", "new scene") in b.text().lower():
                 b.click()
                 break
         await wait(1500)
@@ -333,7 +339,7 @@ async def run():
             print("card not found", title, flush=True)
             return False
 
-        for tag, title in (("werkstatt_discord", "Discord-Gateway"), ("werkstatt_bildgenerierung", "Bildgenerierung")):
+        for tag, title in (("werkstatt_discord", T("Discord-Gateway", "Discord Gateway")), ("werkstatt_bildgenerierung", T("Bildgenerierung", "Image Generation"))):
             await snap_dialogs(tag, lambda t_=title: click_card(t_), delay=1800)
             await wait(500)
             main.setCurrentIndex(idx)
@@ -357,7 +363,7 @@ async def run():
             print("not found", txt, flush=True)
             return False
 
-        await snap_dialogs("anruf_modus", lambda: click_text("Anrufen"), delay=1800)
+        await snap_dialogs("anruf_modus", lambda: click_text(T("Anrufen", "Call")), delay=1800)
         # Kachel mit Mauszeiger: zeigt die Aktionsleiste
         card = None
         for w in win.findChildren(QtWidgets.QWidget):
