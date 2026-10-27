@@ -24,9 +24,15 @@ Modified in 2026 (summary, not complete):
 - Voice: Qwen3-TTS device handling, shared speech cleaner, wake-word answers rendered by the PC, speech recognition filters,
   WebRTC AEC3 echo cancellation, "Hey Yume" on the PC
 - Performance dashboard, tool log, self test, automatic profile backups (`.yumepack`), update check against a configurable repository
-- Yume LLM Server (`llm-server/`): turns another PC into an AI server (language, vision, image, tool models)
 - New visual design ("Yume look": navigation, icon set, cards, colours, texts), own names for the original's sections, links to the original project removed from the program (the original author stays credited in this file, in the About dialog and in `LICENSE`)
 - Image generation robustness, updater / build tools (`updater/`), rebranding support (`rebrand/`), German translation, many fixes (see git history)
+
+## Separate works under their own license
+
+The folder `llm-server/` (Yume LLM Server, a separate program that talks to the PC application over the network and was written
+independently) is **not** covered by the GPL of this repository. It is proprietary software, Copyright (c) 2026 Kreqzxoo, all rights
+reserved - see `llm-server/LICENSE`. Its third-party components are listed in `llm-server/THIRD_PARTY.md`.
+Everything else in this repository stays under the GPL-3.0 as described above.
 
 ## Third-party components
 

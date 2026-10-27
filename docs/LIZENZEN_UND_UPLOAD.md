@@ -26,7 +26,7 @@ Yume Companion ist eine veränderte Fassung davon. Die GPL ist eine Copyleft-Liz
 |---|---|
 | PC-App (Yume Companion, abgeleitet) | **GPL-3.0** (Pflicht, siehe oben) |
 | Android-App (`Yume Android`) | Eigener Code, eigene Wahl. **GPL-3.0 empfohlen**: sie liegt als APK im GPL-Projekt (`tools/android`), nutzt dessen Schnittstelle, und die Abhängigkeiten (Apache-2.0) sind GPL-3-kompatibel. Eigene Lizenz-Datei in diesen Ordner legen. |
-| Yume LLM Server (C#) | Eigener Code. Er lädt llama.cpp / stable-diffusion.cpp (MIT) zur Laufzeit nach. GPL-3.0 oder MIT möglich. |
+| Yume LLM Server (C#) | Eigener Code, **proprietär: Copyright (c) 2026 Kreqzxoo, alle Rechte vorbehalten** (`llm-server/LICENSE`, Drittkomponenten in `llm-server/THIRD_PARTY.md`). Er lädt llama.cpp / stable-diffusion.cpp (MIT) zur Laufzeit nach. Er ist ein eigenständiges Programm ohne Code von Soul of Waifu und kommuniziert nur über das Netzwerk mit der GPL-PC-App. |
 | Yume Updater / SoW-Rebrand | Eigene Hilfsprogramme. Der Rebrander liest `branding.py` des GPL-Projekts nur (führt es nicht aus). Freie Wahl, GPL-3.0 passt zum Rest. |
 
 Wichtig: Der Code der Android-App wurde mit KI-Unterstützung geschrieben. Das ist erlaubt. Die Rechte daran
@@ -118,6 +118,7 @@ mit `git status` / `git ls-files` durchsehen.
 | **Einbettungsmodell** `d0rj/e5-small-en-ru` und **Gefühlserkennung** `joeddav/distilbert-base-uncased-go-emotions-student` | beide MIT-lizenziert; nicht im Repo (zu groß), `tools/fetch_models.py` lädt sie von Hugging Face |
 | **FFmpeg** | wird beim Einrichten aus dem Quelltext von gyan.dev geladen (GPL-Build), nicht im Repo |
 | **XTTS-Referenzstimmen** `app/voices/*.wav` | Herkunft unklar, nicht im Repo; lege eigene Aufnahmen ab |
-| **Skripte, Tests, Doku, Android-Quelltext, LLM-Server** | eigener Code, GPL-3.0 (siehe Abschnitt 2) |
+| **Skripte, Tests, Doku, Android-Quelltext** | eigener Code, GPL-3.0 (siehe Abschnitt 2) |
+| **LLM-Server** (`llm-server/`) | eigener Code, proprietär, alle Rechte vorbehalten (`llm-server/LICENSE`); Ausnahme von der GPL des übrigen Repositorys |
 | **Screenshots** `docs/images` | aus der App mit Demo-Daten erzeugt; Benutzernamen und Pfade werden ersetzt. Vor dem Upload trotzdem ansehen |
 | **Release-Vorlagen** (`updater/installer_build/templates`) | enthalten **keine** Tokens mehr (`dashboard_token` wurde geleert); Vorlagen-Generator ergänzt |

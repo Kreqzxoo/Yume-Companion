@@ -1,0 +1,58 @@
+Yume LLM Server - Proprietary License (All Rights Reserved)
+
+Copyright (c) 2026 Kreqzxoo. All rights reserved.
+
+This folder (llm-server/: source code, build scripts, installer files, icons and the compiled programs
+"YumeLLMServer.exe" and "Yume-LLM-Server-Setup-*.exe") is NOT open source and NOT covered by the GNU GPL
+that applies to the rest of this repository. All rights are reserved by the copyright holder, Kreqzxoo.
+
+1. What you may do without asking
+   a) Download the official installer from the project's GitHub releases and use the program on your own
+      computers, for personal, non-commercial purposes, together with Yume Companion.
+   b) Read the source code on GitHub and, as far as the GitHub Terms of Service allow, fork the repository
+      on GitHub for the purpose of viewing it or proposing changes to the copyright holder.
+   c) Report bugs and send suggestions. By sending code or text for inclusion you grant the copyright holder
+      the right to use it in the project under this license.
+
+2. What requires the written permission of the copyright holder
+   Everything else, in particular: copying, redistributing or re-uploading the source code or the programs
+   (also modified or in part), modifying, translating or decompiling them, building and publishing your own
+   version, including them in another product, mirroring them, selling them or using them commercially,
+   offering them as a service, and removing or changing this notice.
+   Permission can be requested via an issue on https://github.com/Kreqzxoo/Yume-Companion, the project's
+   Discord server or https://ko-fi.com/kreqzxoo. Permission is only valid if given in writing by the
+   copyright holder.
+
+3. Third-party components
+   The program downloads and runs third-party software and data at run time (for example llama.cpp and
+   stable-diffusion.cpp, MIT license, and language/vision/image models with their own licenses). These are
+   not part of this license; their own license terms apply to them and to your use of them.
+   See THIRD_PARTY.md.
+
+4. Relation to the rest of the repository
+   The PC application "Yume Companion" in the rest of this repository is a modified version of Soul of Waifu
+   and is licensed under the GNU GPL v3 (see ../LICENSE and ../NOTICE.md). The LLM Server is a separate
+   program that talks to it over the network; it was written independently and does not contain code of
+   Soul of Waifu.
+   Versions of this folder that were published before this license was added (the commits and releases
+   up to and including v3.0.0-beta11) remain available to those who received them under the license that
+   applied at the time.
+
+5. No warranty
+   THE PROGRAM IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. THE COPYRIGHT HOLDER IS NOT LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE PROGRAM, TO THE EXTENT PERMITTED BY LAW.
+
+------------------------------------------------------------------------------------------------------------
+Deutsche Kurzfassung (maßgeblich ist der englische Text oben)
+
+Yume LLM Server - Alle Rechte vorbehalten. (c) 2026 Kreqzxoo.
+Dieser Ordner ist kein Open Source und nicht von der GPL des übrigen Repositorys erfasst.
+Erlaubt ohne Rückfrage: den offiziellen Installer aus den GitHub-Releases herunterladen und privat, nicht
+kommerziell mit Yume Companion nutzen; den Quelltext auf GitHub ansehen und im Rahmen der GitHub-Nutzungs-
+bedingungen forken, um ihn anzusehen oder Vorschläge einzureichen; Fehler melden.
+Nur mit schriftlicher Erlaubnis von Kreqzxoo erlaubt: Kopieren, Weitergeben, erneutes Hochladen, Ändern,
+Übersetzen, Zerlegen (Decompilieren), eigene Versionen bauen und veröffentlichen, in andere Produkte einbauen,
+Spiegeln, Verkaufen, kommerzielle Nutzung, Betrieb als Dienst. Anfragen per Issue, Discord oder Ko-fi.
+Programme und Modelle von Dritten, die der LLM Server nachlädt, haben eigene Lizenzen (siehe THIRD_PARTY.md).
+Keine Gewährleistung.

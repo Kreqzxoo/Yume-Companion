@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Kreqzxoo. All rights reserved. Proprietary software - see LICENSE in this folder.
 // Yume LLM Server - turns another PC into an AI server for Yume Companion (llama.cpp, Yume style).
 // Compiled with the C# 5 compiler that ships with Windows (no SDK needed). Language/UI strings: German + English.
 using System;

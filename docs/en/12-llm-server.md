@@ -110,3 +110,5 @@ powershell -ExecutionPolicy Bypass -File ".\Build Yume LLM Server.ps1" -Version 
 The script compiles with the `csc.exe` from the .NET Framework (no SDK needed) to `llm-server\build\YumeLLMServer.exe`. If **Inno Setup 6** is installed, `llm-server\dist\Yume-LLM-Server-Setup-<version>.exe` is created as well and is also copied to `tools\server\Yume-LLM-Server-Setup.exe` (so Yume Companion offers it for saving). With `-NoInstaller` only the exe is created.
 
 License note: The program downloads **llama.cpp** and **stable-diffusion.cpp** (MIT) at runtime and does not ship them.
+
+The Yume LLM Server itself is **proprietary** (Copyright (c) 2026 Kreqzxoo, all rights reserved, see `llm-server/LICENSE`): private use is allowed, redistributing or modifying it needs the written permission of the author.

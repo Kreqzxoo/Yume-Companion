@@ -1,0 +1,19 @@
+Yume LLM Server - License (All Rights Reserved)
+Copyright (c) 2026 Kreqzxoo
+
+This program is proprietary software. It is not open source.
+
+You may use it on your own computers for personal, non-commercial purposes, together with Yume Companion.
+
+Without the written permission of the copyright holder (Kreqzxoo) you may not copy, redistribute, re-upload, modify,
+translate, decompile, mirror, sell or commercially use this program or parts of it, build and publish your own version
+of it, or include it in another product. Permission can be requested on https://github.com/Kreqzxoo/Yume-Companion,
+on the project's Discord server or via https://ko-fi.com/kreqzxoo.
+
+The program downloads third-party software (llama.cpp, stable-diffusion.cpp: MIT license) and AI models at your request.
+These have their own licenses; you are responsible for complying with them.
+
+THE PROGRAM IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. THE COPYRIGHT HOLDER IS NOT LIABLE FOR DAMAGES ARISING FROM
+ITS USE, TO THE EXTENT PERMITTED BY LAW.
+
+The full license text is in the file LICENSE of the llm-server folder of the project.
