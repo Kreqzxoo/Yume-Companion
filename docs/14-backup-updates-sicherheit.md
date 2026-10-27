@@ -27,7 +27,9 @@
 ## 14.2 Updates
 
 ### Prüfen
-**Einstellungen → Updates:** GitHub-Repository als `Besitzer/Name` eintragen (oder die volle URL), **Nach Updates suchen**. Die App vergleicht die installierte Version (`VERSION.txt`, aktuell `3.0.0 BETA`) mit dem neuesten Release oder Tag und meldet *Neue Version verfügbar* mit **Release-Seite öffnen**. **Es wird nichts automatisch heruntergeladen oder installiert.**
+**Einstellungen → Updates:** GitHub-Repository als `Besitzer/Name` eintragen (oder die volle URL), **Nach Updates suchen**. Die App vergleicht die installierte Version (`VERSION.txt`) mit dem neuesten Release (auch Beta-Versionen) und meldet *Neue Version verfügbar*. Beim Programmstart prüft sie das ebenfalls im Hintergrund und zeigt dann ein Fenster mit dem Knopf **Herunterladen und installieren**.
+
+**Herunterladen und installieren:** Die App fragt einmal nach, lädt dann das Setup des Releases herunter (mit Fortschrittsanzeige, abbrechbar) und prüft seine **SHA-256-Prüfsumme**. Nur wenn sie stimmt, wird das Setup gestartet und Yume Companion beendet; deine Charaktere, Chats und Einstellungen bleiben erhalten. Stimmt etwas nicht (Adresse gehört nicht zum Repository, Prüfsumme fehlt oder weicht ab, falsche Größe, keine Programmdatei), wird die Datei gelöscht und **nichts installiert**. Das Setup selbst läuft wie gewohnt als Assistent, du bestätigst dort noch einmal. Wer lieber selbst herunterlädt, nutzt **Release-Seite öffnen**.
 
 ![Updates](images/pc/optionen_13_updates.png)
 

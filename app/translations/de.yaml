@@ -1999,7 +1999,7 @@ open_ambient_folder_btn: 'Ambient-Ordner öffnen (eigene Audiodateien hinzufüge
 reload_ambient_tooltip: 'Audioliste aktualisieren'
 settings_updates: 'Updates'
 updates_title: 'Updates'
-updates_intro: 'Prüft ein GitHub-Repository auf eine neuere Version. Es wird nichts automatisch heruntergeladen oder installiert; hole das Update über die Release-Seite und sichere vorher deine Daten.'
+updates_intro: "Prüft ein GitHub-Repository auf eine neuere Version. Gibt es eine, lädt „Herunterladen und installieren“ das Setup, prüft seine SHA-256-Prüfsumme und startet es (das Programm wird dafür beendet). Du entscheidest jedes Mal selbst; sichere vorher deine Daten, wenn du magst."
 updates_current_version: 'Installierte Version: {version}'
 updates_repo_label: 'GitHub-Repository (Besitzer/Name):'
 updates_check_button: 'Nach Updates suchen'
@@ -2526,3 +2526,26 @@ presence_all: "Wenn alle weg sind"
 presence_arrive: "Wenn jemand ankommt"
 presence_first: "Wenn der Erste ankommt"
 presence_ph: "z. B. Mach das Licht aus; pausiere die Musik   (mehrere Schritte mit ;)"
+updates_install_button: "Herunterladen und installieren"
+updates_install_tooltip: "Lädt das Setup der neuen Version herunter, prüft die SHA-256-Prüfsumme und startet es. Yume Companion wird dafür beendet."
+updates_install_ready: "Das Setup ({size}) kann automatisch heruntergeladen und geprüft werden: Klicke auf „Herunterladen und installieren“."
+updates_install_unavailable: "Dieses Release hat kein Setup mit Prüfsumme für die automatische Installation – bitte nutze die Release-Seite."
+updates_confirm_title: "Update installieren"
+updates_confirm_body: "Version {remote} wird heruntergeladen ({size}) und ihre Prüfsumme (SHA-256) geprüft. Danach wird Yume Companion beendet und das Setup gestartet.\n\nCharaktere, Chats und Einstellungen bleiben erhalten; mache vorher gern ein Backup (Backup & Wiederherstellung).\n\nFortfahren?"
+updates_downloading: "Update wird heruntergeladen ..."
+updates_downloading_mb: "Update wird heruntergeladen ... {done} von {total} MB"
+updates_cancel: "Abbrechen"
+updates_cancelled: "Download abgebrochen."
+updates_started: "Prüfsumme in Ordnung. Das Setup startet, Yume Companion wird jetzt beendet."
+updates_err_no_setup: "Dieses Release hat keine Setup-Datei."
+updates_err_no_checksum: "Das Release hat keine Prüfsumme, die Datei kann deshalb nicht geprüft werden. Es wurde nichts installiert."
+updates_err_bad_url: "Die Download-Adresse gehört nicht zum Projekt-Repository. Es wurde nichts installiert."
+updates_err_disk_space: "Nicht genug freier Speicherplatz für den Download."
+updates_err_network: "Der Download ist fehlgeschlagen (Verbindung?). Bitte versuche es erneut."
+updates_err_size: "Die heruntergeladene Datei hat die falsche Größe. Sie wurde gelöscht, es wurde nichts installiert."
+updates_err_hash: "Die Prüfsumme (SHA-256) des Downloads stimmt nicht. Die Datei wurde gelöscht, es wurde nichts installiert."
+updates_err_hash_conflict: "Die zu diesem Release veröffentlichten Prüfsummen widersprechen sich. Es wurde nichts installiert."
+updates_err_not_exe: "Die heruntergeladene Datei ist kein Windows-Programm. Sie wurde gelöscht, es wurde nichts installiert."
+updates_err_launch: "Das Setup konnte nicht gestartet werden."
+update_available_install: "Herunterladen und installieren"
+update_available_open: "Release-Seite öffnen"

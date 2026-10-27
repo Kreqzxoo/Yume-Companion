@@ -27,7 +27,9 @@
 ## 14.2 Updates
 
 ### Checking
-**Settings → Updates:** enter the GitHub repository as `owner/name` (or the full URL), **Check for updates**. The app compares the installed version (`VERSION.txt`, currently `3.0.0 BETA`) with the newest release or tag and reports *New version available* with **Open release page**. **Nothing is downloaded or installed automatically.**
+**Settings → Updates:** enter the GitHub repository as `owner/name` (or the full URL), **Check for updates**. The app compares the installed version (`VERSION.txt`) with the newest release (beta versions included) and reports *New version available*. It also checks in the background when the program starts and then shows a window with the button **Download and install**.
+
+**Download and install:** The app asks once, downloads the setup of the release (with a progress bar, can be cancelled) and checks its **SHA-256 checksum**. Only if it matches is the setup started and Yume Companion closed; your characters, chats and settings are kept. If anything is wrong (address does not belong to the repository, checksum missing or different, wrong size, not a program file), the file is deleted and **nothing is installed**. The setup itself runs as the usual wizard, so you confirm once more there. If you prefer to download yourself, use **Open release page**.
 
 ![Updates](../images/en/pc/optionen_13_updates.png)
 

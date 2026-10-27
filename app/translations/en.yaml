@@ -2210,7 +2210,7 @@ open_ambient_folder_btn: 'Open Ambient Folder (Add your own audio)'
 reload_ambient_tooltip: 'Refresh audio tracks list'
 settings_updates: 'Updates'
 updates_title: 'Updates'
-updates_intro: 'Checks a GitHub repository for a newer release. Nothing is downloaded or installed automatically; use the release page to get the update and back up your data first.'
+updates_intro: "Checks a GitHub repository for a newer release. If there is one, \"Download and install\" fetches the setup, checks its SHA-256 checksum and starts it (the program closes for that). You decide every time; back up your data first if you like."
 updates_current_version: 'Installed version: {version}'
 updates_repo_label: 'GitHub repository (owner/name):'
 updates_check_button: 'Check for updates'
@@ -2517,3 +2517,26 @@ stt_language_label: "Speech recognition language"
 stt_language_tooltip: "A fixed language is more reliable than \"Automatic\" - especially for short sentences."
 stt_language_auto: "Detect automatically"
 settings_spotify: Spotify
+updates_install_button: "Download and install"
+updates_install_tooltip: "Downloads the setup of the new version, checks its SHA-256 checksum and starts it. Yume Companion closes for that."
+updates_install_ready: "The setup ({size}) can be downloaded and checked automatically: click \"Download and install\"."
+updates_install_unavailable: "This release has no setup with a checksum for automatic installation - please use the release page."
+updates_confirm_title: "Install update"
+updates_confirm_body: "Version {remote} will be downloaded ({size}) and its checksum (SHA-256) checked. Then Yume Companion closes and the setup starts.\n\nYour characters, chats and settings are kept; make a backup first if you like (Backup & Restore).\n\nContinue?"
+updates_downloading: "Downloading the update ..."
+updates_downloading_mb: "Downloading the update ... {done} of {total} MB"
+updates_cancel: "Cancel"
+updates_cancelled: "Download cancelled."
+updates_started: "Checksum OK. The setup is starting, Yume Companion closes now."
+updates_err_no_setup: "This release has no setup file."
+updates_err_no_checksum: "The release has no checksum, so the file cannot be checked. Nothing was installed."
+updates_err_bad_url: "The download address does not belong to the project repository. Nothing was installed."
+updates_err_disk_space: "Not enough free disk space for the download."
+updates_err_network: "The download failed (connection?). Please try again."
+updates_err_size: "The downloaded file has the wrong size. It was deleted; nothing was installed."
+updates_err_hash: "The checksum (SHA-256) of the download does not match. The file was deleted; nothing was installed."
+updates_err_hash_conflict: "The checksums published for this release contradict each other. Nothing was installed."
+updates_err_not_exe: "The downloaded file is not a Windows program. It was deleted; nothing was installed."
+updates_err_launch: "The setup could not be started."
+update_available_install: "Download and install"
+update_available_open: "Open release page"

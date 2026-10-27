@@ -4651,7 +4651,7 @@ class Ui_MainWindow(object):
 
         update_intro = QtWidgets.QLabel(self.translations.get(
             "updates_intro",
-            "Checks a GitHub repository for a newer release. Nothing is downloaded or installed automatically; use the release page to get the update and back up your data first."
+            "Checks a GitHub repository for a newer release. If there is one, \"Download and install\" fetches the setup, checks its SHA-256 checksum and starts it (the program closes for that). You decide every time; back up your data first if you like."
         ))
         update_intro.setWordWrap(True)
         update_intro.setStyleSheet("color: rgba(232,222,240,0.78); border: none; background: transparent;")
@@ -4675,7 +4675,14 @@ class Ui_MainWindow(object):
         self.pushButton_open_release_page.setObjectName("pushButton_open_release_page")
         self.pushButton_open_release_page.setMinimumHeight(42)
         self.pushButton_open_release_page.setEnabled(False)
+        self.pushButton_install_update = QtWidgets.QPushButton(self.translations.get("updates_install_button", "Download and install"))
+        self.pushButton_install_update.setObjectName("pushButton_install_update")
+        self.pushButton_install_update.setMinimumHeight(42)
+        self.pushButton_install_update.setEnabled(False)
+        self.pushButton_install_update.setToolTip(self.translations.get(
+            "updates_install_tooltip", "Downloads the setup of the new version, checks its SHA-256 checksum and starts it. Yume Companion closes for that."))
         update_btn_row.addWidget(self.pushButton_check_updates)
+        update_btn_row.addWidget(self.pushButton_install_update)
         update_btn_row.addWidget(self.pushButton_open_release_page)
         l_updates.addLayout(update_btn_row)
 

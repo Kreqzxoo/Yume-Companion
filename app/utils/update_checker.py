@@ -58,24 +58,48 @@ def _get_json(url: str):
         return json.loads(resp.read().decode("utf-8"))
 
 
+SETUP_ASSET_RE = re.compile(r"^Yume-Companion-Setup-[0-9A-Za-z._-]+\.exe$")
+
+
+def pick_setup(release: dict) -> dict:
+    """The setup file of a release and the way to check it: {setup_name, setup_url, setup_size, sha256, sha256_url} (empty when there is none).
+    sha256 comes from the digest GitHub calculates for every uploaded file; sha256_url is the "<name>.sha256" file of the release (if any)."""
+    out = {"setup_name": "", "setup_url": "", "setup_size": 0, "sha256": "", "sha256_url": ""}
+    assets = [a for a in (release.get("assets") or []) if isinstance(a, dict)]
+    setups = [a for a in assets if SETUP_ASSET_RE.match(str(a.get("name", ""))) and a.get("state", "uploaded") == "uploaded"]
+    if not setups:
+        return out
+    a = max(setups, key=lambda x: _version_tuple(x.get("name", "")))
+    out.update(setup_name=a["name"], setup_url=str(a.get("browser_download_url") or ""), setup_size=int(a.get("size") or 0))
+    digest = str(a.get("digest") or "")
+    if digest.lower().startswith("sha256:") and re.fullmatch(r"[0-9a-fA-F]{64}", digest[7:]):
+        out["sha256"] = digest[7:].lower()
+    for b in assets:
+        if b.get("name") == a["name"] + ".sha256":
+            out["sha256_url"] = str(b.get("browser_download_url") or "")
+    return out
+
+
 def check_for_update(repo: str) -> dict:
-    """Return a result dict. Keys: ok, error, local, remote, newer, url, name, notes."""
+    """Return a result dict. Keys: ok, error, local, remote, newer, url, name, notes, setup_name, setup_url, setup_size, sha256, sha256_url."""
     local = current_version()
     result = {"ok": False, "error": "", "local": local, "remote": "", "newer": False,
-              "url": "", "name": "", "notes": ""}
+              "url": "", "name": "", "notes": "", "repo": "",
+              "setup_name": "", "setup_url": "", "setup_size": 0, "sha256": "", "sha256_url": ""}
     repo = normalize_repo(repo)
     if not repo:
         result["error"] = "not_configured"
         return result
+    result["repo"] = repo
     base = f"https://api.github.com/repos/{repo}"
     try:
-        try:
-            data = _get_json(f"{base}/releases/latest")
-            tag, name, url, notes = (data.get("tag_name") or ""), (data.get("name") or ""), \
-                (data.get("html_url") or ""), (data.get("body") or "")
-        except urllib.error.HTTPError as e:
-            if e.code != 404:
-                raise
+        # all releases (the "latest" endpoint ignores pre-releases, and every beta is one): the highest version number wins
+        releases = [r for r in (_get_json(f"{base}/releases?per_page=20") or []) if isinstance(r, dict) and not r.get("draft") and r.get("tag_name")]
+        if releases:
+            best = max(releases, key=lambda r: _version_tuple(r["tag_name"]))
+            tag, name, url, notes = best["tag_name"], (best.get("name") or ""), (best.get("html_url") or ""), (best.get("body") or "")
+            result.update(pick_setup(best))
+        else:
             tags = _get_json(f"{base}/tags?per_page=30")
             if not tags:
                 result["error"] = "no_releases"
