@@ -210,7 +210,7 @@ Die App kann prüfen, ob es auf GitHub eine neuere Version gibt (sie lädt nicht
 
 1. App starten → **Einstellungen → Updates**.
 2. Bei *GitHub-Repository* `Kreqzxoo/Yume-Companion` eintragen (oder die volle GitHub-URL).
-3. **Nach Updates suchen**. Die App vergleicht die installierte Version mit dem neuesten *Release* (bzw. Tag) und zeigt „Neue Version verfügbar“ samt Knopf **Release-Seite öffnen**.
+3. **Nach Updates suchen**. Die App vergleicht die installierte Version mit dem neuesten *Release* (bzw. Tag) und zeigt „Neue Version verfügbar“ samt Knöpfen **Herunterladen und installieren** (Download, SHA-256-Prüfung, Setup-Start) und **Release-Seite öffnen**. Dafür muss das Release eine Datei `Yume-Companion-Setup-<Version>.exe` enthalten; die Prüfsumme liefert GitHub automatisch (zusätzlich darf eine Datei `<Name>.sha256` dabei sein).
 
 Damit das klappt:
 * Der Tag muss mit der Versionsnummer in `VERSION.txt` vergleichbar sein (z. B. `v3.0.0` oder `v3.0.1`).

@@ -575,6 +575,9 @@ class MainWindow(QMainWindow):
         from app.utils.update_checker import current_version, DEFAULT_REPO
         self._update_release_url = ""
         self._update_worker = None
+        self._update_result = {}
+        self._update_download = None
+        self._update_progress = None
         self.ui.label_update_current.setText(
             self.translations.get("updates_current_version", "Installed version: {version}").format(version=current_version())
         )
@@ -605,6 +608,7 @@ class MainWindow(QMainWindow):
         self.on_update_repo_edited()
         self.ui.pushButton_check_updates.setEnabled(False)
         self.ui.pushButton_open_release_page.setEnabled(False)
+        self.ui.pushButton_install_update.setEnabled(False)
         self.ui.label_update_status.setText(self.translations.get("updates_checking", "Checking GitHub..."))
         self._update_worker = UpdateCheckWorker(repo, self)
         self._update_worker.finished_check.connect(self._on_update_check_finished)
@@ -625,16 +629,144 @@ class MainWindow(QMainWindow):
             self.ui.label_update_status.setText(errors.get(result.get("error"), fallback))
             return
         self._update_release_url = result.get("url", "")
+        self._update_result = result
         self.ui.pushButton_open_release_page.setEnabled(bool(self._update_release_url))
+        installable = bool(result.get("newer")) and self._update_installable(result)
+        self.ui.pushButton_install_update.setEnabled(installable)
         if result.get("newer"):
             text = tr.get("updates_available", "New version available: {remote} (installed: {local}).").format(
                 remote=result["remote"], local=result["local"])
+            if installable:
+                text += "\n" + tr.get("updates_install_ready", "The setup ({size}) can be downloaded and checked automatically: click \"Download and install\".").format(
+                    size=self._update_size_text(result))
+            else:
+                text += "\n" + tr.get("updates_install_unavailable", "This release has no setup with a checksum for automatic installation - please use the release page.")
             if result.get("notes"):
                 text += "\n\n" + result["notes"]
         else:
             text = tr.get("updates_up_to_date", "You are up to date (installed: {local}, latest: {remote}).").format(
                 remote=result["remote"], local=result["local"])
         self.ui.label_update_status.setText(text)
+
+    # ------------------------------------------------------------------ download, checksum check and start of the setup
+    @staticmethod
+    def _update_size_text(result: dict) -> str:
+        size = int(result.get("setup_size") or 0)
+        return f"{size / (1024 ** 3):.1f} GB" if size >= 1024 ** 3 else f"{size / (1024 ** 2):.0f} MB"
+
+    @staticmethod
+    def _update_installable(result: dict) -> bool:
+        from app.utils import update_installer
+        try:
+            update_installer.validate(result)
+            return True
+        except update_installer.UpdateError:
+            return False
+
+    def on_install_update_clicked(self):
+        result = getattr(self, "_update_result", None) or {}
+        if result.get("newer"):
+            self.start_update_install(result)
+
+    def start_update_install(self, result: dict):
+        """Asks once, downloads the setup of the release, checks its SHA-256 and starts it; Yume Companion then closes itself."""
+        from app.utils import update_installer
+        tr = self.translations
+        if getattr(self, "_update_download", None) is not None and self._update_download.isRunning():
+            return
+        try:
+            update_installer.validate(result)
+        except update_installer.UpdateError as exc:
+            self._show_update_error(exc.key)
+            return
+        box = QtWidgets.QMessageBox(self)
+        box.setIcon(QtWidgets.QMessageBox.Icon.Question)
+        box.setWindowTitle(tr.get("updates_confirm_title", "Install update"))
+        box.setText(tr.get(
+            "updates_confirm_body",
+            "Version {remote} will be downloaded ({size}) and its checksum (SHA-256) checked. Then Yume Companion closes and the setup starts.\n\n"
+            "Your characters, chats and settings are kept; make a backup first if you like (Backup & Restore).\n\nContinue?"
+        ).format(remote=result.get("remote", ""), size=self._update_size_text(result)))
+        box.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
+        box.setDefaultButton(QtWidgets.QMessageBox.StandardButton.No)
+        if box.exec() != QtWidgets.QMessageBox.StandardButton.Yes:
+            return
+        progress = QtWidgets.QProgressDialog(
+            tr.get("updates_downloading", "Downloading the update ..."), tr.get("updates_cancel", "Cancel"), 0, 100, self)
+        progress.setWindowTitle(tr.get("updates_confirm_title", "Install update"))
+        progress.setWindowModality(QtCore.Qt.WindowModality.WindowModal)
+        progress.setMinimumDuration(0)
+        progress.setAutoClose(False)
+        progress.setAutoReset(False)
+        progress.setValue(0)
+        worker = update_installer.DownloadWorker(result, self)
+        progress.canceled.connect(worker.cancel)
+        worker.progress.connect(lambda done, total: self._on_update_progress(done, total))
+        worker.finished_ok.connect(self._on_update_downloaded)
+        worker.failed.connect(lambda key, detail: self._on_update_failed(key))
+        self._update_progress = progress
+        self._update_download = worker
+        self.ui.pushButton_install_update.setEnabled(False)
+        worker.start()
+        progress.show()
+
+    def _on_update_progress(self, done: int, total: int):
+        dlg = getattr(self, "_update_progress", None)
+        if dlg is None or total <= 0:
+            return
+        dlg.setValue(min(99, int(done * 100 / total)))
+        dlg.setLabelText(self.translations.get("updates_downloading_mb", "Downloading the update ... {done} of {total} MB").format(
+            done=done // (1024 * 1024), total=total // (1024 * 1024)))
+
+    def _close_update_progress(self):
+        dlg = getattr(self, "_update_progress", None)
+        if dlg is not None:
+            try:
+                dlg.canceled.disconnect()
+            except TypeError:
+                pass
+            dlg.close()
+            dlg.deleteLater()
+        self._update_progress = None
+
+    def _on_update_failed(self, key: str):
+        self._close_update_progress()
+        self.ui.pushButton_install_update.setEnabled(bool((getattr(self, "_update_result", None) or {}).get("newer")))
+        if key != "cancelled":
+            self._show_update_error(key)
+        else:
+            self.ui.label_update_status.setText(self.translations.get("updates_cancelled", "Download cancelled."))
+
+    def _show_update_error(self, key: str):
+        tr = self.translations
+        texts = {
+            "no_setup": tr.get("updates_err_no_setup", "This release has no setup file."),
+            "no_checksum": tr.get("updates_err_no_checksum", "The release has no checksum, so the file cannot be checked. Nothing was installed."),
+            "bad_url": tr.get("updates_err_bad_url", "The download address does not belong to the project repository. Nothing was installed."),
+            "disk_space": tr.get("updates_err_disk_space", "Not enough free disk space for the download."),
+            "network": tr.get("updates_err_network", "The download failed (connection?). Please try again."),
+            "size_mismatch": tr.get("updates_err_size", "The downloaded file has the wrong size. It was deleted; nothing was installed."),
+            "hash_mismatch": tr.get("updates_err_hash", "The checksum (SHA-256) of the download does not match. The file was deleted; nothing was installed."),
+            "hash_conflict": tr.get("updates_err_hash_conflict", "The checksums published for this release contradict each other. Nothing was installed."),
+            "not_exe": tr.get("updates_err_not_exe", "The downloaded file is not a Windows program. It was deleted; nothing was installed."),
+            "launch_failed": tr.get("updates_err_launch", "The setup could not be started."),
+        }
+        message = texts.get(key, tr.get("updates_error", "Update check failed: {error}").format(error=key))
+        self.ui.label_update_status.setText(message)
+        QtWidgets.QMessageBox.warning(self, tr.get("updates_confirm_title", "Install update"), message)
+
+    def _on_update_downloaded(self, path: str):
+        from app.utils import update_installer
+        self._close_update_progress()
+        tr = self.translations
+        try:
+            update_installer.launch_setup(__import__("pathlib").Path(path))
+        except update_installer.UpdateError as exc:
+            self._show_update_error(exc.key)
+            return
+        self.ui.label_update_status.setText(tr.get("updates_started", "Checksum OK. The setup is starting, Yume Companion closes now."))
+        QtCore.QTimer.singleShot(1200, QtWidgets.QApplication.quit)
+        QtCore.QTimer.singleShot(8000, lambda: os._exit(0))        # the setup replaces program files: make sure nothing keeps them open
 
     def on_open_release_page_clicked(self):
         url = getattr(self, "_update_release_url", "")
@@ -848,6 +980,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_llm_preset_delete.clicked.connect(self.interface_signals.delete_selected_llm_preset)
         self.ui.pushButton_check_updates.clicked.connect(self.on_check_updates_clicked)
         self.ui.pushButton_open_release_page.clicked.connect(self.on_open_release_page_clicked)
+        self.ui.pushButton_install_update.clicked.connect(self.on_install_update_clicked)
         self.ui.lineEdit_update_repo.editingFinished.connect(self.on_update_repo_edited)
         self._init_updates_tab()
         self.ui.pushButton_copy_mobile_link.clicked.connect(self.interface_signals.on_copy_mobile_link)
@@ -1110,35 +1243,33 @@ class MainWindow(QMainWindow):
         numbers = re.findall(r"\d+", str(value or ""))
         return tuple(int(part) for part in numbers[:4]) if numbers else (0,)
 
-    def check_for_updates(self, current_version):
+    def check_for_updates(self, current_version=None):
+        """Start-up check: the result of update_checker.check_for_update when a newer release exists, otherwise None.
+        Uses the installed VERSION.txt (not a fixed number), includes pre-releases and returns the setup file with its checksum."""
         try:
+            from app.utils.update_checker import check_for_update, normalize_repo
             from app.utils.branding import get_text as _brand_text
-            _repo = _brand_text("update_repo") or "jofizcd/Soul-of-Waifu"
-            repo_url = f"https://api.github.com/repos/{_repo}/releases/latest"
-            response = requests.get(repo_url, timeout=10)
-            response.raise_for_status()
-            latest_release = response.json()
-            latest_version = latest_release["tag_name"]
-
-            # The upstream repository may still report an older tag than this
-            # downstream 2.5.3 build. Do not offer a downgrade as an update.
-            if self._numeric_version_tuple(latest_version) > self._numeric_version_tuple(current_version):
-                logger.info(f"A newer version has been released: {latest_version}")
-                return latest_version, latest_release["html_url"]
-            return None, None
-        except requests.exceptions.RequestException as e:
-            logger.warning(f"Couldn't check for updates: {e}")
-            return None, None
-
+            repo = normalize_repo(self.interface_signals.configuration_settings.get_main_setting("update_repo") or "") or normalize_repo(_brand_text("update_repo") or "")
+            if not repo:
+                return None
+            result = check_for_update(repo)
+            if result.get("ok") and result.get("newer"):
+                logger.info(f"A newer version has been released: {result.get('remote')}")
+                return result
+            return None
         except Exception as e:
             logger.error(f"Error checking for updates: {e}", exc_info=True)
-            return None, None
+            return None
 
-    def show_update_dialog(self, latest_version, github_url):
+    def show_update_dialog(self, result):
+        latest_version, github_url = result.get("remote", ""), result.get("url", "")
+        current_version = result.get("local", "")
+        self._update_result = result
+        self._update_release_url = github_url
         dialog = QtWidgets.QDialog(self)
         dialog.setWindowTitle(self.translations.get("update_available_title", "Update Available"))
         dialog.setWindowIcon(QtGui.QIcon("app/gui/icons/logotype.ico"))
-        dialog.setFixedSize(400, 450)
+        dialog.setFixedSize(400, 520)
 
         dialog.setStyleSheet("""
             QDialog {
@@ -1239,6 +1370,15 @@ class MainWindow(QMainWindow):
         github_button.setObjectName("github_button")
         github_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         github_button.clicked.connect(lambda: QtGui.QDesktopServices.openUrl(QtCore.QUrl(github_url)))
+        install_button = None
+        if self._update_installable(result):
+            install_button = QtWidgets.QPushButton(
+                self.translations.get("update_available_install", "Download and install")
+                + f" ({self._update_size_text(result)})")
+            install_button.setObjectName("github_button")
+            install_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+            install_button.clicked.connect(dialog.accept)
+            github_button.setText(self.translations.get("update_available_open", "Open release page"))
 
         close_button = QtWidgets.QPushButton(
             self.translations.get("update_available_close", "Later")
@@ -1247,6 +1387,8 @@ class MainWindow(QMainWindow):
         close_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         close_button.clicked.connect(dialog.reject)
 
+        if install_button is not None:
+            button_layout.addWidget(install_button)
         button_layout.addWidget(github_button)
         button_layout.addWidget(close_button)
 
@@ -1258,7 +1400,8 @@ class MainWindow(QMainWindow):
         main_layout.addStretch()
         main_layout.addLayout(button_layout)
 
-        dialog.exec()
+        if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted and install_button is not None:
+            QtCore.QTimer.singleShot(0, lambda: self.start_update_install(result))
 
     def load_fonts_from_folder(self, folder_path):
         for font_file in os.listdir(folder_path):
@@ -1489,17 +1632,15 @@ if __name__ == "__main__":
     apply_taskbar_icon(main_window)
     QtCore.QTimer.singleShot(1500, lambda: apply_taskbar_icon(main_window))
 
-    current_version = "v3.0.0"
-
     class _UpdateBridge(QtCore.QObject):
-        found = QtCore.pyqtSignal(str, str)
+        found = QtCore.pyqtSignal(object)
 
     update_bridge = _UpdateBridge()
     update_bridge.found.connect(main_window.show_update_dialog)
 
     def deferred_update_check():
-        # Yume updates itself through the Yume Updater. The old GitHub check is only used when a repository is set in the branding
-        # (it pointed at the original project and blocked the window for up to 10 s whenever GitHub could not be reached).
+        # Start-up check in a thread (never blocks the window): when the repository of the branding has a newer release, the update dialog
+        # appears with "Download and install" (download, SHA-256 check, setup start - see app/utils/update_installer.py).
         try:
             from app.utils.branding import get_text as _brand_text
             if not _brand_text("update_repo"):
@@ -1508,9 +1649,9 @@ if __name__ == "__main__":
             return
 
         def work():
-            latest_version, github_url = main_window.check_for_updates(current_version)
-            if latest_version:
-                update_bridge.found.emit(latest_version, github_url)
+            result = main_window.check_for_updates()
+            if result:
+                update_bridge.found.emit(result)
 
         threading.Thread(target=work, name="update-check", daemon=True).start()
 

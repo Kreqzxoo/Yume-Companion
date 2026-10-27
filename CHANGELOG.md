@@ -2,6 +2,14 @@
 
 Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
+## 3.0.0 Beta 13
+
+**Neu**
+- Update-Programm: **Herunterladen und installieren**. Die App findet das neueste Release (auch Betas), lädt das Setup herunter, prüft die SHA-256-Prüfsumme und startet es; bei jeder Abweichung wird nichts installiert. Auch beim Programmstart erscheint der Hinweis mit diesem Knopf.
+
+**Behoben**
+- Der Start-Hinweis auf neue Versionen verglich mit der festen Zahl `v3.0.0` und fragte nur das neueste *stabile* Release ab (alle unsere Releases sind Pre-Releases): er erschien nie bzw. hätte nach dem Update nicht aufgehört. Jetzt zählt die installierte `VERSION.txt`.
+
 ## 3.0.0 Beta 12 (Setup)
 
 **Behoben**
