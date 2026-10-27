@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Kreqzxoo. All rights reserved. Proprietary software - see LICENSE in the android folder.
 package net.yume.companion
 
 import android.graphics.Bitmap

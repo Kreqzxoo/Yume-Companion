@@ -277,7 +277,7 @@ Einmalig oder monatlich über <https://ko-fi.com/kreqzxoo>. Auch Mitarbeit, Fehl
 > **Herkunft:** Yume Companion ist eine stark erweiterte, veränderte Fassung von [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) von *jofizcd* (GPL-3.0). Der Original-Autor bleibt genannt, siehe [NOTICE.md](NOTICE.md). Dieses Projekt ist **nicht** das offizielle Soul of Waifu.
 
 * Lizenz: **GNU General Public License v3.0** (siehe [LICENSE](LICENSE)). Der Quelltext der PC-App und alles, was unten nicht ausgenommen ist, darf unter diesen Bedingungen genutzt, verändert und weitergegeben werden.
-* **Ausnahme:** Der **Yume LLM Server** (`llm-server/`) ist proprietär, Copyright (c) 2026 Kreqzxoo, **alle Rechte vorbehalten** – siehe [llm-server/LICENSE](llm-server/LICENSE). Der offizielle Installer darf privat genutzt werden; Weitergabe oder Änderung nur mit schriftlicher Erlaubnis des Autors.
+* **Ausnahmen:** Der **Yume LLM Server** (`llm-server/`) und die **Android-App** (`android/`) sind proprietär, Copyright (c) 2026 Kreqzxoo, **alle Rechte vorbehalten** – siehe [llm-server/LICENSE](llm-server/LICENSE) und [android/LICENSE](android/LICENSE). Der offizielle Installer bzw. die APK dürfen privat genutzt werden; Weitergabe oder Änderung nur mit schriftlicher Erlaubnis des Autors.
 * Original: **Soul of Waifu** von jofizcd – <https://github.com/jofizcd/Soul-of-Waifu>, Dokumentation: <https://jofizcd.github.io/soul-of-waifu-site/docs/>.
 * Verwendete Komponenten und ihre Lizenzen: [docs/LIZENZEN_UND_UPLOAD.md](docs/LIZENZEN_UND_UPLOAD.md).
 * Die Beispiel-Charaktere und ihre Bilder in diesem Repository sind selbst erstellt und frei verwendbar.

@@ -6,6 +6,7 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
 **Lizenz**
 - Yume LLM Server (`llm-server/`): ab jetzt proprietär, alle Rechte vorbehalten (Copyright (c) 2026 Kreqzxoo), siehe `llm-server/LICENSE`. Der Installer zeigt die Lizenz an (wirksam ab dem nächsten gebauten Setup). Bereits veröffentlichte Versionen (bis v3.0.0-beta11) bleiben für deren Empfänger unter der damaligen Lizenz.
+- Android-App (`android/`): ebenfalls proprietär, alle Rechte vorbehalten, siehe `android/LICENSE`. Dafür wurde die 3D-Avatar-Seite der App von Grund auf neu geschrieben (Mimik, Blinzeln, Blick, Idle-Gesten, Lippenbewegung, Körper-Animationen), die frühere Seite enthielt Code aus Soul of Waifu.
 
 ## 3.0.0 Beta 11 (Android-App 1.1.0)
 

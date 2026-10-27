@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Kreqzxoo. All rights reserved. Proprietary software - see LICENSE in the android folder.
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")

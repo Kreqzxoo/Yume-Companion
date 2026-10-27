@@ -16,8 +16,6 @@ Modified in 2026 (summary, not complete):
 
 - Android connector: pairing by QR code, per-device tokens, phone control channel, speech input / output for the phone app,
   character list / history / sync / avatar / VRM model endpoints, "plain text" and "spoken words only" modes
-- Native Android app "Yume Companion" (`android/`) with chat, calls, wake word, local 3D avatar,
-  offline emergency mode, alarm clock, Spotify control, video call, call protection, car and wall modes
 - Memory and companion system: Soul Memory pipeline / topic search, hormone model, startup greeting
 - Organizer: calendar (ICS), mail (read-only), reminders, lists, routines, commute, people and trips, knowledge base,
   documents, skills, jobs, inbox ("Share to Yume"), mood awareness, weekly report, presence
@@ -29,9 +27,11 @@ Modified in 2026 (summary, not complete):
 
 ## Separate works under their own license
 
-The folder `llm-server/` (Yume LLM Server, a separate program that talks to the PC application over the network and was written
-independently) is **not** covered by the GPL of this repository. It is proprietary software, Copyright (c) 2026 Kreqzxoo, all rights
-reserved - see `llm-server/LICENSE`. Its third-party components are listed in `llm-server/THIRD_PARTY.md`.
+The folders `llm-server/` (Yume LLM Server) and `android/` (the Android app "Yume Companion") are separate programs that talk to the PC
+application over the network. They are **not** covered by the GPL of this repository. They are proprietary software,
+Copyright (c) 2026 Kreqzxoo, all rights reserved - see `llm-server/LICENSE` and `android/LICENSE`. Their third-party components are
+listed in `llm-server/THIRD_PARTY.md` and `android/THIRD_PARTY.md`. The 3D avatar page of the Android app was written from scratch
+and contains no code of Soul of Waifu.
 Everything else in this repository stays under the GPL-3.0 as described above.
 
 ## Third-party components

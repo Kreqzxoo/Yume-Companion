@@ -1,3 +1,4 @@
+// Based on the three-vrm example "humanoidAnimation" by pixiv Inc. (MIT License, https://github.com/pixiv/three-vrm) - see THIRD_PARTY_NOTICES.txt
 import * as THREE from 'three';
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { mixamoVRMRigMap } from './mixamoVRMRigMap.js';
