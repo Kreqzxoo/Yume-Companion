@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Kreqzxoo. All rights reserved. Proprietary software - see LICENSE in this folder.
     // ------------------------------------------------------------------ model card
     class ModelCard : Panel
     {

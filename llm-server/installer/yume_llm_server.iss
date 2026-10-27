@@ -38,8 +38,8 @@ MinVersion=10.0
 CloseApplications=no
 
 [Languages]
-Name: "german"; MessagesFile: "compiler:Languages\German.isl"; InfoBeforeFile: "info_de.txt"
-Name: "english"; MessagesFile: "compiler:Default.isl"; InfoBeforeFile: "info_en.txt"
+Name: "german"; MessagesFile: "compiler:Languages\German.isl"; LicenseFile: "eula_de.txt"; InfoBeforeFile: "info_de.txt"
+Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "eula_en.txt"; InfoBeforeFile: "info_en.txt"
 
 [CustomMessages]
 german.DeleteUserData=Sollen auch die heruntergeladenen Modelle, die Engine und die Einstellungen geloescht werden (kann mehrere GB freigeben)?

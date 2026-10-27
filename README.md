@@ -204,7 +204,8 @@ One-time or monthly via <https://ko-fi.com/kreqzxoo>. Contributions, bug reports
 
 > **Origin:** Yume Companion is a heavily extended, modified version of [**Soul of Waifu**](https://github.com/jofizcd/Soul-of-Waifu) by *jofizcd* (GPL-3.0). The original author stays credited, see [NOTICE.md](NOTICE.md). This project is **not** the official Soul of Waifu.
 
-* License: **GNU General Public License v3.0** (see [LICENSE](LICENSE)). The source code may be used, modified and redistributed under these terms.
+* License: **GNU General Public License v3.0** (see [LICENSE](LICENSE)). The source code of the PC app and of everything not listed below may be used, modified and redistributed under these terms.
+* **Exception:** the **Yume LLM Server** (`llm-server/`) is proprietary, Copyright (c) 2026 Kreqzxoo, **all rights reserved** – see [llm-server/LICENSE](llm-server/LICENSE). You may use the official installer privately; redistributing or modifying it needs the written permission of the author.
 * Original: **Soul of Waifu** by jofizcd – <https://github.com/jofizcd/Soul-of-Waifu>.
 * Components used and their licenses: [docs/LIZENZEN_UND_UPLOAD.md](docs/LIZENZEN_UND_UPLOAD.md) (German).
 * The sample characters and their images in this repository are self-made and free to use. The two VRM sample models are VRoid Studio samples by the pixiv VRoid Project (see [NOTICE.md](NOTICE.md)).
