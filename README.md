@@ -7,7 +7,9 @@ Chat · Voice calls · Avatars (images, Live2D, 3D VRM) · Memory · Role-play s
 
 [Deutsch](README.de.md) · **English**
 
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-pink.svg)](LICENSE)
+[![License: GPL-3.0 (PC app)](https://img.shields.io/badge/PC%20app-GPL--3.0-pink.svg)](LICENSE)
+![Stars](https://img.shields.io/github/stars/Kreqzxoo/Yume-Companion?style=flat&color=ff8fc7)
+[![Release](https://img.shields.io/github/v/release/Kreqzxoo/Yume-Companion?include_prereleases&label=Release&color=b48cff)](https://github.com/Kreqzxoo/Yume-Companion/releases)
 ![Version](https://img.shields.io/badge/Version-3.0.0%20BETA-purple)
 ![Platform](https://img.shields.io/badge/Windows%20%7C%20Android-lightgrey)
 ![AI local or cloud](https://img.shields.io/badge/AI-local%20or%20cloud-blueviolet)
