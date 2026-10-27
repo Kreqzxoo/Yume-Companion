@@ -750,7 +750,7 @@ begin
     begin
       WizardForm.StatusLabel.Caption := CustomMessage('StatusExtraPackages');
       WizardForm.FilenameLabel.Caption := '';
-      Exec(ExpandConstant('{cmd}'), '/C ""' + AppDir + '\app\data\envs\sow\python.exe" -m pip install --no-cache-dir -r "' + AppDir + '\requirements_extra.txt" > "' + AppDir + '\logs\update_packages.log" 2>&1"', AppDir, SW_HIDE, ewWaitUntilTerminated, ResultCode);
+      Exec(ExpandConstant('{cmd}'), '/C ""' + AppDir + '\app\data\envs\sow\python.exe" -m pip install --no-cache-dir -c "' + AppDir + '\constraints.txt" -r "' + AppDir + '\requirements_extra.txt" > "' + AppDir + '\logs\update_packages.log" 2>&1"', AppDir, SW_HIDE, ewWaitUntilTerminated, ResultCode);
     end;
   end;
 end;
