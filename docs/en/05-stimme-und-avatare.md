@@ -6,7 +6,7 @@ This chapter explains how your character **speaks**, how it **hears** you and ho
 
 Avatars, calls and extra modules run in the **Yume system** (the extended mode). Turn it on under **Settings → Visualization → Enable Yume system**. If the button for facial expressions is missing in the character menu later, this module is switched off.
 
-![Visualization](../images/pc/optionen_15_visualization.png)
+![Visualization](../images/en/pc/optionen_15_visualization.png)
 
 On this page you will also find:
 
@@ -21,7 +21,7 @@ On this page you will also find:
 
 You choose the voice per character: tile → **Voice settings** (microphone icon).
 
-![Character voice](../images/pc/dialog_stimme.png)
+![Character voice](../images/en/pc/dialog_stimme.png)
 
 | Engine | Type | Notes |
 | --- | --- | --- |
@@ -38,13 +38,13 @@ The pages of the individual engines:
 
 | ElevenLabs | XTTSv2 | Edge TTS |
 | --- | --- | --- |
-| ![ElevenLabs](../images/pc/dialog_stimme_elevenlabs.png) | ![XTTSv2](../images/pc/dialog_stimme_xtts.png) | ![Edge TTS](../images/pc/dialog_stimme_edge.png) |
+| ![ElevenLabs](../images/en/pc/dialog_stimme_elevenlabs.png) | ![XTTSv2](../images/en/pc/dialog_stimme_xtts.png) | ![Edge TTS](../images/en/pc/dialog_stimme_edge.png) |
 
 | Kokoro | Silero (RU) |
 | --- | --- |
-| ![Kokoro](../images/pc/dialog_stimme_kokoro.png) | ![Silero](../images/pc/dialog_stimme_silero.png) |
+| ![Kokoro](../images/en/pc/dialog_stimme_kokoro.png) | ![Silero](../images/en/pc/dialog_stimme_silero.png) |
 
-![Qwen3-TTS configuration](../images/pc/dialog_stimme_qwen3.png)
+![Qwen3-TTS configuration](../images/en/pc/dialog_stimme_qwen3.png)
 
 ### Qwen3-TTS in detail
 * **Model size**, **language**, **compute device** (*Default* follows the AI services; your own CPU/GPU choice applies only to this character).
@@ -66,7 +66,7 @@ On the engine page, **enable RVC** and choose a folder with a `.pth` voice (fold
 * **Speech recognition:** Faster-Whisper with Silero VAD (detects speech pauses). Device (CPU/GPU) under *AI services*.
 * **Settings → Conversation & audio** (card *Speech input, wake word & echo protection*):
 
-![Speech input, wake word and echo protection](../images/pc/optionen_08_conversation_audio_voll.png)
+![Speech input, wake word and echo protection](../images/en/pc/optionen_08_conversation_audio_voll.png)
 
 | Setting | Meaning |
 | --- | --- |
@@ -119,11 +119,11 @@ A classifier reads every answer and assigns it to **28 emotions**: neutral, joy,
 ### Four display types
 Tile → **Facial expressions** (*expression selection*). On the left choose the *visualization engine*, pick the folder or file, **Save selection**.
 
-![Expression selection](../images/pc/dialog_ausdruecke.png)
+![Expression selection](../images/en/pc/dialog_ausdruecke.png)
 
 | Expression images | Live2D model | VRM 3D model |
 | --- | --- | --- |
-| ![Expression images](../images/pc/dialog_ausdruecke_bilder.png) | ![Live2D](../images/pc/dialog_ausdruecke_live2d.png) | ![VRM](../images/pc/dialog_ausdruecke_vrm.png) |
+| ![Expression images](../images/en/pc/dialog_ausdruecke_bilder.png) | ![Live2D](../images/en/pc/dialog_ausdruecke_live2d.png) | ![VRM](../images/en/pc/dialog_ausdruecke_vrm.png) |
 
 | Type | Where the files are | Notes |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Assigns a body animation group to each of the 28 emotions; **Restore default** a
 ### Your own content and rights
 This repository contains only freely redistributable avatars: self-drawn expression images of the demo characters and two **VRoid sample models** (`Anime Girl.vrm`, `Anime Man.vrm` from the pixiv VRoid Project, VRM Public License 1.0, see [NOTICE](../../NOTICE.md)). The demo characters Mika and Kai use them:
 
-![Chat with VRM avatar](../images/pc/chat_vrm_mika.png)
+![Chat with VRM avatar](../images/en/pc/chat_vrm_mika.png)
 
 The 28 body animations for the emotions (`app/utils/emotions/vrm/expressions/*.fbx`) are **not in the source repository** (probably Mixamo material that should not be passed on as individual files), only in the finished setup. If you work from source you do not have them: then the model stands in a T-pose; put your own animations, named after the emotions (`neutral.fbx`, `joy.fbx` …), into that folder. No Live2D models are included here. If you use models from others, respect their license (credit, commercial use, modification). The Cubism components of Live2D are under their own license.
 

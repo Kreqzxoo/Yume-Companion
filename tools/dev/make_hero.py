@@ -1,13 +1,16 @@
 """
 Baut die Titelbilder fuer die README aus den vorhandenen Screenshots (docs/images).
-Aufruf:  python tools/dev/make_hero.py
+Aufruf:  python tools/dev/make_hero.py   (englisch: set YUME_IMG_LANG=en)
 Erzeugt: docs/images/hero.png (Collage) und docs/images/galerie_*.png
 """
+import os
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter
 
-IMG = Path(__file__).resolve().parent.parent.parent / "docs" / "images"
+IMG_ALL = Path(__file__).resolve().parent.parent.parent / "docs" / "images"
+# YUME_IMG_LANG=en: builds the English images (docs/images/en) from the English screenshots
+IMG = IMG_ALL / "en" if os.environ.get("YUME_IMG_LANG") == "en" else IMG_ALL
 BG_TOP, BG_BOTTOM = (22, 14, 36), (58, 24, 70)
 
 

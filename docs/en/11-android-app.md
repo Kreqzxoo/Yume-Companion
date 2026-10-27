@@ -24,7 +24,7 @@ The phone app **Yume Companion for Android** is a *client*: the computing power 
 
 **On the PC:** *Settings → Android Connector*.
 
-![Android Connector on the PC](../images/pc/optionen_10_android_connector.png)
+![Android Connector on the PC](../images/en/pc/optionen_10_android_connector.png)
 
 1. **Start web server** (port 8000). If it is not running, the page warns: *"The web server is not running – otherwise the phone cannot pair."*
 2. **Allow the phone through the Windows firewall …** (administrator prompt). The page reports if the firewall probably blocks connections.
@@ -33,7 +33,7 @@ The phone app **Yume Companion for Android** is a *client*: the computing power 
 
 **On the phone:**
 
-![Pairing screen of the app](../images/android/01_koppeln.png)
+![Pairing screen of the app](../images/en/android/01_koppeln.png)
 
 1. Open the app → **Pair with QR code** → scan the QR code on the PC (camera permission).
 2. Or **Enter link or address manually** (e.g. `192.168.0.20:8000`).
@@ -65,7 +65,7 @@ Yume can **replace the Google Assistant** on the phone. The app registers with A
 * **Wake word on the home screen:** If you say your wake word ("Yume …") while the home screen or any other app is in front, a **translucent assistant panel** slides up from the bottom over the screen. It shows that she is listening, what she understood and what she answers, and she speaks the answer aloud.
 * The panel stays until **you** close it (*Close*, back, home, tap outside). It does not listen all the time: one question, one answer, then it waits for the wake word again. *Open app* jumps into the full app.
 
-![Assistant panel over the home screen](../images/android/13_assistent_startbildschirm.png)
+![Assistant panel over the home screen](../images/en/android/13_assistent_startbildschirm.png)
 
 *Illustration reconstructed: the home screen in the background is a placeholder, the lower panel is the app's real assistant panel, rendered on the PC.*
 
@@ -81,33 +81,33 @@ The name of the Android setting differs by manufacturer (Samsung, Xiaomi, Pixel 
 
 At the bottom the menu bar: **Yume · Call · Offline · Settings**. At start you choose (or the app takes the default) the **character**.
 
-![Choose character](../images/android/02_charakter_waehlen.png)
+![Choose character](../images/en/android/02_charakter_waehlen.png)
 
 ### Yume (chat)
 
-![Chat, connected](../images/android/04_chat_verbunden.png)
+![Chat, connected](../images/en/android/04_chat_verbunden.png)
 
 * Header: **character name**, connection indicator (**Local**, **External**, **Offline**), switches for character list, call and settings.
 * **Avatar**: her picture breathes lightly. With **Choose 3D model …** you download the VRM model from the PC once; afterwards it is animated on the phone itself (lip movement, emotions, body animations; also works without the PC).
 * **Messages** like in a messenger with time; while she answers you see the text appear. The line *"✓ Spotify opened"* shows live what the AI is doing on the phone right now.
 * If the PC is not reachable, the app offers **Wake PC (Wake-on-LAN)**, **Offline emergency mode** and **Try again**:
 
-![PC not reachable](../images/android/03_start_offline.png)
+![PC not reachable](../images/en/android/03_start_offline.png)
 
 ### Call
 
-![Start call](../images/android/05_anruf_start.png)
+![Start call](../images/en/android/05_anruf_start.png)
 
 **Start call**: hands-free conversation with continuous microphone and voice activity detection. Every sentence goes to the PC, she answers with her PC voice. You can **interrupt her at any time**. During the conversation the app shows what she heard and what she answers:
 
-![In conversation](../images/android/09_im_gespraech.png)
+![In conversation](../images/en/android/09_im_gespraech.png)
 
 * **Video call:** The phone camera appears small in the call; with every sentence the newest camera image goes to the PC, whose vision model describes it. So she sees one moment per sentence, not a continuous video stream.
 * **Car mode** (button at the bottom): hands-free, large controls, notifications are read aloud (see 11.10).
 
 ### Offline (emergency mode)
 
-![Offline emergency mode](../images/android/06_offline_notfallmodus.png)
+![Offline emergency mode](../images/en/android/06_offline_notfallmodus.png)
 
 When the PC is missing, a **small language model directly on the phone** answers (much simpler than the PC AI). You download **model** (e.g. *Qwen 2.5 – 0.5 B*, about 560 MB, Wi-Fi recommended) and **speech recognition** (about 50 MB) once. Switches: **Switch automatically** (PC gone → phone answers itself), **Tell the PC about offline conversations** (short version after the return), **Synchronize on connecting** (fetch character and latest messages). If a model crashes on your phone, the app marks it as "crashed" and no longer uses it. This screen also shows a crash report.
 
@@ -115,12 +115,12 @@ When the PC is missing, a **small language model directly on the phone** answers
 
 The *Settings* page is divided into sections.
 
-![Settings, connection](../images/android/07_einstellungen.png)
+![Settings, connection](../images/en/android/07_einstellungen.png)
 
 ### Connection
 **Local address (home network)**, **external domain**, **prefer local** (use the local address first even on mobile data, e.g. with VPN), **keep connection in the background** (permanent notification so that the PC can reach the phone), **adopt the PC's character**, **test connection**, **wake PC**, **connect to new PC / device**, **only unpair …**. Plus the Wake-on-LAN fields:
 
-![Connection: Wake-on-LAN](../images/android/einstellungen_verbindung.png)
+![Connection: Wake-on-LAN](../images/en/android/einstellungen_verbindung.png)
 
 ### App language
 The app comes in **German and English**. The default is **Automatic**: a German phone shows German, every other phone English. Set it permanently under *Settings → App language*. The language applies to all menus, messages, the phone commands (e.g. "turn the flashlight on", "set a timer for 10 minutes", "interpreter French") and the default phrases of the wake word.
@@ -128,7 +128,7 @@ The app comes in **German and English**. The default is **Automatic**: a German 
 ### Speech & wake word
 The wake word ("Hey Yume") listens in the background **offline** (Vosk) without an account.
 
-![Wake word](../images/android/einstellungen_wake_word.png)
+![Wake word](../images/en/android/einstellungen_wake_word.png)
 
 | Setting | Meaning |
 | --- | --- |
@@ -145,15 +145,15 @@ The wake word ("Hey Yume") listens in the background **offline** (Vosk) without 
 
 ### Conversation
 
-![Conversation](../images/android/einstellungen_gespraech.png)
+![Conversation](../images/en/android/einstellungen_gespraech.png)
 
 **Stop words** (interrupt her), **hang-up words** (end the call), **test volume**, **test microphone …** (shows live what the speech recognition sees; the bar is your voice, the line the sensitivity threshold), **Interrupt** (*By speaking*, *Only with stop word* or *Off*), **Echo suppression** (full duplex: telephone audio path plus the phone's echo canceller, so you can talk over her; explanation of the methods in [Chapter 05](05-stimme-und-avatare.md#echo-protection-anti-echo-in-detail)), **speaker**, **keep screen on during conversation**.
 
-![Microphone test](../images/android/12_mikrofontest.png)
+![Microphone test](../images/en/android/12_mikrofontest.png)
 
 ### Phone control by the AI
 
-![Phone control](../images/android/einstellungen_handy_steuerung.png)
+![Phone control](../images/en/android/einstellungen_handy_steuerung.png)
 
 The AI on the PC may operate your phone. Everything can be switched off individually:
 
@@ -164,12 +164,11 @@ The AI on the PC may operate your phone. Everything can be switched off individu
 * **Security PIN (optional, 4–8 digits):** in addition to the confirmation a PIN must be entered (*Save PIN* / *Remove PIN*).
 * **Screenshot after every step** (the AI sees what it did, through the vision model on the PC), with **screenshot quality** (default 60 %) and **size** (default 1280 px).
 
-![Security PIN and screenshot settings](../images/android/einstellungen_pin_screenshot.png)
 * **Log:** at the bottom you see what Yume did on the phone (stays on the phone; *Clear*).
 
 ### Call protection (spam protection)
 
-![Call protection](../images/android/einstellungen_anrufschutz.png)
+![Call protection](../images/en/android/einstellungen_anrufschutz.png)
 
 Set as the **call protection app**, Yume decides on every incoming call: **known contacts** are let through and the name is announced hands-free; **unknown numbers** are blocked by prefix (e.g. `0900`), silenced at night or announced. Settings: *Announce callers*, *Silence unknown callers at night*, *Blocked prefixes*. Answering by voice is not possible for ordinary apps: Yume blocks, silences and tells you.
 
@@ -178,13 +177,13 @@ Set as the **call protection app**, Yume decides on every incoming call: **known
 
 ### Automation
 
-![Automation](../images/android/einstellungen_ruhemodus_automatisierung.png)
+![Automation](../images/en/android/einstellungen_ruhemodus_automatisierung.png)
 
 **"When I come home"**: As soon as the phone enters your **home Wi-Fi** (enter the name or **adopt current Wi-Fi**; needs location permission), Yume executes **one sentence** as if you had said it (e.g. "Good evening" or "Play my playlist Car"). **Try it now** tests it.
 
 ### Spotify
 
-![Spotify on the phone](../images/android/einstellungen_spotify_wecker.png)
+![Spotify on the phone](../images/en/android/einstellungen_spotify_wecker.png)
 
 Enter the client ID of your Spotify app, **Sign in to Spotify** (PKCE; no secret). **Phone and PC share one login**: whoever is signed in passes it on to the other. Yume searches and starts music, pauses, skips and says what is playing (Premium needed). If Spotify is not running, she starts the app and waits.
 
@@ -193,23 +192,23 @@ Enter the client ID of your Spotify app, **Sign in to Spotify** (PKCE; no secret
 
 ### Car mode
 
-![Car mode settings](../images/android/einstellungen_auto_modus.png)
+![Car mode settings](../images/en/android/einstellungen_auto_modus.png)
 
 **Start car mode now**, **start automatically** (when the phone connects to the **Bluetooth name of your car**), **read notifications aloud**, **driving dashboard**, **large interface**. This is Yume's **own screen**, not Android Auto (Google does not allow free assistants there):
 
-![Car mode](../images/android/11_auto_modus.png)
+![Car mode](../images/en/android/11_auto_modus.png)
 
 Next appointment with a **Navigate** button, music keys and "I'm listening …"; Yume keeps listening by voice.
 
 ### Wall and tablet mode
 
-![Wall mode](../images/android/10_wandmodus.png)
+![Wall mode](../images/en/android/10_wandmodus.png)
 
 For a tablet on the wall or a phone in a dock: large **clock and date**, **weather, appointments, reminders, lists, birthdays, music, mails** and the character (3D model if loaded). She hears the wake word; **tap me to speak**. *Dim at night*. Start via **Start wall/tablet mode**.
 
 ### Permissions and assistant role
 
-![Permissions](../images/android/einstellungen_berechtigungen.png)
+![Permissions](../images/en/android/einstellungen_berechtigungen.png)
 
 The list shows every necessary permission with a button to grant it. The app uses: internet/network, microphone, camera, notifications, overlay (assistant panel), phone, SMS, contacts, calendar, location, Bluetooth, autostart, vibration, alarms, exemption from battery optimization.
 
@@ -221,7 +220,7 @@ The list shows every necessary permission with a button to grant it. The app use
 * **Background:** animated night sky with **floating petals**, the PC's background image or **your own image**.
 * **Show avatar (3D / Live2D)**, **body animations for emotions**, **choose 3D model**, **voice in chat**.
 
-![Background and avatar](../images/android/einstellungen_hintergrund_avatar.png)
+![Background and avatar](../images/en/android/einstellungen_hintergrund_avatar.png)
 
 ### Reset
 

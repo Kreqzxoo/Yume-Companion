@@ -2,7 +2,7 @@
 
 The **Organizer** turns the character into an everyday helper: calendar, mails (read only), reminders, lists, morning briefing, commute time, birthdays, your own documents, letters and invoices, knowledge base and more. Everything works through **normal language** in the chat (on the PC or the phone) – the settings under **Settings → Organizer** only set up the accesses and show what is stored.
 
-![Organizer, whole page](../images/pc/optionen_18_organizer_voll.png)
+![Organizer, whole page](../images/en/pc/optionen_18_organizer_voll.png)
 
 **Data storage:** `%LOCALAPPDATA%\YumeCompanion\` (that is, **outside** the project folder, not in releases). Credentials (iCal links, mail password, Spotify) are encrypted with Windows data protection. The organizer data is part of the **profile backup**.
 

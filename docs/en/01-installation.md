@@ -58,7 +58,7 @@ Afterwards: `start.bat`. Demo characters without personal data are created by `a
 
 `start.bat` (or the shortcut) checks FFmpeg, activates the Python environment and starts `main.py`. A console window shows the log (also saved in `logs\`). On the first start the app may ask whether it should install echo cancellation (WebRTC AEC3).
 
-![First start: start page without characters](../images/pc/seite_0_main_no_characters.png)
+![First start: start page without characters](../images/en/pc/seite_0_main_no_characters.png)
 
 The start page shows three steps: **choose a model**, **create a character**, **or discover (character gallery)**. Continue with [02 First Steps](02-erste-schritte.md).
 

@@ -19,7 +19,7 @@ Background agents analyze the conversations on their own. Feelings fade over tim
 ### Turning it on and choosing a mode
 **Settings → Yume modules → Cognitive architecture → Enable Yume memory.**
 
-![Yume modules: web server, ambient audio, memory](../images/pc/optionen_09_sow_system.png)
+![Yume modules: web server, ambient audio, memory](../images/en/pc/optionen_09_sow_system.png)
 
 | Mode | What is active | Suitable for |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Background agents analyze the conversations on their own. Feelings fade over tim
 ### Viewing and editing memory
 In the chat, the **memory icon** at the top right:
 
-![Memory archive](../images/pc/dialog_gedaechtnis.png)
+![Memory archive](../images/en/pc/dialog_gedaechtnis.png)
 
 Tabs *Memory database*, *User profile*, *Diary*, *Self-correction logs*. With **Edit** you change facts by hand, **Save changes**, **Delete file**, **Refresh** and **Open .soul folder**. If the chat is empty, the app points it out ("Open a chat with a character first").
 
@@ -44,7 +44,7 @@ Long conversations would fill the context window. That is why the app condenses 
 * **Enable automatic summaries** (Yume modules) with **interval (messages)**, default 25.
 * In the chat the **summary icon**: *story memory editor* with the current memory text ("History: 1–N"), the **summary guidelines** (how the AI should condense), and the buttons **Create summary**, **Clear memory**, **Save changes**.
 
-![Story memory editor](../images/pc/chat_zusammenfassung.png)
+![Story memory editor](../images/en/pc/chat_zusammenfassung.png)
 
 ## 6.3 Author notes
 
