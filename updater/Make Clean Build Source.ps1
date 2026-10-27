@@ -29,7 +29,7 @@ cmd /c mklink /J "$src\app\data\envs\sow\Lib\site-packages" "$Beta\app\data\envs
 
 # 3) die bereinigten Dateien aus dem GitHub-Ordner darueberlegen (Programmcode, Assets, Vorlagen, Branding)
 $xd2 = @('.git', '.github', 'android', 'llm-server', 'rebrand', 'tests', 'updater', 'docs', 'Backups', 'logs', '__pycache__')
-$xf2 = @('README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CHANGELOG.md', '.gitignore', 'settings.json', 'api.json', 'characters.json', 'android_devices.json')
+$xf2 = @('README.md', 'README.de.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CHANGELOG.md', '.gitignore', 'settings.json', 'api.json', 'characters.json', 'android_devices.json')
 & robocopy.exe $Repo $src /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP /MT:8 /XD @xd2 /XF @xf2 | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "robocopy 2: $LASTEXITCODE" }
 
