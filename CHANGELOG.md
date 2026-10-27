@@ -2,6 +2,11 @@
 
 Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
+## 3.0.0 Beta 12 (Setup)
+
+**Behoben**
+- Start nach Neuinstallation: `ImportError: numpy.core.multiarray failed to import` (faiss / rvc_python). pip konnte beim Setup NumPy 1.26 durch NumPy 2 ersetzen. Der Installer begrenzt jetzt die Paketversionen (`constraints.txt`), setzt NumPy 1.26.4 bei Bedarf zurück und testet `import faiss`.
+
 ## Unreleased
 
 **Lizenz**
