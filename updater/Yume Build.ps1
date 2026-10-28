@@ -268,16 +268,49 @@ if ($Verify) {
 
 # ------------------------------------------------------------------ 5. launcher + setup
 Say '=== 5/5 Setup erstellen'
+# Code signing (optional): set the environment variable YUME_SIGN_CMD to the signing command, "$f" stands for the file, for example
+#   signtool.exe sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /n "Your Name" "$f"
+# (or the command of Artifact Signing / your certificate provider). Without it nothing is signed and the build works as before.
+$SignCmd = $env:YUME_SIGN_CMD
+function Invoke-Sign($File) {
+    if (-not $SignCmd) { return }
+    # the command goes through a small .cmd file: quotes inside the command survive that, but not an argument of "cmd /c" started from PowerShell
+    $bat = Join-Path $env:TEMP 'yume_sign.cmd'
+    Set-Content -Path $bat -Value ("@echo off`r`n" + $SignCmd.Replace('$f', $File)) -Encoding ASCII
+    & $bat | Out-Null
+    $signCode = $LASTEXITCODE
+    Remove-Item $bat -Force -ErrorAction SilentlyContinue
+    if ($signCode -ne 0) { Fail "Signieren fehlgeschlagen: $File" }
+    Say "  Signiert: $(Split-Path $File -Leaf)"
+}
 if ($Launcher) {
     Say '  Kompiliere Launcher...'
-    & $Csc /nologo /codepage:65001 /target:winexe /optimize+ "/out:$BuildDir\launcher\Yume Companion.exe" "/win32icon:$BuildDir\setup_icon.ico" /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Web.Extensions.dll "$BuildDir\launcher\YumeLauncher.cs" | Out-Null
-    if ($LASTEXITCODE -ne 0) { Fail 'Launcher-Kompilierung fehlgeschlagen.' }
+    # version information of the program file (publisher, description, version): unsigned files without them are flagged more often by virus scanners
+    $nums = [regex]::Matches($Version, '\d+') | ForEach-Object { [int]$_.Value }
+    $fv = (@($nums) + 0, 0, 0, 0)[0..3] -join '.'
+    $asmInfo = Join-Path $BuildDir 'launcher\_AssemblyInfo.cs'
+    @"
+using System.Reflection;
+[assembly: AssemblyTitle("Yume Companion")]
+[assembly: AssemblyDescription("Yume Companion launcher")]
+[assembly: AssemblyCompany("Kreqzxoo")]
+[assembly: AssemblyProduct("Yume Companion")]
+[assembly: AssemblyCopyright("Copyright (C) 2026 Kreqzxoo")]
+[assembly: AssemblyVersion("$fv")]
+[assembly: AssemblyFileVersion("$fv")]
+"@ | Set-Content -Path $asmInfo -Encoding UTF8
+    & $Csc /nologo /codepage:65001 /target:winexe /optimize+ "/out:$BuildDir\launcher\Yume Companion.exe" "/win32icon:$BuildDir\setup_icon.ico" /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Web.Extensions.dll "$BuildDir\launcher\YumeLauncher.cs" $asmInfo | Out-Null
+    $cscCode = $LASTEXITCODE
+    Remove-Item $asmInfo -Force -ErrorAction SilentlyContinue
+    if ($cscCode -ne 0) { Fail 'Launcher-Kompilierung fehlgeschlagen.' }
+    Invoke-Sign "$BuildDir\launcher\Yume Companion.exe"
 }
 if (-not (Test-Path $OutDir)) { New-Item -ItemType Directory -Path $OutDir | Out-Null }
 $wizDir = Join-Path $env:TEMP 'yume_wizard_images'
 try { New-WizardImages $Version $wizDir; $wizArg = @("/DWizardDir=$wizDir") } catch { Say "  HINWEIS  Setup-Bild konnte nicht mit der Version beschriftet werden: $($_.Exception.Message)"; $wizArg = @() }
 $isccArgs = @('/Q', "/DAppVersion=$Version", "/DSourceDir=$Stage", "/DOutDir=$OutDir") + $wizArg + @('yume_setup.iss')
 if ($Mode -eq 'Update') { $isccArgs = @('/DUpdateOnly=1') + $isccArgs }
+if ($SignCmd) { $isccArgs = @('/DSign=1', "/Syume=$SignCmd") + $isccArgs; Say '  Setup und Deinstaller werden signiert.' }
 Push-Location $BuildDir
 & $Iscc @isccArgs | ForEach-Object { Say "  $_" }
 $code = $LASTEXITCODE

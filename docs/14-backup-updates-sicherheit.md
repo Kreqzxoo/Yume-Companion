@@ -35,6 +35,13 @@
 
 Mögliche Meldungen: *Repository nicht gefunden (oder privat)*, *Das Repository hat noch keine Releases oder Tags*, *GitHub-Limit erreicht*, *GitHub nicht erreichbar*.
 
+### Downloads prüfen und Windows-Warnungen
+- **Prüfsumme (SHA-256):** Zu jeder Datei im Release steht die Prüfsumme (GitHub zeigt sie neben der Datei, im Release-Text steht sie auch). In PowerShell prüfst du sie mit `Get-FileHash Yume-Companion-Setup-….exe -Algorithm SHA256`. Die beiden Werte müssen **genau gleich** sein; sonst die Datei löschen und neu laden. Das Update-Programm der App macht diese Prüfung selbst.
+- **Quelltext:** Die PC-App ist quelloffen (GPL-3.0). Das Setup wird aus einer sauberen Kopie dieses Quelltexts gebaut. Android-App und LLM Server sind kostenlos, ihr Quelltext ist sichtbar.
+- **Windows meldet „Der Computer wurde durch Windows geschützt“ (SmartScreen):** Das Setup ist noch **nicht digital signiert**. Ein Zertifikat kostet Geld und das Projekt wird von einer Privatperson entwickelt. Wenn die Prüfsumme stimmt und du die Datei von der offiziellen GitHub-Seite geladen hast: *Weitere Informationen → Trotzdem ausführen*. Wer das nicht möchte, wartet auf die signierte Version.
+- **Windows 11 mit „Smart App Control“** blockiert unsignierte Programme ganz, dann lässt sich das Setup nicht starten. Dafür ist eine Signatur nötig, an der gearbeitet wird (siehe [Signieren und Virenscanner](SIGNIERUNG.md)).
+- **Virenscanner schlägt an:** Besonders unsignierte Setups, die Pakete nachladen und Programme starten, lösen Fehlalarme aus. Prüfe die Prüfsumme; stimmt sie, ist es die Datei aus dem Release. Bitte melde den Fehlalarm dem Hersteller (Anleitung in [Signieren und Virenscanner](SIGNIERUNG.md)) und schreibe es als [Issue](https://github.com/Kreqzxoo/Yume-Companion/issues), damit wir es dokumentieren.
+
 ### Prüfung beim Programmstart
 Beim Start fragt das Programm das **Update-Repository aus der Branding-Datei** (`app/configuration/branding.json`, Feld `update_repo`) ab. Ist dort nichts eingetragen, wird das Original-Repository `jofizcd/Soul-of-Waifu` geprüft (ein älterer Original-Stand wird nie als Update angeboten). **Trage nach der Veröffentlichung dein Repository dort ein** (Rebrand-Programm, Feld *Update-Repository*, siehe [Kapitel 16](16-entwicklung.md)), damit alle Nutzer deine Updates sehen.
 

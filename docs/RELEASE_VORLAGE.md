@@ -12,6 +12,8 @@
 
 Prüfsumme prüfen: `Get-FileHash <Datei> -Algorithm SHA256`
 
+> Das Setup ist (noch) nicht digital signiert: Windows SmartScreen oder ein Virenscanner kann warnen. Stimmt die Prüfsumme, ist es die Datei aus diesem Release. Hinweise: [Downloads prüfen](https://github.com/Kreqzxoo/Yume-Companion/blob/main/docs/14-backup-updates-sicherheit.md#downloads-prüfen-und-windows-warnungen).
+
 ## Installation
 1. Setup ausführen (**nicht als Administrator**), Komponenten wählen (CUDA bei NVIDIA, sonst CPU).
 2. Programm starten: Modell wählen → Charakter anlegen → chatten. Anleitung: [Erste Schritte](https://github.com/Kreqzxoo/Yume-Companion/blob/main/docs/02-erste-schritte.md).

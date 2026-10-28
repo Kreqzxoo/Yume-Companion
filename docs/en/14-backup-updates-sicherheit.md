@@ -35,6 +35,13 @@
 
 Possible messages: *Repository not found (or private)*, *The repository has no releases or tags yet*, *GitHub limit reached*, *GitHub not reachable*.
 
+### Checking downloads and Windows warnings
+- **Checksum (SHA-256):** Every file of a release has a checksum (GitHub shows it next to the file; the release text lists it as well). In PowerShell check it with `Get-FileHash Yume-Companion-Setup-….exe -Algorithm SHA256`. The two values must be **exactly the same**; otherwise delete the file and download it again. The app's updater does this check itself.
+- **Source code:** The PC app is open source (GPL-3.0). The setup is built from a clean copy of this source. The Android app and the LLM server are free to use, their source is visible.
+- **Windows says "Windows protected your PC" (SmartScreen):** The setup is **not digitally signed yet**. A certificate costs money and the project is developed by a private person. If the checksum matches and you downloaded the file from the official GitHub page: *More info → Run anyway*. If you prefer not to, wait for the signed version.
+- **Windows 11 with "Smart App Control"** blocks unsigned programs completely, so the setup cannot be started. That needs a signature, which is being worked on (see [Signing and virus scanners](../SIGNIERUNG.md), German).
+- **A virus scanner reports something:** Unsigned setups that download packages and start programs often trigger false alarms. Check the checksum; if it matches, it is the file from the release. Please report the false alarm to the scanner's vendor and open an [issue](https://github.com/Kreqzxoo/Yume-Companion/issues) so that we can document it.
+
 ### Check at program start
 At start the program queries the **update repository from the branding file** (`app/configuration/branding.json`, field `update_repo`). If nothing is entered there, the original repository `jofizcd/Soul-of-Waifu` is checked (an older original version is never offered as an update). **After publishing, enter your repository there** (rebrand program, field *Update repository*, see [Chapter 16](16-entwicklung.md)) so that all users see your updates.
 

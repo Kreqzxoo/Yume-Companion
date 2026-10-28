@@ -20,6 +20,9 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
 ## Unreleased
 
+**Signatur und Virenscanner**
+- Programmdateien (Starter, LLM Server, Setups) tragen Herstellername, Beschreibung und Version. Die Build-Werkzeuge signieren Starter, Setup, Deinstaller und LLM Server, sobald die Umgebungsvariable `YUME_SIGN_CMD` gesetzt ist (siehe `docs/SIGNIERUNG.md`). Neuer Abschnitt „Downloads prüfen und Windows-Warnungen“ in Kapitel 14.
+
 **Lizenz**
 - Yume LLM Server (`llm-server/`): ab jetzt proprietär, alle Rechte vorbehalten (Copyright (c) 2026 Kreqzxoo), siehe `llm-server/LICENSE`. Der Installer zeigt die Lizenz an (wirksam ab dem nächsten gebauten Setup). Bereits veröffentlichte Versionen (bis v3.0.0-beta11) bleiben für deren Empfänger unter der damaligen Lizenz.
 - Android-App (`android/`): ebenfalls proprietär, alle Rechte vorbehalten, siehe `android/LICENSE`. Dafür wurde die 3D-Avatar-Seite der App von Grund auf neu geschrieben (Mimik, Blinzeln, Blick, Idle-Gesten, Lippenbewegung, Körper-Animationen), die frühere Seite enthielt Code aus Soul of Waifu.
