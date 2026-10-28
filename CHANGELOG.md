@@ -11,7 +11,9 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 - **Setup beta12 brach bei jedem Installationspfad mit Leerzeichen ab** (zum Beispiel `C:\Users\Name\Desktop\Yume Companion`): pip bekam die Datei `constraints.txt` über die Umgebungsvariable `PIP_CONSTRAINT`, die an jedem Leerzeichen getrennt wird („Could not open constraint file“), PyTorch wurde nicht installiert und das Programm startete nicht. Der Installer übergibt die Datei jetzt mit `-c` in Anführungszeichen. Die Test-Installation des Release-Werkzeugs läuft jetzt in einem Pfad mit Leerzeichen (`Yume Verify`).
 - Der Start-Hinweis auf neue Versionen verglich mit der festen Zahl `v3.0.0` und fragte nur das neueste *stabile* Release ab (alle unsere Releases sind Pre-Releases): er erschien nie bzw. hätte nach dem Update nicht aufgehört. Jetzt zählt die installierte `VERSION.txt`.
 
-## 3.0.0 Beta 12 (Setup)
+## 3.0.0 Beta 12 (Setup) – zurückgezogen, bitte Beta 13 nehmen
+
+> Beta 12 ließ sich in Ordnern mit Leerzeichen im Pfad nicht fertig installieren (siehe Beta 13). Die Setup-Datei wurde von GitHub entfernt.
 
 **Behoben**
 - Start nach Neuinstallation: `ImportError: numpy.core.multiarray failed to import` (faiss / rvc_python). pip konnte beim Setup NumPy 1.26 durch NumPy 2 ersetzen. Der Installer begrenzt jetzt die Paketversionen (`constraints.txt`), setzt NumPy 1.26.4 bei Bedarf zurück und testet `import faiss`.
