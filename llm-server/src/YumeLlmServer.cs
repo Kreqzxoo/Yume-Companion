@@ -21,8 +21,12 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 
 [assembly: AssemblyTitle("Yume LLM Server")]
+[assembly: AssemblyDescription("Yume LLM Server - AI server for Yume Companion")]
+[assembly: AssemblyCompany("Kreqzxoo")]
 [assembly: AssemblyProduct("Yume LLM Server")]
+[assembly: AssemblyCopyright("Copyright (c) 2026 Kreqzxoo")]
 [assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
 
 namespace YumeLlmServer
 {

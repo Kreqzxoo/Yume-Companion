@@ -48,6 +48,13 @@ AppPublisher={#AppPublisher}
 VersionInfoVersion={#VerNum}.0
 VersionInfoProductName={#AppName}
 VersionInfoDescription={#AppName} Setup
+VersionInfoCompany={#AppPublisher}
+VersionInfoCopyright=Copyright (C) 2026 Kreqzxoo
+#ifdef Sign
+; code signing: the build script passes the command (environment variable YUME_SIGN_CMD, see "Yume Build.ps1") as /Syume=...
+SignTool=yume
+SignedUninstaller=yes
+#endif
 
 ; per-user by default (no admin prompt); the user may switch to an all-users install in the first dialog
 PrivilegesRequired=lowest

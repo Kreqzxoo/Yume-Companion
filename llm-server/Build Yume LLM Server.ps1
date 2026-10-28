@@ -13,12 +13,27 @@ $argsList = @('/nologo', '/target:winexe', '/optimize+', '/out:build\YumeLLMServ
 & $csc @argsList
 if ($LASTEXITCODE -ne 0) { throw 'Kompilieren fehlgeschlagen.' }
 Write-Host 'YumeLLMServer.exe gebaut.' -ForegroundColor Green
+# Code signing (optional): environment variable YUME_SIGN_CMD = signing command, "$f" stands for the file, e.g.
+#   signtool.exe sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /n "Your Name" "$f"
+$signCmd = $env:YUME_SIGN_CMD
+if ($signCmd) {
+    # through a small .cmd file: quotes inside the command survive that, but not an argument of "cmd /c" started from PowerShell
+    $bat = Join-Path $env:TEMP 'yume_sign.cmd'
+    Set-Content -Path $bat -Value ("@echo off`r`n" + $signCmd.Replace('$f', (Join-Path $root 'build\YumeLLMServer.exe'))) -Encoding ASCII
+    & $bat
+    $signCode = $LASTEXITCODE
+    Remove-Item $bat -Force -ErrorAction SilentlyContinue
+    if ($signCode -ne 0) { throw 'Signieren von YumeLLMServer.exe fehlgeschlagen.' }
+    Write-Host 'YumeLLMServer.exe signiert.' -ForegroundColor Green
+}
 if ($NoInstaller) { return }
 $iscc = @((Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'), (Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe'), (Join-Path $env:ProgramFiles 'Inno Setup 6\ISCC.exe')) | Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $iscc) { Write-Warning 'Inno Setup 6 nicht gefunden - nur die Exe wurde gebaut.'; return }
 $out = Join-Path $root 'dist'
 New-Item -ItemType Directory -Force $out | Out-Null
-& $iscc "/DAppVersion=$Version" '/Q' 'installer\yume_llm_server.iss'
+$isccArgs = @("/DAppVersion=$Version", '/Q')
+if ($signCmd) { $isccArgs += @('/DSign=1', "/Syume=$signCmd") }
+& $iscc @isccArgs 'installer\yume_llm_server.iss'
 if ($LASTEXITCODE -ne 0) { throw 'ISCC fehlgeschlagen.' }
 $latest = Get-ChildItem (Join-Path $out 'Yume-LLM-Server-Setup-*.exe') | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 # hand the installer to Yume Companion (its settings offer it as a download button for other PCs)

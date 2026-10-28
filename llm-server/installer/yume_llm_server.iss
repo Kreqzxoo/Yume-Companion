@@ -15,6 +15,13 @@ AppPublisher=Kreqzxoo
 VersionInfoVersion={#AppVersion}.0
 VersionInfoProductName={#AppName}
 VersionInfoDescription={#AppName} Setup
+VersionInfoCompany=Kreqzxoo
+VersionInfoCopyright=Copyright (c) 2026 Kreqzxoo
+#ifdef Sign
+; code signing: "Build Yume LLM Server.ps1" passes the command (environment variable YUME_SIGN_CMD) as /Syume=...
+SignTool=yume
+SignedUninstaller=yes
+#endif
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 DefaultDirName={autopf}\Yume LLM Server
