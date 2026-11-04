@@ -4,6 +4,9 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
 ## 3.0.0 Beta 14 (Android-App 1.1.1)
 
+**Behoben**
+- Installer: python-dateutil 4 bringt `six` nicht mehr mit, andere Pakete (z. B. matplotlib) brauchen es aber noch, das Programm wäre mit „No module named 'six'“ nicht gestartet. `constraints.txt` legt python-dateutil 2.9.0 und six 1.17.0 fest, und der Installer prüft und installiert `six` bei Bedarf nach. Die Testinstallation importiert alle Kernmodule und rendert 28 Seiten fehlerfrei.
+
 **Android-App: Anrufschutz**
 - Bei unbekannten Anrufen wird die Telefonnummer nicht mehr vorgelesen, Yume sagt nur noch „Unbekannter Anruf“ (bei Kontakten weiterhin der Name).
 - Neue **automatische Spam-Liste** (Einstellungen → Anrufschutz): Nummern und Vorwahlen aus `android/spamlist.txt` dieses Repositorys werden blockiert. Die App lädt die Liste alle paar Tage (nur von raw.githubusercontent.com, geprüftes Format, höchstens 256 KB, ältere Stände werden verworfen), eine Kopie steckt in der App und funktioniert ohne Netz. Die eigene Vorwahl-Liste bleibt zusätzlich. Neue Einträge reichen per Pull Request oder Issue ins Repository und erreichen alle ohne neue App-Version.

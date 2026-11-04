@@ -174,6 +174,8 @@ if not "%choice%"=="1" (
 echo [8/8] Final checks...
 rem Safety net: if any package still replaced NumPy by version 2, put 1.26.4 back (faiss / RVC would not start otherwise)
 python -c "import numpy,sys; sys.exit(0 if numpy.__version__.startswith('1.26') else 1)" || python -m pip install --no-cache-dir --force-reinstall --no-deps numpy==1.26.4
+rem python-dateutil 4 no longer pulls in "six", but other packages (matplotlib -> dateutil, ...) still import it: make sure it is there
+python -c "import six, dateutil.parser" || python -m pip install --no-cache-dir !PIPC! six==1.17.0 python-dateutil==2.9.0.post0
 python -c "import numpy, faiss; print('NumPy', numpy.__version__, '+ faiss OK')" || set "FAILED=!FAILED! [numpy-faiss-import-test]"
 python -m pip check
 python -c "import torch, numpy, transformers, PyQt6; print('Core imports OK')"
