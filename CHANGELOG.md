@@ -2,6 +2,26 @@
 
 Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
+## 3.0.0 Beta 14 (Android-App 1.1.1)
+
+**Android-App: Anrufschutz**
+- Bei unbekannten Anrufen wird die Telefonnummer nicht mehr vorgelesen, Yume sagt nur noch „Unbekannter Anruf“ (bei Kontakten weiterhin der Name).
+- Neue **automatische Spam-Liste** (Einstellungen → Anrufschutz): Nummern und Vorwahlen aus `android/spamlist.txt` dieses Repositorys werden blockiert. Die App lädt die Liste alle paar Tage (nur von raw.githubusercontent.com, geprüftes Format, höchstens 256 KB, ältere Stände werden verworfen), eine Kopie steckt in der App und funktioniert ohne Netz. Die eigene Vorwahl-Liste bleibt zusätzlich. Neue Einträge reichen per Pull Request oder Issue ins Repository und erreichen alle ohne neue App-Version.
+
+**PC-App: Android Connector**
+- Der QR-Code hat zwei Modi: *App noch nicht installiert* (Code öffnet den Download der neuesten APK aus den GitHub-Releases) und *App ist installiert* (Kopplungs-Code wie bisher). Ohne gekoppeltes Handy startet die Seite im Download-Modus.
+
+**Verlauf und GitHub**
+- Die Git-Historie wurde bereinigt: Zusätzliche Mitautor-Zeilen wurden aus allen Commits entfernt (Dateiinhalte unverändert), damit nur Kreqzxoo als Mitwirkender erscheint. Die Release-Tags wurden dabei neu gesetzt; die Release-Dateien blieben unverändert.
+- Der Workflow „Android-Release“ endet ohne Fehler, wenn keine Signatur-Secrets hinterlegt sind (die APK wird dann von Hand angehängt), statt bei jedem Release eine Fehler-Mail zu senden.
+
+**Signatur und Virenscanner**
+- Programmdateien (Starter, LLM Server, Setups) tragen Herstellername, Beschreibung und Version. Die Build-Werkzeuge signieren Starter, Setup, Deinstaller und LLM Server, sobald die Umgebungsvariable `YUME_SIGN_CMD` gesetzt ist (siehe `docs/SIGNIERUNG.md`). Neuer Abschnitt „Downloads prüfen und Windows-Warnungen“ in Kapitel 14.
+
+**Lizenz**
+- Yume LLM Server (`llm-server/`): ab jetzt proprietär, alle Rechte vorbehalten (Copyright (c) 2026 Kreqzxoo), siehe `llm-server/LICENSE`. Der Installer zeigt die Lizenz an (wirksam ab dem nächsten gebauten Setup). Bereits veröffentlichte Versionen (bis v3.0.0-beta11) bleiben für deren Empfänger unter der damaligen Lizenz.
+- Android-App (`android/`): ebenfalls proprietär, alle Rechte vorbehalten, siehe `android/LICENSE`. Dafür wurde die 3D-Avatar-Seite der App von Grund auf neu geschrieben (Mimik, Blinzeln, Blick, Idle-Gesten, Lippenbewegung, Körper-Animationen), die frühere Seite enthielt Code aus Soul of Waifu.
+
 ## 3.0.0 Beta 13
 
 **Neu**
@@ -17,25 +37,6 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
 **Behoben**
 - Start nach Neuinstallation: `ImportError: numpy.core.multiarray failed to import` (faiss / rvc_python). pip konnte beim Setup NumPy 1.26 durch NumPy 2 ersetzen. Der Installer begrenzt jetzt die Paketversionen (`constraints.txt`), setzt NumPy 1.26.4 bei Bedarf zurück und testet `import faiss`.
-
-## Unreleased
-
-**Android-App: Anrufschutz**
-- Bei unbekannten Anrufen wird die Telefonnummer nicht mehr vorgelesen, Yume sagt nur noch „Unbekannter Anruf“ (bei Kontakten weiterhin der Name).
-- Neue **automatische Spam-Liste** (Einstellungen → Anrufschutz): Nummern und Vorwahlen aus `android/spamlist.txt` dieses Repositorys werden blockiert. Die App lädt die Liste alle paar Tage (nur von raw.githubusercontent.com, geprüftes Format, höchstens 256 KB, ältere Stände werden verworfen), eine Kopie steckt in der App und funktioniert ohne Netz. Die eigene Vorwahl-Liste bleibt zusätzlich. Neue Einträge reichen per Pull Request oder Issue ins Repository und erreichen alle ohne neue App-Version.
-
-**PC-App: Android Connector**
-- Der QR-Code hat zwei Modi: *App noch nicht installiert* (Code öffnet den Download der neuesten APK aus den GitHub-Releases) und *App ist installiert* (Kopplungs-Code wie bisher). Ohne gekoppeltes Handy startet die Seite im Download-Modus.
-
-**Verlauf**
-- Die Git-Historie wurde bereinigt: Die Zeilen `Co-Authored-By: Claude …` wurden aus allen Commits entfernt (Dateiinhalte unverändert), damit nur Kreqzxoo als Mitwirkender erscheint. Die Release-Tags wurden dabei neu gesetzt; die Release-Dateien blieben unverändert.
-
-**Signatur und Virenscanner**
-- Programmdateien (Starter, LLM Server, Setups) tragen Herstellername, Beschreibung und Version. Die Build-Werkzeuge signieren Starter, Setup, Deinstaller und LLM Server, sobald die Umgebungsvariable `YUME_SIGN_CMD` gesetzt ist (siehe `docs/SIGNIERUNG.md`). Neuer Abschnitt „Downloads prüfen und Windows-Warnungen“ in Kapitel 14.
-
-**Lizenz**
-- Yume LLM Server (`llm-server/`): ab jetzt proprietär, alle Rechte vorbehalten (Copyright (c) 2026 Kreqzxoo), siehe `llm-server/LICENSE`. Der Installer zeigt die Lizenz an (wirksam ab dem nächsten gebauten Setup). Bereits veröffentlichte Versionen (bis v3.0.0-beta11) bleiben für deren Empfänger unter der damaligen Lizenz.
-- Android-App (`android/`): ebenfalls proprietär, alle Rechte vorbehalten, siehe `android/LICENSE`. Dafür wurde die 3D-Avatar-Seite der App von Grund auf neu geschrieben (Mimik, Blinzeln, Blick, Idle-Gesten, Lippenbewegung, Körper-Animationen), die frühere Seite enthielt Code aus Soul of Waifu.
 
 ## 3.0.0 Beta 11 (Android-App 1.1.0)
 
