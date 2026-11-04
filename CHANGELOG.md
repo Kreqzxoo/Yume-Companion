@@ -20,6 +20,16 @@ Format: neueste Version oben. Versionsnummern: `Haupt.Neben.Fehler`.
 
 ## Unreleased
 
+**Android-App: Anrufschutz**
+- Bei unbekannten Anrufen wird die Telefonnummer nicht mehr vorgelesen, Yume sagt nur noch „Unbekannter Anruf“ (bei Kontakten weiterhin der Name).
+- Neue **automatische Spam-Liste** (Einstellungen → Anrufschutz): Nummern und Vorwahlen aus `android/spamlist.txt` dieses Repositorys werden blockiert. Die App lädt die Liste alle paar Tage (nur von raw.githubusercontent.com, geprüftes Format, höchstens 256 KB, ältere Stände werden verworfen), eine Kopie steckt in der App und funktioniert ohne Netz. Die eigene Vorwahl-Liste bleibt zusätzlich. Neue Einträge reichen per Pull Request oder Issue ins Repository und erreichen alle ohne neue App-Version.
+
+**PC-App: Android Connector**
+- Der QR-Code hat zwei Modi: *App noch nicht installiert* (Code öffnet den Download der neuesten APK aus den GitHub-Releases) und *App ist installiert* (Kopplungs-Code wie bisher). Ohne gekoppeltes Handy startet die Seite im Download-Modus.
+
+**Verlauf**
+- Die Git-Historie wurde bereinigt: Die Zeilen `Co-Authored-By: Claude …` wurden aus allen Commits entfernt (Dateiinhalte unverändert), damit nur Kreqzxoo als Mitwirkender erscheint. Die Release-Tags wurden dabei neu gesetzt; die Release-Dateien blieben unverändert.
+
 **Signatur und Virenscanner**
 - Programmdateien (Starter, LLM Server, Setups) tragen Herstellername, Beschreibung und Version. Die Build-Werkzeuge signieren Starter, Setup, Deinstaller und LLM Server, sobald die Umgebungsvariable `YUME_SIGN_CMD` gesetzt ist (siehe `docs/SIGNIERUNG.md`). Neuer Abschnitt „Downloads prüfen und Windows-Warnungen“ in Kapitel 14.
 

@@ -1,0 +1,16 @@
+# Yume spam list (call protection of the Yume Android app)
+# The app downloads this file from the repository every few days; a copy ships inside the app.
+# One entry per line:  prefix: <start of a number>   or   number: <complete number>
+# Numbers are written in national form (0...) or international (+49...). Only prefixes that are almost only used for
+# unwanted calls or expensive services belong here - a wrong entry blocks real people.
+# Suggestions: open an issue at https://github.com/Kreqzxoo/Yume-Companion/issues
+format: 1
+version: 2026-11-04
+
+# Germany: expensive premium-rate / mass-traffic / service numbers
+prefix: 0900
+prefix: 0137
+prefix: 01805
+# Germany: "personal numbers" and non-geographic national numbers, very often misused for ping calls and advertising
+prefix: 0700
+prefix: 032

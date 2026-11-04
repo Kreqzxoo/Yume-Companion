@@ -104,6 +104,8 @@ object Prefs {
     var callAnnounce by B("call_announce", true)          // announce who is calling (name of the contact / unknown number)
     var callBlockPrefixes by S("call_block_prefixes", "0900,0137,01805")
     var callSilenceNight by B("call_silence_night", false)
+    var spamListOn by B("spam_list_on", true)             // block numbers from the spam list (downloaded from the project repository)
+    var spamListChecked by L("spam_list_checked", 0L)     // last time the list was looked for
     var kioskCache by S("kiosk_cache", "")                // last data of the wall / tablet display (shown when the PC is away)
     var kioskNightDim by B("kiosk_night_dim", true)
     var pinHash by S("pin_hash", "")                  // security PIN (SHA-256): when set, risky actions need the PIN in the confirmation

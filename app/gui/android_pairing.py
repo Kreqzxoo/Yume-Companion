@@ -52,11 +52,20 @@ def open_firewall(port: int) -> bool:
 def build_pairing_card(ui, create_glass_card, font_input):
     tr = ui.translations.get
     card, l = create_glass_card(tr("pair_title", "Handy koppeln (Yume Companion für Android)"))
-    hint = QtWidgets.QLabel(tr(
-        "pair_hint",
-        "1. APK auf dem Handy installieren (Button „APK speichern“).  2. App öffnen → „Mit QR-Code koppeln“.  3. Diesen Code scannen. "
-        "Der Code ist nur wenige Minuten gültig und nur einmal verwendbar – er wird ständig neu erzeugt. Das Handy bekommt danach seinen eigenen, "
-        "jederzeit widerrufbaren Schlüssel. Die App erkennt selbst, ob sie im Heimnetz (lokale Adresse) oder unterwegs (externe Domain, falls eingetragen) verbunden wird."))
+    modes = QtWidgets.QHBoxLayout()
+    ui.pushButton_pair_mode_install = QtWidgets.QPushButton(tr("pair_mode_install", "App noch nicht installiert"))
+    ui.pushButton_pair_mode_connect = QtWidgets.QPushButton(tr("pair_mode_connect", "App ist installiert"))
+    for b in (ui.pushButton_pair_mode_install, ui.pushButton_pair_mode_connect):
+        b.setCheckable(True)
+        b.setAutoExclusive(True)
+        b.setMinimumHeight(38)
+        b.setMinimumWidth(1)
+        b.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        b.setStyleSheet(BTN + "QPushButton:checked { background: rgba(255,143,199,0.30); border: 1px solid #FF8FC7; }")
+        modes.addWidget(b, 1)
+    l.addLayout(modes)
+    hint = QtWidgets.QLabel("")
+    ui.label_pair_hint = hint
     hint.setWordWrap(True)
     hint.setStyleSheet("color: #B9A9C9; border: none; background: transparent;")
     l.addWidget(hint)
@@ -127,6 +136,8 @@ def build_pairing_card(ui, create_glass_card, font_input):
 
 
 class AndroidPairingController(QtCore.QObject):
+    apk_found = QtCore.pyqtSignal(str)          # address of the newest APK, from the lookup thread
+
     def __init__(self, ui):
         super().__init__()
         self.ui = ui
@@ -135,10 +146,16 @@ class AndroidPairingController(QtCore.QObject):
         self._url = ""
         self._expires = 0.0
         self._loading = True
+        self._mode = ""                        # "install" = QR code downloads the app, "connect" = QR code pairs the installed app
+        self._apk_url = ""
+        self._apk_checked = 0.0
+        self.apk_found.connect(self._on_apk_found)
+        ui.pushButton_pair_mode_install.clicked.connect(lambda: self.set_mode("install"))
+        ui.pushButton_pair_mode_connect.clicked.connect(lambda: self.set_mode("connect"))
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self._tick)
-        ui.pushButton_pair_new.clicked.connect(self.refresh_qr)
+        ui.pushButton_pair_new.clicked.connect(self._new_clicked)
         ui.pushButton_pair_server.clicked.connect(self._toggle_server)
         ui.pushButton_pair_firewall.clicked.connect(self._open_firewall)
         self._fw_checked = 0.0
@@ -160,7 +177,13 @@ class AndroidPairingController(QtCore.QObject):
         self.ui.checkBox_android_autostart.setChecked(bool(s.get_main_setting("android_autostart")))
         self.ui.checkBox_android_speech_only.setChecked(s.get_main_setting("android_speech_only") is not False)
         self._loading = False
-        self.refresh_qr()
+        # no phone paired yet: the app is probably not installed either -> offer the download first
+        has_device = False
+        try:
+            has_device = bool(mobile_devices.get_registry().list_devices())
+        except Exception:
+            pass
+        self.set_mode("connect" if has_device else "install")
         self.timer.start()
         if self.ui.checkBox_android_autostart.isChecked():
             # Not through a Qt timer: during start-up the event loop is re-entered from inside a task, and a server task created
@@ -179,8 +202,86 @@ class AndroidPairingController(QtCore.QObject):
         remote = (s.get_main_setting("android_remote_url") or "").rstrip("/")
         return local, remote
 
+    def set_mode(self, mode: str):
+        self._mode = mode
+        install = mode == "install"
+        self.ui.pushButton_pair_mode_install.setChecked(install)
+        self.ui.pushButton_pair_mode_connect.setChecked(not install)
+        self.ui.label_pair_hint.setText(self.tr(
+            "pair_hint_install",
+            "Scanne diesen Code mit der Handy-Kamera: Er öffnet den Download der neuesten Android-App (APK). Danach die Datei öffnen und die Installation erlauben. "
+            "Ist die App installiert, oben auf „App ist installiert“ drücken.") if install else self.tr(
+            "pair_hint",
+            "1. App öffnen → „Mit QR-Code koppeln“.  2. Diesen Code scannen. "
+            "Der Code ist nur wenige Minuten gültig und nur einmal verwendbar – er wird ständig neu erzeugt. Das Handy bekommt danach seinen eigenen, "
+            "jederzeit widerrufbaren Schlüssel. Die App erkennt selbst, ob sie im Heimnetz (lokale Adresse) oder unterwegs (externe Domain, falls eingetragen) verbunden wird."))
+        for b in (self.ui.pushButton_pair_new, self.ui.pushButton_pair_copy):
+            b.setVisible(True)
+        self.ui.pushButton_pair_new.setText(self.tr("pair_check_apk", "Download-Adresse neu suchen") if install else self.tr("pair_new", "Neuen QR-Code erzeugen"))
+        self.ui.pushButton_pair_copy.setText(self.tr("pair_copy_apk", "Download-Link kopieren (statt QR)") if install else self.tr("pair_copy", "Kopplungs-Link kopieren (statt QR)"))
+        self.ui.label_pair_countdown.setVisible(not install)
+        self.ui.pushButton_pair_server.setVisible(not install)
+        self.ui.pushButton_pair_firewall.setVisible(False if install else self.ui.pushButton_pair_firewall.isVisible())
+        self.refresh_qr()
+
+    def _new_clicked(self):
+        if self._mode == "install":
+            self._apk_url = ""
+            self._apk_checked = 0.0
+        self.refresh_qr()
+
+    def _repo(self) -> str:
+        from app.utils.branding import get_text
+        from app.utils.update_checker import normalize_repo
+        s = self.signals.configuration_settings
+        return normalize_repo(s.get_main_setting("update_repo") or "") or normalize_repo(get_text("update_repo") or "")
+
+    def _lookup_apk(self):
+        """Finds the newest APK in the releases (in a thread, the window must not wait for GitHub)."""
+        import threading
+        from app.utils.apk_link import find_apk_url
+        repo = self._repo()
+        self._apk_checked = time.time()
+        threading.Thread(target=lambda: self.apk_found.emit(find_apk_url(repo)), daemon=True).start()
+
+    def _on_apk_found(self, url: str):
+        self._apk_url = url
+        if self._mode == "install":
+            self.refresh_qr()
+
+    def _draw_qr(self, data: str):
+        import qrcode
+        qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=8, border=2)
+        qr.add_data(data)
+        qr.make(fit=True)
+        image = qr.make_image(fill_color="black", back_color="white").convert("RGB")
+        buf = io.BytesIO()
+        image.save(buf, format="PNG")
+        pix = QtGui.QPixmap()
+        pix.loadFromData(buf.getvalue(), "PNG")
+        self.ui.label_pair_qr.setPixmap(pix.scaled(248, 248, QtCore.Qt.AspectRatioMode.KeepAspectRatio, QtCore.Qt.TransformationMode.FastTransformation))
+
+    def _refresh_install_qr(self):
+        if not self._apk_url or time.time() - self._apk_checked > 3600:
+            if time.time() - self._apk_checked > 5:
+                self._lookup_apk()
+        if not self._apk_url:
+            self.ui.label_pair_qr.setText(self.tr("pair_apk_searching", "Suche die neueste App …"))
+            self.ui.label_pair_status.setText(self.tr("pair_apk_searching", "Suche die neueste App …"))
+            return
+        try:
+            self._draw_qr(self._apk_url)
+        except ImportError:
+            self.ui.label_pair_qr.setText("pip install qrcode")
+        is_file = self._apk_url.endswith(".apk")
+        self.ui.label_pair_status.setText(self.tr("pair_apk_ready", "Neueste App: {u}").format(u=self._apk_url) if is_file else self.tr(
+            "pair_apk_page", "Noch keine App-Datei gefunden oder GitHub nicht erreichbar – der Code öffnet die Release-Seite: {u}").format(u=self._apk_url))
+
     def refresh_qr(self):
         if self.signals is None:
+            return
+        if self._mode == "install":
+            self._refresh_install_qr()
             return
         try:
             import qrcode
@@ -234,6 +335,8 @@ class AndroidPairingController(QtCore.QObject):
             QtCore.QTimer.singleShot(600, self._update_status)
 
     def _update_status(self):
+        if self._mode == "install":
+            return
         s = self.signals
         running = bool(getattr(s, "web_server_running", False))
         self.ui.pushButton_pair_server.setText(self.tr("android_webserver_stop", "Webserver stoppen") if running
@@ -267,6 +370,10 @@ class AndroidPairingController(QtCore.QObject):
     def _tick(self):
         if self.signals is None:
             return
+        if self._mode == "install":
+            if self.ui.android_connector_tab.isVisible() and not self._apk_url:
+                self.refresh_qr()
+            return
         remaining = int(self._expires - time.time())
         if remaining <= 0:
             if self.ui.android_connector_tab.isVisible():
@@ -279,8 +386,9 @@ class AndroidPairingController(QtCore.QObject):
             self._refresh_devices()
 
     def _copy(self):
-        if self._url:
-            QtWidgets.QApplication.clipboard().setText(self._url)
+        text = self._apk_url if self._mode == "install" else self._url
+        if text:
+            QtWidgets.QApplication.clipboard().setText(text)
 
     def _save_apk(self):
         from app.gui.server_installer import save_apk

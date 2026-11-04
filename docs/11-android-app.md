@@ -14,7 +14,7 @@ Die Handy-App **Yume Companion für Android** ist ein *Client*: Die Rechenleistu
 
 ## 11.2 APK besorgen und installieren
 
-* **Fertige APK:** unter *Releases* `Yume-Companion.apk` herunterladen, **oder** am PC *Einstellungen → Android Connector → APK für das Handy speichern …*, auf das Handy kopieren (USB, Netzwerkordner, Cloud).
+* **Fertige APK:** am PC *Einstellungen → Android Connector* öffnen und bei *App noch nicht installiert* den QR-Code mit der Handy-Kamera scannen: er öffnet den Download der neuesten APK. Oder unter *Releases* `Yume-Companion.apk` herunterladen, **oder** *APK für das Handy speichern …*, auf das Handy kopieren (USB, Netzwerkordner, Cloud).
 * **Selbst bauen** (siehe [Kapitel 16](16-entwicklung.md)): `android\build-apk.bat` richtet JDK, Android SDK und Gradle bei Bedarf ein und erzeugt die APK in `%LOCALAPPDATA%\YumeAndroidBuild\Yume-Companion.apk` (ca. 78 MB). Lege sie in `tools\android\` des PC-Programms, damit der Knopf „APK für das Handy speichern“ sie anbietet.
 * Auf dem Handy die APK öffnen und **Installation aus unbekannten Quellen** erlauben (nur für diese Datei/Quelle).
 
@@ -169,7 +169,7 @@ Die KI am PC darf dein Handy bedienen. Alles ist einzeln abschaltbar:
 
 ![Anrufschutz](images/android/einstellungen_anrufschutz.png)
 
-Als **Anrufschutz-App** festgelegt, entscheidet Yume bei jedem eingehenden Anruf: **bekannte Kontakte** werden durchgelassen und der Name freihändig angesagt; **Unbekannte** werden nach Vorwahl blockiert (z. B. `0900`), nachts lautlos gestellt oder angesagt. Einstellungen: *Anrufer ansagen*, *Unbekannte nachts lautlos*, *Blockierte Vorwahlen*. Antworten per Sprache ist für normale Apps nicht möglich: Yume blockiert, stellt lautlos und sagt dir Bescheid.
+Als **Anrufschutz-App** festgelegt, entscheidet Yume bei jedem eingehenden Anruf: **bekannte Kontakte** werden durchgelassen und der Name freihändig angesagt; **Unbekannte** werden nach Vorwahl blockiert (z. B. `0900`), nachts lautlos gestellt oder angesagt. Von unbekannten Anrufern wird **nie die Nummer vorgelesen**, nur „Unbekannter Anruf“. Die **Spam-Liste** wird automatisch aus dem Projekt geladen (alle paar Tage, Kopie ist in der App; *Liste jetzt aktualisieren* in den Einstellungen), du musst keine Nummern eintragen. Einstellungen: *Anrufer ansagen*, *Unbekannte nachts lautlos*, *Spam-Liste automatisch*, *Eigene blockierte Vorwahlen*. Antworten per Sprache ist für normale Apps nicht möglich: Yume blockiert, stellt lautlos und sagt dir Bescheid.
 
 ### Ruhemodus
 *Ruhemodus nachts* (von HH:MM bis HH:MM, Standard 22–7 Uhr): leisere Stimme (Lautstärkefaktor), der PC antwortet ruhig und kurz.

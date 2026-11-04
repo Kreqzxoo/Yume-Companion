@@ -26,6 +26,7 @@ class App : Application() {
         net.yume.companion.ui.ToolStatusRepo.start()
         net.yume.companion.device.Automations.start()
         net.yume.companion.voice.WakeVoice.watch()
+        net.yume.companion.core.SpamList.refreshIfDue(this)
         val nm = getSystemService(NotificationManager::class.java)
         nm.createNotificationChannel(NotificationChannel("voice", tr("Zuhören & Anrufe", "Listening & calls"), NotificationManager.IMPORTANCE_LOW))
         nm.createNotificationChannel(NotificationChannel("link", tr("Verbindung zum PC", "Connection to the PC"), NotificationManager.IMPORTANCE_MIN))

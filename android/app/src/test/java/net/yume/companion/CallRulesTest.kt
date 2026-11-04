@@ -25,7 +25,28 @@ class CallRulesTest {
         assertEquals(CallDecision.ALLOW, CallRules.decide("0171123456", false, block, false, true))
     }
 
-    @Test fun numbersAreReadInGroups() {
-        assertEquals("017 112 345 6", CallRules.speakable("0171123456"))
+    @Test fun spamListEntriesAreRejected() {
+        val prefixes = listOf("0700", "032")
+        val numbers = setOf("030123456")
+        assertEquals(CallDecision.REJECT, CallRules.decide("+49 700 1234", false, emptyList(), false, false, prefixes, numbers))
+        assertEquals(CallDecision.REJECT, CallRules.decide("0049 30 123456", false, emptyList(), false, false, prefixes, numbers))
+        assertEquals(CallDecision.ALLOW, CallRules.decide("0171123456", false, emptyList(), false, false, prefixes, numbers))
+        assertEquals(CallDecision.ALLOW, CallRules.decide("0700123", true, emptyList(), false, false, prefixes, numbers))     // contacts always get through
+    }
+
+    @Test fun spamListTextIsParsedAndBadListsAreRefused() {
+        val ok = net.yume.companion.core.SpamList.parse("# c\nformat: 1\nversion: 2026-11-04\nprefix: +49 700\nnumber: 030-123456\n")!!
+        assertEquals(listOf("0700"), ok.prefixes)
+        assertEquals(setOf("030123456"), ok.numbers)
+        assertEquals(null, net.yume.companion.core.SpamList.parse("format: 2\nversion: 1\nprefix: 0900"))
+        assertEquals(null, net.yume.companion.core.SpamList.parse("format: 1\nversion: 1\nprefix: <script>"))
+        assertEquals(null, net.yume.companion.core.SpamList.parse("format: 1\nprefix: 0900"))
+        assertEquals(null, net.yume.companion.core.SpamList.parse("<html>not a list</html>"))
+    }
+
+    @Test fun shippedListIsValid() {
+        val text = java.io.File("src/main/assets/spamlist.txt").readText()
+        assertEquals(true, net.yume.companion.core.SpamList.parse(text)!!.size > 0)
+        assertEquals(text, java.io.File("../spamlist.txt").readText())          // the copy in the app equals the published list
     }
 }

@@ -16,7 +16,7 @@ The phone app **Yume Companion for Android** is a *client*: the computing power 
 
 ## 11.2 Getting and installing the APK
 
-* **Ready-made APK:** download `Yume-Companion.apk` under *Releases*, **or** on the PC *Settings → Android Connector → Save APK for the phone …* and copy it to the phone (USB, network folder, cloud).
+* **Ready-made APK:** on the PC open *Settings → Android Connector* and scan the QR code with the phone camera while *App not installed yet* is selected: it opens the download of the newest APK. Or download `Yume-Companion.apk` under *Releases*, **or** use *Save APK for the phone …* and copy it to the phone (USB, network folder, cloud).
 * **Build it yourself** (see [Chapter 16](16-entwicklung.md)): `android\build-apk.bat` sets up JDK, Android SDK and Gradle if needed and produces the APK in `%LOCALAPPDATA%\YumeAndroidBuild\Yume-Companion.apk` (about 78 MB). Put it into `tools\android\` of the PC program so that the button "Save APK for the phone" offers it.
 * On the phone open the APK and allow **installation from unknown sources** (only for this file/source).
 
@@ -170,7 +170,7 @@ The AI on the PC may operate your phone. Everything can be switched off individu
 
 ![Call protection](../images/en/android/einstellungen_anrufschutz.png)
 
-Set as the **call protection app**, Yume decides on every incoming call: **known contacts** are let through and the name is announced hands-free; **unknown numbers** are blocked by prefix (e.g. `0900`), silenced at night or announced. Settings: *Announce callers*, *Silence unknown callers at night*, *Blocked prefixes*. Answering by voice is not possible for ordinary apps: Yume blocks, silences and tells you.
+Set as the **call protection app**, Yume decides on every incoming call: **known contacts** are let through and the name is announced hands-free; **unknown numbers** are blocked by prefix (e.g. `0900`), silenced at night or announced. The number of an unknown caller is **never read out**, only "Unknown call". The **spam list** is downloaded from the project automatically (every few days, a copy ships in the app; *Update list now* in the settings), so you do not have to enter numbers. Settings: *Announce callers*, *Silence unknown callers at night*, *Automatic spam list*, *Your own blocked prefixes*. Answering by voice is not possible for ordinary apps: Yume blocks, silences and tells you.
 
 ### Quiet mode
 *Quiet mode at night* (from HH:MM to HH:MM, default 10 pm–7 am): quieter voice (volume factor), the PC answers calmly and briefly.

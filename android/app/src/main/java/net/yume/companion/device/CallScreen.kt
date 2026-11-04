@@ -15,6 +15,7 @@ import net.yume.companion.App
 import net.yume.companion.MainActivity
 import net.yume.companion.core.Prefs
 import net.yume.companion.core.Quiet
+import net.yume.companion.core.SpamList
 import net.yume.companion.voice.PhoneTts
 
 enum class CallDecision { ALLOW, REJECT, SILENCE }
@@ -24,19 +25,21 @@ object CallRules {
     fun prefixes(csv: String): List<String> = csv.split(',', ';', ' ').map { it.trim().replace(" ", "") }.filter { it.isNotEmpty() }
 
     /** [number] as the network delivers it (+49..., 0900...). Known contacts are always let through. */
-    fun decide(number: String, known: Boolean, blockPrefixes: List<String>, silenceUnknownAtNight: Boolean, quietNow: Boolean): CallDecision {
+    fun decide(number: String, known: Boolean, blockPrefixes: List<String>, silenceUnknownAtNight: Boolean, quietNow: Boolean,
+               listPrefixes: List<String> = emptyList(), listNumbers: Set<String> = emptySet()): CallDecision {
         if (known) return CallDecision.ALLOW
         val n = number.replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
-        val national = if (n.startsWith("+49")) "0" + n.substring(3) else if (n.startsWith("0049")) "0" + n.substring(4) else n
+        val national = national(n)
         if (blockPrefixes.any { national.startsWith(it) || n.startsWith(it) }) return CallDecision.REJECT
+        if (national.isNotEmpty() && (national in listNumbers || listPrefixes.any { national.startsWith(it) })) return CallDecision.REJECT
         if (silenceUnknownAtNight && quietNow) return CallDecision.SILENCE
         return CallDecision.ALLOW
     }
 
-    /** "+4930123456" -> "plus vier neun drei null ..." is hard to listen to: read the number in small groups */
-    fun speakable(number: String): String {
-        val digits = number.filter { it.isDigit() || it == '+' }.replace("+", "plus ")
-        return digits.chunked(3).joinToString(" ")
+    /** German numbers in the form they are dialled inside the country: +49 30 ... and 0049 30 ... -> 030 ... */
+    fun national(number: String): String {
+        val n = number.replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
+        return if (n.startsWith("+49")) "0" + n.substring(3) else if (n.startsWith("0049")) "0" + n.substring(4) else n
     }
 }
 
@@ -51,14 +54,18 @@ class YumeCallScreen : CallScreeningService() {
         val number = details.handle?.schemeSpecificPart.orEmpty()
         if (!incoming || !Prefs.callScreenOn) { respondToCall(details, CallResponse.Builder().build()); return }
         val name = contactName(number)
-        val decision = CallRules.decide(number, name != null, CallRules.prefixes(Prefs.callBlockPrefixes), Prefs.callSilenceNight, Quiet.active())
+        val list = if (Prefs.spamListOn) SpamList.current(this) else null
+        val decision = CallRules.decide(number, name != null, CallRules.prefixes(Prefs.callBlockPrefixes), Prefs.callSilenceNight, Quiet.active(),
+            list?.prefixes.orEmpty(), list?.numbers.orEmpty())
         val resp = CallResponse.Builder()
         when (decision) {
             CallDecision.REJECT -> { resp.setDisallowCall(true).setRejectCall(true).setSkipNotification(true); note(tr("Anruf blockiert", "Call blocked"), number) }
             CallDecision.SILENCE -> { resp.setSilenceCall(true); note(tr("Unbekannter Anruf (lautlos, Ruhemodus)", "Unknown call (silenced, quiet mode)"), number) }
-            CallDecision.ALLOW -> if (Prefs.callAnnounce) PhoneTts.speak(if (name != null) tr("Anruf von $name", "Call from $name") else tr("Unbekannter Anruf von ", "Unknown call from ") + CallRules.speakable(number).ifEmpty { tr("unbekannter Nummer", "an unknown number") })
+            // only a contact's name is spoken; the digits of an unknown number are never read out (and the phone shows them anyway)
+            CallDecision.ALLOW -> if (Prefs.callAnnounce) PhoneTts.speak(if (name != null) tr("Anruf von $name", "Call from $name") else tr("Unbekannter Anruf", "Unknown call"))
         }
         respondToCall(details, resp.build())
+        SpamList.refreshIfDue(this)
     }
 
     private fun contactName(number: String): String? {

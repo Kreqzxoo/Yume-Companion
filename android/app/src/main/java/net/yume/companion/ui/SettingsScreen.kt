@@ -274,7 +274,25 @@ fun SettingsScreen(withMic: (() -> Unit) -> Unit, onUnpaired: () -> Unit) {
             SwitchRow(tr("Anrufer ansagen", "Announce callers"), tr("Yume sagt laut, wer anruft (Name aus den Kontakten oder „Unbekannter Anruf“)", "Yume says out loud who is calling (name from the contacts or \"Unknown call\")"), { Prefs.callAnnounce }, { Prefs.callAnnounce = it })
             SwitchRow(tr("Unbekannte nachts lautlos", "Silence unknown callers at night"), tr("Im Ruhemodus-Zeitfenster klingeln unbekannte Nummern nicht", "In the quiet mode window unknown numbers do not ring"), { Prefs.callSilenceNight }, { Prefs.callSilenceNight = it })
             var blockPrefixes by remember { mutableStateOf(Prefs.callBlockPrefixes) }
-            OutlinedTextField(value = blockPrefixes, onValueChange = { blockPrefixes = it; Prefs.callBlockPrefixes = it }, singleLine = true, label = { Text(tr("Blockierte Vorwahlen (Komma getrennt)", "Blocked prefixes (comma separated)")) }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(value = blockPrefixes, onValueChange = { blockPrefixes = it; Prefs.callBlockPrefixes = it }, singleLine = true, label = { Text(tr("Eigene blockierte Vorwahlen (Komma getrennt)", "Your own blocked prefixes (comma separated)")) }, modifier = Modifier.fillMaxWidth())
+            var spamInfo by remember { mutableStateOf("") }
+            val spamNow = net.yume.companion.core.SpamList.current(ctx)
+            SwitchRow(tr("Spam-Liste automatisch", "Automatic spam list"), tr("Nummern und Vorwahlen aus der gemeinsamen Spam-Liste werden blockiert. Die Liste wird alle paar Tage aus dem Projekt geladen, du musst nichts eintragen.", "Numbers and prefixes from the shared spam list are blocked. The list is downloaded from the project every few days, you do not have to enter anything."), { Prefs.spamListOn }, { Prefs.spamListOn = it })
+            if (Prefs.spamListOn) {
+                Text(spamInfo.ifEmpty { tr("Stand ${spamNow.version.ifEmpty { "–" }} · ${spamNow.size} Einträge", "Version ${spamNow.version.ifEmpty { "–" }} · ${spamNow.size} entries") }, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                TextButton(onClick = {
+                    spamInfo = tr("Suche …", "Checking …")
+                    Thread {
+                        val r = net.yume.companion.core.SpamList.refresh(ctx)
+                        val d = net.yume.companion.core.SpamList.current(ctx)
+                        spamInfo = when (r) {
+                            net.yume.companion.core.SpamList.Result.UPDATED -> tr("Aktualisiert: Stand ${d.version} · ${d.size} Einträge", "Updated: version ${d.version} · ${d.size} entries")
+                            net.yume.companion.core.SpamList.Result.UP_TO_DATE -> tr("Schon aktuell: Stand ${d.version} · ${d.size} Einträge", "Already up to date: version ${d.version} · ${d.size} entries")
+                            net.yume.companion.core.SpamList.Result.FAILED -> tr("Keine Verbindung oder ungültige Liste, die bisherige bleibt (Stand ${d.version})", "No connection or invalid list, the previous one stays (version ${d.version})")
+                        }
+                    }.start()
+                }) { Text(tr("Liste jetzt aktualisieren", "Update list now")) }
+            }
             Text(tr("Ruhemodus", "Quiet mode"), fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
             SwitchRow(tr("Ruhemodus nachts", "Quiet mode at night"), tr("Leisere Stimme, und Yume antwortet kurz und ruhig (z. B. wenn du im Bett liegst)", "Quieter voice, and Yume answers briefly and calmly (e.g. when you are in bed)"), { Prefs.quietOn }, { Prefs.quietOn = it })
             var qFrom by remember { mutableStateOf(Prefs.quietFrom) }
